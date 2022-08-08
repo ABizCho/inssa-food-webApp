@@ -9,6 +9,11 @@ import Intro from "./pages/Intro/Intro";
 // import { Provider } from "react-redux";
 // import Store from "./app/Store";
 
+
+//social로그인
+import KakaoCallBack from "./pages/user/kakao/KakaoCallBack";
+import SocialSignUp from "./pages/user/SocialSignUp";
+
 function App() {
   return (
     <div className="App">
@@ -17,6 +22,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Intro />} />
       </Routes>
+      <Route path="oauth">
+            <Route path="kakao/callback" element={<KakaoCallBack />} />
+            <Route path="signUp" element={<SocialSignUp />} />
+      </Route>
+
       <Footer />
       {/* </Provider> */}
     </div>
