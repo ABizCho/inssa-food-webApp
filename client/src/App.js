@@ -1,9 +1,9 @@
-import "./App.css";
-import { Route, Routes } from "react-router-dom";
+import './App.css';
+import { Route, Routes } from 'react-router-dom';
 
-import Header from "./common/components/Header";
-import Footer from "./common/components/Footer";
-import Intro from "./pages/Intro/Intro";
+import Header from './common/components/Header';
+import Footer from './common/components/Footer';
+import Home from './pages/Home/Home.js';
 
 ////리덕스 도입 시 활성화
 // import { Provider } from "react-redux";
@@ -11,11 +11,11 @@ import Intro from "./pages/Intro/Intro";
 
 function App() {
   return (
-    <div className="App">
+    <div className='App'>
       {/* <Provider store={Store}> */}
       <Header />
       <Routes>
-        <Route path="/" element={<Intro />} />
+        <Route path='/' element={<Home />} />
       </Routes>
       <Footer />
       {/* </Provider> */}
