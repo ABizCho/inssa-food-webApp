@@ -2,13 +2,21 @@
 .App {
 }
 .header-conatiner {
-  max-width: fit-content;
+  /* max-width: fit-content; */
 }
 
 /* 1. Intro 관련 */
 /* 1.1 Intro - 레이아웃 */
-.intro-container {
+.core-container {
   display: flex;
   align-items: center;
   flex-direction: column;
+}
+
+/* 2. History 관련 */
+/* 2.1 History - 레이아웃 */
+
+.history-container {
+  /* width: 410px !important; */
+  height: 500px !important;
 }
