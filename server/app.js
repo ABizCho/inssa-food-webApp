@@ -9,7 +9,7 @@ const userRouter = require("./routes/user");
 const app = express();
 
 // 1. DB 연결 및 연결관리
-mongoose.connect(`mongodb://localhost:${ports.db}/myapp`);
+mongoose.connect(`mongodb://localhost:${ports.db}/foodie`);
 
 mongoose.connection.on("connected", () => {
   console.log("[DB] CONNECT - success");
