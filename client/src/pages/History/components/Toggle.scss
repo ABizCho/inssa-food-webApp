@@ -1,0 +1,152 @@
+.switch {
+  background-color: transparent;
+  box-sizing: border-box;
+  display: flex;
+  flex: 0 0 auto;
+  height: 24px;
+  margin: 0 0 10px;
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+  width: 56px;
+
+  &__label {
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+
+  &__input {
+    opacity: 0;
+
+    &:checked {
+      ~ .switch__text {
+        background: #0090bb;
+
+        &:before {
+          opacity: 0;
+          transform: translateX(200%);
+        }
+
+        &:after {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      ~ .switch__handle {
+        transform: translateX(32px);
+      }
+    }
+  }
+
+  &__text {
+    background-color: #e5e5e5;
+    border-radius: 50px;
+    box-sizing: border-box;
+    display: block;
+    flex: 0 0 auto;
+    height: 24px;
+    margin: 0;
+    position: absolute;
+    top: 0;
+    width: 56px;
+
+    &:before,
+    &:after {
+      color: SlateGrey;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 25px;
+      position: absolute;
+      transition: all 0.2s ease-in-out;
+      transition-property: transform;
+    }
+
+    &:before {
+      content: attr(data-off);
+      right: 8px;
+      transform: translateX(0);
+    }
+
+    &:after {
+      color: white;
+      content: attr(data-on);
+      left: 9px;
+      opacity: 0;
+      transform: translateX(-200%);
+    }
+  }
+
+  &__handle {
+    background-color: white;
+    border-radius: 18px;
+    display: block;
+    height: 20px;
+    margin: 2px;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    transition: all 0.2s ease-in-out;
+    transition-property: transform;
+    width: 20px;
+  }
+
+  &--large {
+    height: 30px;
+    width: 70px;
+
+    .switch__input {
+      &:checked {
+        ~ .switch__handle {
+          transform: translateX(40px);
+        }
+      }
+    }
+
+    .switch__text {
+      height: 30px;
+      width: 70px;
+
+      &:before,
+      &:after {
+        font-size: 14px;
+        line-height: 30px;
+        position: absolute;
+      }
+
+      &:before {
+        right: 10px;
+      }
+
+      &:after {
+        left: 12px;
+      }
+    }
+
+    .switch__handle {
+      height: 26px;
+      width: 26px;
+    }
+  }
+
+  &--no-text {
+    .switch__text {
+      &:before,
+      &:after {
+        display: none;
+      }
+    }
+  }
+
+  &--success {
+    .switch__input {
+      &:checked {
+        ~ .switch__text {
+          background: #5ed37a;
+        }
+      }
+    }
+  }
+}
