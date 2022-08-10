@@ -1,7 +1,6 @@
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 
-
 import Header from './common/components/Header';
 import Footer from './common/components/Footer';
 import Home from './pages/Home/Home.js';
@@ -19,10 +18,15 @@ function App() {
       {/* <Provider store={Store}> */}
       <Header />
       <Routes>
+<<<<<<< Updated upstream
       <Route path='/' element={<Home />} />
 
 
         <Route path="/history" element={<History/>} />
+=======
+        <Route path='/' element={<Home />} />
+        <Route path='/history' element={<History />} />
+>>>>>>> Stashed changes
       </Routes>
       <Footer />
       {/* </Provider> */}
