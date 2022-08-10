@@ -1,23 +1,25 @@
 import { useState, useEffect } from "react";
-import FoodInfo from "./components/FoodInfo/FoodInfo";
+import FoodInfo from "./components/ResultInfo/ResultInfo";
 import GetImg from "./components/GetImg/GetImg";
 import ServiceInfo from "./components/ServiceInfo/ServiceInfo";
 import "./Core.css";
 
 import $ from "jquery";
+import { useNavigate } from "react-router-dom";
 
 const Core = () => {
+  const navigate = useNavigate();
+
+  //   테스트용 임시 네비게이팅입니다.
+  const onClickToResultTemp = () => {
+    navigate("/ResultInfo");
+  };
   return (
     <div className="full-container">
       <div className="content-container-row">
         <div className="top-container">
           <div style={{ width: "100%", border: "0", padding: "0" }}>
-            <form
-              className="form-container"
-              enctype="multipart/form-data"
-              action="https://deepface.me/index.php"
-              method="POST"
-            >
+            <div className="form-container">
               <input type="hidden" name="menu" value="upload" />
               <input type="hidden" name="gofile" value="nion" />
               <input type="hidden" name="service" value="on" />
@@ -50,7 +52,8 @@ const Core = () => {
               </p>
               <input type="file" name="uploadfile" accept="image/*" />
               <button
-                type="submit"
+                onClick={onClickToResultTemp}
+                // type="submit"
                 className="btn btn-danger btn-block"
                 id="formsend"
               >
@@ -59,8 +62,8 @@ const Core = () => {
                 <br />
                 <span>Getting started with face recognition</span>
               </button>
-            </form>
-			
+            </div>
+
             <div className="demo-container">
               <h1>Demo</h1>
               <div className="demo-box">
