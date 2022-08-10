@@ -1,4 +1,4 @@
 module.exports = {
   google: "",
-  kakao: "",
+  kakao: "0abf97780f442400eccc7cd004baabab",
 };

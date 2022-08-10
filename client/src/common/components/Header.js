@@ -1,7 +1,14 @@
 import './Header.css';
 import lflogo from './lflogo.jpg';
+import kakaLoginButtonImg from "../../img/kakao_login_medium.png";
 
 const Header = () => {
+  const REST_API_KEY = "0abf97780f442400eccc7cd004baabab";
+  const REDIRECT_URI = "http://localhost:3000/oauth/kakao/callback";
+
+  //1번
+  const KAKAO_AUTH_URI = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
+
   return (
     <header className='p-3 text-bg-dark header-container'>
       <div>
@@ -44,6 +51,9 @@ const Header = () => {
           </ul>
 
           <div className='text-end'>
+            <a href={KAKAO_AUTH_URI}>
+              <img src={kakaLoginButtonImg}/>
+            </a>
             <button type='button' className='btn btn-outline-light me-2'>
               Login
             </button>
@@ -55,6 +65,7 @@ const Header = () => {
       </div>
     </header>
   );
+
 };
 
 export default Header;
