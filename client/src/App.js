@@ -29,7 +29,7 @@ function App() {
         <Route path="/core" element={<Core />} />
         <Route path="/history" element={<History />} />
         {/* ResultInfo는 테스트용으로 임시 라우팅했습니다. */}
-        <Route path="/ResultInfo" element={<ResultInfo />} />
+        <Route path="/resultInfo" element={<ResultInfo />} />
       </Routes>
       <Routes path="oauth">
         <Route path="kakao/callback" element={<KakaoCallBack />} />
