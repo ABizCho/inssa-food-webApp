@@ -1,13 +1,20 @@
 import './Header.css';
 import lflogo from './lflogo.jpg';
-import kakaLoginButtonImg from "../../img/kakao_login_medium.png";
+import kakaLoginButtonImg from '../../img/kakao_login_medium.png';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
-  const REST_API_KEY = "0abf97780f442400eccc7cd004baabab";
-  const REDIRECT_URI = "http://localhost:3000/oauth/kakao/callback";
+  const REST_API_KEY = '0abf97780f442400eccc7cd004baabab';
+  const REDIRECT_URI = 'http://localhost:3000/oauth/kakao/callback';
+
+  const navigate = useNavigate();
 
   //1번
   const KAKAO_AUTH_URI = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
+
+  const onLoginClick = () => {
+    navigate('/login');
+  };
 
   return (
     <header className='p-3 text-bg-dark header-container'>
@@ -52,9 +59,9 @@ const Header = () => {
 
           <div className='text-end'>
             <a href={KAKAO_AUTH_URI}>
-              <img src={kakaLoginButtonImg}/>
+              <img src={kakaLoginButtonImg} />
             </a>
-            <button type='button' className='btn btn-outline-light me-2'>
+            <button type='button' onClick={onLoginClick} className='btn btn-outline-light me-2'>
               Login
             </button>
             <button type='button' className='btn btn-warning'>
@@ -65,7 +72,6 @@ const Header = () => {
       </div>
     </header>
   );
-
 };
 
 export default Header;
