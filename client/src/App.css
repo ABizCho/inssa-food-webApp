@@ -7,7 +7,7 @@
 
 /* 1. Intro 관련 */
 /* 1.1 Intro - 레이아웃 */
-.intro-container {
+.core-container {
   display: flex;
   align-items: center;
   flex-direction: column;
