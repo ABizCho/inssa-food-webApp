@@ -5,7 +5,7 @@ const Header = () => {
     // ---------------------------------- kakao oauth
     // -----------------------------------
 
-    const REST_API_KEY = "cf28dbb409df1bda73557662b941eda0";
+    const REST_API_KEY = "0abf97780f442400eccc7cd004baabab";
     const REDIRECT_URI = "http://localhost:3000/oauth/kakao/callback";
 
     //1번

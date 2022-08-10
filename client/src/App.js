@@ -22,10 +22,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Intro />} />
       </Routes>
-      <Route path="oauth">
+      <Routes path="oauth">
             <Route path="kakao/callback" element={<KakaoCallBack />} />
             <Route path="signUp" element={<SocialSignUp />} />
-      </Route>
+      </Routes>
 
       <Footer />
       {/* </Provider> */}

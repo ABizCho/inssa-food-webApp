@@ -19,8 +19,10 @@ const KakaoCallBack =()=>{
             console.log(res);
             if(res.data.login){//true면 로그인 되어있는 상태
                 setCookie("userData",res.data,{path:"/"});
+                console.log("로그인 완료");
                 navigate("/review/list");
             }else{ //false면 회원가입을 진행해야하는 상태
+                console.log("회원가입을 해주세요.");
                 setCookie("",res.data,{path:"/"});
                 navigate("/oauth/l");
 
