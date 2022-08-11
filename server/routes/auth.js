@@ -1,15 +1,18 @@
 const { Router } = require('express');
 const router = Router();
+
 const axios = require('axios');
 const { User } = require('./../models');
 const jwt = require('jsonwebtoken');
 const jwtConfig = require('./../config/jwtConfig');
+const restApiKey = require("./../secure_data/restApi")
 
 router.get('/kakao', async (req, res, next) => {
   const REST_API_KEY = 'cf28dbb409df1bda73557662b941eda0';
   const REDIRECT_URI = 'http://localhost:3000/oauth/kakao/callback';
   const KAKAO_CODE = req.query.code;
   // console.log(KAKAO_CODE);
+  
 
   try {
     //4번
@@ -37,6 +40,8 @@ router.get('/kakao', async (req, res, next) => {
     next(e);
   }
 });
+
+
 
 const checkUserData = async (userData, res) => {
   const checkEmail = await User.findOne({ email: userData.kakao_account.email });
@@ -79,6 +84,7 @@ const checkUserData = async (userData, res) => {
   }
 };
 
+
 //카카오 유저 정보 가져오는 부분
 const getKakaoUserData = async (token) => {
   return await axios.get('https://kapi.kakao.com/v2/user/me', {
@@ -88,3 +94,5 @@ const getKakaoUserData = async (token) => {
     },
   });
 };
+
+module.exports = router;

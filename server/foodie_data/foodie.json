@@ -1,0 +1,115 @@
+{
+    "galbijjim" :{
+        "id" :  1,
+        "type" : "찜",
+        "name" :	"갈비찜",
+        "name_Eng": 	"Braised Short Ribs",
+        "description" : "Beef short ribs cut into chunks, seasoned with soy sauce, garlic, sugar and other spices, then simmered over a long period with pieces of Korean radish, carrots, chestnuts, jujubes, and ginkgo nuts. The dish is topped with julienned egg garnish and ground pine nuts",
+        "spicy" : 1,
+        "default_img": "#",
+        "recipie_url": "https://www.youtube.com/watch?v=vtGzj6cUn7Q",
+        "order_tip": "MEAT ALERT : contains beef ribs"
+    },
+
+    "gimbob" : {
+        "id" : 2,
+        "type" : "밥",
+        "name" : "김밥",
+        "name_Eng": "Rice Rolls in Laver", 
+        "description" : "To make this colorful roll, rice is spread on a dried laver sheet with beef, fried egg, pickled radish, and various steamed vegetables, then rolled and cut into slices.",
+        "spicy" : 1,
+        "default_img": "#",
+        "recipie_url": "https://www.youtube.com/watch?v=Y-Y9CXGRJPU",
+        "order_tip": "MEAT ALERT : May contain strips of ham so ask your waiter to leave them out."
+        },
+    
+    "tteokbokki" : {
+        "id" :3 ,
+        "type" : "볶음",
+        "name" :	"떡볶이",
+        "name_Eng": 	"Stir-fried Rice Pasta with Vegetables",
+        "description" : "A stir-fry dish made with rice pasta, seasoned beef and assorted vegetables. Recently, a spicy version with red chili pepper paste has become very popular.",
+        "spicy" : 3,
+        "default_img": "#",
+        "recipie_url": "https://www.youtube.com/watch?v=TA3Uo3a9674",
+        "order_tip": "SPICE ALERT : can be very spicy"
+        },
+
+    "naengmyeon" : {
+    "id" : 4,
+    "type" : "면",
+    "name" :	"물냉면",
+    "name_Eng": 	"Buckwheat Noodles in Chilled Broth", 
+    "description" : "A soup with buckwheat noodles and various toppings served in a chilled broth. The version with a spicy sauce instead of the soup is called bibim­naengmyeon.",
+    "spicy" : 1,
+    "default_img": "#",
+    "recipie_url": "https://www.youtube.com/watch?v=QIgLSko7Kmc",
+    "order_tip": "MEAT ALERT: may come with beef topping, you should consult your waiter."
+        },
+    "kimchi" : {
+    "id" : 5,
+    "type" : "김치",
+    "name" :	"배추김치",
+    "name_Eng": 	"Cabbage Kimchi", 
+    "description" : "The most basic type of kimchi, made of whole Chinese cabbages. The cabbages are cut in half and then salted or soaked in salt water. Alter the leaves have lost some of their water, a mixture of julienned white radish, garlic, red chili pepper powder, green onions, fish sauce and ginger is spread over the layers of leaves. The cabbages are put in jars and left to season until the flavor is fully absorbed.",
+    "spicy" : 3,
+    "default_img": "#",
+    "recipie_url": "https://www.youtube.com/watch?v=eTucCw1w6Ak",
+    "order_tip" : "SPICE ALERT : can be very spicy"
+        },
+    "bulgogi" : {
+    "id" : 6,
+    "type" : "구이",
+    "name" :	"불고기",
+    "name_Eng": 	"Bulgogi (Korean Barbecue)",
+    "description" : "Thin slices of beef marinated in a mixture of soy sauce, sugar, green onions, garlic, black pepper, sesame seeds, and sesame oil and grilled at the table. Bulgogi is one of Korea's most popular beef dishes.",
+    "spicy" : 1,
+    "default_img": "#",
+    "recipie_url": "https://www.youtube.com/watch?v=srHw4xQj1I0",
+    "order_tip": "MEAT ALERT : contains beef"
+        },
+    "bibimbap ": {
+    "id" : 7,
+    "type" : "밥",
+    "name" :	"비빔밥",
+    "name_Eng": 	"Bibimbap (Rice Mixed with Vegetables and Beef)",
+    "description" : "One of the most popular Korean dishes, bibimbap consists of a bowl of rice topped with fresh and cooked vegetables and red chili pepper paste. Everything is mixed together before eating. Seasoned raw beef, grilled beef, or a fried egg can also be added. There are many styles and regional variations of this dish. The cities of Jeonju and Jinju are famous for their distinctive bibimbap and there are other variations such as hot stone pot (dolsot) bibimbap, soybean sprout bibimbap, and vegetable bibimbap. Goldongban is the royal court term for bibimbap.",
+    "spicy" : 2,
+    "default_img": "#",
+    "recipie_url": "https://www.youtube.com/watch?v=6QQ67F8y2b8",
+    "order_tip": "MEAT ALERT: If you don’t want beef, tell your waiter in advance. PEPPER GAUGE: Make sure you don’t put in too much chilly paste, although you can always ask your waiter for extra rice if it’s too spicy."
+        },
+    "sundubu" : {
+    "id" : 8,
+    "type" : "찌개",
+    "name" :	"순두부찌개",
+    "name_Eng": "Spicy Soft Dubu Stew",
+    "description" : "A spicy red stew with soft dubu (soybean curd / tofu), soybean paste (doenjang), fish sauce, clams, summer squash, and some meat.",
+    "spicy" : 2,
+    "default_img": "#",
+    "recipie_url": "https://www.youtube.com/watch?v=BvZ9m3Bikuw",
+    "order_tip": "MEAT ALERT: Some restaurants serve with meat (mostly pork), so please check with the waiter. PEPPER GAUGE: Maybe spicy for some people."
+        },
+    "japchae" :{
+    "id" : 9,
+    "type" : "나물",
+    "name" :	"잡채",
+    "name_Eng": 	"Japchae (Clear Noodles Stir-fried with Vegetables)",
+    "description" : "Vegetables and beef pan-fried separately then mixed with clear noodles, soy sauce, and other seasonings. One of the most popular party dishes, this dish is often seen at special banquets.",
+    "spicy" : 1,
+    "default_img": "#",
+    "recipie_url": "https://www.youtube.com/watch?v=i1djfV9uigc",
+    "order_tip": "MEAT ALERT : contains beef"
+        },
+    "hangwa": {
+        "id" :10,
+        "type" : "한과",
+        "name" : "한과",
+        "name_Eng": "Traditional Sweets",
+        "description" : "Many types of traditional Korean sweets and cookies. They vary according to ingredients and preparation method.",
+        "spicy" : 1,
+        "default_img": "#",
+        "recipie_url": "https://www.youtube.com/watch?v=Q5H_IBLd3sc",
+        "order_tip": ""
+        }
+}
