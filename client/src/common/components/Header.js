@@ -1,6 +1,55 @@
+import "./Header.css";
+import lflogo from "./lflogo.jpg";
+import kakaLoginButtonImg from "../../img/kakao_login_medium.png";
+
+import { useCookies } from "react-cookie";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+
 const Header = () => {
+  const REST_API_KEY = "0abf97780f442400eccc7cd004baabab";
+  const REDIRECT_URI = "http://localhost:3000/oauth/kakao/callback";
+
+  // 야매:라우팅 권한관리로 개선되어야할 로직---------------
+  const [cookies, setCookie, removeCookie] = useCookies(["userData"]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (cookies.userData === undefined) {
+      navigate("/");
+    }
+  }, [cookies]);
+
+  // -----------------------------------------
+
+  // ------------------kakao Oauth-------------------
+  //1번
+  const KAKAO_AUTH_URI = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
+
+  //---------------------------------------------------
+
+  const onClickSignUp = () => {
+    navigate("/signUp");
+  };
+
+  const onClickLogin = () => {
+    navigate("/login");
+  };
+  const onClickLogOut = () => {
+    console.log("a");
+    removeCookie("userData", { path: "/" });
+    navigate("/");
+  };
+
   return (
     <header className="p-3 text-bg-dark header-container">
+      <div>
+        <img
+          src={lflogo}
+          alt="logo"
+          style={{ height: "200px", width: "200px" }}
+        />
+      </div>
       <div className="container">
         <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
           <a
@@ -20,23 +69,23 @@ const Header = () => {
 
           <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
             <li>
-              <a href="#" className="nav-link px-2 text-secondary">
+              <a href="#" className="nav-link px-2 text-white">
                 Home
               </a>
             </li>
             <li>
               <a href="#" className="nav-link px-2 text-white">
-                Features
+                About
               </a>
             </li>
             <li>
               <a href="#" className="nav-link px-2 text-white">
-                Pricing
+                Search
               </a>
             </li>
             <li>
               <a href="#" className="nav-link px-2 text-white">
-                FAQs
+                History
               </a>
             </li>
             <li>
@@ -46,13 +95,38 @@ const Header = () => {
             </li>
           </ul>
 
-          <div className="text-end">
-            <button type="button" className="btn btn-outline-light me-2">
-              Login
-            </button>
-            <button type="button" className="btn btn-warning">
-              Sign-up
-            </button>
+          <div className="logBtn-box text-end">
+            {cookies.userData === undefined ? (
+              <div className="logTrue-box">
+                <a className="log-btn" href={KAKAO_AUTH_URI}>
+                  <img src={kakaLoginButtonImg} width={83} height={38} />
+                </a>
+                <button
+                  type="button"
+                  onClick={onClickLogin}
+                  className="logIn-btn log-btn btn btn-outline-light "
+                >
+                  Login
+                </button>
+                <button
+                  type="signUp-btn log-btn button"
+                  className="btn btn-outline-warning"
+                  onClick={onClickSignUp}
+                >
+                  Sign-up
+                </button>
+              </div>
+            ) : (
+              <div className="logFalse-box">
+                <button
+                  type="signUp-btn log-btn button"
+                  className="btn btn-outline-danger"
+                  onClick={onClickLogOut}
+                >
+                  LogOut
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>
