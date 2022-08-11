@@ -58,9 +58,7 @@ const Core = () => {
               id="formsend"
             >
               <i className="func-btn fas fa-webcam" aria-hidden="true"></i>
-              &nbsp;&nbsp; 얼굴인식 시작하기
-              <br />
-              <span>Getting started with face recognition</span>
+              Discover
             </button>
           </div>
 
