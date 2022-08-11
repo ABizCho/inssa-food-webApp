@@ -6,6 +6,7 @@ import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
+
 const Header = () => {
   const REST_API_KEY = "0abf97780f442400eccc7cd004baabab";
   const REDIRECT_URI = "http://localhost:3000/oauth/kakao/callback";
@@ -19,6 +20,7 @@ const Header = () => {
       navigate("/");
     }
   }, [cookies]);
+
   // -----------------------------------------
 
   // ------------------kakao Oauth-------------------
@@ -69,7 +71,7 @@ const Header = () => {
             </li>
             <li>
               <a href="#" className="nav-link px-2 text-white">
-                Search
+                Seac
               </a>
             </li>
             <li>
@@ -84,18 +86,21 @@ const Header = () => {
             </li>
           </ul>
 
-          <div className="text-end">
-            <a href={KAKAO_AUTH_URI}>
-              <img src={kakaLoginButtonImg} />
+          <div className="logBtn-box text-end">
+            <a className="log-btn" href={KAKAO_AUTH_URI}>
+              <img src={kakaLoginButtonImg} width={83} height={38} />
             </a>
             <button
               type="button"
               onClick={onLoginClick}
-              className="btn btn-outline-light me-2"
+              className="logIn-btn log-btn btn btn-outline-light "
             >
               Login
             </button>
-            <button type="button" className="btn btn-warning">
+            <button
+              type="signUp-btn log-btn button"
+              className="btn btn-warning"
+            >
               Sign-up
             </button>
           </div>
