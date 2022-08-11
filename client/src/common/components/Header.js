@@ -26,10 +26,20 @@ const Header = () => {
   //1번
   const KAKAO_AUTH_URI = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
 
-  const onLoginClick = () => {
+  //---------------------------------------------------
+
+  const onClickSignUp = () => {
+    navigate("/signUp");
+  };
+
+  const onClickLogin = () => {
     navigate("/login");
   };
-  //---------------------------------------------------
+  const onClickLogOut = () => {
+    console.log("a");
+    removeCookie("userData", { path: "/" });
+    navigate("/");
+  };
 
   return (
     <header className="p-3 text-bg-dark header-container">
@@ -70,7 +80,7 @@ const Header = () => {
             </li>
             <li>
               <a href="#" className="nav-link px-2 text-white">
-                Seac
+                Search
               </a>
             </li>
             <li>
@@ -86,23 +96,14 @@ const Header = () => {
           </ul>
 
           <div className="logBtn-box text-end">
-            {cookies.userData === "undefined" ? (
-              <div className="logFalse-box">
-                <button
-                  type="signUp-btn log-btn button"
-                  className="btn btn-outline-danger"
-                >
-                  LogOut
-                </button>
-              </div>
-            ) : (
+            {cookies.userData === undefined ? (
               <div className="logTrue-box">
                 <a className="log-btn" href={KAKAO_AUTH_URI}>
                   <img src={kakaLoginButtonImg} width={83} height={38} />
                 </a>
                 <button
                   type="button"
-                  onClick={onLoginClick}
+                  onClick={onClickLogin}
                   className="logIn-btn log-btn btn btn-outline-light "
                 >
                   Login
@@ -110,8 +111,19 @@ const Header = () => {
                 <button
                   type="signUp-btn log-btn button"
                   className="btn btn-outline-warning"
+                  onClick={onClickSignUp}
                 >
                   Sign-up
+                </button>
+              </div>
+            ) : (
+              <div className="logFalse-box">
+                <button
+                  type="signUp-btn log-btn button"
+                  className="btn btn-outline-danger"
+                  onClick={onClickLogOut}
+                >
+                  LogOut
                 </button>
               </div>
             )}

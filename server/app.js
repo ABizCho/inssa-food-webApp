@@ -28,7 +28,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // 3. 라우팅
 app.use("/user", userRouter);
 
-app.use("auth", authRouter);
+app.use("/auth", authRouter);
 
 // 4. 서버 구동
 app.listen(ports.server, () => {
