@@ -9,6 +9,7 @@ const authRouter = require("./routes/auth");
 const coreRouter = require("./routes/core");
 const historiesRouter = require("./routes/histories");
 //
+const authMiddleware = require("./routes/auth");
 const app = express();
 
 // 1. DB 연결 및 연결관리

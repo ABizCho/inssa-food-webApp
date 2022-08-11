@@ -1,3 +1,5 @@
+import axios from "axios";
+
 import HistoryCard from "./components/HistoryCard";
 import Toggle from "./components/Toggle";
 import "./components/Toggle.scss";
@@ -7,9 +9,17 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import "./History.css";
 
-import { useState } from "react";
+import urlPort from "../../data/urlPort.json";
+
+import { useEffect, useState } from "react";
+import { useCookies } from "react-cookie";
+import { useNavigate } from "react-router-dom";
 
 const History = () => {
+  const [historyData, setHistoryData] = useState([]);
+  const [cookies, setCookie, removeCookie] = useCookies(["userData"]);
+  const navigate = useNavigate();
+
   const [isSlide, setIsSlide] = useState(true);
 
   const onClickAlbum = () => {
@@ -38,6 +48,33 @@ const History = () => {
       items: 1,
       slidesToSlide: 1, // optional, default to 1.
     },
+  };
+
+  // --- to 서버 ----
+
+  useEffect(() => {
+    console.log("history 접속");
+    getHistoryData();
+  }, [""]);
+
+  // 테스트용: 나중에 템플릿 리터럴로 user정보에 따른 get 가져오게 구현해야함
+  const getHistoryData = () => {
+    try {
+      axios
+        .get(urlPort.server + "/histories/", {
+          headers: {
+            accessToken: cookies.userData.accessToken,
+          },
+        })
+        .then((res) => {
+          console.log(`[응답 메시지]: ${res.msg}`);
+          setHistoryData(res.histories);
+          console.log(historyData);
+        });
+    } catch (e) {
+      console.log(`[응답오류]: ${e}`);
+      navigate("/core");
+    }
   };
 
   return (

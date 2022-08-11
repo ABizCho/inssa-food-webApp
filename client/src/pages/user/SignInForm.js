@@ -1,6 +1,6 @@
 import $ from "jquery";
 import axios from "axios";
-import port from "./../../data/port.json";
+import urlPort from "./../../data/urlPort.json";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
@@ -40,7 +40,7 @@ const SignInForm = ({ signInData, onChangeSignInData, setSignInData }) => {
   };
 
   const sendSignInData = async () => {
-    return await axios.post(port.url + "/user/login", signInData);
+    return await axios.post(urlPort.url + "/user/login", signInData);
   };
 
   return (

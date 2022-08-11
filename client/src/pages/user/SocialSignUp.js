@@ -1,7 +1,7 @@
 import $ from "jquery";
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
-import port from "./../../data/port.json";
+import urlPort from "./../../data/urlPort.json";
 import { useCookies } from "react-cookie";
 
 const SocialSignUp = () => {
@@ -84,7 +84,7 @@ const SocialSignUp = () => {
   };
 
   const sendSignUpData = async () => {
-    return await axios.post(port.url + "/user/signUp", signUpData);
+    return await axios.post(urlPort.url + "/user/signUp", signUpData);
   };
 
   return (
