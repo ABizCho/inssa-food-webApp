@@ -2,11 +2,9 @@
   box-sizing: border-box;
 }
 
-.full-container {
-}
 .content-container-row {
-  margin-left: 300px;
-  margin-right: 300px;
+  margin-left: 10px;
+  margin-right: 10px;
   padding: 20px;
   padding-bottom: 0;
 }
