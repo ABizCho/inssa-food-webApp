@@ -7,6 +7,9 @@ import Home from "./pages/Home/Home.js";
 import History from "./pages/History/History";
 import Core from "./pages/Core/Core";
 
+//테스트용 임시 라우팅입니다. 향후 제거합니다.
+import ResultInfo from "./pages/Core/components/ResultInfo/ResultInfo";
+
 ////리덕스 도입 시 활성화
 // import { Provider } from "react-redux";
 // import Store from "./app/Store";
@@ -29,6 +32,8 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='login' element={<Login />} />
         <Route path="/core" element={<Core />} />
+        
+        <Route path="/resultInfo" element={<ResultInfo />} />
         <Route path='history' element={<History />} />
         <Route path='oauth'>
           <Route path='kakao/callback' element={<KakaoCallBack />} />
