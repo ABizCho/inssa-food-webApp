@@ -1,6 +1,6 @@
+
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-
 import Header from "./common/components/Header";
 import Footer from "./common/components/Footer";
 import Home from "./pages/Home/Home.js";
@@ -15,25 +15,30 @@ import ResultInfo from "./pages/Core/components/ResultInfo/ResultInfo";
 // import Store from "./app/Store";
 
 //social로그인
-import KakaoCallBack from "./pages/user/kakao/KakaoCallBack";
-import SocialSignUp from "./pages/user/SocialSignUp";
+import KakaoCallBack from './pages/user/kakao/KakaoCallBack';
+import SocialSignUp from './pages/user/SocialSignUp';
+import SigninForm from './pages/user/SignInForm';
+
+//그냥 로그인
+import Login from './Login';
 
 function App() {
   return (
     <div className="App">
       {/* <Provider store={Store}> */}
       <Header />
+        
       <Routes>
-        <Route path="/" element={<Home />} />
-
+        <Route path='/' element={<Home />} />
+        <Route path='login' element={<Login />} />
         <Route path="/core" element={<Core />} />
-        <Route path="/history" element={<History />} />
-        {/* ResultInfo는 테스트용으로 임시 라우팅했습니다. */}
+        
         <Route path="/resultInfo" element={<ResultInfo />} />
-      </Routes>
-      <Routes path="oauth">
-        <Route path="kakao/callback" element={<KakaoCallBack />} />
-        <Route path="signUp" element={<SocialSignUp />} />
+        <Route path='history' element={<History />} />
+        <Route path='oauth'>
+          <Route path='kakao/callback' element={<KakaoCallBack />} />
+          <Route path='kakao/signup' element={<SocialSignUp />} />
+        </Route>
       </Routes>
 
       <Footer />

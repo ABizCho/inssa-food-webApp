@@ -20,7 +20,7 @@ const Home = () => {
             <br />
             And how to order.
           </span>
-          <button className='css-1hw9j7s' tabindex='0' type='button'>
+          <button className='css-1hw9j7s' tabIndex='0' type='button'>
             Get start<span className='MuiTouchRipple-root css-w0pj6f'></span>
           </button>
         </div>
@@ -39,7 +39,7 @@ const Home = () => {
         </p>
         <button
           className='MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root  css-1hw9j7s'
-          tabindex='0'
+          tabIndex='0'
           type='button'
         >
           More <span className='MuiTouchRipple-root css-w0pj6f'></span>
