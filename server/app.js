@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const ports = require("./secure_data/port");
 
 const userRouter = require("./routes/user");
+const authRouter = require("./routes/auth");
 //
 const app = express();
 
@@ -26,6 +27,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // 3. 라우팅
 app.use("/user", userRouter);
+
+app.use("auth", authRouter);
 
 // 4. 서버 구동
 app.listen(ports.server, () => {
