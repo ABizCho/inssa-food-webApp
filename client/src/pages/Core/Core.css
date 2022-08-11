@@ -3,8 +3,8 @@
 }
 
 .content-container-row {
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: 5%;
+  margin-right: 5%;
   padding: 20px;
   padding-bottom: 0;
 }
@@ -25,6 +25,7 @@
   border: 3px solid #d5d5d5;
   display: flex;
   flex-direction: column;
+  border-radius: 1em;
 }
 
 .demo-container {
@@ -42,4 +43,14 @@
 }
 
 .func-btn {
+}
+
+.title {
+  margin-bottom: 6%;
+  text-align: center;
+  font-family: "Fredoka One", cursive;
+}
+
+.text-notice {
+  margin-bottom: 8px;
 }

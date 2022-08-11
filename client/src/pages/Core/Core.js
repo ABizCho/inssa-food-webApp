@@ -17,6 +17,7 @@ const Core = () => {
   return (
     // <div className="full-container">
     <div className="content-container-row">
+      <h2 className="title">Find your food</h2>
       <div className="top-container">
         <div style={{ width: "100%", border: "0", padding: "0" }}>
           <div className="form-container">
@@ -29,31 +30,14 @@ const Core = () => {
               value="clicm02ddg1or9rjelucajj4p6"
             />
 
-            <p align="left">
-              <span>
-                <i className="fas fa-camera-alt" aria-hidden="true"></i>
-                &nbsp;&nbsp; <b>얼굴 사진과 닮은꼴 연예인을 찾아드려요</b>
-              </span>
+            <p className="text-notice" align="center">
+              <span className="">Put your food image in this box</span>
             </p>
-            <p align="left">
-              <span>
-                <i
-                  className="fas fa-exclamation-triangle"
-                  aria-hidden="true"
-                ></i>{" "}
-                용량이 큰 고화질 사진은 오류가 발생해요 (2mb 이하 권장)
-              </span>
-            </p>
-            <p align="left">
-              <span>
-                If you upload a picture of your face here, you'll find a
-                look-alike celebrity. You can also see the age of your face.
-              </span>
-            </p>
+
+            <p align=""></p>
             <input type="file" name="uploadfile" accept="image/*" />
             <button
               onClick={onClickToResultTemp}
-              // type="submit"
               className="btn btn-danger btn-block"
               id="formsend"
             >
@@ -63,7 +47,7 @@ const Core = () => {
           </div>
 
           <div className="demo-container">
-            <h1>Demo</h1>
+            <h2 className="title">Demo</h2>
             <div className="demo-box">
               <div>
                 <img
