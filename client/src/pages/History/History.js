@@ -16,7 +16,7 @@ import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 
 const History = () => {
-  const [historyData, setHistoryData] = useState([]);
+  const [historyData, setHistoryData] = useState(["undefined"]);
   const [cookies, setCookie, removeCookie] = useCookies(["userData"]);
   const navigate = useNavigate();
 
@@ -67,15 +67,18 @@ const History = () => {
           },
         })
         .then((res) => {
-          console.log(`[응답 메시지]: ${res.msg}`);
-          setHistoryData(res.histories);
-          console.log(historyData);
+          console.log(res);
+          setHistoryData(res.data.histories);
         });
     } catch (e) {
       console.log(`[응답오류]: ${e}`);
       navigate("/core");
     }
   };
+
+  useEffect(() => {
+    console.log("histories 구성");
+  }, [historyData]);
 
   return (
     <div className="history-container">
@@ -89,13 +92,14 @@ const History = () => {
         />
         {isSlide ? (
           <div className="grid-container">
-            {dummy.map((item, index) => {
+            {historyData?.map((item, index) => {
               return (
                 <img
+                  key={index}
                   width="125px"
                   height="125px"
                   className="grid-item scale"
-                  src={item.food_img}
+                  src={item.food_defaultImg}
                   alt="React"
                 />
               );
@@ -109,17 +113,20 @@ const History = () => {
             responsive={responsive}
             transitionDuration={500}
           >
-            {dummy.map((item, index) => {
-              return (
-                <HistoryCard
-                  key={index}
-                  id={item?.id}
-                  name={item?.name}
-                  food_img={item?.food_img}
-                  desc={item?.description}
-                />
-              );
-            })}
+            <div>
+              {historyData?.map((item, index) => {
+                return (
+                  <HistoryCard
+                    key={index}
+                    id={item.id}
+                    name={item.name_Eng}
+                    food_img={item.food_defaultImg}
+                    desc={item.description}
+                    colorIdx={index}
+                  />
+                );
+              })}
+            </div>
           </Carousel>
         )}
       </div>

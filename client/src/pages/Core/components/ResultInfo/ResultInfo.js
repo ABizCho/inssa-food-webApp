@@ -1,9 +1,14 @@
 import "./ResultInfo.css";
+import { useNavigate } from "react-router-dom";
 
 import { Button } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 
 const ResultInfo = () => {
+  const navigate = useNavigate();
+  const onClickSaveHistory = () => {
+    navigate("/history");
+  };
   return (
     <div className="resultInfo-container">
       <h2>Result Page</h2>
@@ -32,6 +37,7 @@ const ResultInfo = () => {
             className="btn-item"
             variant="contained"
             endIcon={<SendIcon />}
+            onClick={onClickSaveHistory}
           >
             Save History
           </Button>
