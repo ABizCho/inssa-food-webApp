@@ -1,5 +1,6 @@
-const color = {
-  main: "#e70404",
-  sub: "#474747",
+const themeColor = {
+  main: "#f08000",
+  sub1: "#dc3545",
+  sub2: "#474747",
 };
-export default color;
+export default themeColor;

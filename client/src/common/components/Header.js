@@ -1,5 +1,4 @@
 import "./Header.css";
-import lflogo from "./lflogo.jpg";
 import kakaLoginButtonImg from "../../img/kakao_login_medium.png";
 
 import { useCookies } from "react-cookie";
@@ -41,13 +40,14 @@ const Header = () => {
     navigate("/");
   };
 
+  const logoSizeNum = 15;
   return (
     <header className="p-3 text-bg-dark header-container">
-      <div>
+      <div className="logo-box">
         <img
-          src={lflogo}
+          src={`${process.env.PUBLIC_URL}/InssaFood_logo2.png`}
           alt="logo"
-          style={{ height: "200px", width: "200px" }}
+          style={{ height: 3 * logoSizeNum, width: 8 * logoSizeNum }}
         />
       </div>
       <div className="container">
@@ -55,36 +55,39 @@ const Header = () => {
           <a
             href="/"
             className="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none"
-          >
-            <svg
-              className="bi me-2"
-              width="40"
-              height="32"
-              role="img"
-              aria-label="Bootstrap"
-            >
-              <use></use>
-            </svg>
-          </a>
+          ></a>
 
           <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
             <li>
-              <a href="#" className="nav-link px-2 text-white">
+              <a
+                onClick={() => {
+                  navigate("/");
+                }}
+                className="nav-link px-2 text-white"
+              >
                 Home
               </a>
             </li>
+
             <li>
-              <a href="#" className="nav-link px-2 text-white">
-                About
-              </a>
-            </li>
-            <li>
-              <a href="#" className="nav-link px-2 text-white">
+              <a
+                onClick={() => {
+                  navigate("/core");
+                }}
+                href="#"
+                className="nav-link px-2 text-white"
+              >
                 Search
               </a>
             </li>
             <li>
-              <a href="#" className="nav-link px-2 text-white">
+              <a
+                href="#"
+                className="nav-link px-2 text-white"
+                onClick={() => {
+                  navigate("/history");
+                }}
+              >
                 History
               </a>
             </li>
@@ -98,29 +101,20 @@ const Header = () => {
           <div className="logBtn-box text-end">
             {cookies.userData === undefined ? (
               <div className="logTrue-box">
-                <a className="log-btn" href={KAKAO_AUTH_URI}>
-                  <img src={kakaLoginButtonImg} width={83} height={38} />
+                <a className="kakao-btn" href={KAKAO_AUTH_URI}>
+                  <img src={kakaLoginButtonImg} width={70} height={35} />
                 </a>
                 <button
-                  type="button"
                   onClick={onClickLogin}
-                  className="logIn-btn log-btn btn btn-outline-light "
+                  className="logIn-btn log-btn btn btn-secondary "
                 >
                   Login
-                </button>
-                <button
-                  type="signUp-btn log-btn button"
-                  className="btn btn-outline-warning"
-                  onClick={onClickSignUp}
-                >
-                  Sign-up
                 </button>
               </div>
             ) : (
               <div className="logFalse-box">
                 <button
-                  type="signUp-btn log-btn button"
-                  className="btn btn-outline-danger"
+                  className="signUp-btn log-btn btn btn-outline-secondary"
                   onClick={onClickLogOut}
                 >
                   LogOut

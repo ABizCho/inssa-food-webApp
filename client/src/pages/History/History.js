@@ -1,3 +1,5 @@
+import axios from "axios";
+
 import HistoryCard from "./components/HistoryCard";
 import Toggle from "./components/Toggle";
 import "./components/Toggle.scss";
@@ -7,9 +9,17 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import "./History.css";
 
-import { useState } from "react";
+import urlPort from "../../data/urlPort.json";
+
+import { useEffect, useState } from "react";
+import { useCookies } from "react-cookie";
+import { useNavigate } from "react-router-dom";
 
 const History = () => {
+  const [historyData, setHistoryData] = useState(["undefined"]);
+  const [cookies, setCookie, removeCookie] = useCookies(["userData"]);
+  const navigate = useNavigate();
+
   const [isSlide, setIsSlide] = useState(true);
 
   const onClickAlbum = () => {
@@ -40,9 +50,39 @@ const History = () => {
     },
   };
 
+  // --- to 서버 ----
+
+  useEffect(() => {
+    console.log("history 접속");
+    getHistoryData();
+  }, [""]);
+
+  // 테스트용: 나중에 템플릿 리터럴로 user정보에 따른 get 가져오게 구현해야함
+  const getHistoryData = () => {
+    try {
+      axios
+        .get(urlPort.server + "/histories/", {
+          headers: {
+            accessToken: cookies.userData.accessToken,
+          },
+        })
+        .then((res) => {
+          console.log(res);
+          setHistoryData(res.data.histories);
+        });
+    } catch (e) {
+      console.log(`[응답오류]: ${e}`);
+      navigate("/core");
+    }
+  };
+
+  useEffect(() => {
+    console.log("histories 구성");
+  }, [historyData]);
+
   return (
     <div className="history-container">
-      <h2>History Page</h2>
+      <h1 className="title">History Page</h1>
 
       <div className="history-box">
         <ToggleButtonSizes
@@ -52,13 +92,14 @@ const History = () => {
         />
         {isSlide ? (
           <div className="grid-container">
-            {dummy.map((item, index) => {
+            {historyData?.map((item, index) => {
               return (
                 <img
+                  key={index}
                   width="125px"
                   height="125px"
                   className="grid-item scale"
-                  src={item.food_img}
+                  src={item.food_defaultImg}
                   alt="React"
                 />
               );
@@ -72,17 +113,20 @@ const History = () => {
             responsive={responsive}
             transitionDuration={500}
           >
-            {dummy.map((item, index) => {
-              return (
-                <HistoryCard
-                  key={index}
-                  id={item?.id}
-                  name={item?.name}
-                  food_img={item?.food_img}
-                  desc={item?.description}
-                />
-              );
-            })}
+            <div>
+              {historyData?.map((item, index) => {
+                return (
+                  <HistoryCard
+                    key={index}
+                    id={item.id}
+                    name={item.name_Eng}
+                    food_img={item.food_defaultImg}
+                    desc={item.description}
+                    colorIdx={index}
+                  />
+                );
+              })}
+            </div>
           </Carousel>
         )}
       </div>
