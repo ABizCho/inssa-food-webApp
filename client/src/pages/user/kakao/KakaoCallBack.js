@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect } from "react";
-import url from "./../../../data/port.json";
+import urlPort from "./../../../data/urlPort.json";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 const KakaoCallBack = () => {
@@ -9,7 +9,9 @@ const KakaoCallBack = () => {
   const [cookiesAuth, setCookieAuth, removeCookieAuth] = useCookies(["auth"]);
   const [cookies, setCookie, removeCookie] = useCookies(["userData"]);
 
-  const KAKAO_PARAMS = new URL(window.location.href).searchParams.get("code");
+  const KAKAO_PARAMS = new urlPort(window.location.href).searchParams.get(
+    "code"
+  );
 
   useEffect(() => {
     //console.log(KAKAO_PARAMS);
@@ -35,7 +37,7 @@ const KakaoCallBack = () => {
   }, []);
 
   const sendCode = async () => {
-    return await axios.get(url.url + `/auth/kakao`, {
+    return await axios.get(urlPort.server + `/auth/kakao`, {
       params: {
         code: KAKAO_PARAMS,
       },

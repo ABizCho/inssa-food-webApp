@@ -78,7 +78,7 @@ const Login = () => {
           </p>
         ) : (
           <div>
-            <h3>Welcome to MOVIE MOVIE</h3>
+            <h3>Welcome to MOVIE</h3>
             <h3>You are logged in</h3>
           </div>
         )}
