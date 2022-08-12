@@ -22,4 +22,12 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+// router.post('/posts', async (req,res,next) => {
+//   const {id, type, name, name_Eng, description, spicy, recipe_url, caution } = req.body;
+  
+//   try {
+//     const 
+//   }
+// })
+
 module.exports = router;

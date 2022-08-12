@@ -17,11 +17,13 @@ import { useNavigate } from "react-router-dom";
 
 const History = () => {
   const [historyData, setHistoryData] = useState(["undefined"]);
-  const [cookies, setCookie, removeCookie] = useCookies(["userData"]);
+  const [cookies, setCookie, removeCookie] = useCookies(["userData","foodInfo"]);
 
   const navigate = useNavigate();
 
-  const userImage = cookies.inputImage;
+  const userInputImg = cookies.inputImage;
+
+  
 
   const [isSlide, setIsSlide] = useState(true);
 
@@ -56,12 +58,25 @@ const History = () => {
   // --- to 서버 ----
 
   useEffect(() => {
+    // History card 저장 로직
+    
+
     console.log("history 접속");
     getHistoryData();
-    console.log(userImage);
+
+    console.log(userInputImg);
   }, []);
 
+
   // 테스트용: 나중에 템플릿 리터럴로 user정보에 따른 get 가져오게 구현해야함
+
+
+  const postInfo = {img: userInputImg, food: cookies.foodInfo, userId: cookies.userData}
+
+  const postHistoryData = async () => {
+    return await axios.post(urlPort.server + '/posts', postInfo)
+    
+  }
   const getHistoryData = () => {
     try {
       axios
