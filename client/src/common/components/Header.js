@@ -42,7 +42,7 @@ const Header = () => {
 
   const logoSizeNum = 15;
   return (
-    <header className="p-3 text-bg-dark header-container">
+    <header className="p-3  text-bg-dark header-container">
       <div className="logo-box">
         <img
           src={`${process.env.PUBLIC_URL}/InssaFood_logo2.png`}
@@ -96,9 +96,16 @@ const Header = () => {
                 About
               </a>
             </li>
+          
           </ul>
+      </div>
+          <button id="drop-button" className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#headerYes" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+        <span className="navbar-toggler-icon" />
+        {/* <svg src='https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Arrow-down.svg/800px-Arrow-down.svg.png?20160831154632' /> */}
+      </button>
 
-          <div className="logBtn-box text-end">
+        </div>
+          <div id="headerYes" className="logBtn-box text-end">
             {cookies.userData === undefined ? (
               <div className="logTrue-box">
                 <a className="kakao-btn" href={KAKAO_AUTH_URI}>
@@ -122,8 +129,7 @@ const Header = () => {
               </div>
             )}
           </div>
-        </div>
-      </div>
+      
     </header>
   );
 };

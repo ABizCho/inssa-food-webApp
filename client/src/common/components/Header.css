@@ -13,3 +13,29 @@ header {
 .header-container {
   background-color: #f08000 !important;
 }
+
+#drop-button {
+  text-decoration-color: white !important;
+  background-color: rgb(84, 84, 112) !important;
+  width: 50px !important;
+  height: 35px;
+  border-radius: 25%;
+  /* position: relative;
+  left: 15%; */
+}
+
+.logTrue-box {
+  display: flex;
+  justify-content: center;
+}
+
+.logFalse-box {
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
