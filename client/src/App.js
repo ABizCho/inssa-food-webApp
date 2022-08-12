@@ -1,10 +1,10 @@
-import './App.css';
-import { Route, Routes } from 'react-router-dom';
+import "./App.css";
+import { Route, Routes } from "react-router-dom";
 
-import Header from './common/components/Header';
-import Footer from './common/components/Footer';
-import Home from './pages/Home/Home.js';
-import History from './pages/History/History';
+import Header from "./common/components/Header";
+import Footer from "./common/components/Footer";
+import Home from "./pages/Home/Home.js";
+import History from "./pages/History/History";
 
 ////리덕스 도입 시 활성화
 // import { Provider } from "react-redux";
@@ -12,14 +12,13 @@ import History from './pages/History/History';
 
 function App() {
   return (
-    <div className='App'>
+    <div className="App">
       {/* <Provider store={Store}> */}
       <Header />
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/' element={<Home />} />
+        <Route path="/" element={<Home />} />
 
-        <Route path='/history' element={<History />} />
+        <Route path="/history" element={<History />} />
       </Routes>
       <Footer />
       {/* </Provider> */}
