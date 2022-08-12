@@ -1,7 +1,7 @@
 import $ from "jquery";
 import { useRef, useState } from "react";
 import axios from "axios";
-import urlPort from "./../../data/urlPort.json";
+import urlPort from "../../../data/urlPort.json";
 
 const SignUpForm = ({ signUpData, onChangeSignUpData, setSignUpdata }) => {
   const emailRef = useRef();

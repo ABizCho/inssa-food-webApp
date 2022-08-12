@@ -1,7 +1,7 @@
 import $ from "jquery";
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
-import urlPort from "./../../data/urlPort.json";
+import urlPort from "../../../data/urlPort.json";
 import { useCookies } from "react-cookie";
 
 const SocialSignUp = () => {

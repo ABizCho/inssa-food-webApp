@@ -1,6 +1,6 @@
 import $ from "jquery";
 import axios from "axios";
-import urlPort from "./../../data/urlPort.json";
+import urlPort from "../../../data/urlPort.json";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 

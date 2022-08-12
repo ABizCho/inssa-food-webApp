@@ -1,11 +1,13 @@
-//import SignInForm from "./pages/user/SignInForm";
-import SignUpForm from "./pages/user/SignUpForm";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
-import SignInForm from "./pages/user/SignInForm";
 
-import kakaLoginButtonImg from "./img/kakao_login_medium.png";
+import SignInForm from "./components/SignInForm";
+import SignUpForm from "./components/SignUpForm";
+
+import kakaLoginButtonImg from "../../img/kakao_login_medium.png";
+
+import { Button } from "@mui/material";
 
 const Login = () => {
   // ------------------kakao Oauth-------------------
@@ -94,7 +96,6 @@ const Login = () => {
             <h3>You are logged in</h3>
           </div>
         )}
-
         <a className="kakao-btn" href={KAKAO_AUTH_URI}>
           <img src={kakaLoginButtonImg} width={70} height={35} />
         </a>
