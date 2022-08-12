@@ -1,7 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import FoodInfo from "./components/ResultInfo/ResultInfo";
-import GetImg from "./components/GetImg/GetImg";
-import ServiceInfo from "./components/ServiceInfo/ServiceInfo";
+
 import "./Core.css";
 
 import $ from "jquery";
@@ -11,24 +9,22 @@ import { useCookies } from "react-cookie";
 const Core = () => {
   const navigate = useNavigate();
 
-  const [ imageURL, setImageURL ] = useState("");
-  const imgRef= useRef();
+  const [imageURL, setImageURL] = useState("");
+  const imgRef = useRef();
 
   //쿠키 사용 준비
   const [cookies, setCookie, removeCookie] = useCookies(["inputImage"]);
 
   // 파일 저장
   const saveImageURL = async (e) => {
-    const imgURL = URL.createObjectURL(e.target.files[0])
+    const imgURL = URL.createObjectURL(e.target.files[0]);
     await setImageURL(imgURL);
     setCookie("inputImage", imgURL, { path: "/" });
-  const inputImg = document.getElementById('imgPreview');
-      //쿠키에 이미지 넣음
-      console.log('이미지 파일 : ', inputImg);
-      console.log('이미지 URL : ', imgURL);
-
+    const inputImg = document.getElementById("imgPreview");
+    //쿠키에 이미지 넣음
+    console.log("이미지 파일 : ", inputImg);
+    console.log("이미지 URL : ", imgURL);
   };
-
 
   //   테스트용 임시 네비게이팅입니다.
   const onClickToResultTemp = () => {
@@ -53,15 +49,21 @@ const Core = () => {
             <p className="text-notice" align="center">
               <span className="">Put your food image in this box</span>
             </p>
-            {imageURL &&
-            <img
-                  alt="sample"
-                  id="imgPreview"
-                  ref={imgRef}
-                  src={imageURL}
-                  style={{ margin: "auto", width:"224px", height:"224px" }}
-                />}
-            <input type="file" onChange={saveImageURL} name="uploadfile" accept="image/*" />
+            {imageURL && (
+              <img
+                alt="sample"
+                id="imgPreview"
+                ref={imgRef}
+                src={imageURL}
+                style={{ margin: "auto", width: "224px", height: "224px" }}
+              />
+            )}
+            <input
+              type="file"
+              onChange={saveImageURL}
+              name="uploadfile"
+              accept="image/*"
+            />
             <button
               onClick={onClickToResultTemp}
               className="btn btn-danger btn-block"
