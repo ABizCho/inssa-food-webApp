@@ -31,8 +31,9 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/core" element={<Core />} />
-
-        <Route path="/resultInfo" element={<ResultInfo />} />
+        <Route path="/resultInfo" >
+        <Route path = ":id" element={<ResultInfo />} />
+        </Route>
         <Route path="/history" element={<History />} />
         <Route path="oauth">
           <Route path="kakao/callback" element={<KakaoCallBack />} />
