@@ -1,18 +1,17 @@
-const { Router } = require('express');
+const { Router } = require("express");
 const router = Router();
 
-const axios = require('axios');
-const { User } = require('./../models');
-const jwt = require('jsonwebtoken');
-const jwtConfig = require('./../config/jwtConfig');
-const restApiKey = require("./../secure_data/restApi")
+const axios = require("axios");
+const { User } = require("./../models");
+const jwt = require("jsonwebtoken");
+const jwtConfig = require("./../config/jwtConfig");
+const restApiKey = require("./../secure_data/restApi");
 
-router.get('/kakao', async (req, res, next) => {
-  const REST_API_KEY = 'cf28dbb409df1bda73557662b941eda0';
-  const REDIRECT_URI = 'http://localhost:3000/oauth/kakao/callback';
+router.get("/kakao", async (req, res, next) => {
+  const REST_API_KEY = "cf28dbb409df1bda73557662b941eda0";
+  const REDIRECT_URI = "http://localhost:3000/oauth/kakao/callback";
   const KAKAO_CODE = req.query.code;
   // console.log(KAKAO_CODE);
-  
 
   try {
     //4번
@@ -21,7 +20,7 @@ router.get('/kakao', async (req, res, next) => {
         `https://kauth.kakao.com/oauth/token?grant_type=authorization_code&client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&code=${KAKAO_CODE}`,
         {
           headers: {
-            'Content-type': 'application/x-www-form-urlencoded;charset=utf-8',
+            "Content-type": "application/x-www-form-urlencoded;charset=utf-8",
           },
         }
       )
@@ -41,8 +40,6 @@ router.get('/kakao', async (req, res, next) => {
   }
 });
 
-
-
 const checkUserData = async (userData, res) => {
   const checkEmail = await User.findOne({ email: userData.kakao_account.email });
 
@@ -58,11 +55,11 @@ const checkUserData = async (userData, res) => {
         },
         jwtConfig.secret,
         {
-          expiresIn: '1d', //1y,1d,2h,1m,5s
+          expiresIn: "1d", //1y,1d,2h,1m,5s
         },
         (err, token) => {
           if (err) {
-            res.status(401).json({ status: false, message: '로그인을 해주세요.' });
+            res.status(401).json({ status: false, message: "로그인을 해주세요." });
           } else {
             res.json({
               login: true,
@@ -84,13 +81,12 @@ const checkUserData = async (userData, res) => {
   }
 };
 
-
 //카카오 유저 정보 가져오는 부분
 const getKakaoUserData = async (token) => {
-  return await axios.get('https://kapi.kakao.com/v2/user/me', {
+  return await axios.get("https://kapi.kakao.com/v2/user/me", {
     headers: {
       Authorization: `Bearer ${token}`,
-      'Content-type': 'application/x-www-form-urlencoded;charset=utf-8',
+      "Content-type": "application/x-www-form-urlencoded;charset=utf-8",
     },
   });
 };

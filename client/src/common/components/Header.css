@@ -34,7 +34,7 @@ header {
   justify-content: center;
 }
 
-.container {
+.nav-container {
   display: flex;
   flex-direction: row;
   justify-content: space-around;

@@ -50,12 +50,9 @@ const Header = () => {
           style={{ height: 3 * logoSizeNum, width: 8 * logoSizeNum }}
         />
       </div>
-      <div className="container">
+      <div className="nav-container">
         <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-          <a
-            href="/"
-            className="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none"
-          ></a>
+          <a href="/" className="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none"></a>
 
           <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
             <li>
@@ -96,40 +93,27 @@ const Header = () => {
                 About
               </a>
             </li>
-          
           </ul>
-      </div>
-          <button id="drop-button" className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#headerYes" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-        <span className="navbar-toggler-icon" />
-        {/* <svg src='https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Arrow-down.svg/800px-Arrow-down.svg.png?20160831154632' /> */}
-      </button>
-
         </div>
-          <div id="headerYes" className="logBtn-box text-end">
-            {cookies.userData === undefined ? (
-              <div className="logTrue-box">
-                <a className="kakao-btn" href={KAKAO_AUTH_URI}>
-                  <img src={kakaLoginButtonImg} width={70} height={35} />
-                </a>
-                <button
-                  onClick={onClickLogin}
-                  className="logIn-btn log-btn btn btn-secondary "
-                >
-                  Login
-                </button>
-              </div>
-            ) : (
-              <div className="logFalse-box">
-                <button
-                  className="signUp-btn log-btn btn btn-outline-secondary"
-                  onClick={onClickLogOut}
-                >
-                  LogOut
-                </button>
-              </div>
-            )}
+      </div>
+      <div id="headerYes" className="logBtn-box text-end">
+        {cookies.userData === undefined ? (
+          <div className="logTrue-box">
+            <a className="kakao-btn" href={KAKAO_AUTH_URI}>
+              <img src={kakaLoginButtonImg} width={70} height={35} />
+            </a>
+            <button onClick={onClickLogin} className="logIn-btn log-btn btn btn-secondary ">
+              Login
+            </button>
           </div>
-      
+        ) : (
+          <div className="logFalse-box">
+            <button className="signUp-btn log-btn btn btn-outline-secondary" onClick={onClickLogOut}>
+              LogOut
+            </button>
+          </div>
+        )}
+      </div>
     </header>
   );
 };

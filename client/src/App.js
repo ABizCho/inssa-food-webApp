@@ -38,8 +38,6 @@ function App() {
         </Route>
       </Routes>
 
-      <Route path="/history" element={<History />} />
-
       <Footer />
       {/* </Provider> */}
     </div>
