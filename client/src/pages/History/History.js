@@ -20,6 +20,8 @@ const History = () => {
   const [cookies, setCookie, removeCookie] = useCookies(["userData"]);
   const navigate = useNavigate();
 
+  const userImage = cookies.inputImage
+
   const [isSlide, setIsSlide] = useState(true);
 
   const onClickAlbum = () => {
@@ -55,6 +57,7 @@ const History = () => {
   useEffect(() => {
     console.log("history 접속");
     getHistoryData();
+    console.log(userImage)
   }, [""]);
 
   // 테스트용: 나중에 템플릿 리터럴로 user정보에 따른 get 가져오게 구현해야함
@@ -99,7 +102,7 @@ const History = () => {
                   width="125px"
                   height="125px"
                   className="grid-item scale"
-                  src={item.food_defaultImg}
+                  src={userImage}
                   alt="React"
                 />
               );

@@ -3,12 +3,17 @@ import { useNavigate } from "react-router-dom";
 
 import { Button } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
+import { useCookies } from "react-cookie";
 
 const ResultInfo = () => {
   const navigate = useNavigate();
   const onClickSaveHistory = () => {
     navigate("/history");
   };
+
+  //쿠키 사용 준비
+  const [cookies, setCookie, removeCookie] = useCookies(["inputImage"]);
+
   return (
     <div className="resultInfo-container">
       <h1 className="title">Food Info</h1>
@@ -17,7 +22,7 @@ const ResultInfo = () => {
           <div className="result-item img-box">
             <img
               className="result-item img"
-              src={`${process.env.PUBLIC_URL}/history_dummy_assets/food2.jpg`}
+              src={cookies.inputImage}
               alt="react"
               width={"200px"}
             />
