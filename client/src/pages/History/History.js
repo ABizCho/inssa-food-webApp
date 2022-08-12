@@ -18,9 +18,10 @@ import { useNavigate } from "react-router-dom";
 const History = () => {
   const [historyData, setHistoryData] = useState(["undefined"]);
   const [cookies, setCookie, removeCookie] = useCookies(["userData"]);
+
   const navigate = useNavigate();
 
-  const userImage = cookies.inputImage
+  const userImage = cookies.inputImage;
 
   const [isSlide, setIsSlide] = useState(true);
 
@@ -57,8 +58,8 @@ const History = () => {
   useEffect(() => {
     console.log("history 접속");
     getHistoryData();
-    console.log(userImage)
-  }, [""]);
+    console.log(userImage);
+  }, []);
 
   // 테스트용: 나중에 템플릿 리터럴로 user정보에 따른 get 가져오게 구현해야함
   const getHistoryData = () => {
@@ -102,7 +103,7 @@ const History = () => {
                   width="125px"
                   height="125px"
                   className="grid-item scale"
-                  src={userImage}
+                  src={item.userImage}
                   alt="React"
                 />
               );
@@ -118,13 +119,14 @@ const History = () => {
           >
             <div>
               {historyData?.map((item, index) => {
+                console.log("map 실행:", item);
                 return (
                   <HistoryCard
                     key={index}
-                    id={item.id}
-                    name={item.name_Eng}
-                    food_img={item.food_defaultImg}
-                    desc={item.description}
+                    id={item?.id}
+                    name={item?.name_Eng}
+                    food_img={item?.food_defaultImg}
+                    desc={item?.description}
                     colorIdx={index}
                   />
                 );
