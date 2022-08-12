@@ -5,7 +5,18 @@ import LearnFood from "./LearnFood.png";
 import TakeAPhoto from "./TakeAPhoto.png";
 import CollectFood from "./CollectFood.png";
 
+import { useNavigate } from "react-router-dom";
+import { useCookies } from "react-cookie";
+
 const Home = () => {
+  const [cookies, setCookie, removeCookie] = useCookies(["userData"]);
+
+  const navigate = useNavigate();
+
+  const onClickStart = () => {
+    cookies.userData ? navigate("/core") : navigate("/login");
+  };
+
   return (
     <div className="home-container">
       <section className="Home_section1">
@@ -19,7 +30,7 @@ const Home = () => {
             <br />
             And how to order.
           </span>
-          <button className="css-1hw9j7s" tabIndex="0" type="button">
+          <button onClick={onClickStart} className="css-1hw9j7s" tabIndex="0" type="button">
             Get started<span className="MuiTouchRipple-root"></span>
           </button>
         </div>
