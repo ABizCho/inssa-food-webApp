@@ -4,32 +4,34 @@
 
 .Home_section1 {
   display: flex;
-  padding: 13rem 0px 7.5rem;
-  max-width: 1950px;
-  min-width: 1195px;
-  margin: auto;
-  justify-content: space-evenly;
-  margin: 0px;
+  flex-wrap: wrap;
+  padding: 10rem 0px 7rem;
+  margin-top: 15%;
+  justify-content: space-around;
   padding: 0px;
   border: 0px;
   font: inherit;
   vertical-align: baseline;
+  text-align: center;
 }
 
 .leftSide {
-  margin-left: 2rem;
-  margin-top: 2rem;
+  margin-top: 6rem;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
 }
 
 .leftSide h1 {
-  font-size: 60px;
+  font-size: 2.5rem;
   font-weight: bold;
   line-height: 70px;
   letter-spacing: -3px;
 }
 
 .Home_section1 .leftSide span {
-  font-size: 26px;
+  font-size: 1.5rem;
   color: rgb(68, 71, 82);
   margin-top: 3rem;
   display: block;
@@ -38,11 +40,9 @@
 }
 
 .Home_section1 .leftSide button {
-  margin-top: 5rem;
-  background-color: rgb(98, 16, 204);
-  width: 181px;
-  height: 60px;
-  font-size: 20px;
+  margin-top: 3rem;
+  background-color: #dc3545;
+  font-size: 15px;
   font-weight: bold;
 }
 
@@ -79,8 +79,7 @@
 }
 
 .Home_section1 .rightSide {
-  margin-right: 90px;
-  margin: 0px;
+  margin: auto;
   padding: 0px;
   border: 0px;
   font: inherit;
@@ -102,18 +101,17 @@
 }
 
 .Home_section2 {
-  padding: 8rem 0px;
-  max-width: 1950px;
-  min-width: 1195px;
-  margin: auto;
+  margin: 10%;
   display: flex;
   flex-direction: column;
   -webkit-box-align: center;
   align-items: center;
+  text-align: center;
+  padding: 1rem 0px 7rem;
 }
 
 .Home_section2 h1 {
-  font-size: 60px;
+  font-size: 2.5rem;
   font-weight: bold;
   letter-spacing: -1px;
   margin: 0px;
@@ -129,7 +127,7 @@
 
 .Home_section2 p {
   color: rgb(68, 71, 82);
-  font-size: 20px;
+  font-size: 1rem;
   text-align: center;
   line-height: 2.2rem;
   margin-top: 4rem;
@@ -137,7 +135,7 @@
   margin: 0px;
   padding: 0px;
   border: 0px;
-  vertical-align: baseline;
+
   display: block;
   margin-block-start: 1em;
   margin-block-end: 1em;
@@ -146,20 +144,21 @@
 }
 
 .Home_section2 button {
-  margin-top: 5rem;
-  background-color: rgb(98, 16, 204);
-  width: 164px;
-  height: 60px;
-  font-size: 20px;
+  margin-top: 4rem;
+  margin-bottom: 3rem;
+  background-color: #dc3545;
+  font-size: 15px;
   font-weight: bold;
 }
 
 .Home_section2 .section2_ImageGroup {
   display: flex;
-  margin-top: 7rem;
+  flex-direction: column;
+  margin-top: 5rem;
   -webkit-box-pack: justify;
   justify-content: space-between;
-  margin: 0px;
+  margin-left: 10%;
+  margin-right: 10%;
   padding: 0px;
   border: 0px;
   font: inherit;
@@ -171,14 +170,17 @@
   flex-direction: column;
   -webkit-box-align: center;
   align-items: center;
-  padding: 1rem;
+  margin-bottom: 10%;
+  padding: 2rem;
   border: 0px;
   font: inherit;
   vertical-align: baseline;
+  background-color: rgba(240, 240, 240, 0.984);
+  border-radius: 5%;
 }
 
 .Home_section2 .section2_ImageGroup .section2_eachItem span {
-  margin-top: 2rem;
+  margin-bottom: 1rem;
   color: rgb(56, 5, 121);
   font-size: 20px;
   font-weight: bold;
