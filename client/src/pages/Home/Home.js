@@ -5,11 +5,15 @@ import LearnFood from "./LearnFood.png";
 import TakeAPhoto from "./TakeAPhoto.png";
 import CollectFood from "./CollectFood.png";
 import { useNavigate } from "react-router-dom";
+import { useCookies } from "react-cookie";
 
 const Home = () => {
+  const [cookies, setCookie, removeCookie] = useCookies(["userData"]);
+
   const navigate = useNavigate();
+
   const onClickStart = () => {
-    navigate("login");
+    cookies.userData ? navigate("/core") : navigate("/login");
   };
 
   return (
