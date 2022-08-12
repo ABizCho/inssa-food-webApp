@@ -38,17 +38,23 @@
 
 /*  */
 .btn-container {
-  margin-top: 80px;
+  margin-top: 10%;
 
   display: flex;
   flex-direction: row;
 }
 
 .btn-item {
-  height: 60px !important;
-  margin: 10px !important;
+  height: 40px !important;
+  margin: 5px !important;
 }
 
 .logo-box {
   margin-bottom: 10px;
+}
+
+.title {
+  margin-bottom: 6%;
+  text-align: center;
+  font-family: "Fredoka One", cursive;
 }

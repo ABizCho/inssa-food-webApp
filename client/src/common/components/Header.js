@@ -60,9 +60,8 @@ const Header = () => {
           <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
             <li>
               <a
-                href="#"
                 onClick={() => {
-                  navigate("/home");
+                  navigate("/");
                 }}
                 className="nav-link px-2 text-white"
               >
@@ -115,7 +114,7 @@ const Header = () => {
             ) : (
               <div className="logFalse-box">
                 <button
-                  className="signUp-btn log-btn btn btn-outline-danger"
+                  className="signUp-btn log-btn btn btn-outline-secondary"
                   onClick={onClickLogOut}
                 >
                   LogOut

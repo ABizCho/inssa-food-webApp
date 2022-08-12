@@ -11,7 +11,7 @@ const ResultInfo = () => {
   };
   return (
     <div className="resultInfo-container">
-      <h2>Result Page</h2>
+      <h1 className="title">Food Info</h1>
       <div className="result-container">
         <div>
           <div className="result-item img-box">
@@ -32,24 +32,20 @@ const ResultInfo = () => {
             <div className="desc-content">{"쌸라쌸라쌸라쌸라쌸라쌸라"}</div>
           </div>
         </div>
-        <div className="btn-container">
-          <Button
-            className="btn-item"
-            variant="contained"
-            endIcon={<SendIcon />}
-            onClick={onClickSaveHistory}
-          >
-            Save History
-          </Button>
+      </div>
+      <div className="btn-container">
+        <Button
+          className="btn-item"
+          variant="contained"
+          endIcon={<SendIcon />}
+          onClick={onClickSaveHistory}
+        >
+          Save History
+        </Button>
 
-          <Button
-            className="btn-item"
-            variant="contained"
-            endIcon={<SendIcon />}
-          >
-            Retry
-          </Button>
-        </div>
+        <Button className="btn-item retry" variant="contained" color="grey">
+          Retry
+        </Button>
       </div>
     </div>
   );
