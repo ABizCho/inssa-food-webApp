@@ -121,11 +121,7 @@ const SignUpForm = ({ signUpData, onChangeSignUpData, setSignUpdata }) => {
           <div className="mb-3">
             <p className="text-danger">{errorMessage}</p>
           </div>
-          <button
-            type="button"
-            onClick={onClickSignUpButton}
-            className="btn btn-primary"
-          >
+          <button type="button" onClick={onClickSignUpButton} className="btn btn-primary">
             회원가입
           </button>
         </form>
