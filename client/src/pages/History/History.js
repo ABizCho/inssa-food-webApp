@@ -104,7 +104,7 @@ const History = () => {
                   width="125px"
                   height="125px"
                   className="grid-item scale"
-                  src={item.userImage}
+                  src={item?.user_inputImg}
                   alt="React"
                 />
               );
