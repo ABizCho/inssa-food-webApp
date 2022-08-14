@@ -32,9 +32,6 @@ const History = () => {
     setIsSlide(false);
   };
 
-  const dummy = dummyData.historyCard;
-  console.log(dummy[0].id);
-
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
@@ -57,12 +54,13 @@ const History = () => {
 
   useEffect(() => {
     // History card 저장 로직
-
     console.log("history 접속");
     getHistoryData();
   }, []);
+  
 
   // 테스트용: 나중에 템플릿 리터럴로 user정보에 따른 get 가져오게 구현해야함
+
   const getHistoryData = () => {
     try {
       axios
@@ -110,6 +108,8 @@ const History = () => {
               );
             })}
           </div>
+        ) : historyData === "undefined" ? (
+          <></>
         ) : (
           <Carousel
             swipeable={true}

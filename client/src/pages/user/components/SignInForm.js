@@ -1,6 +1,6 @@
 import $ from "jquery";
 import axios from "axios";
-import urlPort from "./../../data/urlPort.json";
+import urlPort from "../../../data/urlPort.json";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
@@ -82,7 +82,7 @@ const SignInForm = ({ signInData, onChangeSignInData, setSignInData }) => {
             onClick={onClickLoginButton}
             className="btn btn-primary"
           >
-            로그인
+            Log In
           </button>
         </form>
       </div>
