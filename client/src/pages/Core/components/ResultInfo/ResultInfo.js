@@ -6,7 +6,9 @@ import SendIcon from "@mui/icons-material/Send";
 import { useCookies } from "react-cookie";
 import { useEffect, useState } from "react";
 import axios from "axios";
+
 import urlPort from "./../../../../data/urlPort.json";
+
 
 const ResultInfo = () => {
   const navigate = useNavigate();
@@ -54,6 +56,7 @@ const ResultInfo = () => {
   const getFoodInfo = async () => {
     return await axios.get(`${urlPort.server}/foodInfo/${params.id}/find`);
   };
+
 
   return (
     <div className="resultInfo-container">
