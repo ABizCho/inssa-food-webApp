@@ -126,7 +126,7 @@ const History = () => {
                     key={index}
                     id={item?.id}
                     name={item?.name_Eng}
-                    food_img={item?.food_defaultImg}
+                    food_img={item?.user_inputImg}
                     desc={item?.description}
                     colorIdx={index}
                   />
