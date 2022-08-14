@@ -5,10 +5,8 @@ import { useCookies } from "react-cookie";
 import SignInForm from "./components/SignInForm";
 import SignUpForm from "./components/SignUpForm";
 
-import kakaLoginButtonImg from "../../img/kakao_login_medium.png";
-
 import { Button } from "@mui/material";
-
+import { KakaoLogo, googleLogo } from "./components/SocialLogo";
 import "./Login.css";
 
 const Login = () => {
@@ -26,6 +24,7 @@ const Login = () => {
   const [view, setView] = useState({
     signIn: false,
     signUp: false,
+    nothing: true,
   });
   const [signInData, setSignInData] = useState({
     email: "",
@@ -73,22 +72,24 @@ const Login = () => {
         {!cookies.userData ? (
           <p>
             <button
-              className="signIn-btn btn btn-primary my-2 m-1"
+              className="signIn-btn btn btn-outline-primary my-2 m-1"
               onClick={() => {
                 setView({
                   signIn: true,
                   signUp: false,
+                  nothing: false,
                 });
               }}
             >
               Log In
             </button>
             <button
-              className="btn btn-secondary my-2 m-1"
+              className="btn btn-outline-secondary my-2 m-1"
               onClick={() => {
                 setView({
                   signIn: false,
                   signUp: true,
+                  nothing: false,
                 });
               }}
             >
@@ -104,6 +105,7 @@ const Login = () => {
         <div className="socialSignIn-btnBox ">
           <Button
             className="social-btn kakao"
+            // startIcon={<KakaoLogo />}
             variant="contained"
             onClick={() => {
               window.location.replace(KAKAO_AUTH_URI);
@@ -111,7 +113,11 @@ const Login = () => {
           >
             Sign in with Kakao
           </Button>
-          <Button className="social-btn google" variant="contained">
+          <Button
+            className="social-btn google"
+            // startIcon={<googleLogo />}
+            variant="contained"
+          >
             Sign in with Google
           </Button>
         </div>
