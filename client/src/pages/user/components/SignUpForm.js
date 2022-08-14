@@ -126,7 +126,7 @@ const SignUpForm = ({ signUpData, onChangeSignUpData, setSignUpdata }) => {
             onClick={onClickSignUpButton}
             className="btn btn-primary"
           >
-            회원가입
+            Sign Up
           </button>
         </form>
       </div>

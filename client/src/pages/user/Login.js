@@ -81,7 +81,7 @@ const Login = () => {
                 });
               }}
             >
-              로그인
+              Log In
             </button>
             <button
               className="btn btn-secondary my-2 m-1"
@@ -92,13 +92,13 @@ const Login = () => {
                 });
               }}
             >
-              회원 가입
+              Sign Up
             </button>
           </p>
         ) : (
           <div>
-            <h3>Welcome to MOVIE</h3>
-            <h3>You are logged in</h3>
+            <h3>Welcome to InssaFood</h3>
+            <h3>You are signed in</h3>
           </div>
         )}
         <div className="socialSignIn-btnBox ">

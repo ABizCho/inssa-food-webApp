@@ -82,7 +82,7 @@ const SignInForm = ({ signInData, onChangeSignInData, setSignInData }) => {
             onClick={onClickLoginButton}
             className="btn btn-primary"
           >
-            로그인
+            Log In
           </button>
         </form>
       </div>
