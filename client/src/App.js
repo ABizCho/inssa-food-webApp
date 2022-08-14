@@ -1,11 +1,11 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
+
 import Header from "./common/components/Header";
 import Footer from "./common/components/Footer";
 import Home from "./pages/Home/Home.js";
 import History from "./pages/History/History";
 import Core from "./pages/Core/Core";
-
 //테스트용 임시 라우팅입니다. 향후 제거합니다.
 import ResultInfo from "./pages/Core/components/ResultInfo/ResultInfo";
 
@@ -26,13 +26,13 @@ function App() {
     <div className="App">
       {/* <Provider store={Store}> */}
       <Header />
-
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/core" element={<Core />} />
-
-        <Route path="/resultInfo" element={<ResultInfo />} />
+        <Route path="/resultInfo" >
+        <Route path = ":id" element={<ResultInfo />} />
+        </Route>
         <Route path="/history" element={<History />} />
         <Route path="oauth">
           <Route path="kakao/callback" element={<KakaoCallBack />} />

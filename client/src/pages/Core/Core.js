@@ -27,8 +27,8 @@ const Core = () => {
   };
 
   //   테스트용 임시 네비게이팅입니다.
-  const onClickToResultTemp = () => {
-    navigate("/ResultInfo");
+  const onClickToResultTemp = (id) => {
+    navigate(`/resultinfo/${id}`);
   };
   return (
     // <div className="full-container">
@@ -65,7 +65,7 @@ const Core = () => {
               accept="image/*"
             />
             <button
-              onClick={onClickToResultTemp}
+              onClick={() => {onClickToResultTemp("1")}}
               className="btn btn-danger btn-block"
               id="formsend"
             >
