@@ -43,15 +43,15 @@ const Login = () => {
   return (
     <main>
       <section className='py-5 text-center container'>
-        <div className='row py-lg-5'>
+        {/* <div className='row py-lg-5'>
           <div className='col-lg-6 col-md-8 mx-auto'>
-            <h1 className='fw-light'>MOVIE</h1>
+            <h1 className='fw-light'> Learning Food</h1>
             <p className='lead text-muted'>
-              리뷰하고 싶은 영화를 추가하고, 별점을 주세요! <br />
+              Learning Food입니다.<br />
             </p>
           </div>
-        </div>
-        {!cookies.userData ? (
+        </div> */}
+        {/* {!cookies.userData ? (
           <p>
             <button
               className='btn btn-primary my-2 m-1'
@@ -78,17 +78,12 @@ const Login = () => {
           </p>
         ) : (
           <div>
-            <h3>Welcome to MOVIE MOVIE</h3>
+            <h3>Welcome to Inssa Food</h3>
             <h3>You are logged in</h3>
           </div>
-        )}
+        )} */}
       </section>
-      {view.signIn ? <SignInForm signInData={signInData} onChangeSignInData={onChangeSignInData} /> : <></>}
-      {view.signUp ? (
-        <SignUpForm signUpData={signUpData} onChangeSignUpData={onChangeSignUpData} setSignUpData={setSignUpData} />
-      ) : (
-        <></>
-      )}
+      {view.signIn ? <SignInForm signInData={signInData} onChangeSignInData={onChangeSignInData} /> :<SignInForm signInData={signInData} onChangeSignInData={onChangeSignInData} />}
     </main>
   );
 };

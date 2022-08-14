@@ -4,6 +4,7 @@ import bibimbap from './bibimbap.jpg';
 import LearnFood from './LearnFood.png';
 import TakeAPhoto from './TakeAPhoto.png';
 import CollectFood from './CollectFood.png';
+import { useMediaQuery } from 'react-responsive';
 
 const Home = () => {
   return (

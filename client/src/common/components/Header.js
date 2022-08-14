@@ -2,12 +2,20 @@ import './Header.css';
 import lflogo from './lflogo.jpg';
 import kakaLoginButtonImg from '../../img/kakao_login_medium.png';
 import { useNavigate } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
+import { useEffect } from "react";
+
 
 const Header = () => {
   const REST_API_KEY = '0abf97780f442400eccc7cd004baabab';
   const REDIRECT_URI = 'http://localhost:3000/oauth/kakao/callback';
-
+  const [cookies, setCookie, removeCookie] = useCookies(["userData"]);
   const navigate = useNavigate();
+  useEffect(() => {
+    if (cookies.userData === undefined) {
+        navigate("/");
+    }
+}, [cookies]);
 
   //1번
   const KAKAO_AUTH_URI = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
@@ -15,11 +23,14 @@ const Header = () => {
   const onLoginClick = () => {
     navigate('/login');
   };
+  const onSignUpClick = () => {
+    navigate('/signUp');
+  };
 
   return (
     <header className='p-3 text-bg-dark header-container'>
       <div>
-        <img src={lflogo} alt='logo' style={{ height: '200px', width: '200px' }} />
+        <img onClick={ ()=> navigate("/")} src={lflogo} alt='logo' style={{ height: '200px', width: '200px' }} />
       </div>
       <div className='container'>
         <div className='d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start'>
@@ -58,13 +69,14 @@ const Header = () => {
           </ul>
 
           <div className='text-end'>
-            <a href={KAKAO_AUTH_URI}>
+            <a href={KAKAO_AUTH_URI} >
               <img src={kakaLoginButtonImg} />
             </a>
-            <button type='button' onClick={onLoginClick} className='btn btn-outline-light me-2'>
+            
+            <button type='button' onClick={onLoginClick} className='btn btn-outline-light me-2' >
               Login
             </button>
-            <button type='button' className='btn btn-warning'>
+            <button type='button'onClick={onSignUpClick} className='btn btn-warning'>
               Sign-up
             </button>
           </div>

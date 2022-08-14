@@ -3,11 +3,12 @@ import FoodInfo from "./components/FoodInfo/FoodInfo";
 import GetImg from "./components/GetImg/GetImg";
 import ServiceInfo from "./components/ServiceInfo/ServiceInfo";
 import "./Core.css";
-
+import { useMediaQuery } from "react-responsive";
 import $ from "jquery";
 
 const Core = () => {
   return (
+    
     <div className="full-container">
       <div className="content-container-row">
         <div className="top-container">

@@ -18,7 +18,7 @@ import SigninForm from './pages/user/SignInForm';
 
 //그냥 로그인
 import Login from './Login';
-
+import SignUp from './SignUp';
 function App() {
   return (
     <div className="App">
@@ -28,6 +28,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='login' element={<Login />} />
+        <Route path='signup' element={<SignUp />} />
         <Route path="/core" element={<Core />} />
         <Route path='history' element={<History />} />
         <Route path='oauth'>
