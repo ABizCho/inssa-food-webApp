@@ -60,24 +60,9 @@ const History = () => {
 
     console.log("history 접속");
     getHistoryData();
-    postHistoryData();
-
-    console.log(cookies.foodInfo);
-    console.log(userInputImg);
   }, []);
 
   // 테스트용: 나중에 템플릿 리터럴로 user정보에 따른 get 가져오게 구현해야함
-
-  const historyInfo = {
-    img: userInputImg,
-    food: cookies.foodInfo,
-    userId: cookies.userData,
-  };
-
-  const postHistoryData = async () => {
-    return await axios.post(urlPort.server + "/histories", historyInfo);
-  };
-
   const getHistoryData = () => {
     try {
       axios
