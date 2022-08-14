@@ -8,6 +8,7 @@ const userRouter = require("./routes/user");
 const authRouter = require("./routes/auth");
 const coreRouter = require("./routes/core");
 const historiesRouter = require("./routes/histories");
+const foodInfoRouter = require("./routes/foodInfo");
 //
 const authMiddleware = require("./routes/auth");
 const app = express();
@@ -34,6 +35,8 @@ app.use("/user", userRouter);
 app.use("/auth", authRouter);
 
 app.use("/core", authMiddleware, coreRouter);
+
+app.use("/foodInfo", foodInfoRouter);
 
 app.use("/histories", authMiddleware, historiesRouter);
 

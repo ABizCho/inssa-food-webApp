@@ -21,6 +21,7 @@ const HistoryCard = (props) => {
   const onClickDetail = (id) => {
     navigate(`history/${id}/detail`);
   };
+  console.log(name);
   return (
     <Card
       sx={{

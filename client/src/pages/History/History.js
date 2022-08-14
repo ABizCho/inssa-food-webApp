@@ -18,7 +18,10 @@ import { useNavigate } from "react-router-dom";
 const History = () => {
   const [historyData, setHistoryData] = useState(["undefined"]);
   const [cookies, setCookie, removeCookie] = useCookies(["userData"]);
+
   const navigate = useNavigate();
+
+  const userInputImg = cookies.inputImage;
 
   const [isSlide, setIsSlide] = useState(true);
 
@@ -50,49 +53,31 @@ const History = () => {
   // --- to 서버 ----
 
   useEffect(() => {
-    // ref: https://velog.io/@moony_moon/Open-API-%EC%97%90%EC%84%9C-%EB%B0%9B%EC%95%84%EC%98%A8-%EC%9D%B4%EB%AF%B8%EC%A7%80%EB%A1%9C-CarouselSlider-%EB%A7%8C%EB%93%A4%EA%B8%B0
-
-    //   const getHistoryData = async () => {
-    //     const histories = await Promise.all(
-    //       new Array().fill(10).map((data) => {
-    //         return axios.get(urlPort.server + "/histories/", {
-    //           headers: {
-    //             accessToken: cookies.userData.accessToken,
-    //           },
-    //         });
-    //       })
-    //     ).then((res) => {
-    //       res.map((data) => data?.data?.histories);
-    //       console.log(res);
-    //       // setHistoryData(res.data.histories);
-    //     });
-    //     setHistoryData(histories);
-    //   };
-    //   getHistoryData();
-    // });
-
-    const getHistoryData = async () => {
-      try {
-        axios
-          .get(urlPort.server + "/histories/", {
-            headers: {
-              accessToken: cookies.userData.accessToken,
-            },
-          })
-          .then((res) => {
-            console.log(res);
-            setHistoryData(res.data.histories);
-          });
-      } catch (e) {
-        console.log(`[응답오류]: ${e}`);
-        navigate("/core");
-      }
-    };
-
+    // History card 저장 로직
+    console.log("history 접속");
     getHistoryData();
-  }, [""]);
+  }, []);
+  
 
   // 테스트용: 나중에 템플릿 리터럴로 user정보에 따른 get 가져오게 구현해야함
+
+  const getHistoryData = () => {
+    try {
+      axios
+        .get(urlPort.server + "/histories", cookies.userData.id, {
+          headers: {
+            accessToken: cookies.userData.accessToken,
+          },
+        })
+        .then((res) => {
+          console.log(res);
+          setHistoryData(res.data.histories);
+        });
+    } catch (e) {
+      console.log(`[응답오류]: ${e}`);
+      navigate("/core");
+    }
+  };
 
   useEffect(() => {
     console.log("histories 구성");
@@ -117,7 +102,7 @@ const History = () => {
                   width="125px"
                   height="125px"
                   className="grid-item scale"
-                  src={item.food_defaultImg}
+                  src={item?.user_inputImg}
                   alt="React"
                 />
               );
@@ -135,13 +120,14 @@ const History = () => {
           >
             <div>
               {historyData?.map((item, index) => {
+                console.log("map 실행:", item);
                 return (
                   <HistoryCard
                     key={index}
-                    id={item.id}
-                    name={item.name_Eng}
-                    food_img={item.food_defaultImg}
-                    desc={item.description}
+                    id={item?.id}
+                    name={item?.name_Eng}
+                    food_img={item?.user_inputImg}
+                    desc={item?.description}
                     colorIdx={index}
                   />
                 );

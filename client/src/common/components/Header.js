@@ -32,7 +32,7 @@ const Header = () => {
 
   const logoSizeNum = 15;
   return (
-    <header className="p-3 text-bg-dark header-container">
+    <header className="p-3  text-bg-dark header-container">
       <div className="logo-box">
         <img
           src={`${process.env.PUBLIC_URL}/InssaFood_logo2.png`}
@@ -40,7 +40,7 @@ const Header = () => {
           style={{ height: 3 * logoSizeNum, width: 8 * logoSizeNum }}
         />
       </div>
-      <div className="container">
+      <div className="nav-container">
         <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
           <a
             href="/"
@@ -87,29 +87,28 @@ const Header = () => {
               </a>
             </li>
           </ul>
-
-          <div className="logBtn-box text-end">
-            {cookies.userData === undefined ? (
-              <div className="logTrue-box">
-                <button
-                  onClick={onClickLogin}
-                  className="logIn-btn log-btn btn btn-secondary "
-                >
-                  Login
-                </button>
-              </div>
-            ) : (
-              <div className="logFalse-box">
-                <button
-                  className="signUp-btn log-btn btn btn-outline-secondary"
-                  onClick={onClickLogOut}
-                >
-                  LogOut
-                </button>
-              </div>
-            )}
-          </div>
         </div>
+      </div>
+      <div className="logBtn-box text-end">
+        {cookies.userData === undefined ? (
+          <div className="logTrue-box">
+            <button
+              onClick={onClickLogin}
+              className="logIn-btn log-btn btn btn-secondary "
+            >
+              Login
+            </button>
+          </div>
+        ) : (
+          <div className="logFalse-box">
+            <button
+              className="signUp-btn log-btn btn btn-outline-secondary"
+              onClick={onClickLogOut}
+            >
+              LogOut
+            </button>
+          </div>
+        )}
       </div>
     </header>
   );

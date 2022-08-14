@@ -1,14 +1,63 @@
 import "./ResultInfo.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-import { Button } from "@mui/material";
+import { Button, useScrollTrigger } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
+import { useCookies } from "react-cookie";
+import { useEffect, useState } from "react";
+import axios from "axios";
+
+import urlPort from "./../../../../data/urlPort.json";
+
 
 const ResultInfo = () => {
   const navigate = useNavigate();
-  const onClickSaveHistory = () => {
-    navigate("/history");
+
+  //params
+  const params = useParams();
+
+  //state
+  const [foodInfo, setFoodInfo] = useState({});
+
+  //쿠키 사용 준비
+  const [cookies, setCookie, removeCookie] = useCookies([
+    "inputImage",
+    "foodInfo",
+  ]);
+
+  useEffect(() => {
+    console.log("params.id : ", params.id);
+
+    getFoodInfo().then((res) => {
+      // console.log(res);
+      setFoodInfo(res.data.food);
+    });
+  }, []);
+
+  useEffect(() => {
+    setCookie("foodInfo", foodInfo);
+    console.log(foodInfo);
+  }, [foodInfo]);
+
+  const onClickSaveHistory = async () => {
+    await postHistoryData();
+    await navigate("/history");
   };
+  const postHistoryData = async () => {
+    return await axios.post(urlPort.server + "/histories", historyInfo);
+  };
+
+  const historyInfo = {
+    img: cookies.inputImage,
+    food: cookies.foodInfo,
+    userId: cookies.userData.id,
+  };
+
+  const getFoodInfo = async () => {
+    return await axios.get(`${urlPort.server}/foodInfo/${params.id}/find`);
+  };
+
+
   return (
     <div className="resultInfo-container">
       <h1 className="title">Food Info</h1>
@@ -17,7 +66,7 @@ const ResultInfo = () => {
           <div className="result-item img-box">
             <img
               className="result-item img"
-              src={`${process.env.PUBLIC_URL}/history_dummy_assets/food2.jpg`}
+              src={cookies.inputImage}
               alt="react"
               width={"200px"}
             />
@@ -25,11 +74,11 @@ const ResultInfo = () => {
           <div className="result-item name">
             <h1>{"name"}</h1>
           </div>
-          <div className="result-item spicy">spicy: {"spicy"}</div>
-          <div className="result-item caution">caution: {"caution"}</div>
+          <div className="result-item spicy">spicy: {foodInfo.spicy}</div>
+          <div className="result-item caution">caution: {foodInfo.caution}</div>
           <div className="result-item desc">
             <span className="desc-title">description</span>
-            <div className="desc-content">{"쌸라쌸라쌸라쌸라쌸라쌸라"}</div>
+            <div className="desc-content">{foodInfo.description}</div>
           </div>
         </div>
       </div>
