@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 
 import SignInForm from "./components/SignInForm";
@@ -9,7 +9,10 @@ import kakaLoginButtonImg from "../../img/kakao_login_medium.png";
 
 import { Button } from "@mui/material";
 
+import "./Login.css";
+
 const Login = () => {
+  const navigate = useNavigate();
   // ------------------kakao Oauth-------------------
 
   const REST_API_KEY = "0abf97780f442400eccc7cd004baabab";
@@ -52,23 +55,25 @@ const Login = () => {
     console.log(signUpData);
   };
 
-  const [cookies, ,] = useCookies("userData");
+  const [cookies, setCookie, removeCookie] = useCookies("userData");
 
   return (
     <main>
       <section className="py-5 text-center container">
         <div className="row py-lg-5">
           <div className="col-lg-6 col-md-8 mx-auto">
-            <h1 className="fw-light">MOVIE</h1>
+            <h1 className="fw-light">Inssa Food</h1>
             <p className="lead text-muted">
-              리뷰하고 싶은 영화를 추가하고, 별점을 주세요! <br />
+              Find out Information
+              <br />
+              about the food with a picture
             </p>
           </div>
         </div>
         {!cookies.userData ? (
           <p>
             <button
-              className="btn btn-primary my-2 m-1"
+              className="signIn-btn btn btn-primary my-2 m-1"
               onClick={() => {
                 setView({
                   signIn: true,
@@ -96,9 +101,20 @@ const Login = () => {
             <h3>You are logged in</h3>
           </div>
         )}
-        <a className="kakao-btn" href={KAKAO_AUTH_URI}>
-          <img src={kakaLoginButtonImg} width={70} height={35} />
-        </a>
+        <div className="socialSignIn-btnBox ">
+          <Button
+            className="social-btn kakao"
+            variant="contained"
+            onClick={() => {
+              window.location.replace(KAKAO_AUTH_URI);
+            }}
+          >
+            Sign in with Kakao
+          </Button>
+          <Button className="social-btn google" variant="contained">
+            Sign in with Google
+          </Button>
+        </div>
       </section>
       {view.signIn ? (
         <SignInForm
