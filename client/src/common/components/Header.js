@@ -1,14 +1,10 @@
 import "./Header.css";
-import kakaLoginButtonImg from "../../img/kakao_login_medium.png";
 
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 const Header = () => {
-  const REST_API_KEY = "0abf97780f442400eccc7cd004baabab";
-  const REDIRECT_URI = "http://localhost:3000/oauth/kakao/callback";
-
   // 야매:라우팅 권한관리로 개선되어야할 로직---------------
   const [cookies, setCookie, removeCookie] = useCookies(["userData"]);
   const navigate = useNavigate();
@@ -20,12 +16,6 @@ const Header = () => {
   }, [cookies]);
 
   // -----------------------------------------
-
-  // ------------------kakao Oauth-------------------
-  //1번
-  const KAKAO_AUTH_URI = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
-
-  //---------------------------------------------------
 
   const onClickSignUp = () => {
     navigate("/signUp");
@@ -52,7 +42,10 @@ const Header = () => {
       </div>
       <div className="nav-container">
         <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-          <a href="/" className="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none"></a>
+          <a
+            href="/"
+            className="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none"
+          ></a>
 
           <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
             <li>
@@ -96,19 +89,22 @@ const Header = () => {
           </ul>
         </div>
       </div>
-      <div id="headerYes" className="logBtn-box text-end">
+      <div className="logBtn-box text-end">
         {cookies.userData === undefined ? (
           <div className="logTrue-box">
-            <a className="kakao-btn" href={KAKAO_AUTH_URI}>
-              <img src={kakaLoginButtonImg} width={70} height={35} />
-            </a>
-            <button onClick={onClickLogin} className="logIn-btn log-btn btn btn-secondary ">
+            <button
+              onClick={onClickLogin}
+              className="logIn-btn log-btn btn btn-secondary "
+            >
               Login
             </button>
           </div>
         ) : (
           <div className="logFalse-box">
-            <button className="signUp-btn log-btn btn btn-outline-secondary" onClick={onClickLogOut}>
+            <button
+              className="signUp-btn log-btn btn btn-outline-secondary"
+              onClick={onClickLogOut}
+            >
               LogOut
             </button>
           </div>

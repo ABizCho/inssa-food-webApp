@@ -1,7 +1,7 @@
 import $ from "jquery";
 import { useRef, useState } from "react";
 import axios from "axios";
-import urlPort from "./../../data/urlPort.json";
+import urlPort from "../../../data/urlPort.json";
 
 const SignUpForm = ({ signUpData, onChangeSignUpData, setSignUpdata }) => {
   const emailRef = useRef();
@@ -121,8 +121,13 @@ const SignUpForm = ({ signUpData, onChangeSignUpData, setSignUpdata }) => {
           <div className="mb-3">
             <p className="text-danger">{errorMessage}</p>
           </div>
-          <button type="button" onClick={onClickSignUpButton} className="btn btn-primary">
-            회원가입
+
+          <button
+            type="button"
+            onClick={onClickSignUpButton}
+            className="btn btn-primary"
+          >
+            Sign Up
           </button>
         </form>
       </div>

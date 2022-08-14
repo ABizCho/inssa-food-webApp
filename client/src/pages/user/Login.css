@@ -1,0 +1,24 @@
+.socialSignIn-btnBox {
+  margin-top: 10%;
+  display: flex !important;
+  flex-direction: column !important;
+
+  align-items: center;
+}
+
+.social-btn {
+  width: 65%;
+  margin: 10px !important;
+}
+
+.kakao {
+  background-color: #f9e000 !important;
+}
+
+.google {
+  background-color: white !important;
+  color: black !important;
+}
+
+.signIn-btn {
+}
