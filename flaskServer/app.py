@@ -1,3 +1,5 @@
+from model import modelRun
+
 from flask import Flask, jsonify, request
 
 app = Flask(__name__)
