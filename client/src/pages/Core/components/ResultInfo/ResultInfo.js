@@ -9,6 +9,7 @@ import axios from "axios";
 
 import urlPort from "./../../../../data/urlPort.json";
 import ReactAudioPlayer from "react-audio-player";
+import ReactPlayer from "react-player";
 import galbi from "../ResultInfo/order_food/1.galbi.mp3";
 
 const ResultInfo = () => {
@@ -73,6 +74,11 @@ const ResultInfo = () => {
             <ReactAudioPlayer src={galbi} autoPlay controls />
           </div>
           <div className="result-item order_learn_text">🗣️: {foodInfo.order_learn_text}</div>
+          <div>
+            RECIPE
+            <ReactPlayer url={foodInfo.recipie_url} controls width={300} height={300} />
+          </div>
+
           <div className="result-item desc">
             <span className="desc-title">description</span>
             <div className="desc-content">{foodInfo.description}</div>
