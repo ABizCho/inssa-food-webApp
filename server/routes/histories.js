@@ -7,7 +7,7 @@ const router = Router();
 
 router.post("/", async (req, res, next) => {
   console.log(req.body);
-  const { userId, food, img } = req.body;
+  const { userId, food, img, title, comment } = req.body;
 
   try {
     await HistoryCard.create({
@@ -21,6 +21,8 @@ router.post("/", async (req, res, next) => {
       spicy: food.spicy,
       recipe_url: food.recipe_url,
       caution: food.caution,
+      title: title,
+      comment: comment
     });
     res.json({
       result: "[server] history에 저장 되었습니다.",

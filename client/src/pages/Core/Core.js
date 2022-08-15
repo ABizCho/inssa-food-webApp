@@ -5,31 +5,45 @@ import "./Core.css";
 import $ from "jquery";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
+import axios from "axios";
+
+import urlPort from "../../data/urlPort.json";
 
 const Core = () => {
   const navigate = useNavigate();
 
-  const [imageURL, setImageURL] = useState("");
+  const [imageURL, setImageURL] = useState(null);
   const imgRef = useRef();
 
   //쿠키 사용 준비
-  const [cookies, setCookie, removeCookie] = useCookies(["inputImage"]);
+  const [cookies, setCookie, removeCookie] = useCookies([
+    "inputImage",
+    "imgFile",
+  ]);
 
   // 파일 저장
-  const saveImageURL = async (e) => {
+  const onChangeImg = async (e) => {
+    setImgFile(e.target.files[0]);
+
     const imgURL = URL.createObjectURL(e.target.files[0]);
-    await setImageURL(imgURL);
-    setCookie("inputImage", imgURL, { path: "/" });
-    const inputImg = document.getElementById("imgPreview");
-    //쿠키에 이미지 넣음
-    console.log("이미지 파일 : ", inputImg);
-    console.log("이미지 URL : ", imgURL);
+    setImageURL(imgURL);
   };
 
-  //   테스트용 임시 네비게이팅입니다.
-  const onClickToResultTemp = (id) => {
+  const onClickToResult = async (id) => {
+    const formData = new FormData();
+    formData.append("file", imgFile);
+    await axios.post(urlPort.server + "/api/upload", formData).then((res) => {
+      console.log(res.data);
+      setCookie("imgFile", res.data);
+    });
+
     navigate(`/resultinfo/${id}`);
   };
+
+  // ---------------------
+
+  const [imgFile, setImgFile] = useState("");
+
   return (
     // <div className="full-container">
     <div className="content-container-row">
@@ -53,19 +67,17 @@ const Core = () => {
               <img
                 alt="sample"
                 id="imgPreview"
-                ref={imgRef}
+                // ref={imgRef}
                 src={imageURL}
                 style={{ margin: "auto", width: "224px", height: "224px" }}
               />
             )}
-            <input
-              type="file"
-              onChange={saveImageURL}
-              name="uploadfile"
-              accept="image/*"
-            />
+            <input type="file" onChange={onChangeImg} accept="image/*" />
+
             <button
-              onClick={() => {onClickToResultTemp("1")}}
+              onClick={() => {
+                onClickToResult(1);
+              }}
               className="btn btn-danger btn-block"
               id="formsend"
             >
@@ -104,9 +116,6 @@ const Core = () => {
       </div>
 
       <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
-      <div>
-        <a id="kakao-link-btn" href="javascript:kt2('9');"></a>
-      </div>
     </div>
     // </div>
   );
