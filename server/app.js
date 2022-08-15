@@ -12,6 +12,8 @@ const foodInfoRouter = require("./routes/foodInfo");
 
 const imgRouter = require("./routes/img");
 
+const modelRouter = require("./routes/yeah");
+
 //
 const authMiddleware = require("./routes/auth");
 const app = express();
@@ -46,6 +48,8 @@ app.use("/histories", authMiddleware, historiesRouter);
 app.use("/api", imgRouter);
 
 app.use("/uploads", express.static("uploads"));
+
+app.use("/yeah", modelRouter);
 
 // 4. 서버 구동
 app.listen(ports.server, () => {
