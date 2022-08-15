@@ -1,0 +1,65 @@
+.result-item img {
+  width: 100%;
+  height: 100%;
+}
+.resultInfo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.result-container {
+  padding: 10%;
+  border: 3px solid #d5d5d5;
+  border-radius: 10%;
+  width: 85%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.result .result-item.name {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.result-item.img {
+  margin-bottom: 10%;
+}
+
+.img-box {
+  display: flex;
+  align-items: center;
+  text-align: center !important;
+}
+
+.result-item.desc {
+  margin-top: 30px;
+}
+
+.desc-title {
+  font-weight: bold;
+}
+
+/*  */
+.btn-container {
+  margin-top: 10%;
+
+  display: flex;
+  flex-direction: row;
+}
+
+.btn-item {
+  height: 40px !important;
+  margin: 5px !important;
+}
+
+.logo-box {
+  margin-bottom: 10px;
+}
+
+.title {
+  margin-bottom: 6%;
+  text-align: center;
+  font-family: "Fredoka One", cursive;
+}

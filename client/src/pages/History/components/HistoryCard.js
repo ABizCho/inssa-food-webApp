@@ -12,17 +12,20 @@ import Button from "@mui/material/Button";
 import $ from "jquery";
 
 const HistoryCard = (props) => {
-  const { id, name, food_img, desc } = props;
+  const { id, name, food_img, desc, colorIdx } = props;
 
   const navigate = useNavigate();
+
+  const cardPalette = ["#C8A496", "#FAC9A9", "#F8ECA8", "#C5DCD2", "#E7E3E0"];
 
   const onClickDetail = (id) => {
     navigate(`history/${id}/detail`);
   };
+  console.log(name);
   return (
     <Card
       sx={{
-        bgcolor: "#fbe4b1",
+        bgcolor: cardPalette[colorIdx % 5],
         display: "block",
       }}
       className="historyCard"
@@ -30,7 +33,12 @@ const HistoryCard = (props) => {
     >
       <CardMedia component="img" height="140" image={food_img} />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography
+          gutterBottom
+          variant="h5"
+          component="div"
+          sx={{ fontSize: 18, fontWeight: "bold" }}
+        >
           {name}
         </Typography>
         <Typography variant="body2" color="text.secondary">

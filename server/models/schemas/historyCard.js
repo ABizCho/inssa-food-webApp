@@ -3,12 +3,15 @@ const shortId = require("./type/short-id");
 
 module.exports = new Schema({
   id: String,
-  name: String,
   user_id: shortId,
   food_id: Number,
-  food_img: String,
-  input_img: { type: String, required: false },
+  type: { type: String, required: false },
+  name: String,
+  name_Eng: String,
+  user_inputImg: String,
+  food_defaultImg: { String, required: false },
   description: String,
-  spicy: { type: Number, required: false },
-  recipes: { type: Object, required: false },
+  spicy: Number,
+  recipe_url: String,
+  caution: Array,
 });
