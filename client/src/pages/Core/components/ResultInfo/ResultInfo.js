@@ -26,18 +26,14 @@ const ResultInfo = () => {
 
   //쿠키 사용 준비
 
-  const [cookies, setCookie, removeCookie] = useCookies([
-    "inputImage",
-    "foodInfo",
-    "imgFile",
-  ]);
+  const [cookies, setCookie, removeCookie] = useCookies(["inputImage", "foodInfo", "imgFile"]);
 
   useEffect(() => {
     console.log("params.id : ", params.id);
     console.log("imgFile:", cookies.imgFile.url);
     // getImgFile().then((res))
     getFoodInfo().then((res) => {
-      // console.log(res);
+      console.log(res);
       setFoodInfo(res.data.food);
     });
   }, []);
@@ -79,39 +75,25 @@ const ResultInfo = () => {
 
   return (
     <div className="resultInfo-container">
-      <h1 className="title">Food Info</h1>
       <div className="result-container">
+        <h1 className="title">Food Info</h1>
         <div>
           <div className="result-item img-box">
-            <img
-              className="result-item img"
-              src={urlPort.server + cookies.imgFile.url}
-              alt="react"
-              width={"200px"}
-            />
+            <img className="result-item img" src={urlPort.server + cookies.imgFile.url} alt="react" width={"200px"} />
           </div>
           <div className="result-item name">
             <h1>{"name"}</h1>
           </div>
           <div className="result-item spicy">spicy: {foodInfo.spicy}</div>
           <div className="result-item caution">caution: {foodInfo.caution}</div>
-          <div className="result-item name_Eng">
-            English Name: {foodInfo.name_Eng}
-          </div>
+          <div className="result-item name_Eng">English Name: {foodInfo.name_Eng}</div>
           <div className="result-item order_learn_audio">
             <ReactAudioPlayer src={foodInfo.sound_url} autoPlay controls />
           </div>
-          <div className="result-item order_learn_text">
-            🗣️: {foodInfo.order_learn_text}
-          </div>
+          <div className="result-item order_learn_text">🗣️: {foodInfo.order_learn_text}</div>
           <div>
             RECIPE
-            <ReactPlayer
-              url={foodInfo.recipie_url}
-              controls
-              width={300}
-              height={300}
-            />
+            <ReactPlayer url={foodInfo.recipie_url} controls width={300} height={300} />
           </div>
 
           <div className="result-item desc">
@@ -139,12 +121,7 @@ const ResultInfo = () => {
         </div>
       </div>
       <div className="btn-container">
-        <Button
-          className="btn-item"
-          variant="contained"
-          endIcon={<SendIcon />}
-          onClick={onClickSaveHistory}
-        >
+        <Button className="btn-item" variant="contained" endIcon={<SendIcon />} onClick={onClickSaveHistory}>
           Save History
         </Button>
 

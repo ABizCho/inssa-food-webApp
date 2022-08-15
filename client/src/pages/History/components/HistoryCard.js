@@ -19,7 +19,7 @@ const HistoryCard = (props) => {
   const cardPalette = ["#ffca80", "#ffb54d", "#f08000", "#ffb54d"];
 
   const onClickDetail = (id) => {
-    navigate(`history/${id}/detail`);
+    navigate(`${id}/detail`);
   };
   console.log(name);
   return (
@@ -33,12 +33,7 @@ const HistoryCard = (props) => {
     >
       <CardMedia component="img" height="140" image={food_img} />
       <CardContent>
-        <Typography
-          gutterBottom
-          variant="h5"
-          component="div"
-          sx={{ fontSize: 18, fontWeight: "bold" }}
-        >
+        <Typography gutterBottom variant="h5" component="div" sx={{ fontSize: 18, fontWeight: "bold" }}>
           {name}
         </Typography>
         <Typography variant="body2" color="text.secondary">

@@ -1,7 +1,7 @@
 const { Schema } = require("mongoose");
 
 module.exports = new Schema({
-  id: Number,
+  food_id: Number,
   type: String,
   name: String,
   name_Eng: String,

@@ -10,6 +10,8 @@ router.post("/", async (req, res, next) => {
   const { userId, food, img, title, comment } = req.body;
 
   try {
+    const authData = await User.findOne({ email });
+
     await HistoryCard.create({
       user_id: userId,
       food_id: food.id,
@@ -22,7 +24,8 @@ router.post("/", async (req, res, next) => {
       recipe_url: food.recipe_url,
       caution: food.caution,
       title: title,
-      comment: comment
+      comment: comment,
+      author: authData,
     });
     res.json({
       result: "[server] history에 저장 되었습니다.",
@@ -37,8 +40,7 @@ router.post("/", async (req, res, next) => {
 router.get("/", async (req, res, next) => {
   const userId = req.body;
   try {
-    const histories = await HistoryCard.find({});
-    // .populate("author") //나중에 활성화
+    const histories = await HistoryCard.find({}).populate("author"); //나중에 활성화
     console.log("[server] history get 응답중");
 
     res.json({ histories, msg: "get요청 정상처리 되었습니다." });

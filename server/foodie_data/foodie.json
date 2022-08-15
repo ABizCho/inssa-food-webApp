@@ -1,6 +1,6 @@
 {
   "galbijjim": {
-    "id": 1,
+    "food_id": 1,
     "type": "찜",
     "name": "갈비찜",
     "name_Eng": "Braised Short Ribs",
@@ -14,7 +14,7 @@
   },
 
   "gimbob": {
-    "id": 2,
+    "food_id": 2,
     "type": "밥",
     "name": "김밥",
     "name_Eng": "Rice Rolls in Laver",
@@ -28,7 +28,7 @@
   },
 
   "tteokbokki": {
-    "id": 3,
+    "food_id": 3,
     "type": "볶음",
     "name": "떡볶이",
     "name_Eng": "Stir-fried Rice Pasta with Vegetables",
@@ -42,7 +42,7 @@
   },
 
   "naengmyeon": {
-    "id": 4,
+    "food_id": 4,
     "type": "면",
     "name": "물냉면",
     "name_Eng": "Buckwheat Noodles in Chilled Broth",
@@ -55,7 +55,7 @@
     "order_learn_text": "imo mulnaengmyeon juseyo"
   },
   "kimchi": {
-    "id": 5,
+    "food_id": 5,
     "type": "김치",
     "name": "배추김치",
     "name_Eng": "Cabbage Kimchi",
@@ -68,7 +68,7 @@
     "order_learn_text": "imo baechugimchi juseyo"
   },
   "bulgogi": {
-    "id": 6,
+    "food_id": 6,
     "type": "구이",
     "name": "불고기",
     "name_Eng": "Bulgogi (Korean Barbecue)",
@@ -81,7 +81,7 @@
     "order_learn_text": "imo bulgogi juseyo"
   },
   "bibimbap ": {
-    "id": 7,
+    "food_id": 7,
     "type": "밥",
     "name": "비빔밥",
     "name_Eng": "Bibimbap (Rice Mixed with Vegetables and Beef)",
@@ -94,7 +94,7 @@
     "order_learn_text": "imo bibimbab juseyo"
   },
   "sundubu": {
-    "id": 8,
+    "food_id": 8,
     "type": "찌개",
     "name": "순두부찌개",
     "name_Eng": "Spicy Soft Dubu Stew",
@@ -107,7 +107,7 @@
     "order_learn_text": "imo sundubujjigae juseyo"
   },
   "japchae": {
-    "id": 9,
+    "food_id": 9,
     "type": "나물",
     "name": "잡채",
     "name_Eng": "Japchae (Clear Noodles Stir-fried with Vegetables)",
@@ -120,7 +120,7 @@
     "order_learn_text": "imo jabchae juseyo"
   },
   "hangwa": {
-    "id": 10,
+    "food_id": 10,
     "type": "한과",
     "name": "한과",
     "name_Eng": "Traditional Sweets",

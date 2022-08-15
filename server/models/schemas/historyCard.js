@@ -2,8 +2,7 @@ const { Schema } = require("mongoose");
 const shortId = require("./type/short-id");
 
 module.exports = new Schema({
-  id: String,
-  user_id: shortId,
+  shortId,
   food_id: Number,
   type: { type: String, required: false },
   name: String,
@@ -15,5 +14,10 @@ module.exports = new Schema({
   recipe_url: String,
   caution: Array,
   title: String,
-  comment: String
+  comment: String,
+  author: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
 });

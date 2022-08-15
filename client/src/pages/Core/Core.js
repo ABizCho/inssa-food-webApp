@@ -16,10 +16,7 @@ const Core = () => {
   const imgRef = useRef();
 
   //쿠키 사용 준비
-  const [cookies, setCookie, removeCookie] = useCookies([
-    "inputImage",
-    "imgFile",
-  ]);
+  const [cookies, setCookie, removeCookie] = useCookies(["inputImage", "imgFile"]);
 
   // 파일 저장
   const onChangeImg = async (e) => {
@@ -54,11 +51,7 @@ const Core = () => {
             <input type="hidden" name="menu" value="upload" />
             <input type="hidden" name="gofile" value="nion" />
             <input type="hidden" name="service" value="on" />
-            <input
-              type="hidden"
-              name="session_id"
-              value="clicm02ddg1or9rjelucajj4p6"
-            />
+            <input type="hidden" name="session_id" value="clicm02ddg1or9rjelucajj4p6" />
 
             <p className="text-notice" align="center">
               <span className="">Put your food image in this box</span>
@@ -76,7 +69,7 @@ const Core = () => {
 
             <button
               onClick={() => {
-                onClickToResult(1);
+                onClickToResult(5);
               }}
               className="btn btn-danger btn-block"
               id="formsend"
@@ -104,11 +97,7 @@ const Core = () => {
                 />
               </div>
               <div>
-                <img
-                  className="demo-img"
-                  src={`${process.env.PUBLIC_URL}/demo_assets/img/LearnFood.png`}
-                  alt="react"
-                />
+                <img className="demo-img" src={`${process.env.PUBLIC_URL}/demo_assets/img/LearnFood.png`} alt="react" />
               </div>
             </div>
           </div>
