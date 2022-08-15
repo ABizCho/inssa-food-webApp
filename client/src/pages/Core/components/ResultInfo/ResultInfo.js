@@ -17,6 +17,10 @@ const ResultInfo = () => {
 
   //state
   const [foodInfo, setFoodInfo] = useState({});
+  const [historyInput, setHistoryInput] = useState({
+    title: "",
+    comment: ""
+  });
 
   //쿠키 사용 준비
   const [cookies, setCookie, removeCookie] = useCookies([
@@ -40,15 +44,27 @@ const ResultInfo = () => {
     console.log(foodInfo);
   }, [foodInfo]);
 
+  //HistoryInput 변하면 console 찍기
+  useEffect(()=> {
+    console.log("HistoryINPUT : ", historyInput)
+  }, [historyInput])
+
   const onClickSaveHistory = async () => {
-    await postHistoryData();
-    await navigate("/history");
+    
+    const historyInfo = {
+      ...historyInfoOne,
+      title: historyInput.title,
+      comment: historyInput.comment}
+    
+    await postHistoryData(historyInfo);
+    await navigate("/history/list");
   };
-  const postHistoryData = async () => {
+  const postHistoryData = async (historyInfo) => {
     return await axios.post(urlPort.server + "/histories", historyInfo);
   };
 
-  const historyInfo = {
+  //유저 인풋(Title, Comment) 제외한 히스토리 정보 => onClickSaveHistory 실행시 인풋정보랑 합침!!!
+  const historyInfoOne = {
     img: urlPort.server + cookies.imgFile.url,
     food: cookies.foodInfo,
     userId: cookies.userData.id,
@@ -81,6 +97,12 @@ const ResultInfo = () => {
             <div className="desc-content">{foodInfo.description}</div>
           </div>
         </div>
+      <div className="history-inputs">
+        <label htmlFor="history-title">Title</label>
+        <input name="history-title" onChange={(e)=> {setHistoryInput( {...historyInput, title: e.target.value} )}} type="text" />
+        <label htmlFor="history-comment">Comment</label>
+        <textarea name="history-comment" onChange={(e)=> {setHistoryInput( {...historyInput, comment: e.target.value} )}} type="text" />
+      </div>
       </div>
       <div className="btn-container">
         <Button

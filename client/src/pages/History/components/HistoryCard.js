@@ -19,7 +19,7 @@ const HistoryCard = (props) => {
   const cardPalette = ["#C8A496", "#FAC9A9", "#F8ECA8", "#C5DCD2", "#E7E3E0"];
 
   const onClickDetail = (id) => {
-    navigate(`history/${id}/detail`);
+    navigate(`${id}/detail`);
   };
   console.log(name);
   return (
@@ -46,7 +46,7 @@ const HistoryCard = (props) => {
         </Typography>
       </CardContent>
 
-      <Button color="primary" onClick={onClickDetail}>
+      <Button color="primary" onClick={(id) => onClickDetail(id)}>
         Detail
       </Button>
 

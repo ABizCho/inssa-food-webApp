@@ -14,4 +14,6 @@ module.exports = new Schema({
   spicy: Number,
   recipe_url: String,
   caution: Array,
+  title: String,
+  comment: String
 });
