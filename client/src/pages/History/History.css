@@ -1,8 +1,9 @@
 /*  */
 img {
 }
+
 .title {
-  margin-bottom: 6%;
+  margin-bottom: 13% !important;
   text-align: center;
   font-family: "Fredoka One", cursive;
 }
@@ -13,9 +14,14 @@ img {
 }
 
 .historyCard {
-  /* background-color: black !important; */
+  /* margin-top: 20% !important; */
+}
+.card-item {
+  /* margin-right: 10% !important; */
+  border-radius: 10% !important;
+  padding: 5% !important;
   width: 240px !important;
-  height: 350px !important;
+  height: 330px !important;
 }
 
 .history-container h2 {

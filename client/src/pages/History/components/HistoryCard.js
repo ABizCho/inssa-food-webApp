@@ -16,19 +16,19 @@ const HistoryCard = (props) => {
 
   const navigate = useNavigate();
 
-  const cardPalette = ["#C8A496", "#FAC9A9", "#F8ECA8", "#C5DCD2", "#E7E3E0"];
+  const cardPalette = ["#ffca80", "#ffb54d", "#f08000", "#ffb54d"];
 
   const onClickDetail = (id) => {
-    navigate(`${id}/detail`);
+    navigate(`history/${id}/detail`);
   };
   console.log(name);
   return (
     <Card
       sx={{
-        bgcolor: cardPalette[colorIdx % 5],
+        bgcolor: cardPalette[colorIdx % 4],
         display: "block",
       }}
-      className="historyCard"
+      className="card-item"
       id={id}
     >
       <CardMedia component="img" height="140" image={food_img} />
@@ -46,7 +46,7 @@ const HistoryCard = (props) => {
         </Typography>
       </CardContent>
 
-      <Button color="primary" onClick={(id) => onClickDetail(id)}>
+      <Button color="primary" onClick={onClickDetail}>
         Detail
       </Button>
 
