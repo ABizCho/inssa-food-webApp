@@ -63,3 +63,14 @@
   text-align: center;
   font-family: "Fredoka One", cursive;
 }
+
+.history-inputs {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 1em
+}
+
+.history-inputs label {
+  font-weight: bold;
+}

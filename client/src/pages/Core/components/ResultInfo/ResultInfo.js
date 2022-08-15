@@ -12,6 +12,7 @@ import ReactAudioPlayer from "react-audio-player";
 import ReactPlayer from "react-player";
 import galbi from "../ResultInfo/order_food/1.galbi.mp3";
 
+
 const ResultInfo = () => {
   const navigate = useNavigate();
 
@@ -20,13 +21,20 @@ const ResultInfo = () => {
 
   //state
   const [foodInfo, setFoodInfo] = useState({});
+  const [historyInput, setHistoryInput] = useState({
+    title: "",
+    comment: ""
+  });
 
   //쿠키 사용 준비
-  const [cookies, setCookie, removeCookie] = useCookies(["inputImage", "foodInfo"]);
+
+  const [cookies, setCookie, removeCookie] = useCookies(["inputImage", "foodInfo",'imgFile']);
+
 
   useEffect(() => {
     console.log("params.id : ", params.id);
-
+    console.log("imgFile:", cookies.imgFile.url);
+    // getImgFile().then((res))
     getFoodInfo().then((res) => {
       // console.log(res);
       setFoodInfo(res.data.food);
@@ -38,16 +46,28 @@ const ResultInfo = () => {
     console.log(foodInfo);
   }, [foodInfo]);
 
+  //HistoryInput 변하면 console 찍기
+  useEffect(()=> {
+    console.log("HistoryINPUT : ", historyInput)
+  }, [historyInput])
+
   const onClickSaveHistory = async () => {
-    await postHistoryData();
-    await navigate("/history");
+    
+    const historyInfo = {
+      ...historyInfoOne,
+      title: historyInput.title,
+      comment: historyInput.comment}
+    
+    await postHistoryData(historyInfo);
+    await navigate("/history/list");
   };
-  const postHistoryData = async () => {
+  const postHistoryData = async (historyInfo) => {
     return await axios.post(urlPort.server + "/histories", historyInfo);
   };
 
-  const historyInfo = {
-    img: cookies.inputImage,
+  //유저 인풋(Title, Comment) 제외한 히스토리 정보 => onClickSaveHistory 실행시 인풋정보랑 합침!!!
+  const historyInfoOne = {
+    img: urlPort.server + cookies.imgFile.url,
     food: cookies.foodInfo,
     userId: cookies.userData.id,
   };
@@ -62,7 +82,12 @@ const ResultInfo = () => {
       <div className="result-container">
         <div>
           <div className="result-item img-box">
-            <img className="result-item img" src={cookies.inputImage} alt="react" width={"200px"} />
+            <img
+              className="result-item img"
+              src={urlPort.server + cookies.imgFile.url}
+              alt="react"
+              width={"200px"}
+            />
           </div>
           <div className="result-item name">
             <h1>{"name"}</h1>
@@ -84,6 +109,12 @@ const ResultInfo = () => {
             <div className="desc-content">{foodInfo.description}</div>
           </div>
         </div>
+      <div className="history-inputs">
+        <label htmlFor="history-title">Title</label>
+        <input name="history-title" onChange={(e)=> {setHistoryInput( {...historyInput, title: e.target.value} )}} type="text" />
+        <label htmlFor="history-comment">Comment</label>
+        <textarea name="history-comment" onChange={(e)=> {setHistoryInput( {...historyInput, comment: e.target.value} )}} type="text" />
+      </div>
       </div>
       <div className="btn-container">
         <Button className="btn-item" variant="contained" endIcon={<SendIcon />} onClick={onClickSaveHistory}>
