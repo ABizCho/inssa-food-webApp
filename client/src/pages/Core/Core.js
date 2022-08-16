@@ -16,10 +16,7 @@ const Core = () => {
   const imgRef = useRef();
 
   //쿠키 사용 준비
-  const [cookies, setCookie, removeCookie] = useCookies([
-    "inputImage",
-    "imgFile",
-  ]);
+  const [cookies, setCookie, removeCookie] = useCookies(["inputImage", "imgFile"]);
 
   // 파일 저장
   const onChangeImg = async (e) => {
@@ -45,79 +42,76 @@ const Core = () => {
   const [imgFile, setImgFile] = useState("");
 
   return (
-    // <div className="full-container">
-    <div className="content-container-row">
-      <h2 className="title">Find your food</h2>
-      <div className="top-container">
-        <div style={{ width: "100%", border: "0", padding: "0" }}>
-          <div className="form-container">
-            <input type="hidden" name="menu" value="upload" />
-            <input type="hidden" name="gofile" value="nion" />
-            <input type="hidden" name="service" value="on" />
-            <input
-              type="hidden"
-              name="session_id"
-              value="clicm02ddg1or9rjelucajj4p6"
-            />
+    <div className="full-container">
+      <div className="content-container-row">
+        <h2 className="title">Find your food</h2>
+        <div className="top-container">
+          <div style={{ width: "100%", border: "0", padding: "0" }}>
+            <div className="form-container">
+              <input type="hidden" name="menu" value="upload" />
+              <input type="hidden" name="gofile" value="nion" />
+              <input type="hidden" name="service" value="on" />
+              <input type="hidden" name="session_id" value="clicm02ddg1or9rjelucajj4p6" />
 
-            <p className="text-notice" align="center">
-              <span className="">Put your food image in this box</span>
-            </p>
-            {imageURL && (
-              <img
-                alt="sample"
-                id="imgPreview"
-                // ref={imgRef}
-                src={imageURL}
-                style={{ margin: "auto", width: "224px", height: "224px" }}
-              />
-            )}
-            <input type="file" onChange={onChangeImg} accept="image/*" />
+              <p className="text-notice" align="center">
+                <span className="">Put your food image in this box</span>
+              </p>
+              {imageURL && (
+                <img
+                  alt="sample"
+                  id="imgPreview"
+                  // ref={imgRef}
+                  src={imageURL}
+                  style={{ margin: "auto", width: "224px", height: "224px" }}
+                />
+              )}
+              <input type="file" onChange={onChangeImg} accept="image/*" />
 
-            <button
-              onClick={() => {
-                onClickToResult(1);
-              }}
-              className="btn btn-danger btn-block"
-              id="formsend"
-            >
-              <i className="func-btn fas fa-webcam" aria-hidden="true"></i>
-              Discover
-            </button>
-          </div>
+              <button
+                onClick={() => {
+                  onClickToResult(8);
+                }}
+                className="btn btn-danger btn-block"
+                id="formsend"
+              >
+                <i className="func-btn fas fa-webcam" aria-hidden="true"></i>
+                Discover
+              </button>
+            </div>
 
-          <div className="demo-container">
-            <h2 className="title">Demo</h2>
-            <div className="demo-box">
-              <div>
-                <img
-                  className="demo-img"
-                  src={`${process.env.PUBLIC_URL}/demo_assets/img/TakeAPhoto.png`}
-                  alt="react"
-                />
-              </div>
-              <div>
-                <img
-                  className="demo-img"
-                  src={`${process.env.PUBLIC_URL}/demo_assets/img/CollectFood.png`}
-                  alt="react"
-                />
-              </div>
-              <div>
-                <img
-                  className="demo-img"
-                  src={`${process.env.PUBLIC_URL}/demo_assets/img/LearnFood.png`}
-                  alt="react"
-                />
+            <div className="demo-container">
+              <h2 className="title">Demo</h2>
+              <div className="demo-box">
+                <div>
+                  <img
+                    className="demo-img"
+                    src={`${process.env.PUBLIC_URL}/demo_assets/img/TakeAPhoto.png`}
+                    alt="react"
+                  />
+                </div>
+                <div>
+                  <img
+                    className="demo-img"
+                    src={`${process.env.PUBLIC_URL}/demo_assets/img/CollectFood.png`}
+                    alt="react"
+                  />
+                </div>
+                <div>
+                  <img
+                    className="demo-img"
+                    src={`${process.env.PUBLIC_URL}/demo_assets/img/LearnFood.png`}
+                    alt="react"
+                  />
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+        <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+      </div>
+      //{" "}
     </div>
-    // </div>
   );
 };
 export default Core;
