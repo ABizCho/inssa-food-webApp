@@ -22,9 +22,9 @@ def modelRun(imgUrl) :
     
     pd.options.display.float_format = '{:.5f}'.format
     pd.reset_option('display.float_format')
-
+    print('이미지경로잡기 직전')
     # img_path ='http://115.85.182.215:8000{imgUrl}'
-    img_path = f"http://115.85.182.215:8000/uploads/{imgUrl}"
+    img_path = "http://115.85.182.215:8000/uploads/{imgUrl}"
     img = image.load_img(img_path, target_size=(224, 224))
     x = image.img_to_array(img)
     x = np.expand_dims(x, axis=0)
