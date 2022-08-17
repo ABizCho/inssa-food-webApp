@@ -65,6 +65,7 @@ const Core = () => {
             </p>
             {imageURL && (
               <img
+              className="selected-img"
                 alt="sample"
                 id="imgPreview"
                 // ref={imgRef}
@@ -72,8 +73,15 @@ const Core = () => {
                 style={{ margin: "auto", width: "224px", height: "224px" }}
               />
             )}
-            <input type="file" onChange={onChangeImg} accept="image/*" />
-
+            <button type="button" className="upload-btn">
+              Upload
+              <input
+                className="fileSelect-btn"
+                type="file"
+                onChange={onChangeImg}
+                accept="image/*"
+              />
+            </button>
             <button
               onClick={() => {
                 onClickToResult(1);
