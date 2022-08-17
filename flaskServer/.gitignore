@@ -3,3 +3,5 @@ foodie_vgg19_1_9075.h5
 foodie_mobilenet_1_65.h5
 
 foodie_mobilenet_train_86_valid_76.h5
+
+foodie_mobilenet_256_128_DO2.h5
