@@ -3,10 +3,11 @@ const axios = require("axios");
 
 const router = Router();
 const portUrl = require("../portUrl");
-router.get("/", async (req, res, next) => {
+
+router.get("/:imgUrl", async (req, res, next) => {
   const FLASK_SERVER = portUrl.cloudServer + portUrl.flaskPort;
-  const { cookieImg } = req.body;
-  console.log("server test:", cookieImg);
+  const { imgUrl } = req.params;
+  console.log("server test:", imgUrl);
 
   try {
     await axios.get(FLASK_SERVER + `/modelCall/${imgUrl}`).then((res) => {

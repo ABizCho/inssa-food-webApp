@@ -35,20 +35,19 @@ const Core = () => {
     await axios
       .post(urlPort.cloudServer + urlPort.node + "/api/upload", formData)
       .then((res) => {
-        console.log("axios1", res.data);
+        console.log(res.data);
         setCookie("imgFile", res.data.url);
-
-        axios
-          .get(urlPort.cloudServer + "8000/modelExp", {
-            cookieImg: res.data.url,
-          })
-          .then((res) => {
-            console.log("axios2:", res.data);
-          });
+        console.log("cookie-img1:", cookies.imgFile);
       });
 
     const cookieImg = cookies.imgFile;
     console.log("cookieImg:", cookieImg);
+
+    await axios
+      .get(urlPort.cloudServer + `8000/modelExp/${cookieImg}`)
+      .then((res) => {
+        console.log(res.data.url);
+      });
 
     navigate(`/resultinfo/${id}`);
   };
