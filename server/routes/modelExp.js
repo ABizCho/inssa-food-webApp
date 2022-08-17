@@ -4,7 +4,7 @@ const axios = require("axios");
 const router = Router();
 const portUrl = require("../portUrl");
 
-router.get("/:imgUrl", async (req, res, next) => {
+router.get("/uploads/:imgUrl", async (req, res, next) => {
   const FLASK_SERVER = portUrl.cloudServer + portUrl.flaskPort;
   const { imgUrl } = req.params;
   console.log("server test:", imgUrl);
