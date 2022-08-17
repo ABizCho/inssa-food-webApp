@@ -47,7 +47,11 @@ const Core = () => {
   return (
     // <div className="full-container">
     <div className="content-container-row">
-      <h2 className="title">Find your food</h2>
+      <div className="core-notice">
+        <h2 className="title">Find your food</h2>
+        <span className="title-sub-txt">Put your food image in this box</span>
+      </div>
+
       <div className="top-container">
         <div style={{ width: "100%", border: "0", padding: "0" }}>
           <div className="form-container">
@@ -60,12 +64,10 @@ const Core = () => {
               value="clicm02ddg1or9rjelucajj4p6"
             />
 
-            <p className="text-notice" align="center">
-              <span className="">Put your food image in this box</span>
-            </p>
+            <p className="text-notice" align="center"></p>
             {imageURL && (
               <img
-              className="selected-img"
+                className="selected-img"
                 alt="sample"
                 id="imgPreview"
                 // ref={imgRef}

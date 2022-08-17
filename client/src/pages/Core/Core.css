@@ -70,11 +70,17 @@
 }
 
 .title {
-  margin-bottom: 6%;
-  text-align: center;
   font-family: "Fredoka One", cursive;
+  margin-bottom: 5% !important;
+}
+.title-sub-txt {
+  color: grey;
 }
 
+.core-notice {
+  margin-bottom: 10%;
+  text-align: center;
+}
 .text-notice {
   margin-bottom: 8px;
 }
