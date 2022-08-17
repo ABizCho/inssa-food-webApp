@@ -12,7 +12,6 @@ import urlPort from "./../../../../data/urlPort.json";
 import ReactAudioPlayer from "react-audio-player";
 import ReactPlayer from "react-player";
 
-
 const ResultInfo = () => {
   const navigate = useNavigate();
 
@@ -65,7 +64,11 @@ const ResultInfo = () => {
     await navigate("/history/list");
   };
   const postHistoryData = async (historyInfo) => {
-    return await axios.post(urlPort.cloudServer + "/histories", historyInfo);
+
+    return await axios.post(
+      urlPort.cloudServer + urlPort.node + "/histories",
+      historyInfo
+    );
   };
 
 
@@ -78,7 +81,11 @@ const ResultInfo = () => {
   };
 
   const getFoodInfo = async () => {
-    return await axios.get(`${urlPort.cloudServer}/foodInfo/${params.id}/find`);
+
+    return await axios.get(
+      `${urlPort.cloudServer + urlPort.node}/foodInfo/${params.id}/find`
+    );
+
   };
 
   return (
@@ -89,7 +96,8 @@ const ResultInfo = () => {
           <div className="result-item img-box">
             <img
               className="result-item img"
-              src={urlPort.cloudServer + cookies.imgFile.url}
+
+              src={urlPort.cloudServer + urlPort.node + cookies.imgFile.url}
 
               alt="react"
               width={"200px"}

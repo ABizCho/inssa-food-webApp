@@ -84,7 +84,10 @@ const SocialSignUp = () => {
   };
 
   const sendSignUpData = async () => {
-    return await axios.post(urlPort.url + "/user/signUp", signUpData);
+    return await axios.post(
+      urlPort.cloudServer + urlPort.node + "/user/signUp",
+      signUpData
+    );
   };
 
   return (

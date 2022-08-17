@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const ports = require("./secure_data/port");
+const portUrl = require("./portUrl.json");
 
 const userRouter = require("./routes/user");
 const authRouter = require("./routes/auth");
@@ -54,6 +54,6 @@ app.use("/uploads", express.static("uploads"));
 app.use("/yeah", modelRouter);
 
 // 4. 서버 구동
-app.listen(ports.server, () => {
+app.listen(portUrl.node, () => {
   console.log("[Server] OPEN - success");
 });
