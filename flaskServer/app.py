@@ -2,15 +2,23 @@ from model import modelRun
 
 from flask import Flask, jsonify, request
 
+print('Flask 가동')
+
 app = Flask(__name__)
+app.run()
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0')
 
 
 
 @app.route("/modelCall/<imgUrl>", methods=['GET'])
+
 def modelCall(imgUrl):
-    res = {
-        'probArr': modelRun(imgUrl)}
-    return jsonify(res), 200
+    print('Flask 가동')
+    # res = {
+    #     'probArr': modelRun(imgUrl)}
+    # return jsonify(res), 200
 
 @app.route("/sign-up", methods=['POST'])
 def sign_up():
