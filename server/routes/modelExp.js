@@ -7,6 +7,7 @@ router.get("/", async (req, res, next) => {
   const FLASK_SERVER = portUrl.cloudServer + portUrl.flaskPort;
 
   imgUrl = req.body;
+  console.log("server test:", imgUrl.filename);
 
   try {
     await axios
