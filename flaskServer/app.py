@@ -19,9 +19,13 @@ def modelCall(imgUrl):
     print(type(imgUrl))
     print('Flask 가동')
 
-    result = modelRun(imgUrl)
+    # result = modelRun(imgUrl)
+    # res = {
+    #     'resIndex': result}
+    
     res = {
-        'probArr': result}
+        'imgUrl': {imgUrl}
+    }
     return jsonify(res), 200
 
 # def modelCallTest(imgUrl):
