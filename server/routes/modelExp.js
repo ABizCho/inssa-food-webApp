@@ -5,7 +5,7 @@ const router = Router();
 const portUrl = require("../portUrl");
 router.get("/", async (req, res, next) => {
   const FLASK_SERVER = portUrl.cloudServer + portUrl.flaskPort;
-  imgUrl = req.body;
+  const imgUrl = req.body;
   console.log("server test:", imgUrl);
 
   try {
