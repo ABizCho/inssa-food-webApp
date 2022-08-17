@@ -8,8 +8,10 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 import urlPort from "./../../../../data/urlPort.json";
+
 import ReactAudioPlayer from "react-audio-player";
 import ReactPlayer from "react-player";
+
 
 const ResultInfo = () => {
   const navigate = useNavigate();
@@ -66,9 +68,11 @@ const ResultInfo = () => {
     return await axios.post(urlPort.cloudServer + "/histories", historyInfo);
   };
 
+
   //유저 인풋(Title, Comment) 제외한 히스토리 정보 => onClickSaveHistory 실행시 인풋정보랑 합침!!!
   const historyInfoOne = {
     img: urlPort.cloudServer + cookies.imgFile.url,
+
     food: cookies.foodInfo,
     userId: cookies.userData.id,
   };
@@ -86,6 +90,7 @@ const ResultInfo = () => {
             <img
               className="result-item img"
               src={urlPort.cloudServer + cookies.imgFile.url}
+
               alt="react"
               width={"200px"}
             />
