@@ -14,20 +14,20 @@ app = Flask(__name__)
 
 
 @app.route("/modelCall/<imgUrl>", methods=['GET','POST'])
-def modelCallTest(imgUrl):
+def modelCall(imgUrl):
+    print(imgUrl)
+    print(type(imgUrl))
+    print('Flask 가동')
 
-    return escape(imgUrl)
+    result = modelRun(imgUrl)
+    res = {
+        'probArr': result}
+    return jsonify(res), 200
 
-# def modelCall(imgUrl):
-#     imgUrl = f'/root/inssa-food/flaskServer/{imgUrl}'
-#     print(imgUrl)
-#     print(type(imgUrl))
-#     print('Flask 가동')
+# def modelCallTest(imgUrl):
+#     return escape(imgUrl)
 
-#     result = modelRun(imgUrl)
-#     res = {
-#         'probArr': result}
-#     return jsonify(res), 200
+
 
 @app.route("/hello", methods=['GET'])
 def hello():
