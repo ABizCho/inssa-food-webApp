@@ -92,15 +92,12 @@ const ResultInfo = () => {
     <div className="resultInfo-container">
       <h1 className="title">Food Info</h1>
       <div className="result-container">
-        <div>
+        <div className="item-container">
           <div className="result-item img-box">
             <img
               className="result-item img"
-
               src={urlPort.cloudServer + urlPort.node + cookies.imgFile.url}
-
               alt="react"
-              width={"200px"}
             />
           </div>
           <div className="result-item name">
@@ -120,6 +117,7 @@ const ResultInfo = () => {
           <div>
             RECIPE
             <ReactPlayer
+              className="video-player"
               url={foodInfo.recipie_url}
               controls
               width={300}
