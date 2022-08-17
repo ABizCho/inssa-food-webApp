@@ -13,7 +13,6 @@ const Core = () => {
   const navigate = useNavigate();
 
   const [imageURL, setImageURL] = useState(null);
-  const [cookieImg, setCookieImg] = useState(null);
   const imgRef = useRef();
 
   //쿠키 사용 준비
@@ -38,24 +37,19 @@ const Core = () => {
       .then((res) => {
         console.log(res.data);
         setCookie("imgFile", res.data.url);
-        setCookieImg(res.data.url);
         console.log("cookie-img1:", cookies.imgFile);
       });
+
+    const cookieImg = cookies.imgFile;
+    console.log("cookieImg:", cookieImg);
+    await axios
+      .get(urlPort.cloudServer + "8000/modelExp", { cookieImg: cookieImg })
+      .then((res) => {
+        console.log(res.data);
+      });
+
+    navigate(`/resultinfo/${id}`);
   };
-
-  useEffect(
-    () => {
-      axios
-        .get(urlPort.cloudServer + "8000/modelExp", { cookieImg: cookieImg })
-        .then((res) => {
-          console.log(res.data);
-
-          navigate(`/resultinfo/${1}`);
-        });
-    },
-
-    [cookieImg]
-  );
 
   // ---------------------
 
