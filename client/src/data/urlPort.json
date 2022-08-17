@@ -1,8 +1,10 @@
 {
+
   "localClient": "http://localhost:",
   "cloudServer": "http://115.85.182.215:",
   "client": 3000,
   "dbPort": 27017,
   "flaskPort": 5000,
   "node": 8000
+
 }
