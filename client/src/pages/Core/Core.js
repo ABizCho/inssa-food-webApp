@@ -32,7 +32,7 @@ const Core = () => {
   const onClickToResult = async (id) => {
     const formData = new FormData();
     formData.append("file", imgFile);
-    await axios.post(urlPort.server + "/api/upload", formData).then((res) => {
+    await axios.post(urlPort.cloudServer + "/api/upload", formData).then((res) => {
       console.log(res.data);
       setCookie("imgFile", res.data);
     });
