@@ -1,7 +1,7 @@
 import tensorflow 
 # from tensorflow.keras.applications.vgg19 import VGG19
 from tensorflow.keras.preprocessing import image
-# from tensorflow.keras.applications.vgg19 import preprocess_input
+from tensorflow.keras.applications.mobilenet import preprocess_input
 # from tensorflow.keras.models import Model
 # import matplotlib.pyplot as plt
 import pandas as pd
