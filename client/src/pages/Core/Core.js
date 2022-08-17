@@ -31,7 +31,7 @@ const Core = () => {
 
   const onClickToResult = async (id) => {
     await axios
-      .get(urlPort.server + urlPort.node + "/modelExp", cookies.imgFile)
+      .get(urlPort.cloudServer + "8000/modelExp", cookies.imgFile)
       .then((res) => {
         console.log(res.data);
       });
@@ -39,7 +39,7 @@ const Core = () => {
     const formData = new FormData();
     formData.append("file", imgFile);
     await axios
-      .post(urlPort.server + urlPort.node  + "/api/upload", formData)
+      .post(urlPort.cloudServer + urlPort.node + "/api/upload", formData)
       .then((res) => {
         console.log(res.data);
         setCookie("imgFile", res.data.url);
