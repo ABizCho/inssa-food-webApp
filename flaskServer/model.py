@@ -21,26 +21,26 @@ def modelRun(imgUrl) :
     # hub.KerasLayer(handle=mobile_net_url, input_shape=(224, 224, 3), trainable=False)
     # ])
 
-    model.summary()
+    print(model.summary())
 
 
     
-    pd.options.display.float_format = '{:.5f}'.format
-    pd.reset_option('display.float_format')
+    # pd.options.display.float_format = '{:.5f}'.format
+    # pd.reset_option('display.float_format')
 
-    # img_path = 'C:\\Users\\he125\\OneDrive\\바탕 화면\\Dev\\Git\\inssa-food-client\\flaskServer\\tpk.jpg'
-    # img_path ='http://115.85.182.215:8000{imgUrl}'
-    img_path = imgUrl
-    img = image.load_img(img_path, target_size=(224, 224))
-    x = image.img_to_array(img)
-    x = np.expand_dims(x, axis=0)
-    x = preprocess_input(x)
-    features = model.predict(x)
-    print(features) 
+    # # img_path = 'C:\\Users\\he125\\OneDrive\\바탕 화면\\Dev\\Git\\inssa-food-client\\flaskServer\\tpk.jpg'
+    # # img_path ='http://115.85.182.215:8000{imgUrl}'
+    # img_path = imgUrl
+    # img = image.load_img(img_path, target_size=(224, 224))
+    # x = image.img_to_array(img)
+    # x = np.expand_dims(x, axis=0)
+    # x = preprocess_input(x)
+    # features = model.predict(x)
+    # print(features) 
 
-    print(type(features))
-    print(features)
-    # plt.imshow(features[0,:,:,3]) # 4번째 피쳐맵(특징)을 그려보자. cf. 0부터 시작하기에 4번째임.
-    return features[0]
+    # print(type(features))
+    # print(features)
+    # # plt.imshow(features[0,:,:,3]) # 4번째 피쳐맵(특징)을 그려보자. cf. 0부터 시작하기에 4번째임.
+    # return features[0]
 
 modelRun('/root/inssa-food/flaskServer/img_image21660548025317.jpg')
