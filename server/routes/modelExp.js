@@ -12,7 +12,7 @@ router.get("/", async (req, res, next) => {
     await axios
       .get(FLASK_SERVER + `/modelCall/${imgUrl.filename}`)
       .then((res) => {
-        console.log(res.resUrl);
+        console.log(res);
       });
     // await axios.get(FLASK_SERVER + `/modelCall`).then((res) => {
     //   console.log(res);
