@@ -6,9 +6,7 @@ print('Flask 가동')
 
 app = Flask(__name__)
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
-# app.run()
+
 
 
 
@@ -43,3 +41,7 @@ def sign_up():
     }
 
     return jsonify(response), 200
+
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000, debug=True)
