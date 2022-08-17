@@ -12,16 +12,14 @@ const foodInfoRouter = require("./routes/foodInfo");
 
 const imgRouter = require("./routes/img");
 
-
 const modelRouter = require("./routes/yeah");
-
 
 //
 const authMiddleware = require("./routes/auth");
 const app = express();
 
 // 1. DB 연결 및 연결관리
-mongoose.connect(`mongodb://localhost:${ports.db}/foodie`);
+mongoose.connect(`mongodb://115.85.182.215:27017/foodie`);
 
 mongoose.connection.on("connected", () => {
   console.log("[DB] CONNECT - success");
