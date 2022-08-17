@@ -14,7 +14,7 @@ app = Flask(__name__)
 
 @app.route("/modelCall", methods=['GET'])
 def modelCall():
-    imgUrl = './img_image21660548025317.jpg'
+    imgUrl = '/root/inssa-food/flaskServer/img_image21660548025317.jpg'
     print(imgUrl)
     print(type(imgUrl))
     print('Flask 가동')
