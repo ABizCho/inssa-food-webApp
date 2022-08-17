@@ -30,15 +30,6 @@ const Core = () => {
   };
 
   const onClickToResult = async (id) => {
-    await axios
-      .get(
-        urlPort.cloudServer + "8000/modelExp"
-        // , cookies.imgFile
-      )
-      .then((res) => {
-        console.log(res.data);
-      });
-
     const formData = new FormData();
     formData.append("file", imgFile);
     await axios
@@ -46,6 +37,12 @@ const Core = () => {
       .then((res) => {
         console.log(res.data);
         setCookie("imgFile", res.data.url);
+      });
+
+    await axios
+      .get(urlPort.cloudServer + "8000/modelExp", cookies.imgFile)
+      .then((res) => {
+        console.log(res.data);
       });
 
     navigate(`/resultinfo/${id}`);
