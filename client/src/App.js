@@ -22,6 +22,8 @@ import SignInForm from "./pages/user/components/SignInForm";
 
 //그냥 로그인
 import Login from "./pages/user/Login";
+import FindPassword from "./pages/user/components/FindPassword";
+import ResetPassword from "./pages/user/components/ResetPassword";
 
 function App() {
   return (
@@ -32,6 +34,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="login" element={<Login />} />
+        <Route path="login/findpassword" element={<FindPassword />} />
+        <Route path="login/resetpassword" element={<ResetPassword />} />
         <Route path="core" element={<Core />} />
         <Route path="resultInfo" >
         <Route path = ":id" element={<ResultInfo />} />

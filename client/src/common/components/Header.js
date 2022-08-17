@@ -3,6 +3,8 @@ import "./Header.css";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { Button } from "@mui/material";
+
 
 const Header = () => {
   // 야매:라우팅 권한관리로 개선되어야할 로직---------------
@@ -107,6 +109,15 @@ const Header = () => {
             >
               LogOut
             </button>
+            &nbsp;&nbsp;
+            <button
+            className="logIn-btn log-btn btn btn-secondary"
+            // startIcon={<googleLogo />}
+            variant="contained"
+            onClick={() => navigate('/login/resetpassword')}
+          >
+            Reset Password
+          </button>
           </div>
         )}
       </div>
