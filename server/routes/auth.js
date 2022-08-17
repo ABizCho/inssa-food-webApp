@@ -6,19 +6,21 @@ const { User } = require("./../models");
 const jwt = require("jsonwebtoken");
 const jwtConfig = require("./../config/jwtConfig");
 const restApiKey = require("./../secure_data/restApi");
-const portUrl = require("../portUrl.json");
+const urlPort = require("../portUrl.json");
 
 router.get("/kakao", async (req, res, next) => {
   const REST_API_KEY = "cf28dbb409df1bda73557662b941eda0";
-  const REDIRECT_URI = portUrl.cloudClient + "/oauth/kakao/callback";
+  const REDIRECT_URI =
+    portUrl.cloudServer + portUrl.client + "/oauth/kakao/callback";
   const KAKAO_CODE = req.query.code;
   // console.log(KAKAO_CODE);
 
   try {
     //4번
+    console.log("4번");
     await axios
       .post(
-        `https://kauth.kakao.com/oauth/token?grant_type=authorization_code&client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&code=${KAKAO_CODE}`,
+        `http://kauth.kakao.com/oauth/token?grant_type=authorization_code&client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&code=${KAKAO_CODE}`,
         {
           headers: {
             "Content-type": "application/x-www-form-urlencoded;charset=utf-8",
@@ -27,10 +29,11 @@ router.get("/kakao", async (req, res, next) => {
       )
       .then((getToken) => {
         //5번 -> 토큰가져온거.
-        // console.log(getToken.data.access_token);
+        console.log("5번");
+        console.log("받아온 토큰 : ", getToken.data.access_token);
         getKakaoUserData(getToken.data.access_token).then((userData) => {
           //가져온 유저정보가져와서 콘솔.
-          console.log(userData.data);
+          // console.log(userData.data);
 
           //user check 함수
           checkUserData(userData.data, res);

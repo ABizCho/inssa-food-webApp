@@ -9,14 +9,13 @@ const KakaoCallBack = () => {
   const [cookiesAuth, setCookieAuth, removeCookieAuth] = useCookies(["auth"]);
   const [cookies, setCookie, removeCookie] = useCookies(["userData"]);
 
-  const KAKAO_PARAMS = new urlPort(window.location.href).searchParams.get(
-    "code"
-  );
+  const KAKAO_PARAMS = new URL(window.location.href).searchParams.get("code");
 
   useEffect(() => {
-    //console.log(KAKAO_PARAMS);
+    console.log("2번, 인가코드 : ", KAKAO_PARAMS);
     sendCode()
       .then((res) => {
+        console.log("백으로부터 받음");
         console.log(res);
         if (res.data.login) {
           //true면 로그인 되어있는 상태
@@ -35,7 +34,6 @@ const KakaoCallBack = () => {
         navigate("/");
       });
   }, []);
-
   const sendCode = async () => {
     return await axios.get(urlPort.cloudServer + urlPort.node + `/auth/kakao`, {
       params: {
