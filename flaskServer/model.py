@@ -1,25 +1,26 @@
 import tensorflow 
-# from tensorflow.keras.applications.vgg19 import VGG19
-# from tensorflow.keras.preprocessing import image
-# from tensorflow.keras.applications.vgg19 import preprocess_input
-# from tensorflow.keras.models import Model
+from tensorflow.keras.applications.vgg19 import VGG19
+from tensorflow.keras.preprocessing import image
+from tensorflow.keras.applications.vgg19 import preprocess_input
+from tensorflow.keras.models import Model
 import matplotlib.pyplot as plt
 # import numpy as np
 import pandas as pd
 import numpy as np
 import requests
-import tensorflow_hub as hub
+# import tensorflow_hub as hub
 
 
 # 모델 불러오기
 def modelRun(imgUrl) :
-    # imgRes = requests.get(f"http://115.85.182.215:8000{imgUrl}")
+    imgRes = requests.get(f"http://115.85.182.215:8000{imgUrl}")
     
-    # model = tensorflow.keras.models.load_model('/root/inssa-food/flaskServer/foodie_vgg19_1_9075.h5')
-    mobile_net_url = 'https://tfhub.dev/google/tf2-preview/mobilenet_v2/classification/4'
-    model = tensorflow.keras.Sequential([
-    hub.KerasLayer(handle=mobile_net_url, input_shape=(224, 224, 3), trainable=False)
-    ])
+    model = tensorflow.keras.models.load_model('/root/inssa-food/flaskServer/foodie_vgg19_1_9075.h5')
+    
+    # mobile_net_url = 'https://tfhub.dev/google/tf2-preview/mobilenet_v2/classification/4'
+    # model = tensorflow.keras.Sequential([
+    # hub.KerasLayer(handle=mobile_net_url, input_shape=(224, 224, 3), trainable=False)
+    # ])
 
     model.summary()
 
