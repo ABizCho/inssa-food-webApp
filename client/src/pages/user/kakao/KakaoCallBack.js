@@ -37,7 +37,7 @@ const KakaoCallBack = () => {
   }, []);
 
   const sendCode = async () => {
-    return await axios.get(urlPort.server + `/auth/kakao`, {
+    return await axios.get(urlPort.cloudServer + urlPort.node + `/auth/kakao`, {
       params: {
         code: KAKAO_PARAMS,
       },

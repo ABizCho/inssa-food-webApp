@@ -6,11 +6,11 @@ const { User } = require("./../models");
 const jwt = require("jsonwebtoken");
 const jwtConfig = require("./../config/jwtConfig");
 const restApiKey = require("./../secure_data/restApi");
-const portUrl = require("../portUrl.json")
+const portUrl = require("../portUrl.json");
 
 router.get("/kakao", async (req, res, next) => {
   const REST_API_KEY = "cf28dbb409df1bda73557662b941eda0";
-  const REDIRECT_URI = portUrl.localClient + "/oauth/kakao/callback";
+  const REDIRECT_URI = portUrl.cloudClient + "/oauth/kakao/callback";
   const KAKAO_CODE = req.query.code;
   // console.log(KAKAO_CODE);
 
@@ -42,7 +42,9 @@ router.get("/kakao", async (req, res, next) => {
 });
 
 const checkUserData = async (userData, res) => {
-  const checkEmail = await User.findOne({ email: userData.kakao_account.email });
+  const checkEmail = await User.findOne({
+    email: userData.kakao_account.email,
+  });
 
   try {
     if (checkEmail) {
@@ -60,7 +62,9 @@ const checkUserData = async (userData, res) => {
         },
         (err, token) => {
           if (err) {
-            res.status(401).json({ status: false, message: "로그인을 해주세요." });
+            res
+              .status(401)
+              .json({ status: false, message: "로그인을 해주세요." });
           } else {
             res.json({
               login: true,
