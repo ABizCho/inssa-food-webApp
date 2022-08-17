@@ -16,6 +16,8 @@ if __name__ == "__main__":
 
 @app.route("/modelCall/<imgUrl>", methods=['GET'])
 def modelCall(imgUrl):
+    print(imgUrl)
+    print(type(imgUrl))
     print('Flask 가동')
     # res = {
     #     'probArr': modelRun(imgUrl)}
