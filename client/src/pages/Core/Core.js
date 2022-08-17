@@ -4,7 +4,7 @@ import "./Core.css";
 
 import $ from "jquery";
 import { useNavigate } from "react-router-dom";
-import { useCookies} from "react-cookie";
+import { useCookies } from "react-cookie";
 import axios from "axios";
 
 import urlPort from "../../data/urlPort.json";
@@ -13,7 +13,7 @@ const Core = () => {
   const navigate = useNavigate();
 
   const [imageURL, setImageURL] = useState(null);
-  const [cookieImg,setCookieImg] = useState(null);
+  const [cookieImg, setCookieImg] = useState(null);
   const imgRef = useRef();
 
   //쿠키 사용 준비
@@ -38,25 +38,24 @@ const Core = () => {
       .then((res) => {
         console.log(res.data);
         setCookie("imgFile", res.data.url);
-        setCookieImg(res.data.url)
+        setCookieImg(res.data.url);
         console.log("cookie-img1:", cookies.imgFile);
       });
-
-
-
-    
   };
-  
-  useEffect(
-    await axios
-    .get(urlPort.cloudServer + "8000/modelExp", { cookieImg: cookieImg })
-    .then((res) => {
-      console.log(res.data);
 
-      navigate(`/resultinfo/${id}`)
-    })
-    
-    ,[cookieImg])
+  useEffect(
+    () => {
+      axios
+        .get(urlPort.cloudServer + "8000/modelExp", { cookieImg: cookieImg })
+        .then((res) => {
+          console.log(res.data);
+
+          navigate(`/resultinfo/${1}`);
+        });
+    },
+
+    [cookieImg]
+  );
 
   // ---------------------
 
