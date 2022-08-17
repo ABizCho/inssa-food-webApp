@@ -19,7 +19,7 @@ const authMiddleware = require("./routes/auth");
 const app = express();
 
 // 1. DB 연결 및 연결관리
-mongoose.connect(`http://115.85.182.215:27017/foodie`);
+mongoose.connect(`mongodb://101.101.167.66:27017/foodie`);
 
 mongoose.connection.on("connected", () => {
   console.log("[DB] CONNECT - success");
