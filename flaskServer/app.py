@@ -15,7 +15,6 @@ if __name__ == "__main__":
 
 
 @app.route("/modelCall", methods=['GET'])
-
 def modelCall():
     imgUrl = './img_image21660548025317.jpg'
     print(imgUrl)
@@ -26,6 +25,12 @@ def modelCall():
     res = {
         'probArr': result}
     return jsonify(res), 200
+
+@app.route("/hello", methods=['GET'])
+def hello():
+    print("flask: helloWorld")
+    return 'helloWorld'
+
 
 @app.route("/sign-up", methods=['POST'])
 def sign_up():
