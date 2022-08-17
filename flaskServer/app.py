@@ -23,10 +23,10 @@ def modelCall(imgUrl):
     # res = {
     #     'resIndex': result}
     
-    res = {
-        'imgUrl': {imgUrl}
-    }
-    return jsonify(res), 200
+    # res = {
+    #     'imgUrl': {imgUrl}
+    # }
+    # return jsonify(res), 200
 
 # def modelCallTest(imgUrl):
 #     return escape(imgUrl)
