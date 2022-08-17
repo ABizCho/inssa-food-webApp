@@ -30,6 +30,10 @@ const Core = () => {
   };
 
   const onClickToResult = async (id) => {
+    await axios.get(urlPort.server + "/yeah").then((res) => {
+      console.log(res.data);
+    });
+
     const formData = new FormData();
     formData.append("file", imgFile);
     await axios.post(urlPort.cloudServer + "/api/upload", formData).then((res) => {
