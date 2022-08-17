@@ -12,7 +12,7 @@ app = Flask(__name__)
 
 
 
-@app.route("/modelCall", methods=['GET'])
+@app.route("/modelCall", methods=['GET','POST'])
 def modelCall():
     imgUrl = '/root/inssa-food/flaskServer/img_image21660548025317.jpg'
     print(imgUrl)

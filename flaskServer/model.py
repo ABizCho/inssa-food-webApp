@@ -14,7 +14,7 @@ import requests
 def modelRun(imgUrl) :
     # imgRes = requests.get(f"http://115.85.182.215:8000{imgUrl}")
     
-    model = tensorflow.keras.models.load_model('/root/inssa-food/flaskServer/foodie_vgg19_1_9075.h5')
+    model = tensorflow.keras.models.load_model('/root/inssa-food/flaskServer/foodie_mobilenet_1_65.h5')
     
     # mobile_net_url = 'https://tfhub.dev/google/tf2-preview/mobilenet_v2/classification/4'
     # model = tensorflow.keras.Sequential([
