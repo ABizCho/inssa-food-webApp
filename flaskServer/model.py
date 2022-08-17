@@ -34,8 +34,10 @@ def modelRun(imgUrl) :
     
     print(features) 
     print(type(features))
-    print(features[0])
+    tmp = max(features[0])
+    index = features[0].index(tmp)
+    print(index)
     # plt.imshow(features[0,:,:,3]) # 4번째 피쳐맵(특징)을 그려보자. cf. 0부터 시작하기에 4번째임.
-    return features[0]
+    return index
 
 modelRun('/root/inssa-food/flaskServer/img_image21660548025317.jpg')
