@@ -1,4 +1,4 @@
-import tensorflow as tf
+import tensorflow 
 from tensorflow.keras.applications.vgg19 import VGG19
 from tensorflow.keras.preprocessing import image
 from tensorflow.keras.applications.vgg19 import preprocess_input
