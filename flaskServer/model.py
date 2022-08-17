@@ -1,8 +1,8 @@
 import tensorflow as tf
-from tf.keras.applications.vgg19 import VGG19
-from tf.keras.preprocessing import image
-from tf.keras.applications.vgg19 import preprocess_input
-from tf.keras.models import Model
+from tensorflow.keras.applications.vgg19 import VGG19
+from tensorflow.keras.preprocessing import image
+from tensorflow.keras.applications.vgg19 import preprocess_input
+from tensorflow.keras.models import Model
 import matplotlib.pyplot as plt
 # import numpy as np
 import pandas as pd
@@ -14,7 +14,7 @@ import requests
 def modelRun(imgUrl) :
     # imgRes = requests.get(f"http://115.85.182.215:8000{imgUrl}")
     
-    model = tf.keras.models.load_model('C:\\Users\\he125\\OneDrive\\바탕 화면\\Dev\\Git\\inssa-food-client\\flaskServer\\foodie_vgg19_1_9075.h5')
+    model = tensorflow.keras.models.load_model('C:\\Users\\he125\\OneDrive\\바탕 화면\\Dev\\Git\\inssa-food-client\\flaskServer\\foodie_vgg19_1_9075.h5')
 
     model.summary()
 
