@@ -20,7 +20,7 @@ router.get("/kakao", async (req, res, next) => {
     console.log("4번");
     await axios
       .post(
-        `http://kauth.kakao.com/oauth/token?grant_type=authorization_code&client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&code=${KAKAO_CODE}`,
+        `https://kauth.kakao.com/oauth/token?grant_type=authorization_code&client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&code=${KAKAO_CODE}`,
         {
           headers: {
             "Content-type": "application/x-www-form-urlencoded;charset=utf-8",
