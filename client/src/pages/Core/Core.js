@@ -40,8 +40,10 @@ const Core = () => {
         console.log("cookie-img1:", cookies.imgFile);
       });
 
+    const cookieImg = cookies.imgFile;
+    console.log("cookieImg:", cookieImg);
     await axios
-      .get(urlPort.cloudServer + "8000/modelExp", cookies.imgFile)
+      .get(urlPort.cloudServer + "8000/modelExp", { cookieImg: cookieImg })
       .then((res) => {
         console.log(res.data);
       });
