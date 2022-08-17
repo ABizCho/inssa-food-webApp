@@ -5,7 +5,7 @@ const crypto = require("crypto");
 const { User } = require("../models/");
 const jwt = require("jsonwebtoken");
 const jwtConfig = require("./../config/jwtConfig");
-// const nodeMailer = require('nodemailer');
+const nodeMailer = require('nodemailer');
 
 router.post(
   "/signUp",
@@ -87,6 +87,31 @@ router.post(
     );
   })
 );
+
+
+//비밀번호 변경
+router.post("/reset", asyncHandler(
+ async (req, res, next) => {
+    const { email, password } = req.body;
+    let hashPassword = passwordHash(password);
+
+    console.log(email)
+
+    let user = await User.findOne({ email });
+
+    await User.findOneAndUpdate(
+      { shortId: user.shortId },
+      {
+        password: hashPassword,
+        status: true, //비밀번호가 변경이 되었다는것을 감지하기 위해 true를 작성
+      })
+
+    res.json({
+      result: "비밀번호가 변경되었습니다. 로그인을 해주세요.",
+    });
+  })
+)
+
 
 //비밀번호 찾기 : 2번
 router.post(

@@ -21,45 +21,81 @@ const Home = () => {
     <div className="home-container">
       <section className="Home_section1">
         <div className="leftSide" style={{ margin: "1.5rem" }}>
-          <h1>
-            Find out information about
-            <br /> the food with a picture.
+          <h1 className="intro-text">
+            Find out insights
+            <br /> about the food
+            <br /> with your picture.
           </h1>
           <span>
-            Learn about food info
+            Learn about food
             <br />
-            And how to order.
+            and how to order
+            <br />
+            <br />
+            keep your memory
+            <br />
+            in this safe archive.
           </span>
-          <button onClick={onClickStart} className="css-1hw9j7s" tabIndex="0" type="button">
+          <button
+            onClick={onClickStart}
+            className="css-1hw9j7s"
+            tabIndex="0"
+            type="button"
+          >
             Get started<span className="MuiTouchRipple-root"></span>
           </button>
         </div>
         <div className="rightSide" style={{ margin: "4.5rem" }}>
-          <img src={bibimbap} alt="비빔밥" style={{ height: "200px", width: "330px" }} />
+          <img
+            className="intro-img"
+            src={bibimbap}
+            alt="비빔밥"
+            style={{ height: "200px", width: "330px" }}
+          />
         </div>
       </section>
 
       <section className="Home_section2">
-        <h1>What is Learning Food?</h1>
+        <h1 className="what-text">
+          What is <br />
+          Inssa Food?
+        </h1>
         <p>
-          Learning food is an AI technology that tells you the name of Korean food <br />
-          When take a photo Korean food on a mobile device. surpport how to order food easily at a restaurant <br />
-          Even if you don't know Korean. You can also save your photos to a collection <br />
+          Inssa food is an AI technology that tells you the name of Korean food{" "}
+          <br />
+          <br />
+          When take a photo Korean food on a mobile device. surpport how to
+          order food easily at a restaurant <br />
+          <br />
+          Even if you don't know Korean. You can also save your photos to a
+          collection <br />
           and share your food history with your friends and family.
         </p>
 
         <div className="section2_ImageGroup">
           <div className="section2_eachItem">
             <span>01. Take a Photo</span>
-            <img src={TakeAPhoto} alt="사진없음" style={{ height: "200px", width: "200px" }} />
+            <img
+              src={TakeAPhoto}
+              alt="사진없음"
+              style={{ height: "200px", width: "200px" }}
+            />
           </div>
           <div className="section2_eachItem">
             <span>02. Learn korean foods</span>
-            <img src={LearnFood} alt="사진없음" style={{ height: "200px", width: "200px" }} />
+            <img
+              src={LearnFood}
+              alt="사진없음"
+              style={{ height: "200px", width: "200px" }}
+            />
           </div>
           <div className="section2_eachItem">
             <span>03. Fill up on food history</span>
-            <img src={CollectFood} alt="사진없음" style={{ height: "200px", width: "200px" }} />
+            <img
+              src={CollectFood}
+              alt="사진없음"
+              style={{ height: "200px", width: "200px" }}
+            />
           </div>
         </div>
       </section>

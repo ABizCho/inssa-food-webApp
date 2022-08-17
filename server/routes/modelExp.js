@@ -6,8 +6,10 @@ const portUrl = require("../portUrl");
 router.get("/", async (req, res, next) => {
   const FLASK_SERVER = portUrl.cloudServer + portUrl.flaskPort;
 
+  imgUrl = req.body;
+
   try {
-    await axios.get(FLASK_SERVER + "/hello").then((res) => {
+    await axios.get(FLASK_SERVER + `/modelCall/${imgUrl}`).then((res) => {
       console.log(res);
     });
   } catch (e) {

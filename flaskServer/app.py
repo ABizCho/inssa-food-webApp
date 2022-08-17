@@ -6,9 +6,11 @@ app = Flask(__name__)
 
 
 
-@app.route("/hello", methods=['GET'])
-def hello():
-  return "hello world"
+@app.route("/modelCall/<imgUrl>", methods=['GET'])
+def modelCall(imgUrl):
+    res = {
+        'probArr': modelRun(imgUrl)}
+    return jsonify(res), 200
 
 @app.route("/sign-up", methods=['POST'])
 def sign_up():

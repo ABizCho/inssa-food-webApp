@@ -12,16 +12,14 @@ const foodInfoRouter = require("./routes/foodInfo");
 
 const imgRouter = require("./routes/img");
 
-
-const modelRouter = require("./routes/yeah");
-
+const modelRouter = require("./routes/modelExp");
 
 //
 const authMiddleware = require("./routes/auth");
 const app = express();
 
 // 1. DB 연결 및 연결관리
-mongoose.connect(`mongodb://localhost:${ports.db}/foodie`);
+mongoose.connect(`mongodb://0.0.0.0:27017/foodie`);
 
 mongoose.connection.on("connected", () => {
   console.log("[DB] CONNECT - success");
@@ -51,7 +49,7 @@ app.use("/api", imgRouter);
 
 app.use("/uploads", express.static("uploads"));
 
-app.use("/yeah", modelRouter);
+app.use("/modelExp", modelRouter);
 
 // 4. 서버 구동
 app.listen(portUrl.node, () => {
