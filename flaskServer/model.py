@@ -4,7 +4,6 @@ from tensorflow.keras.preprocessing import image
 from tensorflow.keras.applications.vgg19 import preprocess_input
 from tensorflow.keras.models import Model
 import matplotlib.pyplot as plt
-# import numpy as np
 import pandas as pd
 import numpy as np
 import requests
@@ -13,7 +12,7 @@ import requests
 
 # 모델 불러오기
 def modelRun(imgUrl) :
-    imgRes = requests.get(f"http://115.85.182.215:8000{imgUrl}")
+    # imgRes = requests.get(f"http://115.85.182.215:8000{imgUrl}")
     
     model = tensorflow.keras.models.load_model('/root/inssa-food/flaskServer/foodie_vgg19_1_9075.h5')
     
