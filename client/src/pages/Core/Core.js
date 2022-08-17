@@ -31,7 +31,7 @@ const Core = () => {
 
   const onClickToResult = async (id) => {
 
-    await axios.get(urlPort.server + "/yeah").then((res) => {
+    await axios.get(urlPort.server + "/modelExp", cookies.imgFile).then((res) => {
       console.log(res.data);
     });
 
@@ -40,7 +40,7 @@ const Core = () => {
     await axios.post(urlPort.cloudServer + "/api/upload", formData).then((res) => {
 
       console.log(res.data);
-      setCookie("imgFile", res.data);
+      setCookie("imgFile", res.data.url);
     });
 
     navigate(`/resultinfo/${id}`);
