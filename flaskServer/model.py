@@ -1,8 +1,8 @@
 import tensorflow 
-from tensorflow.keras.applications.vgg19 import VGG19
-from tensorflow.keras.preprocessing import image
-from tensorflow.keras.applications.vgg19 import preprocess_input
-from tensorflow.keras.models import Model
+# from tensorflow.keras.applications.vgg19 import VGG19
+# from tensorflow.keras.preprocessing import image
+# from tensorflow.keras.applications.vgg19 import preprocess_input
+# from tensorflow.keras.models import Model
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
@@ -14,7 +14,7 @@ import requests
 def modelRun(imgUrl) :
     # imgRes = requests.get(f"http://115.85.182.215:8000{imgUrl}")
     
-    model = tensorflow.keras.models.load_model('/root/inssa-food/flaskServer/foodie_mobilenet_1_65.h5')
+    model = tensorflow.keras.models.load_model('/root/inssa-food/flaskServer/foodie_mobilenet_train_86_valid_76.h5')
     
     # mobile_net_url = 'https://tfhub.dev/google/tf2-preview/mobilenet_v2/classification/4'
     # model = tensorflow.keras.Sequential([
