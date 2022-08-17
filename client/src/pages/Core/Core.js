@@ -30,18 +30,20 @@ const Core = () => {
   };
 
   const onClickToResult = async (id) => {
-
-    await axios.get(urlPort.server + "/modelExp", cookies.imgFile).then((res) => {
-      console.log(res.data);
-    });
+    await axios
+      .get(urlPort.server + "/modelExp", cookies.imgFile)
+      .then((res) => {
+        console.log(res.data);
+      });
 
     const formData = new FormData();
     formData.append("file", imgFile);
-    await axios.post(urlPort.cloudServer + "/api/upload", formData).then((res) => {
-
-      console.log(res.data);
-      setCookie("imgFile", res.data.url);
-    });
+    await axios
+      .post(urlPort.cloudServer + "/api/upload", formData)
+      .then((res) => {
+        console.log(res.data);
+        setCookie("imgFile", res.data.url);
+      });
 
     navigate(`/resultinfo/${id}`);
   };

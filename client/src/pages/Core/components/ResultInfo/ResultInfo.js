@@ -96,7 +96,8 @@ const ResultInfo = () => {
           <div className="result-item img-box">
             <img
               className="result-item img"
-              src={urlPort.cloudServer + urlPort.node + cookies.imgFile.url}
+              src={urlPort.cloudServer + cookies.imgFile.url}
+
               alt="react"
             />
           </div>
