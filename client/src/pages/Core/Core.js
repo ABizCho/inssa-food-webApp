@@ -4,7 +4,7 @@ import "./Core.css";
 
 import $ from "jquery";
 import { useNavigate } from "react-router-dom";
-import { useCookies, useEffect } from "react-cookie";
+import { useCookies} from "react-cookie";
 import axios from "axios";
 
 import urlPort from "../../data/urlPort.json";
