@@ -63,18 +63,18 @@ const ResultInfo = () => {
     await navigate("/history/list");
   };
   const postHistoryData = async (historyInfo) => {
-    return await axios.post(urlPort.server + "/histories", historyInfo);
+    return await axios.post(urlPort.cloudServer + "/histories", historyInfo);
   };
 
   //유저 인풋(Title, Comment) 제외한 히스토리 정보 => onClickSaveHistory 실행시 인풋정보랑 합침!!!
   const historyInfoOne = {
-    img: urlPort.server + cookies.imgFile.url,
+    img: urlPort.cloudServer + cookies.imgFile.url,
     food: cookies.foodInfo,
     userId: cookies.userData.id,
   };
 
   const getFoodInfo = async () => {
-    return await axios.get(`${urlPort.server}/foodInfo/${params.id}/find`);
+    return await axios.get(`${urlPort.cloudServer}/foodInfo/${params.id}/find`);
   };
 
   return (
@@ -85,7 +85,7 @@ const ResultInfo = () => {
           <div className="result-item img-box">
             <img
               className="result-item img"
-              src={urlPort.server + cookies.imgFile.url}
+              src={urlPort.cloudServer + cookies.imgFile.url}
               alt="react"
               width={"200px"}
             />

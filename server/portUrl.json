@@ -1,0 +1,5 @@
+{
+  "localClient": "http://localhost:3000",
+  "cloudClient": "115.85.182.215",
+  "server": "http://101.101.167.66"
+}
