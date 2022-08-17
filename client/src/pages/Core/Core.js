@@ -37,12 +37,12 @@ const Core = () => {
       .then((res) => {
         console.log(res.data);
         setCookie("imgFile", res.data.url);
+        console.log("cookie-img1:", cookies.imgFile);
       });
 
     await axios
       .get(urlPort.cloudServer + "8000/modelExp", cookies.imgFile)
       .then((res) => {
-        console.log("client-imgFile:", cookies.imgFile);
         console.log(res.data);
       });
 
