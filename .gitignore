@@ -6,3 +6,6 @@
 
 #API KEY
 .env
+.jpg
+.h5
+foodie_vgg19_1_9075.h5

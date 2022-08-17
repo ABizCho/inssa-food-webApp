@@ -10,4 +10,5 @@ module.exports = new Schema({
   spicy: { type: Number, required: false },
   recipe_url: { type: Object, required: false },
   caution: Array,
+  sound_url: String,
 });

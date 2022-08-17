@@ -1,3 +1,4 @@
 {
-    "server": "http://localhost:8080"
+  "localServer": "http://localhost:8080",
+  "cloudServer": "http://101.101.167.66"
 }

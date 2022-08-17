@@ -64,7 +64,7 @@ const Header = () => {
                 onClick={() => {
                   navigate("/core");
                 }}
-                href="#"
+                href=""
                 className="nav-link px-2 text-white"
               >
                 Search
@@ -72,17 +72,17 @@ const Header = () => {
             </li>
             <li>
               <a
-                href="#"
+                href=""
                 className="nav-link px-2 text-white"
                 onClick={() => {
-                  navigate("/history");
+                  navigate("/history/list");
                 }}
               >
                 History
               </a>
             </li>
             <li>
-              <a href="#" className="nav-link px-2 text-white">
+              <a href="" onClick={()=> {navigate('about')}} className="nav-link px-2 text-white">
                 About
               </a>
             </li>

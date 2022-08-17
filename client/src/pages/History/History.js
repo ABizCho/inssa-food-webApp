@@ -57,14 +57,13 @@ const History = () => {
     console.log("history 접속");
     getHistoryData();
   }, []);
-  
 
   // 테스트용: 나중에 템플릿 리터럴로 user정보에 따른 get 가져오게 구현해야함
 
   const getHistoryData = () => {
     try {
       axios
-        .get(urlPort.server + "/histories", cookies.userData.id, {
+        .get(urlPort.cloudServer + "/histories", cookies.userData.id, {
           headers: {
             accessToken: cookies.userData.accessToken,
           },
@@ -118,21 +117,20 @@ const History = () => {
             responsive={responsive}
             transitionDuration={500}
           >
-            <div>
-              {historyData?.map((item, index) => {
-                console.log("map 실행:", item);
-                return (
-                  <HistoryCard
-                    key={index}
-                    id={item?.id}
-                    name={item?.name_Eng}
-                    food_img={item?.user_inputImg}
-                    desc={item?.description}
-                    colorIdx={index}
-                  />
-                );
-              })}
-            </div>
+            {historyData?.map((item, index) => {
+              console.log("map 실행:", item);
+              return (
+                <HistoryCard
+                  className="historyCard"
+                  key={index}
+                  id={item?.id}
+                  name={item?.name_Eng}
+                  food_img={item?.user_inputImg}
+                  desc={item?.description}
+                  colorIdx={index}
+                />
+              );
+            })}
           </Carousel>
         )}
       </div>
