@@ -1,6 +1,7 @@
 from model import modelRun
 
 from flask import Flask, jsonify, request
+from markupsafe import escape
 
 print('Flask 가동')
 
@@ -14,11 +15,8 @@ app = Flask(__name__)
 
 @app.route("/modelCall/<imgUrl>", methods=['GET','POST'])
 def modelCallTest(imgUrl):
-    print(imgUrl)
-    res = {
-        'resUrl': imgUrl
-    }
-    return jsonify(res), 200
+
+    return escape(imgUrl)
 
 # def modelCall(imgUrl):
 #     imgUrl = f'/root/inssa-food/flaskServer/{imgUrl}'
