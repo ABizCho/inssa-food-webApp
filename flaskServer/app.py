@@ -14,14 +14,18 @@ if __name__ == "__main__":
 
 
 
-@app.route("/modelCall/<imgUrl>", methods=['GET'])
-def modelCall(imgUrl):
+@app.route("/modelCall", methods=['GET'])
+
+def modelCall():
+    imgUrl = './img_image21660548025317.jpg'
     print(imgUrl)
     print(type(imgUrl))
     print('Flask 가동')
-    # res = {
-    #     'probArr': modelRun(imgUrl)}
-    # return jsonify(res), 200
+
+    result = modelRun(imgUrl)
+    res = {
+        'probArr': result}
+    return jsonify(res), 200
 
 @app.route("/sign-up", methods=['POST'])
 def sign_up():

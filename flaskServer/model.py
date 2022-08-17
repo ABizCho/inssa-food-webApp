@@ -24,7 +24,8 @@ def modelRun(imgUrl) :
     pd.reset_option('display.float_format')
 
     # img_path = 'C:\\Users\\he125\\OneDrive\\바탕 화면\\Dev\\Git\\inssa-food-client\\flaskServer\\tpk.jpg'
-    img_path ='http://115.85.182.215:8000{imgUrl}'
+    # img_path ='http://115.85.182.215:8000{imgUrl}'
+    img_path = imgUrl
     img = image.load_img(img_path, target_size=(224, 224))
     x = image.img_to_array(img)
     x = np.expand_dims(x, axis=0)
