@@ -15,7 +15,7 @@ const Core = () => {
   const [imageURL, setImageURL] = useState(null);
   const imgRef = useRef();
 
-  const [ foodResult, setFoodResult ] = useState('');
+  const [foodResult, setFoodResult] = useState("");
 
   //쿠키 사용 준비
   const [cookies, setCookie, removeCookie] = useCookies([
@@ -45,7 +45,6 @@ const Core = () => {
     const cookieImg = cookies.imgFile;
     console.log("cookieImg:", cookieImg);
 
-
     await axios
       .get(urlPort.cloudServer + `8000/modelExp${cookieImg}`)
       .then((res) => {
@@ -57,6 +56,7 @@ const Core = () => {
       console.log(foodResult);
       navigate(`/resultinfo/${foodResult}`);
     }, [foodResult])
+
 
   };
 

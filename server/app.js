@@ -35,8 +35,6 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// 정적 파일 허용
-app.use(express.static('uploads'));
 // 3. 라우팅
 app.use("/user", userRouter);
 
@@ -54,10 +52,7 @@ app.use("/uploads", express.static("uploads"));
 
 app.use("/modelExp", modelRouter);
 
-
-
 // 4. 서버 구동
 app.listen(portUrl.node, () => {
   console.log("[Server] OPEN - success");
 });
-
