@@ -63,11 +63,17 @@ const History = () => {
   const getHistoryData = () => {
     try {
       axios
-        .get(urlPort.server + "/histories", cookies.userData.id, {
-          headers: {
-            accessToken: cookies.userData.accessToken,
-          },
-        })
+
+        .get(
+          urlPort.cloudServer + urlPort.node + "/histories",
+          cookies.userData.id,
+          {
+            headers: {
+              accessToken: cookies.userData.accessToken,
+            },
+          }
+        )
+
         .then((res) => {
           console.log(res);
           setHistoryData(res.data.histories);
