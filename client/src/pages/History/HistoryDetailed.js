@@ -5,36 +5,43 @@ import { useCookies } from "react-cookie";
 
 import dummyData from "./data/dummyData"; // 백엔드 활성화시 제거
 import urlPort from "../../data/urlPort.json";
+import ReactAudioPlayer from "react-audio-player";
+import ReactPlayer from "react-player";
 
 const Detail = () => {
   //// 유저 및 history 백엔드까지 완성 시 활성화
   const params = useParams();
-
+  
   const [cookies, setCookie, removeCookie] = useCookies(["userData"]);
-
+  
   const [detailData, setDetailData] = useState({});
-
+  
   const navigate = useNavigate();
 
+
+  // const dispatch = useDispatch(); //action을 사용하기 위해 값을 보내주는 역할.
+
   useEffect(() => {
-    findDetailData().then((res) => {
-      // console.log(res);
-      setDetailData(res.data);
-    });
+
+      findDetailData().then(res => {
+          // console.log(res);
+          setDetailData({...res.data, recipie_url: ""});
+      });
   }, []);
 
+  useEffect(()=> {console.log("detailData 받아옴 : ", detailData)}, [detailData])
+
   const findDetailData = async () => {
-    // return await axios.get(urlPort.cloudServer + urlPort.node + `/histories/${params.id}/find`, {
-    //     headers: {
-    //         accessToken: cookies.userData.accessToken
-    //     }
-    // })
-    try {
-      axios
-        .get(
-          urlPort.cloudServer + urlPort.node + "/histories",
-          cookies.userData.id,
-          {
+
+      return await axios.get(urlPort.server + `/histories/${params.id}/find`, {
+          headers: {
+              accessToken: cookies.userData.accessToken
+          }
+      })
+      try {
+        axios
+          .get(urlPort.server + "/histories", cookies.userData.id, {
+
             headers: {
               accessToken: cookies.userData.accessToken,
             },
@@ -51,18 +58,63 @@ const Detail = () => {
   };
 
 
+  const deleteHistory =  async (shortId) => {
+    return await axios.get(`${urlPort.server}/histories/${shortId}/delete`, {headers: {accessToken: cookies.userData.accessToken}})
+  }
+
+  const onDeleteClick = (shortId) => {
+    if (window.confirm('삭제 하시겠습니까?')) {
+      //예
+      // console.log(shortId);
+      deleteHistory(shortId)
+        // .then(res => {
+        //   let getNewDeleteAfterData = historyData.filter(it => it.shortId !== shortId);
+        //   setHistoryData(getNewDeleteAfterData);
+        //   alert(res.data.result)})
+      navigate('/history/list')
+    } else {
+      //아니오
+
+    }
+  }
+
+  const onUpdateClick = (shortId) => {
+    const historyId = params.id
+    navigate(`/history/list/${historyId}/update`)
+  }
+
   return (
     // 구현 백엔드작업 때 상세구현 요망
     <div className="album">
       <div className="container">
+          <div className="result-item desc">
+            <span className="desc-title">description</span>
+            <div className="desc-content">{detailData.description}</div>
+          </div>
+          <div className="result-item spicy">spicy: {detailData.spicy}</div>
+          <div className="result-item caution">caution: {detailData.caution}</div>
+          <div className="result-item name_Eng">
+            English Name: {detailData.name_Eng}
+          </div>
+          <div className="result-item order_learn_audio">
+            <ReactAudioPlayer src={detailData.sound_url} autoPlay controls />
+          </div>
+          <div className="result-item order_learn_text">
+            🗣️: {detailData.order_learn_text}
+          </div>
+          <div>
+            RECIPE
+            <ReactPlayer
+              url={detailData.recipie_url}
+              controls
+              width={300}
+              height={300}
+            />
+          </div>
         <div className="card mb-3">
           <div className="card-img-top" style={{ textAlign: "center" }}>
 
-            <img
-              style={{ width: "100px", height: "100px" }}
-              src={dummyData.historyCard[0].food_img}
-              alt="..."
-            />
+            <img style={{width:"100px", height: "100px"}} src={detailData.user_inputImg} alt="..." />
 
           </div>
           <div className="card-body">
@@ -70,19 +122,17 @@ const Detail = () => {
             <p className="card-text"></p>
             <p className="card-text">
 
-              <small className="text-muted">
-                {dummyData.historyCard[0].food_img}
-              </small>
+              <small className="text-muted"></small>
 
             </p>
           </div>
         </div>
         <div className="mb-3">
           <label htmlFor="title" className="form-label">
-            이름
+            Title
           </label>
           <div className="card">
-            <p className="card-body">{dummyData.historyCard[0].name}</p>
+            <p className="card-body">{detailData.title}</p>
           </div>
         </div>
         <div className="mb-3">
@@ -90,7 +140,7 @@ const Detail = () => {
             내용
           </label>
           <div className="card">
-            <p className="card-body">{dummyData.historyCard[0].desc}</p>
+            <p className="card-body">{detailData.comment}</p>
           </div>
         </div>
         <button
@@ -102,6 +152,9 @@ const Detail = () => {
         >
           뒤로가기
         </button>
+
+        <button onClick={onDeleteClick}>Delete</button>
+        <button onClick={onUpdateClick}>Update</button>
       </div>
     </div>
   );
