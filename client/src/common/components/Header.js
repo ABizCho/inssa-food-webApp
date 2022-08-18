@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { Button } from "@mui/material";
 
-
 const Header = () => {
   // 야매:라우팅 권한관리로 개선되어야할 로직---------------
   const [cookies, setCookie, removeCookie] = useCookies(["userData"]);
@@ -84,7 +83,9 @@ const Header = () => {
               </span>
             </li>
             <li>
+
               <span href="" onClick={()=> {navigate('about')}} className="nav-link px-2 text-white">
+
                 About
               </span>
             </li>
@@ -94,30 +95,24 @@ const Header = () => {
       <div className="logBtn-box text-end">
         {cookies.userData === undefined ? (
           <div className="logTrue-box">
-            <button
-              onClick={onClickLogin}
-              className="logIn-btn log-btn btn btn-secondary "
-            >
+            <button onClick={onClickLogin} className="logIn-btn log-btn btn btn-secondary ">
               Login
             </button>
           </div>
         ) : (
           <div className="logFalse-box">
-            <button
-              className="signUp-btn log-btn btn btn-outline-secondary"
-              onClick={onClickLogOut}
-            >
+            <button className="signUp-btn log-btn btn btn-outline-secondary" onClick={onClickLogOut}>
               LogOut
             </button>
             &nbsp;&nbsp;
             <button
-            className="logIn-btn log-btn btn btn-secondary"
-            // startIcon={<googleLogo />}
-            variant="contained"
-            onClick={() => navigate('/login/resetpassword')}
-          >
-            Reset Password
-          </button>
+              className="logIn-btn log-btn btn btn-secondary"
+              // startIcon={<googleLogo />}
+              variant="contained"
+              onClick={() => navigate("/login/resetpassword")}
+            >
+              Reset Password
+            </button>
           </div>
         )}
       </div>

@@ -13,7 +13,9 @@ const Core = () => {
   const navigate = useNavigate();
 
   const [imageURL, setImageURL] = useState(null);
-  const imgRef = useRef();
+
+  const [foodResult, setFoodResult] = useState("");
+  const [imgFile, setImgFile] = useState("");
 
   //쿠키 사용 준비
   const [cookies, setCookie, removeCookie] = useCookies(["inputImage", "imgFile"]);
@@ -26,66 +28,89 @@ const Core = () => {
     setImageURL(imgURL);
   };
 
-  const onClickToResult = async (id) => {
+  const onClickToResult = async () => {
     const formData = new FormData();
     formData.append("file", imgFile);
-    await axios.post(urlPort.cloudServer + urlPort.node + "/api/upload", formData).then((res) => {
-      console.log(res.data);
-      setCookie("imgFile", res.data.url);
-      console.log("cookie-img1:", cookies.imgFile);
-    });
+    await axios
+      .post(urlPort.cloudServer + urlPort.node + "/api/upload", formData)
+      .then((res) => {
+        console.log("modelExp 이후 res : ", res.data);
+        setCookie("imgFile", res.data.url);
+        console.log("cookie-img1:", cookies.imgFile);
+      });
 
     const cookieImg = cookies.imgFile;
     console.log("cookieImg:", cookieImg);
 
-    await axios.get(urlPort.cloudServer + `8000/modelExp${cookieImg}`).then((res) => {
-      console.log(res.data.url);
-    });
-
-    navigate(`/resultinfo/${id}`);
+    await axios
+      .get(urlPort.cloudServer + `8000/modelExp${cookieImg}`)
+      .then((res) => {
+        console.log("res.data.resIndex : ", res.data.resIndex);
+        let foodRes = res.data.resIndex;
+        setFoodResult(res.data.resIndex);
+        // navigate(`/resultinfo/${foodResult}`);
+        navigate(`/resultinfo/${foodRes}`);
+      });
   };
 
-  // ---------------------
+  useEffect(() => {
+    setCookie("imgFile", imgFile);
+  }, [imgFile]);
 
-  const [imgFile, setImgFile] = useState("");
+  useEffect(() => {
+    console.log("foodResult : ", foodResult);
+  }, [foodResult]);
+
+  // ---------------------
 
   return (
     <div className="full-container">
       <div className="content-container-row">
         <h2 className="title">Find your food</h2>
-        <div className="top-container">
-          <div style={{ width: "100%", border: "0", padding: "0" }}>
-            <div className="form-container">
-              <input type="hidden" name="menu" value="upload" />
-              <input type="hidden" name="gofile" value="nion" />
-              <input type="hidden" name="service" value="on" />
-              <input type="hidden" name="session_id" value="clicm02ddg1or9rjelucajj4p6" />
+        <span className="title-sub-txt">Put your food image in this box</span>
+      </div>
 
-              <p className="text-notice" align="center">
-                <span className="">Put your food image in this box</span>
-              </p>
-              {imageURL && (
-                <img
-                  alt="sample"
-                  id="imgPreview"
-                  // ref={imgRef}
-                  src={imageURL}
-                  style={{ margin: "auto", width: "224px", height: "224px" }}
-                />
-              )}
-              <input type="file" onChange={onChangeImg} accept="image/*" />
+      <div className="top-container">
+        <div style={{ width: "100%", border: "0", padding: "0" }}>
+          <div className="form-container">
+            <input type="hidden" name="menu" value="upload" />
+            <input type="hidden" name="gofile" value="nion" />
+            <input type="hidden" name="service" value="on" />
+            <input
+              type="hidden"
+              name="session_id"
+              value="clicm02ddg1or9rjelucajj4p6"
+            />
 
-              <button
-                onClick={() => {
-                  onClickToResult(8);
-                }}
-                className="btn btn-danger btn-block"
-                id="formsend"
-              >
-                <i className="func-btn fas fa-webcam" aria-hidden="true"></i>
-                Discover
-              </button>
-            </div>
+            <p className="text-notice" align="center"></p>
+            {imageURL && (
+              <img
+                className="selected-img"
+                alt="sample"
+                id="imgPreview"
+                // ref={imgRef}
+                src={imageURL}
+                style={{ margin: "auto", width: "224px", height: "224px" }}
+              />
+            )}
+            <button type="button" className="upload-btn">
+              Upload
+              <input
+                className="fileSelect-btn"
+                type="file"
+                onChange={onChangeImg}
+                accept="image/*"
+              />
+            </button>
+            <button
+              onClick={onClickToResult}
+              className="btn btn-danger btn-block"
+              id="formsend"
+            >
+              <i className="func-btn fas fa-webcam" aria-hidden="true"></i>
+              Discover
+            </button>
+          </div>
 
             <div className="demo-container">
               <h2 className="title">Demo</h2>
