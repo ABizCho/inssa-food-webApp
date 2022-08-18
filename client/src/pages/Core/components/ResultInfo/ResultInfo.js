@@ -21,35 +21,38 @@ const ResultInfo = () => {
   };
 
   const navigate = useNavigate();
-
   //params
   const params = useParams();
 
-  //state
-  const [foodInfo, setFoodInfo] = useState({});
+  const [foodInfo, setFoodInfo] = useState(null);
   const [historyInput, setHistoryInput] = useState({
     title: "",
     comment: "",
   });
 
-  //쿠키 사용 준비
 
-  const [cookies, setCookie, removeCookie] = useCookies(["inputImage", "foodInfo", "imgFile"]);
+  const [cookies, setCookie, removeCookie] = useCookies([
+    "inputImage",
+    "foodInfo",
+    "imgFile",
+  ]);
+
 
   useEffect(() => {
-    console.log("params.id : ", params.id);
-    console.log("imgFile:", cookies.imgFile.url);
-    // getImgFile().then((res))
     getFoodInfo().then((res) => {
-      console.log("res:", res);
+
+      console.log("getFoodInfo res:", res);
       setFoodInfo(res.data.food);
     });
   }, []);
 
-  useEffect(() => {
-    setCookie("foodInfo", foodInfo);
-    console.log("foodInfo", foodInfo);
-  }, [foodInfo]);
+
+  const getFoodInfo = async () => {
+    return await axios.get(
+      `${urlPort.cloudServer + urlPort.node}/foodInfo/${params.id}/find`
+    );
+  };
+
 
   //HistoryInput 변하면 console 찍기
   useEffect(() => {
@@ -61,13 +64,19 @@ const ResultInfo = () => {
       ...historyInfoOne,
       title: historyInput.title,
       comment: historyInput.comment,
+      // email:
     };
 
     await postHistoryData(historyInfo);
     await navigate("/history/list");
   };
   const postHistoryData = async (historyInfo) => {
-    return await axios.post(urlPort.cloudServer + urlPort.node + "/histories", historyInfo);
+
+    return await axios.post(
+      urlPort.cloudServer + urlPort.node + "/histories",
+      historyInfo
+    );
+
   };
 
   //유저 인풋(Title, Comment) 제외한 히스토리 정보 => onClickSaveHistory 실행시 인풋정보랑 합침!!!
@@ -75,15 +84,14 @@ const ResultInfo = () => {
     img: urlPort.cloudServer + cookies.imgFile.url,
 
     food: cookies.foodInfo,
-    userId: cookies.userData.id,
-  };
 
-  const getFoodInfo = async () => {
-    return await axios.get(`${urlPort.cloudServer + urlPort.node}/foodInfo/${params.id}/find`);
+    userId: cookies.userData.email,
+    // recipie_url: cookies.foodInfo.recipie_url
   };
 
   return (
     <div className="resultInfo-container">
+
       <p className="title">Food Infomation</p>
       <div className="result-container">
         <div className="item-container">
@@ -147,6 +155,7 @@ const ResultInfo = () => {
           />
         </div>
       </div>
+
       <div className="btn-container">
         <Button className="btn-item" variant="contained" endIcon={<SendIcon />} onClick={onClickSaveHistory}>
           Save History

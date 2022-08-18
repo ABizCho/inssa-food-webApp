@@ -9,12 +9,12 @@ import numpy as np
 # import requests
 # import tensorflow_hub as hub
 
+model = tensorflow.keras.models.load_model('/root/inssa-food/flaskServer/foodie_mobilenet_88_25.h5')
 
 # 모델 불러오기
 def modelRun(imgUrl) :
     # imgRes = requests.get(f"http://115.85.182.215:8000{imgUrl}")
     
-    model = tensorflow.keras.models.load_model('/root/inssa-food/flaskServer/foodie_mobilenet_256_128_DO2.h5')
 
     print(model.summary())
 
@@ -24,7 +24,9 @@ def modelRun(imgUrl) :
     pd.reset_option('display.float_format')
     print('이미지경로잡기 직전')
     # img_path ='http://115.85.182.215:8000{imgUrl}'
-    img_path = f"http://115.85.182.215:8000/uploads/{imgUrl}"
+
+    img_path = "/root/inssa-food/server/uploads/"+imgUrl
+
     img = image.load_img(img_path, target_size=(224, 224))
     x = image.img_to_array(img)
     x = np.expand_dims(x, axis=0)

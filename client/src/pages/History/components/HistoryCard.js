@@ -4,25 +4,39 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "./HistoryCard.css";
+
 
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
+import { useCookies } from "react-cookie";
+import urlPort from './../../../data/urlPort.json'
 
 import $ from "jquery";
-
+import axios from "axios";
 const HistoryCard = (props) => {
-  const { id, name, food_img, desc, colorIdx } = props;
+  const { id, name, food_img, desc, colorIdx, history_card_id } = props;
 
   const navigate = useNavigate();
 
+  const params = useParams();
+
   const cardPalette = ["#ffca80", "#ffb54d", "#f08000", "#ffb54d"];
 
-  const onClickDetail = (id) => {
-    navigate(`history/${id}/detail`);
+  const onClickDetail = () => {
+    navigate(`${history_card_id}/detail`);
   };
   console.log(name);
+
+  
+
+  const onClickUpdateHistory = async (id) => {
+    await axios.post('/histories/update', () => {
+      
+    })
+  }
+
   return (
     <Card
       sx={{
@@ -42,7 +56,9 @@ const HistoryCard = (props) => {
         </Typography>
       </CardContent>
 
+
       <Button className="detail_button" color="primary" onClick={onClickDetail}>
+
         Detail
       </Button>
 

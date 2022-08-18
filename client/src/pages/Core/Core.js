@@ -13,7 +13,9 @@ const Core = () => {
   const navigate = useNavigate();
 
   const [imageURL, setImageURL] = useState(null);
-  const imgRef = useRef();
+
+  const [foodResult, setFoodResult] = useState("");
+  const [imgFile, setImgFile] = useState("");
 
   //쿠키 사용 준비
   const [cookies, setCookie, removeCookie] = useCookies([
@@ -29,13 +31,13 @@ const Core = () => {
     setImageURL(imgURL);
   };
 
-  const onClickToResult = async (id) => {
+  const onClickToResult = async () => {
     const formData = new FormData();
     formData.append("file", imgFile);
     await axios
       .post(urlPort.cloudServer + urlPort.node + "/api/upload", formData)
       .then((res) => {
-        console.log(res.data);
+        console.log("modelExp 이후 res : ", res.data);
         setCookie("imgFile", res.data.url);
         console.log("cookie-img1:", cookies.imgFile);
       });
@@ -43,18 +45,27 @@ const Core = () => {
     const cookieImg = cookies.imgFile;
     console.log("cookieImg:", cookieImg);
 
-    // await axios
-    //   .get(urlPort.cloudServer + `8000/modelExp${cookieImg}`)
-    //   .then((res) => {
-    //     console.log(res.data.url);
-    //   });
 
-    navigate(`/resultinfo/${id}`);
+    await axios
+      .get(urlPort.cloudServer + `8000/modelExp${cookieImg}`)
+      .then((res) => {
+        console.log("res.data.resIndex : ", res.data.resIndex);
+        let foodRes = res.data.resIndex;
+        setFoodResult(res.data.resIndex);
+        // navigate(`/resultinfo/${foodResult}`);
+        navigate(`/resultinfo/${foodRes}`);
+      });
   };
 
-  // ---------------------
+  useEffect(() => {
+    setCookie("imgFile", imgFile);
+  }, [imgFile]);
 
-  const [imgFile, setImgFile] = useState("");
+  useEffect(() => {
+    console.log("foodResult : ", foodResult);
+  }, [foodResult]);
+
+  // ---------------------
 
   return (
     // <div className="full-container">
@@ -97,9 +108,7 @@ const Core = () => {
               />
             </button>
             <button
-              onClick={() => {
-                onClickToResult(1);
-              }}
+              onClick={onClickToResult}
               className="btn btn-danger btn-block"
               id="formsend"
             >
