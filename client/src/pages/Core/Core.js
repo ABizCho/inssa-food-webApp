@@ -16,7 +16,6 @@ const Core = () => {
   const imgRef = useRef();
 
   const [foodResult, setFoodResult] = useState("");
-  const [isOk, setIsOk] = useState(false);
 
   //쿠키 사용 준비
   const [cookies, setCookie, removeCookie] = useCookies([
@@ -51,6 +50,7 @@ const Core = () => {
       .then((res) => {
         console.log("res.data.resIndex : ", res.data.resIndex);
         setFoodResult(res.data.resIndex);
+        navigate(`/resultinfo/${foodResult}`);
       });
 
     };
@@ -61,12 +61,8 @@ const Core = () => {
 
     useEffect(()=> {
       console.log("foodResult : ", foodResult);
-      setIsOk(!isOk)
     }, [foodResult])
 
-    useEffect(() => {
-      navigate(`/resultinfo/${foodResult}`);
-    },[isOk])
 
   // ---------------------
 
