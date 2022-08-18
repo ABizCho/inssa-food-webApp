@@ -49,7 +49,7 @@ const ResultInfo = () => {
   };
 
   // useEffect(() => {
-  //   setCookie("foodInfo", foodInfo);
+  setCookie("foodInfo", foodInfo);
   //   console.log("cookie에 있는 foodInfo : ", foodInfo);
   // }, [foodInfo]);
 
@@ -78,7 +78,7 @@ const ResultInfo = () => {
 
   //유저 인풋(Title, Comment) 제외한 히스토리 정보 => onClickSaveHistory 실행시 인풋정보랑 합침!!!
   const historyInfoOne = {
-    img: urlPort.cloudServer + cookies.imgFile.url,
+    img: urlPort.cloudServer + cookies.imgFile,
 
     food: cookies.foodInfo,
     userId: cookies.userData.email,
