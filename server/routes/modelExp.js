@@ -16,7 +16,7 @@ router.get("/uploads/:imgUrl", async (req, res, next) => {
     await axios.get(FLASK_SERVER + `/modelCall/${imgUrl}`).then((res) => {
       console.log("flask로부터 받은 응답:", res);
       console.log("res.data : ", res.data);
-      modelResult = res.data.resIndex;
+      modelResult = res.data;
     });
     // await axios.get(FLASK_SERVER + `/modelCall`).then((res) => {
       // });
