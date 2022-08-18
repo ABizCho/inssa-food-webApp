@@ -17,6 +17,7 @@ router.get("/uploads/:imgUrl", async (req, res, next) => {
     //   console.log(res);
     // });
   } catch (e) {
+    console.log(e);
     next(e);
   }
 });
