@@ -13,6 +13,12 @@ import ReactAudioPlayer from "react-audio-player";
 import ReactPlayer from "react-player";
 
 const ResultInfo = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const onClickRecipe = () => {
+    setIsOpen(!isOpen);
+  };
+
   const navigate = useNavigate();
   //params
   const params = useParams();
@@ -89,38 +95,63 @@ const ResultInfo = () => {
           <div className="result-container">
             <div className="item-container">
               <div className="result-item img-box">
+                {/* <img className="result-item img" src={urlPort.cloudServer + cookies.imgFile.url} alt="react" /> */}
                 <img
                   className="result-item img"
-                  src={urlPort.cloudServer + cookies.imgFile.url}
+                  src={"./foodbackground.jpg"}
                   alt="react"
                 />
               </div>
               <div className="result-item name">
-                <h1>{"name"}</h1>
+                <h1 className="korean_food_name">{"Galbi-jjim"}</h1>
               </div>
-              <div className="result-item spicy">spicy: {foodInfo.spicy}</div>
-              <div className="result-item caution">
-                caution: {foodInfo.caution}
-              </div>
-              <div className="result-item name_Eng">
-                English Name: {foodInfo.name_Eng}
+              <div className="simple_list">
+                <div className="result-item spicy"> 🌶️ ✖️ {foodInfo.spicy}</div>
+                <div className="result-item caution">
+                  caution <br />{" "}
+                  <div className="foodinfo_caution"> {foodInfo.caution}</div>
+                </div>
+                <div className="result-item name_Eng">{foodInfo.name_Eng}</div>
               </div>
               <div className="result-item order_learn_audio">
-                <ReactAudioPlayer src={foodInfo.sound_url} autoPlay controls />
+                <ReactAudioPlayer
+                  className="audio_player"
+                  src={foodInfo.sound_url}
+                  autoPlay
+                  controls
+                />
               </div>
               <div className="result-item order_learn_text">
                 🗣️: {foodInfo.order_learn_text}
               </div>
+
+              <div className="result-item desc">
+                <span className="desc-title">Description</span>
+                <div className="desc-content">{foodInfo.description}</div>
+              </div>
+            </div>
+
+            <div className="recipe_video" style={{ alignItems: "center" }}>
+              <br />
               <div>
                 RECIPE
-                <ReactPlayer
-                  className="video-player"
-                  url={foodInfo.recipie_url}
-                  controls
-                  width={300}
-                  height={300}
-                />
+                <button onClick={onClickRecipe} className="recipe_button">
+                  Click
+                </button>
               </div>
+              {isOpen ? (
+                <>
+                  <ReactPlayer
+                    className="video-player"
+                    url={foodInfo.recipie_url}
+                    controls
+                    width={340}
+                    height={340}
+                  />
+                </>
+              ) : (
+                <></>
+              )}
 
               <div className="result-item desc">
                 <span className="desc-title">description</span>
