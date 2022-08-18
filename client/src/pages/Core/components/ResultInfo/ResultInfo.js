@@ -32,7 +32,7 @@ const ResultInfo = () => {
   useEffect(() => {
     getFoodInfo().then((res) => {
       console.log("getFoodInfo res:", res);
-      setFoodInfo(res.data.food);
+      setFoodInfo(res.data);
     });
   }, []);
 
