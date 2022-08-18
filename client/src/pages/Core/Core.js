@@ -49,8 +49,10 @@ const Core = () => {
       .get(urlPort.cloudServer + `8000/modelExp${cookieImg}`)
       .then((res) => {
         console.log("res.data.resIndex : ", res.data.resIndex);
+        let foodRes = res.data.resIndex;
         setFoodResult(res.data.resIndex);
-        navigate(`/resultinfo/${foodResult}`);
+        // navigate(`/resultinfo/${foodResult}`);
+        navigate(`/resultinfo/${foodRes}`);
       });
   };
 
