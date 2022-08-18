@@ -52,13 +52,14 @@ const Core = () => {
         setFoodResult(res.data.resIndex);
       });
 
+    };
+
+    useEffect(()=>{}, []);
+
     useEffect(()=> {
       console.log("foodResult : ", foodResult);
-      navigate(`/resultinfo/${foodResult}`);
+      // navigate(`/resultinfo/${foodResult}`);
     }, [foodResult])
-
-
-  };
 
   // ---------------------
 
