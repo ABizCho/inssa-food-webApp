@@ -27,11 +27,7 @@ const ResultInfo = () => {
 
   //쿠키 사용 준비
 
-  const [cookies, setCookie, removeCookie] = useCookies([
-    "inputImage",
-    "foodInfo",
-    "imgFile",
-  ]);
+  const [cookies, setCookie, removeCookie] = useCookies(["inputImage", "foodInfo", "imgFile"]);
 
   useEffect(() => {
     console.log("params.id : ", params.id);
@@ -64,13 +60,8 @@ const ResultInfo = () => {
     await navigate("/history/list");
   };
   const postHistoryData = async (historyInfo) => {
-
-    return await axios.post(
-      urlPort.cloudServer + urlPort.node + "/histories",
-      historyInfo
-    );
+    return await axios.post(urlPort.cloudServer + urlPort.node + "/histories", historyInfo);
   };
-
 
   //유저 인풋(Title, Comment) 제외한 히스토리 정보 => onClickSaveHistory 실행시 인풋정보랑 합침!!!
   const historyInfoOne = {
@@ -81,11 +72,7 @@ const ResultInfo = () => {
   };
 
   const getFoodInfo = async () => {
-
-    return await axios.get(
-      `${urlPort.cloudServer + urlPort.node}/foodInfo/${params.id}/find`
-    );
-
+    return await axios.get(`${urlPort.cloudServer + urlPort.node}/foodInfo/${params.id}/find`);
   };
 
   return (
@@ -94,36 +81,21 @@ const ResultInfo = () => {
       <div className="result-container">
         <div className="item-container">
           <div className="result-item img-box">
-            <img
-              className="result-item img"
-              src={urlPort.cloudServer + cookies.imgFile.url}
-
-              alt="react"
-            />
+            <img className="result-item img" src={urlPort.cloudServer + cookies.imgFile.url} alt="react" />
           </div>
           <div className="result-item name">
             <h1>{"name"}</h1>
           </div>
           <div className="result-item spicy">spicy: {foodInfo.spicy}</div>
           <div className="result-item caution">caution: {foodInfo.caution}</div>
-          <div className="result-item name_Eng">
-            English Name: {foodInfo.name_Eng}
-          </div>
+          <div className="result-item name_Eng">English Name: {foodInfo.name_Eng}</div>
           <div className="result-item order_learn_audio">
             <ReactAudioPlayer src={foodInfo.sound_url} autoPlay controls />
           </div>
-          <div className="result-item order_learn_text">
-            🗣️: {foodInfo.order_learn_text}
-          </div>
+          <div className="result-item order_learn_text">🗣️: {foodInfo.order_learn_text}</div>
           <div>
             RECIPE
-            <ReactPlayer
-              className="video-player"
-              url={foodInfo.recipie_url}
-              controls
-              width={300}
-              height={300}
-            />
+            <ReactPlayer className="video-player" url={foodInfo.recipie_url} controls width={300} height={300} />
           </div>
 
           <div className="result-item desc">
@@ -151,12 +123,7 @@ const ResultInfo = () => {
         </div>
       </div>
       <div className="btn-container">
-        <Button
-          className="btn-item"
-          variant="contained"
-          endIcon={<SendIcon />}
-          onClick={onClickSaveHistory}
-        >
+        <Button className="btn-item" variant="contained" endIcon={<SendIcon />} onClick={onClickSaveHistory}>
           Save History
         </Button>
 

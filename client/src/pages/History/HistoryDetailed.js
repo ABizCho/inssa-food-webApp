@@ -31,15 +31,11 @@ const Detail = () => {
     // })
     try {
       axios
-        .get(
-          urlPort.cloudServer + urlPort.node + "/histories",
-          cookies.userData.id,
-          {
-            headers: {
-              accessToken: cookies.userData.accessToken,
-            },
-          }
-        )
+        .get(urlPort.cloudServer + urlPort.node + "/histories", cookies.userData.id, {
+          headers: {
+            accessToken: cookies.userData.accessToken,
+          },
+        })
         .then((res) => {
           console.log(res);
           // setHistoryData(res.data.histories);
@@ -50,30 +46,19 @@ const Detail = () => {
     }
   };
 
-
   return (
     // 구현 백엔드작업 때 상세구현 요망
     <div className="album">
       <div className="container">
         <div className="card mb-3">
           <div className="card-img-top" style={{ textAlign: "center" }}>
-
-            <img
-              style={{ width: "100px", height: "100px" }}
-              src={dummyData.historyCard[0].food_img}
-              alt="..."
-            />
-
+            <img style={{ width: "100px", height: "100px" }} src={dummyData.historyCard[0].food_img} alt="..." />
           </div>
           <div className="card-body">
             <h5 className="card-title"></h5>
             <p className="card-text"></p>
             <p className="card-text">
-
-              <small className="text-muted">
-                {dummyData.historyCard[0].food_img}
-              </small>
-
+              <small className="text-muted">{dummyData.historyCard[0].food_img}</small>
             </p>
           </div>
         </div>
