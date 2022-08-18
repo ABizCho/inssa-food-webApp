@@ -16,6 +16,7 @@ const Core = () => {
   const imgRef = useRef();
 
   const [foodResult, setFoodResult] = useState("");
+  const [isOk, setIsOk] = useState(false);
 
   //쿠키 사용 준비
   const [cookies, setCookie, removeCookie] = useCookies([
@@ -38,7 +39,7 @@ const Core = () => {
       .post(urlPort.cloudServer + urlPort.node + "/api/upload", formData)
       .then((res) => {
         console.log("modelExp 이후 res : ", res.data);
-        setCookie("imgFile", res.data.url);
+        // setCookie("imgFile", res.data.url);
         console.log("cookie-img1:", cookies.imgFile);
       });
 
@@ -54,12 +55,18 @@ const Core = () => {
 
     };
 
-    useEffect(()=>{setCookie("imgFile", imgFile)}, [imgFile]);
+    useEffect(()=>{
+      setCookie("imgFile", imgFile)
+    }, [imgFile]);
 
     useEffect(()=> {
       console.log("foodResult : ", foodResult);
-      // navigate(`/resultinfo/${foodResult}`);
+      setIsOk(!isOk)
     }, [foodResult])
+
+    useEffect(() => {
+      navigate(`/resultinfo/${foodResult}`);
+    },[isOk])
 
   // ---------------------
 
