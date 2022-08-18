@@ -45,6 +45,7 @@ const Core = () => {
     const cookieImg = cookies.imgFile;
     console.log("cookieImg:", cookieImg);
 
+
     await axios
       .get(urlPort.cloudServer + `8000/modelExp${cookieImg}`)
       .then((res) => {

@@ -64,15 +64,11 @@ const History = () => {
     try {
       axios
 
-        .get(
-          urlPort.cloudServer + urlPort.node + "/histories",
-          cookies.userData.id,
-          {
-            headers: {
-              accessToken: cookies.userData.accessToken,
-            },
-          }
-        )
+        .get(urlPort.cloudServer + urlPort.node + "/histories", cookies.userData.id, {
+          headers: {
+            accessToken: cookies.userData.accessToken,
+          },
+        })
 
         .then((res) => {
           console.log(res);
@@ -95,11 +91,7 @@ const History = () => {
       <h1 className="title">History Page</h1>
 
       <div className="history-box">
-        <ToggleButtonSizes
-          className="Toggle"
-          onClickAlbum={onClickAlbum}
-          onClickSlide={onClickSlide}
-        />
+        <ToggleButtonSizes className="Toggle" onClickAlbum={onClickAlbum} onClickSlide={onClickSlide} />
         {isSlide ? (
           <div className="grid-container">
             {historyData?.map((item, index) => {
@@ -119,13 +111,7 @@ const History = () => {
         ) : historyData === "undefined" ? (
           <></>
         ) : (
-          <Carousel
-            swipeable={true}
-            draggable={true}
-            showDots={true}
-            responsive={responsive}
-            transitionDuration={500}
-          >
+          <Carousel swipeable={true} draggable={true} showDots={true} responsive={responsive} transitionDuration={500}>
             {historyData?.map((item, index) => {
               console.log("map 실행:", item);
               return (

@@ -15,11 +15,11 @@ app = Flask(__name__)
 
 @app.route("/modelCall/<imgUrl>", methods=['GET','POST'])
 def modelCall(imgUrl):
-    print(imgUrl)
-    print(type(imgUrl))
+    imgUrl_e = escape(imgUrl)
+    print(imgUrl_e)
+    print(type(imgUrl_e))
     print('Flask 가동')
-
-    result = modelRun(imgUrl)
+    result = modelRun(escape(imgUrl_e))
     res = {
         'resIndex': result}
     
