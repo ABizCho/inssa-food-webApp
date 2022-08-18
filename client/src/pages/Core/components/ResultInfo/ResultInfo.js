@@ -98,12 +98,12 @@ const ResultInfo = () => {
                 {/* <img className="result-item img" src={urlPort.cloudServer + cookies.imgFile.url} alt="react" /> */}
                 <img
                   className="result-item img"
-                  src={"./foodbackground.jpg"}
+                  src={"/root/inssa-food/server" + cookies.imgFile.url}
                   alt="react"
                 />
               </div>
               <div className="result-item name">
-                <h1 className="korean_food_name">{"Galbi-jjim"}</h1>
+                <h1 className="korean_food_name">{foodInfo.name_Eng}</h1>
               </div>
               <div className="simple_list">
                 <div className="result-item spicy"> 🌶️ ✖️ {foodInfo.spicy}</div>
