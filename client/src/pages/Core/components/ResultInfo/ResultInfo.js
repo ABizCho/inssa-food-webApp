@@ -38,14 +38,14 @@ const ResultInfo = () => {
     console.log("imgFile:", cookies.imgFile.url);
     // getImgFile().then((res))
     getFoodInfo().then((res) => {
-      // console.log(res);
+      console.log("res:", res);
       setFoodInfo(res.data.food);
     });
   }, []);
 
   useEffect(() => {
     setCookie("foodInfo", foodInfo);
-    console.log(foodInfo);
+    console.log("foodInfo", foodInfo);
   }, [foodInfo]);
 
   //HistoryInput 변하면 console 찍기
@@ -64,13 +64,11 @@ const ResultInfo = () => {
     await navigate("/history/list");
   };
   const postHistoryData = async (historyInfo) => {
-
     return await axios.post(
       urlPort.cloudServer + urlPort.node + "/histories",
       historyInfo
     );
   };
-
 
   //유저 인풋(Title, Comment) 제외한 히스토리 정보 => onClickSaveHistory 실행시 인풋정보랑 합침!!!
   const historyInfoOne = {
@@ -81,11 +79,9 @@ const ResultInfo = () => {
   };
 
   const getFoodInfo = async () => {
-
     return await axios.get(
       `${urlPort.cloudServer + urlPort.node}/foodInfo/${params.id}/find`
     );
-
   };
 
   return (
@@ -97,7 +93,6 @@ const ResultInfo = () => {
             <img
               className="result-item img"
               src={urlPort.cloudServer + cookies.imgFile.url}
-
               alt="react"
             />
           </div>
