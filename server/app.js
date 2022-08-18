@@ -36,7 +36,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // 정적 파일 허용
-app.use(express.static('root'));
+app.use(express.static('uploads'));
 // 3. 라우팅
 app.use("/user", userRouter);
 
