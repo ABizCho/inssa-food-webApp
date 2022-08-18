@@ -14,7 +14,7 @@ import numpy as np
 def modelRun(imgUrl) :
     # imgRes = requests.get(f"http://115.85.182.215:8000{imgUrl}")
     
-    model = tensorflow.keras.models.load_model('/root/inssa-food/flaskServer/foodie_mobilenet_256_128_DO2.h5')
+    model = tensorflow.keras.models.load_model('/root/inssa-food/flaskServer/foodie_mobilenet_88_25.h5')
 
     print(model.summary())
 
