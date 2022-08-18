@@ -48,12 +48,12 @@ const Core = () => {
     await axios
       .get(urlPort.cloudServer + `8000/modelExp${cookieImg}`)
       .then((res) => {
-        console.log(res.data.resIndex);
+        console.log("res.data.resIndex : ", res.data.resIndex);
         setFoodResult(res.data.resIndex);
       });
 
     useEffect(()=> {
-      console.log(foodResult);
+      console.log("foodResult : ", foodResult);
       navigate(`/resultinfo/${foodResult}`);
     }, [foodResult])
 

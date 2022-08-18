@@ -20,7 +20,7 @@ router.get("/uploads/:imgUrl", async (req, res, next) => {
     });
     // await axios.get(FLASK_SERVER + `/modelCall`).then((res) => {
       // });
-      res.json({resIndex : modelResult});
+      res.json(modelResult);
   } catch (e) {
     console.log(e);
     next(e);
