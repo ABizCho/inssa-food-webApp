@@ -38,14 +38,14 @@ const ResultInfo = () => {
     console.log("imgFile:", cookies.imgFile.url);
     // getImgFile().then((res))
     getFoodInfo().then((res) => {
-      // console.log(res);
+      console.log(res);
       setFoodInfo(res.data.food);
     });
   }, []);
 
   useEffect(() => {
     setCookie("foodInfo", foodInfo);
-    console.log(foodInfo);
+    console.log("cookie에 있는 foodInfo : ", foodInfo);
   }, [foodInfo]);
 
   //HistoryInput 변하면 console 찍기
@@ -58,6 +58,7 @@ const ResultInfo = () => {
       ...historyInfoOne,
       title: historyInput.title,
       comment: historyInput.comment,
+      // email: 
     };
 
     await postHistoryData(historyInfo);
@@ -77,7 +78,8 @@ const ResultInfo = () => {
     img: urlPort.cloudServer + cookies.imgFile.url,
 
     food: cookies.foodInfo,
-    userId: cookies.userData.id,
+    userId: cookies.userData.email,
+    // recipie_url: cookies.foodInfo.recipie_url
   };
 
   const getFoodInfo = async () => {
