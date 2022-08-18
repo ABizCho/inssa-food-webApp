@@ -5,6 +5,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
+import "./HistoryCard.css";
 
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
@@ -33,12 +34,7 @@ const HistoryCard = (props) => {
     >
       <CardMedia component="img" height="140" image={food_img} />
       <CardContent>
-        <Typography
-          gutterBottom
-          variant="h5"
-          component="div"
-          sx={{ fontSize: 18, fontWeight: "bold" }}
-        >
+        <Typography gutterBottom variant="h5" component="div" sx={{ fontSize: 18, fontWeight: "bold" }}>
           {name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
@@ -46,7 +42,7 @@ const HistoryCard = (props) => {
         </Typography>
       </CardContent>
 
-      <Button color="primary" onClick={onClickDetail}>
+      <Button className="detail_button" color="primary" onClick={onClickDetail}>
         Detail
       </Button>
 

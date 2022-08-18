@@ -11,8 +11,15 @@ import urlPort from "./../../../../data/urlPort.json";
 
 import ReactAudioPlayer from "react-audio-player";
 import ReactPlayer from "react-player";
+import "./foodbackground.jpg";
 
 const ResultInfo = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const onClickRecipe = () => {
+    setIsOpen(!isOpen);
+  };
+
   const navigate = useNavigate();
 
   //params
@@ -27,11 +34,7 @@ const ResultInfo = () => {
 
   //쿠키 사용 준비
 
-  const [cookies, setCookie, removeCookie] = useCookies([
-    "inputImage",
-    "foodInfo",
-    "imgFile",
-  ]);
+  const [cookies, setCookie, removeCookie] = useCookies(["inputImage", "foodInfo", "imgFile"]);
 
   useEffect(() => {
     console.log("params.id : ", params.id);
@@ -64,10 +67,7 @@ const ResultInfo = () => {
     await navigate("/history/list");
   };
   const postHistoryData = async (historyInfo) => {
-    return await axios.post(
-      urlPort.cloudServer + urlPort.node + "/histories",
-      historyInfo
-    );
+    return await axios.post(urlPort.cloudServer + urlPort.node + "/histories", historyInfo);
   };
 
   //유저 인풋(Title, Comment) 제외한 히스토리 정보 => onClickSaveHistory 실행시 인풋정보랑 합침!!!
@@ -79,52 +79,54 @@ const ResultInfo = () => {
   };
 
   const getFoodInfo = async () => {
-    return await axios.get(
-      `${urlPort.cloudServer + urlPort.node}/foodInfo/${params.id}/find`
-    );
+    return await axios.get(`${urlPort.cloudServer + urlPort.node}/foodInfo/${params.id}/find`);
   };
 
   return (
     <div className="resultInfo-container">
-      <h1 className="title">Food Info</h1>
+      <p className="title">Food Infomation</p>
       <div className="result-container">
         <div className="item-container">
           <div className="result-item img-box">
-            <img
-              className="result-item img"
-              src={urlPort.cloudServer + cookies.imgFile.url}
-              alt="react"
-            />
+            {/* <img className="result-item img" src={urlPort.cloudServer + cookies.imgFile.url} alt="react" /> */}
+            <img className="result-item img" src={"./foodbackground.jpg"} alt="react" />
           </div>
           <div className="result-item name">
-            <h1>{"name"}</h1>
+            <h1 className="korean_food_name">{"Galbi-jjim"}</h1>
           </div>
-          <div className="result-item spicy">spicy: {foodInfo.spicy}</div>
-          <div className="result-item caution">caution: {foodInfo.caution}</div>
-          <div className="result-item name_Eng">
-            English Name: {foodInfo.name_Eng}
+          <div className="simple_list">
+            <div className="result-item spicy"> 🌶️ ✖️ {foodInfo.spicy}</div>
+            <div className="result-item caution">
+              caution <br /> <div className="foodinfo_caution"> {foodInfo.caution}</div>
+            </div>
+            <div className="result-item name_Eng">{foodInfo.name_Eng}</div>
           </div>
           <div className="result-item order_learn_audio">
-            <ReactAudioPlayer src={foodInfo.sound_url} autoPlay controls />
+            <ReactAudioPlayer className="audio_player" src={foodInfo.sound_url} autoPlay controls />
           </div>
-          <div className="result-item order_learn_text">
-            🗣️: {foodInfo.order_learn_text}
-          </div>
-          <div>
-            RECIPE
-            <ReactPlayer
-              className="video-player"
-              url={foodInfo.recipie_url}
-              controls
-              width={300}
-              height={300}
-            />
-          </div>
+          <div className="result-item order_learn_text">🗣️: {foodInfo.order_learn_text}</div>
 
           <div className="result-item desc">
-            <span className="desc-title">description</span>
+            <span className="desc-title">Description</span>
             <div className="desc-content">{foodInfo.description}</div>
           </div>
+        </div>
+
+        <div className="recipe_video" style={{ alignItems: "center" }}>
+          <br />
+          <div>
+            RECIPE
+            <button onClick={onClickRecipe} className="recipe_button">
+              Click
+            </button>
+          </div>
+          {isOpen ? (
+            <>
+              <ReactPlayer className="video-player" url={foodInfo.recipie_url} controls width={340} height={340} />
+            </>
+          ) : (
+            <></>
+          )}
         </div>
         <div className="history-inputs">
           <label htmlFor="history-title">Title</label>
@@ -146,12 +148,7 @@ const ResultInfo = () => {
         </div>
       </div>
       <div className="btn-container">
-        <Button
-          className="btn-item"
-          variant="contained"
-          endIcon={<SendIcon />}
-          onClick={onClickSaveHistory}
-        >
+        <Button className="btn-item" variant="contained" endIcon={<SendIcon />} onClick={onClickSaveHistory}>
           Save History
         </Button>
 

@@ -1,11 +1,13 @@
 /*  */
-img {
-}
 
 .title {
+  padding: 10% 0 10% 10%;
   margin-bottom: 13% !important;
-  text-align: center;
-  font-family: "Fredoka One", cursive;
+  font-family: "sans-serif" !important;
+  text-align: left !important;
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 50px !important;
 }
 
 .card-slider {
@@ -13,9 +15,9 @@ img {
   align-items: center;
 }
 
-.historyCard {
-  /* margin-top: 20% !important; */
-}
+/* .historyCard { */
+/* margin-top: 20% !important; */
+/* } */
 .card-item {
   /* margin-right: 10% !important; */
   border-radius: 10% !important;
@@ -36,6 +38,7 @@ img {
 
 .MuiBox-root {
   display: block !important;
+  margin-left: 10%;
 }
 
 .grid-container {

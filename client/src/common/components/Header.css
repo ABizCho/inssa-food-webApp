@@ -1,5 +1,5 @@
 header {
-  margin-bottom: 10%;
+  margin-bottom: 1%;
 }
 .log-btn {
   padding-top: 5px !important;
@@ -9,9 +9,16 @@ header {
   font-size: 15px !important;
   /* font-weight: bold !important; */
 }
+.nav-link.px-2.text-white {
+  border: 1px !important;
+  border-color: antiquewhite !important;
+  border-radius: 10% !important;
+}
 
 .header-container {
-  background-color: #f08000 !important;
+  background-color: rgba(0, 0, 0, 0.871) !important;
+  font-size: large;
+  font-family: "revicons";
 }
 
 #drop-button {
