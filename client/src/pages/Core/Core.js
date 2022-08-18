@@ -54,7 +54,7 @@ const Core = () => {
 
     };
 
-    useEffect(()=>{}, []);
+    useEffect(()=>{setCookie("imgFile", imgFile)}, [imgFile]);
 
     useEffect(()=> {
       console.log("foodResult : ", foodResult);
