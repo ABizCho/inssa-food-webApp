@@ -13,9 +13,9 @@ const Core = () => {
   const navigate = useNavigate();
 
   const [imageURL, setImageURL] = useState(null);
-  const imgRef = useRef();
 
   const [foodResult, setFoodResult] = useState("");
+  const [imgFile, setImgFile] = useState("");
 
   //쿠키 사용 준비
   const [cookies, setCookie, removeCookie] = useCookies([
@@ -38,7 +38,7 @@ const Core = () => {
       .post(urlPort.cloudServer + urlPort.node + "/api/upload", formData)
       .then((res) => {
         console.log("modelExp 이후 res : ", res.data);
-        // setCookie("imgFile", res.data.url);
+        setCookie("imgFile", res.data.url);
         console.log("cookie-img1:", cookies.imgFile);
       });
 
@@ -52,21 +52,17 @@ const Core = () => {
         setFoodResult(res.data.resIndex);
         navigate(`/resultinfo/${foodResult}`);
       });
+  };
 
-    };
+  useEffect(() => {
+    setCookie("imgFile", imgFile);
+  }, [imgFile]);
 
-    useEffect(()=>{
-      setCookie("imgFile", imgFile)
-    }, [imgFile]);
-
-    useEffect(()=> {
-      console.log("foodResult : ", foodResult);
-    }, [foodResult])
-
+  useEffect(() => {
+    console.log("foodResult : ", foodResult);
+  }, [foodResult]);
 
   // ---------------------
-
-  const [imgFile, setImgFile] = useState("");
 
   return (
     // <div className="full-container">
