@@ -15,6 +15,8 @@ const Core = () => {
   const [imageURL, setImageURL] = useState(null);
   const imgRef = useRef();
 
+  const [ foodResult, setFoodResult ] = useState('');
+
   //쿠키 사용 준비
   const [cookies, setCookie, removeCookie] = useCookies([
     "inputImage",
@@ -29,7 +31,7 @@ const Core = () => {
     setImageURL(imgURL);
   };
 
-  const onClickToResult = async (id) => {
+  const onClickToResult = async () => {
     const formData = new FormData();
     formData.append("file", imgFile);
     await axios
@@ -43,13 +45,19 @@ const Core = () => {
     const cookieImg = cookies.imgFile;
     console.log("cookieImg:", cookieImg);
 
+
     await axios
       .get(urlPort.cloudServer + `8000/modelExp${cookieImg}`)
       .then((res) => {
-        console.log(res.data.url);
+        console.log(res.data.resIndex);
+        setFoodResult(res.data.resIndex);
       });
 
-    navigate(`/resultinfo/${id}`);
+    useEffect(()=> {
+      console.log(setFoodResult);
+      navigate(`/resultinfo/${foodResult}`);
+    }, [foodResult])
+
   };
 
   // ---------------------
@@ -97,9 +105,7 @@ const Core = () => {
               />
             </button>
             <button
-              onClick={() => {
-                onClickToResult(1);
-              }}
+              onClick={onClickToResult}
               className="btn btn-danger btn-block"
               id="formsend"
             >
