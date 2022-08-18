@@ -36,6 +36,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // 3. 라우팅
+app.use(express.static("uploads"));
+
 app.use("/user", userRouter);
 
 app.use("/auth", authRouter);
