@@ -19,7 +19,7 @@ const authMiddleware = require("./routes/auth");
 const app = express();
 
 // 1. DB 연결 및 연결관리
-mongoose.connect(`mongodb://101.101.167.66:27017/foodie`);
+mongoose.connect(`mongodb://0.0.0.0:27017/foodie`);
 
 mongoose.connection.on("connected", () => {
   console.log("[DB] CONNECT - success");
@@ -35,8 +35,6 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// 정적 파일 허용
-app.use(express.static("uploads"));
 // 3. 라우팅
 app.use("/user", userRouter);
 
