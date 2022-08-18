@@ -37,7 +37,7 @@ const Core = () => {
     await axios
       .post(urlPort.cloudServer + urlPort.node + "/api/upload", formData)
       .then((res) => {
-        console.log(res.data);
+        console.log("modelExp 이후 res : ", res.data);
         setCookie("imgFile", res.data.url);
         console.log("cookie-img1:", cookies.imgFile);
       });
@@ -54,7 +54,7 @@ const Core = () => {
       });
 
     useEffect(()=> {
-      console.log(setFoodResult);
+      console.log(foodResult);
       navigate(`/resultinfo/${foodResult}`);
     }, [foodResult])
 
