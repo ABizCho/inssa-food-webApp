@@ -52,7 +52,12 @@ app.use("/uploads", express.static("uploads"));
 
 app.use("/modelExp", modelRouter);
 
+// 정적 파일 허용
+app.use(express.static('root'));
+
+
 // 4. 서버 구동
 app.listen(portUrl.node, () => {
   console.log("[Server] OPEN - success");
 });
+
