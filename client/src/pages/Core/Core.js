@@ -12,9 +12,11 @@ import urlPort from "../../data/urlPort.json";
 const Core = () => {
   const navigate = useNavigate();
 
-  const [imageURL, setImageURL] = useState(null);
+  const [imageUrl, setImageURL] = useState(null);
   const [imgChange, setImgChange] = useState("");
   let imgFile = "";
+
+  const [formChange, setFormChange] = useState("");
 
   //쿠키 사용 준비
   const [cookies, setCookie, removeCookie] = useCookies([
@@ -22,32 +24,28 @@ const Core = () => {
     "imgFile",
   ]);
 
-  // 파일 저장
   const onChangeImg = async (e) => {
+    let formData = new FormData();
+    // 파일 저장
     const imgURL = URL.createObjectURL(e.target.files[0]);
-    setImgChange(e.target.files[0]);
-    setImageURL(imgURL);
-  };
-
-  const onClickToResult = async () => {
-    const formData = new FormData();
-    console.log(imgChange);
-    formData.append("file", imgChange);
-    console.log(formData);
+    // setImageURL(imgURL);
+    formData.append("file", e.target.files[0]);
+    setFormChange(formData);
 
     await axios
-      .post(urlPort.cloudServer + urlPort.node + "/api/upload", formData)
+      .post(urlPort.cloudServer + urlPort.node + "/api/upload", formChange)
       .then((res) => {
         console.log("modelExp 이후 res : ", res.data);
         setCookie("imgFile", res.data.url);
+        setImageURL(res.data.url);
         console.log("cookie-img1:", cookies.imgFile);
       });
+  };
 
-    const cookieImg = cookies.imgFile;
-    console.log("cookieImg:", cookieImg);
-
+  const onClickToResult = async () => {
+    console.log(imageUrl);
     await axios
-      .get(urlPort.cloudServer + `8000/modelExp${cookieImg}`)
+      .get(urlPort.cloudServer + `8000/modelExp${imageUrl}`)
       .then((res) => {
         console.log("res.data.resIndex : ", res.data.resIndex);
         let foodRes = res.data.resIndex;
@@ -79,13 +77,13 @@ const Core = () => {
             />
 
             <p className="text-notice" align="center"></p>
-            {imageURL && (
+            {imageUrl && (
               <img
                 className="selected-img"
                 alt="sample"
                 id="imgPreview"
                 // ref={imgRef}
-                src={imageURL}
+                src={imageUrl}
                 style={{ margin: "auto", width: "224px", height: "224px" }}
               />
             )}
