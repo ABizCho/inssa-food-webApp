@@ -38,6 +38,7 @@ const ResultInfo = () => {
   useEffect(() => {
     getFoodInfo().then((res) => {
       console.log("getFoodInfo res:", res);
+      console.log('cookies url:',cookies.imgFile)
       setFoodInfo(res.data);
     });
   }, []);
@@ -98,7 +99,7 @@ const ResultInfo = () => {
                 {/* <img className="result-item img" src={urlPort.cloudServer + cookies.imgFile.url} alt="react" /> */}
                 <img
                   className="result-item img"
-                  src={"/root/inssa-food/server" + cookies.imgFile}
+                  src={"root/inssa-food/server" + cookies.imgFile}
                   alt="react"
                 />
               </div>
