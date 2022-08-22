@@ -12,10 +12,11 @@ import urlPort from "../../data/urlPort.json";
 const Core = () => {
   const navigate = useNavigate();
 
-  const [imageUrl, setImageURL] = useState(null);
+  const [imageUrl, setImageUrl] = useState(null);
   const [sampleImg, setSampleImg] = useState(null);
 
   const [formChange, setFormChange] = useState("");
+  let urlLet = "";
 
   //쿠키 사용 준비
   const [cookies, setCookie, removeCookie] = useCookies([
@@ -27,19 +28,35 @@ const Core = () => {
     let formData = new FormData();
     // 파일 저장
     setSampleImg(URL.createObjectURL(e.target.files[0]));
-    // setImageURL(imgURL);
+    console.log("onChange e.target.files:", e.target.files[0]);
+    // setImageUrl(imgURL);
     formData.append("file", e.target.files[0]);
     setFormChange(formData);
+    urlLet = formData;
+    console.log("onChange FormDATA 구성");
+
+    await axios
+      .post(urlPort.cloudServer + urlPort.node + "/api/upload", urlLet)
+      .then((res) => {
+        console.log("axios1-modelExp 이후 res : ", res.data);
+        setCookie("axios1-imgFile", res.data.url);
+        setImageUrl(res.data.url);
+        console.log("axios1-onChange Axios imageUrl state:", imageUrl);
+      });
 
     await axios
       .post(urlPort.cloudServer + urlPort.node + "/api/upload", formChange)
       .then((res) => {
         console.log("modelExp 이후 res : ", res.data);
         setCookie("imgFile", res.data.url);
-        setImageURL(res.data.url);
-        console.log("cookie-img1:", cookies.imgFile);
+        setImageUrl(res.data.url);
+        console.log("onChange Axios imageUrl state:", imageUrl);
       });
   };
+
+  useEffect(() => {
+    console.log("setFormChange 변경 on onchange:", formChange);
+  }, [formChange]);
 
   const onClickToResult = async () => {
     console.log(imageUrl);
