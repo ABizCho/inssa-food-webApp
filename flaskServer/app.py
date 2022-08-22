@@ -9,10 +9,6 @@ app = Flask(__name__)
 
 
 
-
-
-
-
 @app.route("/modelCall/<imgUrl>", methods=['GET','POST'])
 def modelCall(imgUrl):
     print(imgUrl)
