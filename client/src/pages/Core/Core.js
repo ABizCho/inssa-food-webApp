@@ -45,15 +45,17 @@ const Core = () => {
     const cookieImg = cookies.imgFile;
     console.log("cookieImg:", cookieImg);
 
-    await axios
-      .get(urlPort.localClient + `8000/modelExp${cookieImg}`)
-      .then((res) => {
-        console.log("res.data.resIndex : ", res.data.resIndex);
-        let foodRes = res.data.resIndex;
-        setFoodResult(res.data.resIndex);
-        // navigate(`/resultinfo/${foodResult}`);
-        navigate(`/resultinfo/${foodRes}`);
-      });
+    let foodRes = 3;
+    navigate(`/resultinfo/${foodRes}`);
+    // await axios
+    //   .get(urlPort.localClient + `8000/modelExp${cookieImg}`)
+    //   .then((res) => {
+    //     console.log("res.data.resIndex : ", res.data.resIndex);
+    //     // let foodRes = res.data.resIndex;
+    //     setFoodResult(res.data.resIndex);
+    //     // navigate(`/resultinfo/${foodResult}`);
+    //     navigate(`/resultinfo/${foodRes}`);
+    //   });
   };
 
   useEffect(() => {

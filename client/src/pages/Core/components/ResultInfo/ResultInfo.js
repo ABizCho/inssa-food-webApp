@@ -98,7 +98,7 @@ const ResultInfo = () => {
                 {/* <img className="result-item img" src={urlPort.localClient + cookies.imgFile.url} alt="react" /> */}
                 <img
                   className="result-item img"
-                  src={"/root/inssa-food/server" + cookies.imgFile}
+                  src={`${process.env.PUBLIC_URL}/떡볶이.jpg`}
                   alt="react"
                 />
               </div>
