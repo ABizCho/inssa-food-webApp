@@ -99,10 +99,7 @@ const ResultInfo = () => {
                 {/* <img className="result-item img" src={urlPort.cloudServer + cookies.imgFile.url} alt="react" /> */}
                 <img
                   className="result-item img"
-                  src={
-                    "http:\\101.101.167.66:3389/root/inssa-food/server" +
-                    cookies.imgFile
-                  }
+                  src={"http://115.85.182.215:8000/" + cookies.imgFile}
                   alt="react"
                 />
               </div>
@@ -119,7 +116,7 @@ const ResultInfo = () => {
               <div className="result-item order_learn_audio">
                 <ReactAudioPlayer
                   className="audio_player"
-                  src={"http:\\101.101.167.66:3389/" + foodInfo.sound_url}
+                  src={"http://115.85.182.215:8000/" + foodInfo.sound_url}
                   autoPlay
                   controls
                 />

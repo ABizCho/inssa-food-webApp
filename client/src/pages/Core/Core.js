@@ -39,7 +39,7 @@ const Core = () => {
       .post(urlPort.cloudServer + urlPort.node + "/api/upload", urlLet)
       .then((res) => {
         console.log("axios1-modelExp 이후 res : ", res.data);
-        setCookie("axios1-imgFile", res.data.url);
+        setCookie("imgFile", res.data.url);
         setImageUrl(res.data.url);
         console.log("axios1-onChange Axios imageUrl state:", imageUrl);
       });
