@@ -36,7 +36,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // 3. 라우팅
-app.use(express.static("uploads"));
 
 app.use("/user", userRouter);
 
@@ -50,7 +49,7 @@ app.use("/histories", authMiddleware, historiesRouter);
 
 app.use("/api", imgRouter);
 
-app.use("/uploads", express.static("uploads"));
+app.use("/uploads", express.static("/root/inssa-food/server/uploads"));
 
 app.use("/modelExp", modelRouter);
 
