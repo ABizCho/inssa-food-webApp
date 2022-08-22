@@ -11,42 +11,49 @@ import urlPort from "./../../../../data/urlPort.json";
 
 import ReactAudioPlayer from "react-audio-player";
 import ReactPlayer from "react-player";
+import mainfoodImage from "./떡볶이.jpg";
+import { style } from "@mui/system";
+
+const ShowDetail = () => {
+  const [isflip, setIsFlip] = useState(false);
+  const onClickScreen = () => {
+    setIsFlip(!isflip);
+  };
+};
 
 const ResultInfo = () => {
-  const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(false);
+  const onClickRecipe = () => {
+    setIsOpen(!isOpen);
+  };
 
+  const navigate = useNavigate();
   //params
   const params = useParams();
 
-  //state
-  const [foodInfo, setFoodInfo] = useState({});
+  const [foodInfo, setFoodInfo] = useState(null);
   const [historyInput, setHistoryInput] = useState({
     title: "",
     comment: "",
   });
 
-  //쿠키 사용 준비
-
-  const [cookies, setCookie, removeCookie] = useCookies([
-    "inputImage",
-    "foodInfo",
-    "imgFile",
-  ]);
+  const [cookies, setCookie, removeCookie] = useCookies(["inputImage", "foodInfo", "imgFile"]);
 
   useEffect(() => {
-    console.log("params.id : ", params.id);
-    console.log("imgFile:", cookies.imgFile.url);
-    // getImgFile().then((res))
     getFoodInfo().then((res) => {
-      // console.log(res);
-      setFoodInfo(res.data.food);
+      console.log("getFoodInfo res:", res);
+      setFoodInfo(res.data);
     });
   }, []);
 
-  useEffect(() => {
-    setCookie("foodInfo", foodInfo);
-    console.log(foodInfo);
-  }, [foodInfo]);
+  const getFoodInfo = async () => {
+    return await axios.get(`${urlPort.localClient + urlPort.node}/foodInfo/${params.id}/find`);
+  };
+
+  // useEffect(() => {
+  //   setCookie("foodInfo", foodInfo);
+  //   console.log("cookie에 있는 foodInfo : ", foodInfo);
+  // }, [foodInfo]);
 
   //HistoryInput 변하면 console 찍기
   useEffect(() => {
@@ -58,105 +65,113 @@ const ResultInfo = () => {
       ...historyInfoOne,
       title: historyInput.title,
       comment: historyInput.comment,
+      // email:
     };
 
     await postHistoryData(historyInfo);
     await navigate("/history/list");
   };
   const postHistoryData = async (historyInfo) => {
-
-    return await axios.post(
-      urlPort.cloudServer + urlPort.node + "/histories",
-      historyInfo
-    );
+    return await axios.post(urlPort.localClient + urlPort.node + "/histories", historyInfo);
   };
-
 
   //유저 인풋(Title, Comment) 제외한 히스토리 정보 => onClickSaveHistory 실행시 인풋정보랑 합침!!!
   const historyInfoOne = {
-    img: urlPort.cloudServer + cookies.imgFile.url,
+    img: urlPort.localClient + cookies.imgFile.url,
 
     food: cookies.foodInfo,
-    userId: cookies.userData.id,
-  };
-
-  const getFoodInfo = async () => {
-
-    return await axios.get(
-      `${urlPort.cloudServer + urlPort.node}/foodInfo/${params.id}/find`
-    );
-
+    userId: cookies.userData.email,
+    // recipie_url: cookies.foodInfo.recipie_url
   };
 
   return (
     <div className="resultInfo-container">
-      <h1 className="title">Food Info</h1>
-      <div className="result-container">
-        <div className="item-container">
-          <div className="result-item img-box">
-            <img
-              className="result-item img"
-              src={urlPort.cloudServer + cookies.imgFile.url}
+      <h1 className="title">We will tell you What you ate</h1>
+      {foodInfo === null ? (
+        <></>
+      ) : (
+        <div>
+          <div className="result">
+            <div className="result-container">
+              <div className="black-box"></div>
+              <img className="main_food_image" src={mainfoodImage} />
+              <div className="item-container">
+                {/* <div className="result-item img-box"> */}
+                {/* <img className="result-item img" src={urlPort.localClient + cookies.imgFile.url} alt="react" /> */}
+                {/* <img className="result-item img" src={`${process.env.PUBLIC_URL}/떡볶이.jpg`} alt="react" /> */}
+                {/* </div> */}
+              </div>
 
-              alt="react"
-            />
-          </div>
-          <div className="result-item name">
-            <h1>{"name"}</h1>
-          </div>
-          <div className="result-item spicy">spicy: {foodInfo.spicy}</div>
-          <div className="result-item caution">caution: {foodInfo.caution}</div>
-          <div className="result-item name_Eng">
-            English Name: {foodInfo.name_Eng}
-          </div>
-          <div className="result-item order_learn_audio">
-            <ReactAudioPlayer src={foodInfo.sound_url} autoPlay controls />
-          </div>
-          <div className="result-item order_learn_text">
-            🗣️: {foodInfo.order_learn_text}
-          </div>
-          <div>
-            RECIPE
-            <ReactPlayer
-              className="video-player"
-              url={foodInfo.recipie_url}
-              controls
-              width={300}
-              height={300}
-            />
+              {/* <div className="history-inputs">
+              <label htmlFor="history-title">Title</label>
+              <input
+                name="history-title"
+                onChange={(e) => {
+                  setHistoryInput({ ...historyInput, title: e.target.value });
+                }}
+                type="text"
+              />
+              <label htmlFor="history-comment">Comment</label>
+              <textarea
+                name="history-comment"
+                onChange={(e) => {
+                  setHistoryInput({ ...historyInput, comment: e.target.value });
+                }}
+                type="text"
+              />
+            </div> */}
+            </div>
+
+            <div className="black-shadow">
+              <div className="text-part1">
+                <div className="result-item name">
+                  {/* <h1 className="korean_food_name">{foodInfo.name_Eng}</h1> */}
+                  <h1 className="food_Number">No. 3</h1>
+                  <h1 className="korean_food_name">
+                    Tteokbboki <br /> 떡볶이
+                  </h1>
+                </div>
+                <div className="result-item spicy"> Spicy: 🌶️ ✖️ {foodInfo.spicy}</div>
+              </div>
+            </div>
           </div>
 
-          <div className="result-item desc">
-            <span className="desc-title">description</span>
-            <div className="desc-content">{foodInfo.description}</div>
+          {/* <div className="food_detail_back">
+            <div className="simple_list">
+              <div className="result-item caution">
+                caution <br /> <div className="foodinfo_caution"> {foodInfo.caution}</div>
+              </div>
+            </div>
+            <div className="result-item order_learn_audio">
+              <ReactAudioPlayer className="audio_player" src={foodInfo.sound_url} autoPlay controls />
+            </div>
+            <div className="result-item order_learn_text">🗣️: {foodInfo.order_learn_text}</div>
+            <div className="result-item desc">
+              <span className="desc-title">Description</span>
+              <div className="desc-content">{foodInfo.description}</div>
+            </div>
+          </div> */}
+          <div className="recipe_video" style={{ alignItems: "center" }}>
+            <br />
+            <div>
+              RECIPE
+              <button onClick={onClickRecipe} className="recipe_button">
+                Click
+              </button>
+            </div>
+            {isOpen ? (
+              <>
+                <ReactPlayer className="video-player" url={foodInfo.recipie_url} controls width={340} height={340} />
+              </>
+            ) : (
+              <></>
+            )}
           </div>
         </div>
-        <div className="history-inputs">
-          <label htmlFor="history-title">Title</label>
-          <input
-            name="history-title"
-            onChange={(e) => {
-              setHistoryInput({ ...historyInput, title: e.target.value });
-            }}
-            type="text"
-          />
-          <label htmlFor="history-comment">Comment</label>
-          <textarea
-            name="history-comment"
-            onChange={(e) => {
-              setHistoryInput({ ...historyInput, comment: e.target.value });
-            }}
-            type="text"
-          />
-        </div>
-      </div>
+      )}
+
       <div className="btn-container">
-        <Button
-          className="btn-item"
-          variant="contained"
-          endIcon={<SendIcon />}
-          onClick={onClickSaveHistory}
-        >
+        <Button className="btn-item" variant="contained" endIcon={<SendIcon />} onClick={onClickSaveHistory}>
           Save History
         </Button>
 
