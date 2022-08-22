@@ -13,7 +13,7 @@ const Core = () => {
   const navigate = useNavigate();
 
   const [imageURL, setImageURL] = useState(null);
-
+  const [imgChange, setImgChange] = useState("");
   let imgFile = "";
 
   //쿠키 사용 준비
@@ -25,13 +25,15 @@ const Core = () => {
   // 파일 저장
   const onChangeImg = async (e) => {
     const imgURL = URL.createObjectURL(e.target.files[0]);
-    imgFile = e.target.files[0];
+    setImgChange(e.target.files[0]);
     setImageURL(imgURL);
   };
 
   const onClickToResult = async () => {
     const formData = new FormData();
-    formData.append("file", imgFile);
+    console.log(imgChange);
+    formData.append("file", imgChange);
+    console.log(formData);
 
     await axios
       .post(urlPort.cloudServer + urlPort.node + "/api/upload", formData)
