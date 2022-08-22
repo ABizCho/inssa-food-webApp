@@ -44,14 +44,14 @@ const Core = () => {
         console.log("axios1-onChange Axios imageUrl state:", imageUrl);
       });
 
-    await axios
-      .post(urlPort.cloudServer + urlPort.node + "/api/upload", formChange)
-      .then((res) => {
-        console.log("modelExp 이후 res : ", res.data);
-        setCookie("imgFile", res.data.url);
-        setImageUrl(res.data.url);
-        console.log("onChange Axios imageUrl state:", imageUrl);
-      });
+    // await axios
+    //   .post(urlPort.cloudServer + urlPort.node + "/api/upload", formChange)
+    //   .then((res) => {
+    //     console.log("modelExp 이후 res : ", res.data);
+    //     setCookie("imgFile", res.data.url);
+    //     setImageUrl(res.data.url);
+    //     console.log("onChange Axios imageUrl state:", imageUrl);
+    //   });
   };
 
   useEffect(() => {
