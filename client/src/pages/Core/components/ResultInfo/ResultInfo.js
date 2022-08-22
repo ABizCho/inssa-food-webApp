@@ -96,11 +96,12 @@ const ResultInfo = () => {
           <div className="result-container">
             <div className="item-container">
               <div className="result-item img-box">
-                {/* <img className="result-item img" src={urlPort.cloudServer + cookies.imgFile.url} alt="react" /> */}
                 <img
                   className="result-item img"
-                  src={"http://115.85.182.215:8000/" + cookies.imgFile}
+                  src={cookies.imgFile}
                   alt="react"
+                  crossOrigin="anonymous"
+                  referrerpolicy="unsafe-url"
                 />
               </div>
               <div className="result-item name">
@@ -116,9 +117,12 @@ const ResultInfo = () => {
               <div className="result-item order_learn_audio">
                 <ReactAudioPlayer
                   className="audio_player"
+                  // src={foodInfo.sound_url}
                   src={"http://115.85.182.215:8000/" + foodInfo.sound_url}
                   autoPlay
                   controls
+                  crossOrigin="anonymous"
+                  referrerpolicy="unsafe-url"
                 />
               </div>
               <div className="result-item order_learn_text">
