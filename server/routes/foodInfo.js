@@ -10,6 +10,7 @@ router.get(
   asyncHandler(async (req, res, next) => {
     const { id } = req.params;
     console.log("PARAMS.ID : ", id);
+
     let data = await Food.find({});
     // let data = await Food.findOne({ id });
     console.log("findFood Data:", data);
