@@ -1,12 +1,15 @@
-.result-container {
-  border-radius: 1rem 1rem 0rem 0rem;
+.container1 {
   width: 383.5px;
   height: 400px;
-  background-size: cover;
-  background-repeat: no-repeat;
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
 
-  /* url("/root/inssa-food/client/src/pages/Core/components/ResultInfo/resultlogo.jpg"); */
+.mainImage {
+  text-align: center;
+  display: block;
+  margin: 0 auto;
 }
 
 .black-box {
@@ -15,12 +18,6 @@
   position: absolute;
   border-radius: 1rem 1rem 0 0;
   background: linear-gradient(rgba(0, 0, 0, 0), rgb(0, 0, 0, 1));
-}
-
-.main_food_image {
-  border-radius: 1rem 1rem 0rem 0rem;
-  width: 100%;
-  height: 100%;
 }
 
 .black-shadow {
