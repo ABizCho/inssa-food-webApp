@@ -14,8 +14,7 @@ const Core = () => {
 
   const [imageURL, setImageURL] = useState(null);
 
-  const [foodResult, setFoodResult] = useState("");
-  const [imgFile, setImgFile] = useState("");
+  let imgFile = "";
 
   //쿠키 사용 준비
   const [cookies, setCookie, removeCookie] = useCookies([
@@ -25,15 +24,15 @@ const Core = () => {
 
   // 파일 저장
   const onChangeImg = async (e) => {
-    setImgFile(e.target.files[0]);
-
     const imgURL = URL.createObjectURL(e.target.files[0]);
+    imgFile = e.target.files[0];
     setImageURL(imgURL);
   };
 
   const onClickToResult = async () => {
     const formData = new FormData();
     formData.append("file", imgFile);
+
     await axios
       .post(urlPort.cloudServer + urlPort.node + "/api/upload", formData)
       .then((res) => {
@@ -50,19 +49,10 @@ const Core = () => {
       .then((res) => {
         console.log("res.data.resIndex : ", res.data.resIndex);
         let foodRes = res.data.resIndex;
-        setFoodResult(res.data.resIndex);
         // navigate(`/resultinfo/${foodResult}`);
         navigate(`/resultinfo/${foodRes}`);
       });
   };
-
-  useEffect(() => {
-    setCookie("imgFile", imgFile);
-  }, [imgFile]);
-
-  useEffect(() => {
-    console.log("foodResult : ", foodResult);
-  }, [foodResult]);
 
   // ---------------------
 
