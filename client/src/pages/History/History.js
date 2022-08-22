@@ -65,7 +65,7 @@ const History = () => {
       axios
 
         .get(
-          urlPort.cloudServer + urlPort.node + "/histories",
+          urlPort.localClient + urlPort.node + "/histories",
           cookies.userData.id,
           {
             headers: {
@@ -88,8 +88,6 @@ const History = () => {
     console.log("histories 구성");
   }, [historyData]);
 
-  
-
   return (
     <div className="history-container">
       <h1 className="title">History Page</h1>
@@ -111,7 +109,9 @@ const History = () => {
                   className="grid-item scale"
                   src={item?.user_inputImg}
                   alt="React"
-                  onClick={()=> {navigate(`${item.history_card_id}/detail`)}}
+                  onClick={() => {
+                    navigate(`${item.history_card_id}/detail`);
+                  }}
                 />
               );
             })}
@@ -139,12 +139,10 @@ const History = () => {
                   colorIdx={index}
                   history_card_id={item.history_card_id}
                 />
-                );
+              );
             })}
           </Carousel>
-          
         )}
-
       </div>
     </div>
   );

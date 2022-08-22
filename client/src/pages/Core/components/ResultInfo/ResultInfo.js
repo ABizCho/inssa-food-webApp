@@ -44,7 +44,7 @@ const ResultInfo = () => {
 
   const getFoodInfo = async () => {
     return await axios.get(
-      `${urlPort.cloudServer + urlPort.node}/foodInfo/${params.id}/find`
+      `${urlPort.localClient + urlPort.node}/foodInfo/${params.id}/find`
     );
   };
 
@@ -71,14 +71,14 @@ const ResultInfo = () => {
   };
   const postHistoryData = async (historyInfo) => {
     return await axios.post(
-      urlPort.cloudServer + urlPort.node + "/histories",
+      urlPort.localClient + urlPort.node + "/histories",
       historyInfo
     );
   };
 
   //유저 인풋(Title, Comment) 제외한 히스토리 정보 => onClickSaveHistory 실행시 인풋정보랑 합침!!!
   const historyInfoOne = {
-    img: urlPort.cloudServer + cookies.imgFile.url,
+    img: urlPort.localClient + cookies.imgFile.url,
 
     food: cookies.foodInfo,
     userId: cookies.userData.email,
@@ -95,7 +95,7 @@ const ResultInfo = () => {
           <div className="result-container">
             <div className="item-container">
               <div className="result-item img-box">
-                {/* <img className="result-item img" src={urlPort.cloudServer + cookies.imgFile.url} alt="react" /> */}
+                {/* <img className="result-item img" src={urlPort.localClient + cookies.imgFile.url} alt="react" /> */}
                 <img
                   className="result-item img"
                   src={"/root/inssa-food/server" + cookies.imgFile}

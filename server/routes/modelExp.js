@@ -5,10 +5,9 @@ const router = Router();
 const portUrl = require("../portUrl");
 
 router.get("/uploads/:imgUrl", async (req, res, next) => {
-  const FLASK_SERVER = portUrl.cloudServer + portUrl.flaskPort;
+  const FLASK_SERVER = portUrl.localClient + portUrl.flaskPort;
   const { imgUrl } = req.params;
   console.log("server test:", imgUrl);
-
 
   let modelResult;
 
@@ -19,8 +18,8 @@ router.get("/uploads/:imgUrl", async (req, res, next) => {
       modelResult = res.data;
     });
     // await axios.get(FLASK_SERVER + `/modelCall`).then((res) => {
-      // });
-      res.json(modelResult);
+    // });
+    res.json(modelResult);
   } catch (e) {
     console.log(e);
     next(e);

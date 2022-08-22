@@ -35,7 +35,7 @@ const Core = () => {
     const formData = new FormData();
     formData.append("file", imgFile);
     await axios
-      .post(urlPort.cloudServer + urlPort.node + "/api/upload", formData)
+      .post(urlPort.localClient + urlPort.node + "/api/upload", formData)
       .then((res) => {
         console.log("modelExp 이후 res : ", res.data);
         setCookie("imgFile", res.data.url);
@@ -46,7 +46,7 @@ const Core = () => {
     console.log("cookieImg:", cookieImg);
 
     await axios
-      .get(urlPort.cloudServer + `8000/modelExp${cookieImg}`)
+      .get(urlPort.localClient + `8000/modelExp${cookieImg}`)
       .then((res) => {
         console.log("res.data.resIndex : ", res.data.resIndex);
         let foodRes = res.data.resIndex;

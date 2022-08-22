@@ -58,7 +58,7 @@ const SignUpForm = ({ signUpData, onChangeSignUpData, setSignUpdata }) => {
 
   const sendSignUpData = async () => {
     return await axios.post(
-      urlPort.cloudServer + urlPort.node + "/user/signUp",
+      urlPort.localClient + urlPort.node + "/user/signUp",
       signUpData
     );
   };
