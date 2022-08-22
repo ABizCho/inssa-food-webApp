@@ -13,8 +13,7 @@ const Core = () => {
   const navigate = useNavigate();
 
   const [imageUrl, setImageURL] = useState(null);
-  const [imgChange, setImgChange] = useState("");
-  let imgFile = "";
+  const [sampleImg, setSampleImg] = useState(null);
 
   const [formChange, setFormChange] = useState("");
 
@@ -27,7 +26,7 @@ const Core = () => {
   const onChangeImg = async (e) => {
     let formData = new FormData();
     // 파일 저장
-    const imgURL = URL.createObjectURL(e.target.files[0]);
+    setSampleImg(URL.createObjectURL(e.target.files[0]));
     // setImageURL(imgURL);
     formData.append("file", e.target.files[0]);
     setFormChange(formData);
@@ -77,13 +76,13 @@ const Core = () => {
             />
 
             <p className="text-notice" align="center"></p>
-            {imageUrl && (
+            {sampleImg && (
               <img
                 className="selected-img"
                 alt="sample"
                 id="imgPreview"
                 // ref={imgRef}
-                src={imageUrl}
+                src={sampleImg}
                 style={{ margin: "auto", width: "224px", height: "224px" }}
               />
             )}
