@@ -36,6 +36,8 @@ router.post("/", async (req, res, next) => {
 // 나중에는 user 하위로 소속돼야 할지 결정 및 개선 필요
 router.get("/", async (req, res, next) => {
   const userId = req.body;
+  console.log("histories get by id:", userId);
+
   try {
     const histories = await HistoryCard.find({ user_id: userId });
     // .populate("author") //나중에 활성화
