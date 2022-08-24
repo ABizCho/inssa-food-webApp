@@ -46,7 +46,8 @@ def modelRun(imgUrl) :
     img = cv2.imread(file)
     pred = model.predict(preprocess_image(img))
     result = classes[np.argmax(pred)]
-    print("file: ", file, "result : ", result)
+    ind = classes.index(result);
+    print("file: ", file, "result : ", result, "ind : ", ind)
 
     # img = image.load_img(img_path, target_size=(224, 224))
     # x = image.img_to_array(img)
@@ -60,5 +61,5 @@ def modelRun(imgUrl) :
     # index = list(features[0]).index(tmp)
     # print(index)
     # plt.imshow(features[0,:,:,3]) # 4번째 피쳐맵(특징)을 그려보자. cf. 0부터 시작하기에 4번째임.
-    return result
+    return ind
 
