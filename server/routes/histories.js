@@ -35,11 +35,11 @@ router.post("/", async (req, res, next) => {
 // history card 클라에서 보여주기 historyCard 데이터요청
 // 나중에는 user 하위로 소속돼야 할지 결정 및 개선 필요
 router.get("/", async (req, res, next) => {
-  const userId = req.body;
-  console.log("histories get by id:", userId);
-  
+  const { userEmail } = req.body;
+  console.log("histories get by id:", userEmail);
+
   try {
-    const histories = await HistoryCard.find({ user_id: userId });
+    const histories = await HistoryCard.find({ user_id: userEmail });
     // .populate("author") //나중에 활성화
     console.log("[server] history get 응답중");
 
