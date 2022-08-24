@@ -16,6 +16,7 @@ import axios from "axios";
 const HistoryCard = (props) => {
   const { id, name, food_img, desc, colorIdx, history_card_id } = props;
 
+  
   const navigate = useNavigate();
 
   const params = useParams();
@@ -31,7 +32,6 @@ const HistoryCard = (props) => {
 
   const onClickUpdateHistory = async (id) => {
     await axios.post('/histories/update', () => {
-      
     })
   }
 

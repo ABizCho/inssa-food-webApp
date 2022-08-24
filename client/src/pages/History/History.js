@@ -63,7 +63,6 @@ const History = () => {
   const getHistoryData = () => {
     try {
       axios
-
         .get(
           urlPort.cloudServer + urlPort.node + "/histories",
           cookies.userData.id,

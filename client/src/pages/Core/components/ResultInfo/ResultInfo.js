@@ -39,17 +39,18 @@ const ResultInfo = () => {
 
   const [cookies, setCookie, removeCookie] = useCookies([
     "inputImage",
-    "foodInfo",
     "imgFile",
+    "foodInfo",
   ]);
 
+  // let foodInfo = null;
   useEffect(() => {
     console.log("resultInfo 첫렌더링");
     getFoodInfo().then((res) => {
       console.log("getFoodInfo res:", res);
       console.log("cookies url:", cookies.imgFile);
 
-      setFoodInfo(res.data);
+      // foodInfo = res.data
     });
   }, []);
 
@@ -59,10 +60,10 @@ const ResultInfo = () => {
     );
   };
 
-  // useEffect(() => {
-  //   setCookie("foodInfo", foodInfo);
-  //   console.log("cookie에 있는 foodInfo : ", foodInfo);
-  // }, [foodInfo]);
+  useEffect(() => {
+    setCookie("foodInfo", foodInfo);
+    console.log("cookie에 있는 foodInfo : ", foodInfo);
+  }, [foodInfo]);
 
   //HistoryInput 변하면 console 찍기
   useEffect(() => {
@@ -90,7 +91,7 @@ const ResultInfo = () => {
 
   //유저 인풋(Title, Comment) 제외한 히스토리 정보 => onClickSaveHistory 실행시 인풋정보랑 합침!!!
   const historyInfoOne = {
-    img: urlPort.localClient + cookies.imgFile.url,
+    img: cookies.imgFile,
 
     food: cookies.foodInfo,
     userId: cookies.userData.email,
