@@ -40,7 +40,6 @@ router.get("/:email/find", async (req, res, next) => {
 
   try {
     const histories = await HistoryCard.find({ user_id: email });
-    // .populate("author") //나중에 활성화
     console.log("[server] history get 응답중");
 
     res.json({ histories, msg: "get요청 정상처리 되었습니다." });
