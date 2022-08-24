@@ -51,6 +51,7 @@ const ResultInfo = () => {
       console.log("cookies url:", cookies.imgFile);
 
       // foodInfo = res.data
+      setFoodInfo(res.data);
     });
   }, []);
 
