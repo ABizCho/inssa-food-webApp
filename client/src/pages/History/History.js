@@ -67,14 +67,11 @@ const History = () => {
       console.log("getHistoryData email 콘솔:", email);
 
       axios
-        .get(
-          urlPort.cloudServer + urlPort.node + `/histories/${email}`,
-          {
-            headers: {
-              accessToken: cookies.userData.accessToken,
-            },
-          }
-        )
+        .get(urlPort.cloudServer + urlPort.node + `/histories/${email}/find`, {
+          headers: {
+            accessToken: cookies.userData.accessToken,
+          },
+        })
 
         .then((res) => {
           console.log(res);
