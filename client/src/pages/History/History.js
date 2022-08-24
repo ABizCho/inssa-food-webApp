@@ -62,7 +62,7 @@ const History = () => {
 
   const getHistoryData = () => {
     try {
-      const userEmail = cookies.userData.email;
+      const userEmail = { email: cookies.userData.email};
 
       console.log("getHistoryData email 콘솔:", cookies.userData.email);
 
