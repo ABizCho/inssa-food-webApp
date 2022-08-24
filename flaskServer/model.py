@@ -34,9 +34,9 @@ def modelRun(imgUrl) :
     print(model.summary())
     
     print('이미지경로잡기 직전')
-    img_path = "/root/inssa-food/server/uploads/"+imgUrl
+    # img_path = "/root/inssa-food/server/uploads/"+imgUrl
     
-    preprocessed = prep(img_path)
+    preprocessed = prep(imgUrl)
 
     pred = model.predict(preprocessed)
 
