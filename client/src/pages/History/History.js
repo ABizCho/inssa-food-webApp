@@ -62,16 +62,19 @@ const History = () => {
 
   const getHistoryData = () => {
     try {
-      const userEmail = { email: cookies.userData.email};
+      const email = cookies.userData.email;
 
-      console.log("getHistoryData email 콘솔:", cookies.userData.email);
+      console.log("getHistoryData email 콘솔:", email);
 
       axios
-        .get(urlPort.cloudServer + urlPort.node + "/histories", userEmail, {
-          headers: {
-            accessToken: cookies.userData.accessToken,
-          },
-        })
+        .get(
+          urlPort.cloudServer + urlPort.node + `/histories/${email}`,
+          {
+            headers: {
+              accessToken: cookies.userData.accessToken,
+            },
+          }
+        )
 
         .then((res) => {
           console.log(res);

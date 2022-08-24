@@ -34,8 +34,8 @@ router.post("/", async (req, res, next) => {
 
 // history card 클라에서 보여주기 historyCard 데이터요청
 // 나중에는 user 하위로 소속돼야 할지 결정 및 개선 필요
-router.get("/", async (req, res, next) => {
-  const { email } = req.body;
+router.get("/:email", async (req, res, next) => {
+  const { email } = req.params;
   console.log("histories get by email:", email);
 
   try {
