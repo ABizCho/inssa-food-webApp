@@ -44,7 +44,7 @@ def modelRun(imgUrl) :
     print("file: ", input, "result : ", result)
 
 
-    ind = classes.index(result)
+    ind = classes.index(result) +1
 
     print("보내주는 index값 : ", ind)
 
