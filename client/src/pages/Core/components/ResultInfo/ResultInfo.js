@@ -44,6 +44,7 @@ const ResultInfo = () => {
   ]);
 
   useEffect(() => {
+    console.log("resultInfo 첫렌더링");
     getFoodInfo().then((res) => {
       console.log("getFoodInfo res:", res);
       console.log("cookies url:", cookies.imgFile);
@@ -133,11 +134,8 @@ const ResultInfo = () => {
           <div className="black-shadow">
             <div className="text-part1">
               <div className="result-item name">
-                {/* <h1 className="korean_food_name">{foodInfo.name_Eng}</h1> */}
-                <h1 className="food_Number">No. 3</h1>
-                <h1 className="korean_food_name">
-                  Tteokbboki <br /> 떡볶이
-                </h1>
+                <h1 className="korean_food_name">{foodInfo.name_Eng}</h1>
+                {/* <h1 className="food_Number">No. 3</h1> */}
               </div>
               <div className="result-item spicy">
                 {" "}
@@ -148,21 +146,29 @@ const ResultInfo = () => {
         </div>
       )}
 
-      {/* <div className="food_detail_back">
-            <div className="simple_list">
-              <div className="result-item caution">
-                caution <br /> <div className="foodinfo_caution"> {foodInfo.caution}</div>
-              </div>
-            </div>
-            <div className="result-item order_learn_audio">
-              <ReactAudioPlayer className="audio_player" src={"http://115.85.182.215:8000/" + foodInfo.sound_url} autoPlay controls />
-            </div>
-            <div className="result-item order_learn_text">🗣️: {foodInfo.order_learn_text}</div>
-            <div className="result-item desc">
-              <span className="desc-title">Description</span>
-              <div className="desc-content">{foodInfo.description}</div>
-            </div>
-          </div> */}
+      <div className="food_detail_back">
+        <div className="simple_list">
+          <div className="result-item caution">
+            caution <br />{" "}
+            <div className="foodinfo_caution"> {foodInfo.caution}</div>
+          </div>
+        </div>
+        <div className="result-item order_learn_audio">
+          <ReactAudioPlayer
+            className="audio_player"
+            src={"http://115.85.182.215:8000/" + foodInfo.sound_url}
+            autoPlay
+            controls
+          />
+        </div>
+        <div className="result-item order_learn_text">
+          🗣️: {foodInfo.order_learn_text}
+        </div>
+        <div className="result-item desc">
+          <span className="desc-title">Description</span>
+          <div className="desc-content">{foodInfo.description}</div>
+        </div>
+      </div>
       <div className="recipe_video" style={{ alignItems: "center" }}>
         <br />
         <div>
