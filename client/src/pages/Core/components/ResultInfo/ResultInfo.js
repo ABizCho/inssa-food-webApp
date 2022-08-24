@@ -80,6 +80,7 @@ const ResultInfo = () => {
     await postHistoryData(historyInfo);
     await navigate("/history/list");
   };
+
   const postHistoryData = async (historyInfo) => {
     return await axios.post(
       urlPort.cloudServer + urlPort.node + "/histories",
@@ -143,67 +144,68 @@ const ResultInfo = () => {
               </div>
             </div>
           </div>
+
+          <div className="food_detail_back">
+            <div className="simple_list">
+              <div className="result-item caution">
+                caution <br />{" "}
+                <div className="foodinfo_caution"> {foodInfo.caution}</div>
+              </div>
+            </div>
+            <div className="result-item order_learn_audio">
+              <ReactAudioPlayer
+                className="audio_player"
+                src={"http://115.85.182.215:8000/" + foodInfo.sound_url}
+                autoPlay
+                controls
+              />
+            </div>
+            <div className="result-item order_learn_text">
+              🗣️: {foodInfo.order_learn_text}
+            </div>
+            <div className="result-item desc">
+              <span className="desc-title">Description</span>
+              <div className="desc-content">{foodInfo.description}</div>
+            </div>
+          </div>
+          <div className="recipe_video" style={{ alignItems: "center" }}>
+            <br />
+            <div>
+              RECIPE
+              <button onClick={onClickRecipe} className="recipe_button">
+                Click
+              </button>
+            </div>
+            {isOpen ? (
+              <>
+                <ReactPlayer
+                  className="video-player"
+                  url={foodInfo.recipie_url}
+                  controls
+                  width={340}
+                  height={340}
+                />
+              </>
+            ) : (
+              <></>
+            )}
+          </div>
         </div>
       )}
 
-      <div className="food_detail_back">
-        <div className="simple_list">
-          <div className="result-item caution">
-            caution <br />{" "}
-            <div className="foodinfo_caution"> {foodInfo.caution}</div>
-          </div>
-        </div>
-        <div className="result-item order_learn_audio">
-          <ReactAudioPlayer
-            className="audio_player"
-            src={"http://115.85.182.215:8000/" + foodInfo.sound_url}
-            autoPlay
-            controls
-          />
-        </div>
-        <div className="result-item order_learn_text">
-          🗣️: {foodInfo.order_learn_text}
-        </div>
-        <div className="result-item desc">
-          <span className="desc-title">Description</span>
-          <div className="desc-content">{foodInfo.description}</div>
-        </div>
-      </div>
-      <div className="recipe_video" style={{ alignItems: "center" }}>
-        <br />
-        <div>
-          RECIPE
-          <button onClick={onClickRecipe} className="recipe_button">
-            Click
-          </button>
-        </div>
-        {isOpen ? (
-          <>
-            <ReactPlayer
-              className="video-player"
-              url={foodInfo.recipie_url}
-              controls
-              width={340}
-              height={340}
-            />
-          </>
-        ) : (
-          <></>
-        )}
-        <div className="btn-container">
-          <Button
-            className="btn-item"
-            variant="contained"
-            endIcon={<SendIcon />}
-            onClick={onClickSaveHistory}
-          >
-            Save History
-          </Button>
+      <div className="btn-container">
+        <Button
+          className="btn-item"
+          variant="contained"
+          endIcon={<SendIcon />}
+          onClick={onClickSaveHistory}
+        >
+          Save History
+        </Button>
 
-          <Button className="btn-item retry" variant="contained" color="grey">
-            Retry
-          </Button>
-        </div>
+        <Button className="btn-item retry" variant="contained" color="grey">
+          Retry
+        </Button>
       </div>
     </div>
   );
