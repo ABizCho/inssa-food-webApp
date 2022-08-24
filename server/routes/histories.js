@@ -37,7 +37,7 @@ router.post("/", async (req, res, next) => {
 router.get("/", async (req, res, next) => {
   const userId = req.body;
   console.log("histories get by id:", userId);
-
+  
   try {
     const histories = await HistoryCard.find({ user_id: userId });
     // .populate("author") //나중에 활성화
