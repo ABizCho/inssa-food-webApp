@@ -54,6 +54,7 @@ const Core = () => {
     //   });
   };
 
+
   useEffect(() => {
     console.log("setFormChange 변경 on onchange:", formChange);
   }, [formChange]);

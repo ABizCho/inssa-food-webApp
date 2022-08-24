@@ -23,6 +23,7 @@ router.get("/uploads/:imgUrl", async (req, res, next) => {
       res.json(modelResult);
   } catch (e) {
     console.log(e);
+
     next(e);
   }
 });

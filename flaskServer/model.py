@@ -26,10 +26,10 @@ def prep(imgUrl) :
   return x
 
 
+
 # 모델 불러오기
 def modelRun(imgUrl) :
     # imgRes = requests.get(f"http://115.85.182.215:8000{imgUrl}")
-    
 
     print(model.summary())
     
@@ -72,4 +72,5 @@ def modelRun(imgUrl) :
     # index = list(features[0]).index(tmp)
     # print(index)
     # plt.imshow(features[0,:,:,3]) # 4번째 피쳐맵(특징)을 그려보자. cf. 0부터 시작하기에 4번째임.
+
 

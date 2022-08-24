@@ -1,18 +1,33 @@
 .result-container {
-  padding: 10px !important;
-  border: 3px solid #d5d5d5;
-  border-radius: 1rem;
-  width: 90%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-size: 800px;
-  background-image: linear-gradient(
-      rgba(0, 0, 0, 0.02),
-      rgb(168, 168, 168, 0.9)
-    ),
-    /* url("/root/inssa-food/client/src/pages/Core/components/ResultInfo/resultlogo.jpg"); */
-      url("./resultlogo.jpg");
+  border-radius: 1rem 1rem 0rem 0rem;
+  width: 383.5px;
+  height: 400px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+
+  /* url("/root/inssa-food/client/src/pages/Core/components/ResultInfo/resultlogo.jpg"); */
+}
+
+.black-box {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border-radius: 1rem 1rem 0 0;
+  background: linear-gradient(rgba(0, 0, 0, 0), rgb(0, 0, 0, 1));
+}
+
+.main_food_image {
+  border-radius: 1rem 1rem 0rem 0rem;
+  width: 100%;
+  height: 100%;
+}
+
+.black-shadow {
+  border-radius: 0rem 0rem 1rem 1rem;
+  width: 24rem;
+  height: 12.4rem;
+  background: linear-gradient(rgba(0, 0, 0, 1), rgb(0, 0, 0, 1));
 }
 
 .result-item-img {
@@ -26,6 +41,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-size: 800px;
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0.02),
+      rgb(168, 168, 168, 0.9)
+    ),
+    /* url("/root/inssa-food/client/src/pages/Core/components/ResultInfo/resultlogo.jpg"); */
+      url("./resultlogo.jpg");
 }
 
 p.title {
@@ -36,13 +58,31 @@ p.title {
   text-shadow: 2px 2px 5px #000;
 }
 
-.korean_food_name {
-  margin-top: 20%;
-  margin-bottom: 20%;
-  text-align: center;
-  font-size: 40px;
+.food_Number {
+  padding-top: 15px;
+  padding-left: 8%;
+  text-align: left;
+  font-size: 20px;
   font-family: sans-serif;
   font-weight: bold;
+  color: white;
+  text-decoration: underline;
+  text-decoration-color: yellow;
+  text-decoration-thickness: 5px;
+  text-underline-offset: 7px;
+}
+
+.korean_food_name {
+  padding-top: 5px;
+  padding-left: 10%;
+  text-align: left;
+  font-size: 25px;
+  font-family: sans-serif;
+  font-weight: bold;
+  color: white;
+  letter-spacing: 3px;
+  word-spacing: 3px;
+  line-height: 1.7;
 }
 
 .simple_list {
@@ -54,17 +94,23 @@ p.title {
 }
 
 .result-item.spicy {
-  margin-bottom: 5%;
+  margin-bottom: 2%;
+  padding-left: 10%;
+  padding-top: 0%;
   font-weight: bold;
-  text-align: center;
-  font-size: larger;
+  text-align: left;
+  font-size: 17px;
+  color: rgb(236, 97, 97);
+
 }
 .result-item.caution {
   margin-bottom: 5%;
   font-weight: bold;
-  text-align: center;
-  font-size: large;
-  color: red;
+  font-size: 15px;
+  color: orange;
+  text-align: left;
+  padding-left: 8%;
+
 }
 
 .foodinfo_caution {
