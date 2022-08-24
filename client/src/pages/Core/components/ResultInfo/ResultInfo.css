@@ -5,7 +5,7 @@
   letter-spacing: 2px;
   word-spacing: 2px;
   line-height: 2;
-  background: linear-gradient(white, white, black 7%, white);
+  /* background: linear-gradient(white, white, black 7%, white); */
 }
 
 .container1 .mainImage {
