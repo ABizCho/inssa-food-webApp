@@ -63,6 +63,7 @@ const History = () => {
   const getHistoryData = () => {
     try {
       console.log("getHistoryData 콘솔:", cookies.userData);
+      
       axios
         .get(
           urlPort.cloudServer + urlPort.node + "/histories",
