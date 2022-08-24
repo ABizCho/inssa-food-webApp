@@ -37,13 +37,11 @@ const ResultInfo = () => {
     comment: "",
   });
 
-
   const [cookies, setCookie, removeCookie] = useCookies([
     "inputImage",
     "foodInfo",
     "imgFile",
   ]);
-
 
   useEffect(() => {
     getFoodInfo().then((res) => {
@@ -55,11 +53,9 @@ const ResultInfo = () => {
   }, []);
 
   const getFoodInfo = async () => {
-
     return await axios.get(
       `${urlPort.cloudServer + urlPort.node}/foodInfo/${params.id}/find`
     );
-
   };
 
   // useEffect(() => {
@@ -84,7 +80,6 @@ const ResultInfo = () => {
     await navigate("/history/list");
   };
   const postHistoryData = async (historyInfo) => {
-
     return await axios.post(
       urlPort.cloudServer + urlPort.node + "/histories",
       historyInfo
@@ -102,60 +97,58 @@ const ResultInfo = () => {
 
   return (
     <div className="resultInfo-container">
-
       <h1 className="title">We will tell you What you ate</h1>
       {foodInfo === null ? (
         <></>
       ) : (
-        <div>
-          <div className="result">
-            <div className="result-container">
-              <div className="black-box"></div>
-              <img className="main_food_image" src={cookies.imgFile} 
-                  alt="react"
-                  crossOrigin="anonymous"
-                  referrerpolicy="unsafe-url"              
-              />
-              <div className="item-container">
+        <div className="result">
+          <div className="result-container">
+            <div className="black-box"></div>
+            <img
+              className="main_food_image"
+              src={cookies.imgFile}
+              alt="react"
+              crossOrigin="anonymous"
+              referrerpolicy="unsafe-url"
+            />
+
+            <label htmlFor="history-title">Title</label>
+            <input
+              name="history-title"
+              onChange={(e) => {
+                setHistoryInput({ ...historyInput, title: e.target.value });
+              }}
+              type="text"
+            />
+            <label htmlFor="history-comment">Comment</label>
+            <textarea
+              name="history-comment"
+              onChange={(e) => {
+                setHistoryInput({ ...historyInput, comment: e.target.value });
+              }}
+              type="text"
+            />
+          </div>
+
+          <div className="black-shadow">
+            <div className="text-part1">
+              <div className="result-item name">
+                {/* <h1 className="korean_food_name">{foodInfo.name_Eng}</h1> */}
+                <h1 className="food_Number">No. 3</h1>
+                <h1 className="korean_food_name">
+                  Tteokbboki <br /> 떡볶이
+                </h1>
               </div>
-
-              <label htmlFor="history-title">Title</label>
-              <input
-                name="history-title"
-                onChange={(e) => {
-                  setHistoryInput({ ...historyInput, title: e.target.value });
-                }}
-                type="text"
-              />
-              <label htmlFor="history-comment">Comment</label>
-              <textarea
-                name="history-comment"
-                onChange={(e) => {
-                  setHistoryInput({ ...historyInput, comment: e.target.value });
-                }}
-                type="text"
-              />
-            </div> */}
-            </div>
-
-            <div className="black-shadow">
-              <div className="text-part1">
-                <div className="result-item name">
-                  {/* <h1 className="korean_food_name">{foodInfo.name_Eng}</h1> */}
-                  <h1 className="food_Number">No. 3</h1>
-                  <h1 className="korean_food_name">
-                    Tteokbboki <br /> 떡볶이
-                  </h1>
-                </div>
-                <div className="result-item spicy"> Spicy: 🌶️ ✖️ {foodInfo.spicy}</div>
+              <div className="result-item spicy">
+                {" "}
+                Spicy: 🌶️ ✖️ {foodInfo.spicy}
               </div>
             </div>
           </div>
-        </>
+        </div>
       )}
 
-
-          {/* <div className="food_detail_back">
+      {/* <div className="food_detail_back">
             <div className="simple_list">
               <div className="result-item caution">
                 caution <br /> <div className="foodinfo_caution"> {foodInfo.caution}</div>
@@ -170,33 +163,41 @@ const ResultInfo = () => {
               <div className="desc-content">{foodInfo.description}</div>
             </div>
           </div> */}
-          <div className="recipe_video" style={{ alignItems: "center" }}>
-            <br />
-            <div>
-              RECIPE
-              <button onClick={onClickRecipe} className="recipe_button">
-                Click
-              </button>
-            </div>
-            {isOpen ? (
-              <>
-                <ReactPlayer className="video-player" url={foodInfo.recipie_url} controls width={340} height={340} />
-              </>
-            ) : (
-              <></>
-            )}
-          </div>
+      <div className="recipe_video" style={{ alignItems: "center" }}>
+        <br />
+        <div>
+          RECIPE
+          <button onClick={onClickRecipe} className="recipe_button">
+            Click
+          </button>
         </div>
-      )}
+        {isOpen ? (
+          <>
+            <ReactPlayer
+              className="video-player"
+              url={foodInfo.recipie_url}
+              controls
+              width={340}
+              height={340}
+            />
+          </>
+        ) : (
+          <></>
+        )}
+        <div className="btn-container">
+          <Button
+            className="btn-item"
+            variant="contained"
+            endIcon={<SendIcon />}
+            onClick={onClickSaveHistory}
+          >
+            Save History
+          </Button>
 
-      <div className="btn-container">
-        <Button className="btn-item" variant="contained" endIcon={<SendIcon />} onClick={onClickSaveHistory}>
-          Save History
-        </Button>
-
-        <Button className="btn-item retry" variant="contained" color="grey">
-          Retry
-        </Button>
+          <Button className="btn-item retry" variant="contained" color="grey">
+            Retry
+          </Button>
+        </div>
       </div>
     </div>
   );
