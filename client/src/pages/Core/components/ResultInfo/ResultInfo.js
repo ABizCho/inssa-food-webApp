@@ -87,38 +87,28 @@ const ResultInfo = () => {
   return (
     <div className="container1">
       <div className="mainImage">
-        <img src={mainfoodImage} style={{ width: 410, height: 300 }} />
+        <img src={mainfoodImage} style={{ width: 413, height: 340 }} />
       </div>
 
       <div className="container2">
-        <h1>떡볶이</h1>
-        <p>
-          이렇게 맛있는 <br />
-          떡볶이는 처음이지?
-        </p>
+        <h1>Tteokbboki</h1>
       </div>
 
-      <div className="container3">
-        <span></span>
+      <div className="description_container">
+        <div className="desc-content">{foodInfo.description}</div>
       </div>
 
-      <div className="food_detail_back">
-        <div className="simple_list">
-          <div className="result-item caution">
-            caution <br /> <div className="foodinfo_caution"> {foodInfo.caution}</div>
-          </div>
-        </div>
-        <div className="result-item order_learn_audio">
-          <ReactAudioPlayer className="audio_player" src={foodInfo.sound_url} autoPlay controls />
-        </div>
-        <div className="result-item order_learn_text">🗣️: {foodInfo.order_learn_text}</div>
-        <div className="result-item desc">
-          <span className="desc-title">Description</span>
-          <div className="desc-content">{foodInfo.description}</div>
-        </div>
+      <div className="caution_container">
+        <div className="cautiona_title">caution</div>
+        <div className="foodinfo_caution"> {foodInfo.caution}</div>
       </div>
+
+      <div className="order_learn_audio">
+        <ReactAudioPlayer className="audio_player" src={foodInfo.sound_url} autoPlay controls />
+      </div>
+      <div className="order_learn_text">🗣️: {foodInfo.order_learn_text}</div>
+
       <div className="recipe_video" style={{ alignItems: "center" }}>
-        <br />
         <div>
           RECIPE
           <button onClick={onClickRecipe} className="recipe_button">
@@ -127,11 +117,41 @@ const ResultInfo = () => {
         </div>
         {isOpen ? (
           <>
-            <ReactPlayer className="video-player" url={foodInfo.recipie_url} controls width={400} height={340} />
+            <ReactPlayer className="video-player" url={foodInfo.recipie_url} controls width={413} height={340} />
           </>
         ) : (
           <></>
         )}
+      </div>
+
+      <div className="history-inputs">
+        <label htmlFor="history-title">Title</label>
+        <input
+          name="history-title"
+          onChange={(e) => {
+            setHistoryInput({ ...historyInput, title: e.target.value });
+          }}
+          type="text"
+        />
+        <br />
+        <label htmlFor="history-comment">Comment</label>
+        <textarea
+          name="history-comment"
+          onChange={(e) => {
+            setHistoryInput({ ...historyInput, comment: e.target.value });
+          }}
+          type="text"
+        />
+      </div>
+
+      <div className="btn-container">
+        <Button className="btn-item" variant="contained" endIcon={<SendIcon />} onClick={onClickSaveHistory}>
+          Save History
+        </Button>
+
+        <Button className="btn-item retry" variant="contained" color="grey">
+          Retry
+        </Button>
       </div>
     </div>
   );
