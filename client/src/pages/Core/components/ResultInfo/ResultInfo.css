@@ -41,6 +41,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-size: 800px;
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0.02),
+      rgb(168, 168, 168, 0.9)
+    ),
+    /* url("/root/inssa-food/client/src/pages/Core/components/ResultInfo/resultlogo.jpg"); */
+      url("./resultlogo.jpg");
 }
 
 p.title {
@@ -94,6 +101,7 @@ p.title {
   text-align: left;
   font-size: 17px;
   color: rgb(236, 97, 97);
+
 }
 .result-item.caution {
   margin-bottom: 5%;
@@ -102,6 +110,7 @@ p.title {
   color: orange;
   text-align: left;
   padding-left: 8%;
+
 }
 
 .foodinfo_caution {

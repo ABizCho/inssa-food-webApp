@@ -37,17 +37,29 @@ const ResultInfo = () => {
     comment: "",
   });
 
-  const [cookies, setCookie, removeCookie] = useCookies(["inputImage", "foodInfo", "imgFile"]);
+
+  const [cookies, setCookie, removeCookie] = useCookies([
+    "inputImage",
+    "foodInfo",
+    "imgFile",
+  ]);
+
 
   useEffect(() => {
     getFoodInfo().then((res) => {
       console.log("getFoodInfo res:", res);
+      console.log("cookies url:", cookies.imgFile);
+
       setFoodInfo(res.data);
     });
   }, []);
 
   const getFoodInfo = async () => {
-    return await axios.get(`${urlPort.localClient + urlPort.node}/foodInfo/${params.id}/find`);
+
+    return await axios.get(
+      `${urlPort.cloudServer + urlPort.node}/foodInfo/${params.id}/find`
+    );
+
   };
 
   // useEffect(() => {
@@ -72,7 +84,11 @@ const ResultInfo = () => {
     await navigate("/history/list");
   };
   const postHistoryData = async (historyInfo) => {
-    return await axios.post(urlPort.localClient + urlPort.node + "/histories", historyInfo);
+
+    return await axios.post(
+      urlPort.cloudServer + urlPort.node + "/histories",
+      historyInfo
+    );
   };
 
   //유저 인풋(Title, Comment) 제외한 히스토리 정보 => onClickSaveHistory 실행시 인풋정보랑 합침!!!
@@ -86,6 +102,7 @@ const ResultInfo = () => {
 
   return (
     <div className="resultInfo-container">
+
       <h1 className="title">We will tell you What you ate</h1>
       {foodInfo === null ? (
         <></>
@@ -94,15 +111,14 @@ const ResultInfo = () => {
           <div className="result">
             <div className="result-container">
               <div className="black-box"></div>
-              <img className="main_food_image" src={mainfoodImage} />
+              <img className="main_food_image" src={cookies.imgFile} 
+                  alt="react"
+                  crossOrigin="anonymous"
+                  referrerpolicy="unsafe-url"              
+              />
               <div className="item-container">
-                {/* <div className="result-item img-box"> */}
-                {/* <img className="result-item img" src={urlPort.localClient + cookies.imgFile.url} alt="react" /> */}
-                {/* <img className="result-item img" src={`${process.env.PUBLIC_URL}/떡볶이.jpg`} alt="react" /> */}
-                {/* </div> */}
               </div>
 
-              {/* <div className="history-inputs">
               <label htmlFor="history-title">Title</label>
               <input
                 name="history-title"
@@ -135,6 +151,9 @@ const ResultInfo = () => {
               </div>
             </div>
           </div>
+        </>
+      )}
+
 
           {/* <div className="food_detail_back">
             <div className="simple_list">
@@ -143,7 +162,7 @@ const ResultInfo = () => {
               </div>
             </div>
             <div className="result-item order_learn_audio">
-              <ReactAudioPlayer className="audio_player" src={foodInfo.sound_url} autoPlay controls />
+              <ReactAudioPlayer className="audio_player" src={"http://115.85.182.215:8000/" + foodInfo.sound_url} autoPlay controls />
             </div>
             <div className="result-item order_learn_text">🗣️: {foodInfo.order_learn_text}</div>
             <div className="result-item desc">

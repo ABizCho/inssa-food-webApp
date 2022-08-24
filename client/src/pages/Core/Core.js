@@ -12,8 +12,11 @@ import urlPort from "../../data/urlPort.json";
 const Core = () => {
   const navigate = useNavigate();
 
-  const [imageURL, setImageURL] = useState(null);
-  const imgRef = useRef();
+  const [imageUrl, setImageUrl] = useState(null);
+  const [sampleImg, setSampleImg] = useState(null);
+
+  const [formChange, setFormChange] = useState("");
+  let urlLet = "";
 
   //쿠키 사용 준비
   const [cookies, setCookie, removeCookie] = useCookies([
@@ -21,36 +24,54 @@ const Core = () => {
     "imgFile",
   ]);
 
-  // 파일 저장
   const onChangeImg = async (e) => {
-    setImgFile(e.target.files[0]);
+    let formData = new FormData();
+    // 파일 저장
+    setSampleImg(URL.createObjectURL(e.target.files[0]));
+    console.log("onChange e.target.files:", e.target.files[0]);
+    // setImageUrl(imgURL);
+    formData.append("file", e.target.files[0]);
+    setFormChange(formData);
+    urlLet = formData;
+    console.log("onChange FormDATA 구성");
 
-    const imgURL = URL.createObjectURL(e.target.files[0]);
-    setImageURL(imgURL);
+    await axios
+      .post(urlPort.cloudServer + urlPort.node + "/api/upload", urlLet)
+      .then((res) => {
+        console.log("axios1-modelExp 이후 res : ", res.data);
+        setCookie("imgFile", "http://115.85.182.215:8000" + res.data.url);
+        setImageUrl(res.data.url);
+        console.log("axios1-onChange Axios imageUrl state:", imageUrl);
+      });
+
+    // await axios
+    //   .post(urlPort.cloudServer + urlPort.node + "/api/upload", formChange)
+    //   .then((res) => {
+    //     console.log("modelExp 이후 res : ", res.data);
+    //     setCookie("imgFile", res.data.url);
+    //     setImageUrl(res.data.url);
+    //     console.log("onChange Axios imageUrl state:", imageUrl);
+    //   });
   };
 
-  const onClickToResult = async (id) => {
-    await axios
-      .get(urlPort.server + "/modelExp", cookies.imgFile)
-      .then((res) => {
-        console.log(res.data);
-      });
 
-    const formData = new FormData();
-    formData.append("file", imgFile);
-    await axios
-      .post(urlPort.cloudServer + "/api/upload", formData)
-      .then((res) => {
-        console.log(res.data);
-        setCookie("imgFile", res.data.url);
-      });
+  useEffect(() => {
+    console.log("setFormChange 변경 on onchange:", formChange);
+  }, [formChange]);
 
-    navigate(`/resultinfo/${id}`);
+  const onClickToResult = async () => {
+    console.log(imageUrl);
+    await axios
+      .get(urlPort.cloudServer + `8000/modelExp${imageUrl}`)
+      .then((res) => {
+        console.log("res.data.resIndex : ", res.data.resIndex);
+        let foodRes = res.data.resIndex;
+        // navigate(`/resultinfo/${foodResult}`);
+        navigate(`/resultinfo/${foodRes}`);
+      });
   };
 
   // ---------------------
-
-  const [imgFile, setImgFile] = useState("");
 
   return (
     // <div className="full-container">
@@ -73,13 +94,13 @@ const Core = () => {
             />
 
             <p className="text-notice" align="center"></p>
-            {imageURL && (
+            {sampleImg && (
               <img
                 className="selected-img"
                 alt="sample"
                 id="imgPreview"
                 // ref={imgRef}
-                src={imageURL}
+                src={sampleImg}
                 style={{ margin: "auto", width: "224px", height: "224px" }}
               />
             )}
@@ -93,9 +114,7 @@ const Core = () => {
               />
             </button>
             <button
-              onClick={() => {
-                onClickToResult(1);
-              }}
+              onClick={onClickToResult}
               className="btn btn-danger btn-block"
               id="formsend"
             >

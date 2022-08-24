@@ -7,7 +7,8 @@ const router = Router();
 
 router.post("/", async (req, res, next) => {
   console.log(req.body);
-  const { userId, food, img, title, comment } = req.body;
+  const { userId, food, img, title, comment,  } = req.body;
+
 
   try {
     await HistoryCard.create({
@@ -46,5 +47,45 @@ router.get("/", async (req, res, next) => {
     next(e);
   }
 });
+
+
+router.get("/:shortid/delete", async (req, res, next) => {
+  const historyId = req.params;
+  try {
+    const histories = await HistoryCard.deleteOne({historyId});
+    // .populate("author") //나중에 활성화
+    console.log("[server] history delete");
+
+    res.json({ result:"delete complete" });
+  } catch (e) {
+    next(e);
+  }
+});
+
+router.post('/:shortId/update', async(req, res, next)=> {
+  let { shortId } = req.params;
+  let { title, comment } = req.body;
+  console.log("ShortID : ", shortId, "title : ", title, "comment : ", comment)
+  try {
+      await HistoryCard.updateOne({ history_card_id : shortId},  {title, comment} ); // Post.updateOne( { 바꾸고싶은 아이디(->객체). 기준점 객체 }, { 바꿀내용 / 속성 } )
+      res.json({result: '수정이 완료되었습니다.'})
+  } catch(e) {
+      next(e)
+  }
+});
+
+router.get('/:shortId/find', async(req, res, next) => {
+  let { shortId } = req.params;
+  console.log("shortId : ", shortId);
+  console.log("req.params : ", req.params);
+  try {
+    let data = await HistoryCard.findOne( {history_card_id: shortId} );
+    console.log("응답해준 데이터: ", data);
+    res.json(data)
+  }
+  catch(e) {
+    next(e)
+  }
+})
 
 module.exports = router;
