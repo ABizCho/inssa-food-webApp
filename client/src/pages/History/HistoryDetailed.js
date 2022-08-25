@@ -114,7 +114,7 @@ const Detail = () => {
           <div className="order_learn_audio">
             <ReactAudioPlayer
               className="audio_player"
-              src={`${urlPort.cloudServer}${urlPort.node}/detailData.sound_url`}
+              src={`${urlPort.cloudServer}${urlPort.node}/${detailData.sound_url}`}
               autoPlay
               controls
             />
