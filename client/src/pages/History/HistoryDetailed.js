@@ -36,7 +36,7 @@ const Detail = () => {
   }, [historyInput]);
 
   useEffect(() => {
-    console.log("detail로 넘어온 params_shortId: ", params);
+    console.log("detail로 넘어온 params_shortId: ", params.id);
     findDetailData().then((res) => {
       setDetailData({ ...res.data, recipie_url: "" });
     });
@@ -45,7 +45,7 @@ const Detail = () => {
   const findDetailData = async () => {
     return await axios
       .get(
-        urlPort.cloudServer + urlPort.node + `/histories/${params}/findone`,
+        urlPort.cloudServer + urlPort.node + `/histories/${params.id}/findone`,
         {
           headers: {
             accessToken: cookies.userData.accessToken,
@@ -64,7 +64,7 @@ const Detail = () => {
 
   const deleteHistory = async (shortId) => {
     return await axios.get(
-      `${urlPort.cloudServer + urlPort.node}/histories/${shortId}/delete`,
+      `${urlPort.cloudServer + urlPort.node}/histories/${params.id}/delete`,
       { headers: { accessToken: cookies.userData.accessToken } }
     );
   };
