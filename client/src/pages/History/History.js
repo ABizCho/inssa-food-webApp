@@ -132,12 +132,14 @@ const History = () => {
                   shortId={item.shortId}
                   key={index}
                   id={item?.id}
-                  name={item?.name_Eng}
+                  name={item?.name}
+                  nameEng={item?.name_Eng}
                   food_img={item?.user_inputImg}
                   desc={item?.description}
                   colorIdx={index}
                   soundUrl={item.sound_url}
                   recipeUrl={item.recipe_url}
+                  spicy={item.spicy}
                 />
               );
             })}
