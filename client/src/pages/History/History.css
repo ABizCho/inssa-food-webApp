@@ -1,7 +1,9 @@
 /*  */
-.Toggle {
-  margin-left: 10px;
+.MuiToggleButtonGroup-root {
+  margin-left: 10px !important;
 }
+
+
 
 .title {
   margin-bottom: 13% !important;
@@ -18,9 +20,6 @@
   margin: 10px !important;
 }
 
-.historyCard {
-  /* margin-top: 20% !important; */
-}
 .card-item {
   /* margin-right: 10% !important; */
   border-radius: 10% !important;
