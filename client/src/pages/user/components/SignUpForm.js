@@ -3,8 +3,11 @@ import { useRef, useState } from "react";
 import axios from "axios";
 import urlPort from "../../../data/urlPort.json";
 
+import { useNavigate } from "react-router-dom";
+
 const SignUpForm = ({ signUpData, onChangeSignUpData, setSignUpdata }) => {
   const emailRef = useRef();
+  const navigate = useNavigate();
 
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -48,7 +51,7 @@ const SignUpForm = ({ signUpData, onChangeSignUpData, setSignUpdata }) => {
       .then((res) => {
         console.log(res.data);
         alert(res.data.result);
-        window.location.reload();
+        navigate("/login");
       })
       .catch((e) => {
         console.log(e);
