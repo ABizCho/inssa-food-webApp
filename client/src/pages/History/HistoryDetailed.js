@@ -37,14 +37,9 @@ const Detail = () => {
 
   useEffect(() => {
     findDetailData().then((res) => {
-      // console.log(res);
       setDetailData({ ...res.data, recipie_url: "" });
     });
   }, []);
-
-  useEffect(() => {
-    console.log("detailData 받아옴 : ", detailData);
-  }, [detailData]);
 
   const findDetailData = async () => {
     return await axios
@@ -61,6 +56,12 @@ const Detail = () => {
         setDetailData(res.data.histories);
       });
   };
+
+  useEffect(() => {
+    console.log("detailData 받아옴 : ", detailData);
+  }, [detailData]);
+
+
 
   const deleteHistory = async (shortId) => {
     return await axios.get(
