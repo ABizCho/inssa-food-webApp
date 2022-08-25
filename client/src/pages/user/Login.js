@@ -9,12 +9,14 @@ import { Button } from "@mui/material";
 import { KakaoLogo, googleLogo } from "./components/SocialLogo";
 import "./Login.css";
 
+import urlPort from "../../data/urlPort.json";
+
 const Login = () => {
   const navigate = useNavigate();
   // ------------------kakao Oauth-------------------
 
   const REST_API_KEY = "0abf97780f442400eccc7cd004baabab";
-  const REDIRECT_URI = "http://localhost:3000/oauth/kakao/callback";
+  const REDIRECT_URI = urlPort.cloudServer + "/oauth/kakao/callback";
 
   //1번
   const KAKAO_AUTH_URI = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
@@ -124,7 +126,7 @@ const Login = () => {
             className="social-btn google"
             // startIcon={<googleLogo />}
             variant="contained"
-            onClick={() => navigate('/login/findpassword')}
+            onClick={() => navigate("/login/findpassword")}
           >
             Find Password
           </Button>
