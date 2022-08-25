@@ -137,8 +137,7 @@ const History = () => {
                   desc={item?.description}
                   colorIdx={index}
                   soundUrl={item.sound_url}
-                  recipeUrl = {item.recipe_url}
-                  
+                  recipeUrl={item.recipe_url}
                 />
               );
             })}
