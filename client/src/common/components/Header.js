@@ -107,7 +107,7 @@ const Header = () => {
               className="signUp-btn log-btn btn btn-outline-secondary"
               onClick={onClickLogOut}
             >
-              LogOut
+              Log out
             </button>
             &nbsp;&nbsp;
             <button
@@ -116,7 +116,7 @@ const Header = () => {
             variant="contained"
             onClick={() => navigate('/login/resetpassword')}
           >
-            Reset Password
+            Reset pw
           </button>
           </div>
         )}
