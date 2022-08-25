@@ -14,7 +14,7 @@ import urlPort from "./../../../data/urlPort.json";
 import $ from "jquery";
 import axios from "axios";
 const HistoryCard = (props) => {
-  const { id, name, food_img, desc, colorIdx, shortId } = props;
+  const { id, name, food_img, desc, colorIdx, shortId, soundUrl, recipeUrl } = props;
 
   const navigate = useNavigate();
 

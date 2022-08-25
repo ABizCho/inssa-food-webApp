@@ -67,10 +67,7 @@ router.post("/:shortId/update", async (req, res, next) => {
   let { title, comment } = req.body;
   console.log("ShortID : ", shortId, "title : ", title, "comment : ", comment);
   try {
-    await HistoryCard.updateOne(
-      { history_card_id: shortId },
-      { title, comment }
-    ); // Post.updateOne( { 바꾸고싶은 아이디(->객체). 기준점 객체 }, { 바꿀내용 / 속성 } )
+    await HistoryCard.updateOne({ shortId: shortId }, { title, comment }); // Post.updateOne( { 바꾸고싶은 아이디(->객체). 기준점 객체 }, { 바꿀내용 / 속성 } )
     res.json({ result: "수정이 완료되었습니다." });
   } catch (e) {
     next(e);

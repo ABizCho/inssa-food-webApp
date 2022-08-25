@@ -136,6 +136,9 @@ const History = () => {
                   food_img={item?.user_inputImg}
                   desc={item?.description}
                   colorIdx={index}
+                  soundUrl={item.sound_url}
+                  recipeUrl = {item.recipe_url}
+                  
                 />
               );
             })}

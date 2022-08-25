@@ -38,9 +38,10 @@ const Detail = () => {
 
   useEffect(() => {
     console.log("detail로 넘어온 params_shortId: ", params.id);
-    findDetailData().then((res) => {
-      setDetailData({ ...res.data, recipie_url: "" });
-    });
+    findDetailData();
+    // .then((res) => {
+    //   setDetailData({ ...res.data, recipie_url: "" });
+    // });
   }, []);
 
   const findDetailData = async () => {
