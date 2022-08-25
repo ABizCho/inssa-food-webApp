@@ -1,4 +1,4 @@
-import "./ResultInfo.css";
+// import "./ResultInfo.css";
 import { useNavigate, useParams } from "react-router-dom";
 
 import { Button, useScrollTrigger } from "@mui/material";
