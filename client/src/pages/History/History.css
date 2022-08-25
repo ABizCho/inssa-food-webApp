@@ -6,6 +6,10 @@
 .MuiBox-root {
 }
 
+.MuiButtonBase-root {
+  border-radius: 1em !important;
+}
+
 .title {
   margin-bottom: 13% !important;
   text-align: center;

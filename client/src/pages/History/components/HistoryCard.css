@@ -7,6 +7,8 @@
 .detail-btn {
   margin-top: 20px !important;
   height: 30px !important;
+  border-radius: 1em !important;
+  font-size: 12px !important;
 }
 .result-container {
   border-radius: 1rem 1rem 0rem 0rem;
