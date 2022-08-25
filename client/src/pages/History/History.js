@@ -108,7 +108,7 @@ const History = () => {
                   src={item?.user_inputImg}
                   alt="React"
                   onClick={() => {
-                    navigate(`${item.history_card_id}/detail`);
+                    navigate(`${item.shortId}/detail`);
                   }}
                 />
               );
@@ -135,7 +135,7 @@ const History = () => {
                   food_img={item?.user_inputImg}
                   desc={item?.description}
                   colorIdx={index}
-                  history_card_id={item.history_card_id}
+                  shortId={item.shortId}
                 />
               );
             })}

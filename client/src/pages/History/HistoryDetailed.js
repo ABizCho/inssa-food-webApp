@@ -36,6 +36,7 @@ const Detail = () => {
   }, [historyInput]);
 
   useEffect(() => {
+    console.log("detail로 넘어온 params_shortId: ", params);
     findDetailData().then((res) => {
       setDetailData({ ...res.data, recipie_url: "" });
     });
@@ -44,7 +45,7 @@ const Detail = () => {
   const findDetailData = async () => {
     return await axios
       .get(
-        urlPort.cloudServer + urlPort.node + `/histories/${params.id}/findone`,
+        urlPort.cloudServer + urlPort.node + `/histories/${params}/findone`,
         {
           headers: {
             accessToken: cookies.userData.accessToken,
