@@ -13,7 +13,6 @@ router.post("/", async (req, res, next) => {
   const nanoId = nanoId();
   try {
     await HistoryCard.create({
-      shortId: nanoId,
       user_id: userId,
       food_id: food.id,
       user_inputImg: img,
