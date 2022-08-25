@@ -129,13 +129,13 @@ const History = () => {
               return (
                 <HistoryCard
                   className="historyCard"
+                  shortId={item.shortId}
                   key={index}
                   id={item?.id}
                   name={item?.name_Eng}
                   food_img={item?.user_inputImg}
                   desc={item?.description}
                   colorIdx={index}
-                  shortId={item.shortId}
                 />
               );
             })}

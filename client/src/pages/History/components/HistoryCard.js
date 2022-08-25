@@ -9,14 +9,13 @@ import { useNavigate, useParams } from "react-router-dom";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import { useCookies } from "react-cookie";
-import urlPort from './../../../data/urlPort.json'
+import urlPort from "./../../../data/urlPort.json";
 
 import $ from "jquery";
 import axios from "axios";
 const HistoryCard = (props) => {
-  const { id, name, food_img, desc, colorIdx, history_card_id } = props;
+  const { id, name, food_img, desc, colorIdx, shortId } = props;
 
-  
   const navigate = useNavigate();
 
   const params = useParams();
@@ -24,16 +23,13 @@ const HistoryCard = (props) => {
   const cardPalette = ["#ffca80", "#ffb54d", "#f08000", "#ffb54d"];
 
   const onClickDetail = () => {
-    navigate(`${history_card_id}/detail`);
+    navigate(`${shortId}/detail`);
   };
   console.log(name);
 
-  
-
   const onClickUpdateHistory = async (id) => {
-    await axios.post('/histories/update', () => {
-    })
-  }
+    await axios.post("/histories/update", () => {});
+  };
 
   return (
     <Card
