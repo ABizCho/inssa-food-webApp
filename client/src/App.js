@@ -43,10 +43,7 @@ function App() {
         <Route path="history">
           <Route path="list" element={<History />} />
           <Route path="list/:id/detail" element={<Detail />} />
-          <Route
-            path="list/:history_card_id/update"
-            element={<HistoryUpdate />}
-          />
+          <Route path="list/:id/update" element={<HistoryUpdate />} />
         </Route>
         <Route path="oauth">
           <Route path="kakao/callback" element={<KakaoCallBack />} />
