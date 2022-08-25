@@ -8,6 +8,7 @@ import ReactAudioPlayer from "react-audio-player";
 import ReactPlayer from "react-player";
 
 import { Button } from "@mui/material";
+import "./History.css";
 
 const Detail = () => {
   //// 유저 및 history 백엔드까지 완성 시 활성화
@@ -54,7 +55,7 @@ const Detail = () => {
       )
       .then((res) => {
         console.log("findDetail Res:", res);
-        setDetailData(res.data.histories);
+        setDetailData(res.data);
       });
   };
 
@@ -63,8 +64,9 @@ const Detail = () => {
   }, [detailData]);
 
   const deleteHistory = async (shortId) => {
+    const historyId = params.id;
     return await axios.get(
-      `${urlPort.cloudServer + urlPort.node}/histories/${params.id}/delete`,
+      `${urlPort.cloudServer + urlPort.node}/histories/${historyId}/delete`,
       { headers: { accessToken: cookies.userData.accessToken } }
     );
   };
@@ -131,7 +133,7 @@ const Detail = () => {
               <>
                 <ReactPlayer
                   className="video-player"
-                  url={detailData.recipie_url}
+                  url={detailData.recipe_url}
                   controls
                   width={413}
                   height={340}

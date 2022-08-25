@@ -20,6 +20,7 @@ router.post("/", async (req, res, next) => {
       description: food.description,
       spicy: food.spicy,
       recipe_url: food.recipe_url,
+      sound_url: food.sound_url,
       caution: food.caution,
       title: title,
       comment: comment,
