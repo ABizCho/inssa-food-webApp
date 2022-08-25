@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { Button } from "@mui/material";
 
-
 const Header = () => {
   // 야매:라우팅 권한관리로 개선되어야할 로직---------------
   const [cookies, setCookie, removeCookie] = useCookies(["userData"]);
@@ -84,7 +83,13 @@ const Header = () => {
               </span>
             </li>
             <li>
-              <span href="" onClick={()=> {navigate('about')}} className="nav-link px-2 text-white">
+              <span
+                href=""
+                onClick={() => {
+                  navigate("about");
+                }}
+                className="nav-link px-2 text-white"
+              >
                 About
               </span>
             </li>
@@ -104,20 +109,18 @@ const Header = () => {
         ) : (
           <div className="logFalse-box">
             <button
-              className="signUp-btn log-btn btn btn-outline-secondary"
+              className="signUp-btn log-btn btn btn-secondary"
               onClick={onClickLogOut}
             >
               Log out
             </button>
             &nbsp;&nbsp;
             <button
-            className="logIn-btn log-btn btn btn-secondary"
-            // startIcon={<googleLogo />}
-            variant="contained"
-            onClick={() => navigate('/login/resetpassword')}
-          >
-            Reset pw
-          </button>
+              className="logIn-btn log-btn btn btn-outline-secondary"
+              onClick={() => navigate("/login/resetpassword")}
+            >
+              Reset pw
+            </button>
           </div>
         )}
       </div>
