@@ -1,8 +1,12 @@
 .card-container {
 }
 
+.text-part {
+  padding-left: 8% !important;
+}
 .detail-btn {
-  margin-top: 15px;
+  margin-top: 20px !important;
+  height: 30px !important;
 }
 .result-container {
   border-radius: 1rem 1rem 0rem 0rem;
@@ -30,8 +34,8 @@
 
 .main_food_image {
   border-radius: 1rem 1rem 0rem 0rem;
-  width: 100%;
-  height: 100%;
+  width: 80%;
+  height: 225px;
 }
 
 .result-item-img {
@@ -48,7 +52,7 @@ p.title {
   text-shadow: 2px 2px 5px #000;
 }
 
-.food_Number {
+/* .food_Number {
   padding-top: 15px;
   padding-left: 8%;
   text-align: left;
@@ -60,11 +64,10 @@ p.title {
   text-decoration-color: yellow;
   text-decoration-thickness: 5px;
   text-underline-offset: 7px;
-}
+} */
 
 .korean_food_name {
   padding-top: 5px;
-  padding-left: 10%;
   text-align: left;
   font-size: 25px;
   font-family: sans-serif;
@@ -85,7 +88,6 @@ p.title {
 
 .result-item.spicy {
   margin-bottom: 2%;
-  padding-left: 10%;
   padding-top: 0%;
   font-weight: bold;
   text-align: left;
