@@ -84,86 +84,96 @@ const Detail = () => {
   };
 
   return (
-    <div className="container1">
-      <div className="mainImage">
-        <img
-          src={detailData.user_inputImg}
-          alt="react"
-          style={{ width: 413, height: 340 }}
-        />
-      </div>
-
-      <div className="container2">
-        <h1>{detailData.name_Eng}</h1>
-      </div>
-
-      <div className="description_container">
-        <div className="desc-content">{detailData.description}</div>
-      </div>
-
-      <div className="caution_container">
-        <div className="cautiona_title">caution</div>
-        <div className="foodinfo_caution"> {detailData.caution}</div>
-      </div>
-
-      <div className="order_learn_audio">
-        <ReactAudioPlayer
-          className="audio_player"
-          src={detailData.sound_url}
-          autoPlay
-          controls
-        />
-      </div>
-      <div className="order_learn_text">🗣️: {detailData.order_learn_text}</div>
-
-      <div className="recipe_video" style={{ alignItems: "center" }}>
-        <div>
-          RECIPE
-          <button onClick={onClickRecipe} className="recipe_button">
-            Click
-          </button>
-        </div>
-        {isOpen ? (
-          <>
-            <ReactPlayer
-              className="video-player"
-              url={detailData.recipie_url}
-              controls
-              width={413}
-              height={340}
+    <div>
+      {detailData ? (
+        <div className="container1">
+          <div className="mainImage">
+            <img
+              src={detailData.user_inputImg}
+              alt="react"
+              style={{ width: 413, height: 340 }}
             />
-          </>
-        ) : (
-          <></>
-        )}
-      </div>
+          </div>
 
-      <div className="history-inputs">
-        <label htmlFor="history-title">Title</label>
-        <div>{detailData.title}</div>
-        <br />
-        <label htmlFor="history-comment">Comment</label>
-        <div>{detailData.comment}</div>
-      </div>
+          <div className="container2">
+            <h1>{detailData.name_Eng}</h1>
+          </div>
 
-      <div className="btn-container">
-        <Button
-          className="btn-item"
-          variant="contained"
-          onClick={onUpdateClick}
-        >
-          Update
-        </Button>
+          <div className="description_container">
+            <div className="desc-content">{detailData.description}</div>
+          </div>
 
-        <Button
-          onClick={onDeleteClick}
-          className="btn-item retry"
-          variant="contained"
-          color="grey"
-        >
-          Delete
-        </Button>
-      </div>
+          <div className="caution_container">
+            <div className="cautiona_title">caution</div>
+            <div className="foodinfo_caution"> {detailData.caution}</div>
+          </div>
+
+          <div className="order_learn_audio">
+            <ReactAudioPlayer
+              className="audio_player"
+              src={detailData.sound_url}
+              autoPlay
+              controls
+            />
+          </div>
+          <div className="order_learn_text">
+            🗣️: {detailData.order_learn_text}
+          </div>
+
+          <div className="recipe_video" style={{ alignItems: "center" }}>
+            <div>
+              RECIPE
+              <button onClick={onClickRecipe} className="recipe_button">
+                Click
+              </button>
+            </div>
+            {isOpen ? (
+              <>
+                <ReactPlayer
+                  className="video-player"
+                  url={detailData.recipie_url}
+                  controls
+                  width={413}
+                  height={340}
+                />
+              </>
+            ) : (
+              <></>
+            )}
+          </div>
+
+          <div className="history-inputs">
+            <label htmlFor="history-title">Title</label>
+            <div>{detailData.title}</div>
+            <br />
+            <label htmlFor="history-comment">Comment</label>
+            <div>{detailData.comment}</div>
+          </div>
+
+          <div className="btn-container">
+            <Button
+              className="btn-item"
+              variant="contained"
+              onClick={onUpdateClick}
+            >
+              Update
+            </Button>
+
+            <Button
+              onClick={onDeleteClick}
+              className="btn-item retry"
+              variant="contained"
+              color="grey"
+            >
+              Delete
+            </Button>
+          </div>
+        </div>
+      ) : (
+        <>
+          <h1> Wait</h1>
+        </>
+      )}
     </div>
   );
 };
