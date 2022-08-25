@@ -15,6 +15,7 @@
   color: white;
   font-size: 15px;
   margin-bottom: 10% !important;
+  box-shadow: 3px 3px 3px grey;
 }
 
 .selected-img {
@@ -50,6 +51,7 @@
   display: flex;
   flex-direction: column;
   border-radius: 1em;
+  box-shadow: 5px 5px 5px grey;
 }
 
 .demo-container {

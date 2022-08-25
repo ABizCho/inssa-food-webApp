@@ -8,6 +8,8 @@ import CollectFood from "./CollectFood.png";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 
+import { Button } from "@mui/material";
+
 const Home = () => {
   const [cookies, setCookie, removeCookie] = useCookies(["userData"]);
 
@@ -36,14 +38,12 @@ const Home = () => {
             <br />
             in this safe archive.
           </span>
-          <button
-            onClick={onClickStart}
-            className="css-1hw9j7s"
-            tabIndex="0"
-            type="button"
+          <Button
+          className="start-btn"
+          onClick={onClickStart}
           >
-            Get started<span className="MuiTouchRipple-root"></span>
-          </button>
+            Get Started
+          </Button>
         </div>
         <div className="rightSide" style={{ margin: "4.5rem" }}>
           <img

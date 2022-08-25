@@ -2,6 +2,14 @@
   box-sizing: border-box;
 }
 
+.start-btn {
+  background-color: #f08000 !important;
+  height: 50px !important;
+  font-size: 15px !important;
+  font-weight: 15px !important;
+  color: white !important;
+}
+
 .intro-text {
   font-size: 2.2rem !important;
   line-height: 50px !important;
@@ -10,8 +18,13 @@
 .what-text {
 }
 
+.section2_eachItem {
+  box-shadow: 5px 5px 5px grey;
+}
+
 .intro-img {
   border-radius: 1rem !important;
+  box-shadow: 5px 5px 5px grey;
 }
 .Home_section1 {
   display: flex;
