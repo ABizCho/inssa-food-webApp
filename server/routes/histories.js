@@ -78,7 +78,7 @@ router.post("/:shortId/update", async (req, res, next) => {
   }
 });
 
-router.get("/:shortId/find", async (req, res, next) => {
+router.get("/:shortId/findone", async (req, res, next) => {
   let { shortId } = req.params;
   console.log("shortId(req.params) : ", shortId);
   try {

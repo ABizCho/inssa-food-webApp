@@ -44,7 +44,7 @@ const Detail = () => {
   const findDetailData = async () => {
     return await axios
       .get(
-        urlPort.cloudServer + urlPort.node + `/histories/${params.id}/find`,
+        urlPort.cloudServer + urlPort.node + `/histories/${params.id}/findone`,
         {
           headers: {
             accessToken: cookies.userData.accessToken,
@@ -60,8 +60,6 @@ const Detail = () => {
   useEffect(() => {
     console.log("detailData 받아옴 : ", detailData);
   }, [detailData]);
-
-
 
   const deleteHistory = async (shortId) => {
     return await axios.get(
