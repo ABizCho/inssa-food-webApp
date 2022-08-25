@@ -52,7 +52,7 @@ const Detail = () => {
         }
       )
       .then((res) => {
-        console.log(res);
+        console.log("findDetail Res:", res);
         setDetailData(res.data.histories);
       });
   };
