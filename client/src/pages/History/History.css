@@ -1,5 +1,6 @@
 /*  */
-img {
+.Toggle {
+  margin-left: 10px;
 }
 
 .title {
@@ -11,6 +12,10 @@ img {
 .card-slider {
   display: block;
   align-items: center;
+}
+
+.react-multi-carousel-list {
+  margin: 10px !important;
 }
 
 .historyCard {

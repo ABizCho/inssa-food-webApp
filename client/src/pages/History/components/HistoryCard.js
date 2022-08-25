@@ -81,10 +81,15 @@ const HistoryCard = (props) => {
             </h1>
           </div>
           <div className="result-item spicy"> Spicy: 🌶️ ✖️ {spicy}</div>
+
+          <Button
+            className="detail-btn"
+            color="primary"
+            onClick={() => onClickDetail()}
+          >
+            Detail
+          </Button>
         </div>
-        <Button color="primary" onClick={() => onClickDetail()}>
-          Detail
-        </Button>
       </div>
     </div>
   );

@@ -1,7 +1,9 @@
 .card-container {
-
 }
 
+.detail-btn {
+  margin-top: 15px;
+}
 .result-container {
   border-radius: 1rem 1rem 0rem 0rem;
   width: 100%;
