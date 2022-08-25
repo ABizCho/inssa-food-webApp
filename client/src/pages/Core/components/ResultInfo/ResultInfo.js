@@ -96,7 +96,6 @@ const ResultInfo = () => {
 
     food: cookies.foodInfo,
     userId: cookies.userData.email,
-    // recipie_url: cookies.foodInfo.recipie_url
   };
 
   return (
@@ -182,7 +181,7 @@ const ResultInfo = () => {
               <>
                 <ReactPlayer
                   className="video-player"
-                  url={foodInfo.recipie_url}
+                  url={foodInfo.recipe_url}
                   controls
                   width={340}
                   height={340}

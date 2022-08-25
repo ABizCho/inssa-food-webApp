@@ -12,6 +12,7 @@ module.exports = new Schema({
   description: String,
   spicy: Number,
   recipe_url: String,
+  sound_url: String,
   caution: Array,
   title: String,
   comment: String,
