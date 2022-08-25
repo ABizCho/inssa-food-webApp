@@ -74,8 +74,9 @@ const Detail = () => {
 
   const onDeleteClick = (shortId) => {
     if (window.confirm("삭제 하시겠습니까?")) {
-      deleteHistory(shortId);
-      navigate("/history/list");
+      deleteHistory(shortId).then(() => {
+        navigate("/history/list");
+      });
     } else {
       //아니오
     }
