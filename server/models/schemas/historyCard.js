@@ -2,7 +2,7 @@ const { Schema } = require("mongoose");
 const shortId = require("./type/short-id");
 
 module.exports = new Schema({
-  shortId,
+  shortId: shortId,
   user_id: String,
   food_id: Number,
   user_inputImg: String,
