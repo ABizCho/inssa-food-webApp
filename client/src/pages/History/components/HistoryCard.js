@@ -27,10 +27,6 @@ const HistoryCard = (props) => {
   };
   console.log(name);
 
-  const onClickUpdateHistory = async (id) => {
-    await axios.post("/histories/update", () => {});
-  };
-
   return (
     <Card
       sx={{

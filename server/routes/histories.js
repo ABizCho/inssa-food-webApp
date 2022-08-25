@@ -50,9 +50,9 @@ router.get("/:email/find", async (req, res, next) => {
 });
 
 router.get("/:shortid/delete", async (req, res, next) => {
-  const historyId = req.params;
+  const { historyId } = req.params;
   try {
-    const histories = await HistoryCard.deleteOne({ historyId });
+    await HistoryCard.deleteOne({ historyId });
     // .populate("author") //나중에 활성화
     console.log("[server] history delete");
 

@@ -23,7 +23,7 @@ const HisotyUpdate = () => {
   const onUpdateClick = async () => {
     console.log("params: ", params.id);
     await axios.post(
-      `${urlPort.server}/histories/${params.id}/update`,
+      `${urlPort.cloudServer + urlPort.node}/histories/${params.id}/update`,
       updateData
     );
     alert("updated!");
@@ -32,9 +32,12 @@ const HisotyUpdate = () => {
 
   const prepareUpdate = async () => {
     console.log("params: ", params.id);
-    return await axios.get(`${urlPort.server}/histories/${params.id}/find`, {
-      headers: { accessToken: cookies.userData.accessToken },
-    });
+    return await axios.get(
+      `${urlPort.cloudServer + urlPort.node}/histories/${params.id}/findOne`,
+      {
+        headers: { accessToken: cookies.userData.accessToken },
+      }
+    );
   };
 
   const onUpdateDataChange = (e) => {
@@ -43,8 +46,6 @@ const HisotyUpdate = () => {
       [e.target.name]: e.target.value,
     });
   };
-
-  useEffect(() => console.log(updateData), [updateData]);
 
   return (
     <div className="album">
