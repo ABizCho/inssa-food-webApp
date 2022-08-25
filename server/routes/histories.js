@@ -9,6 +9,8 @@ router.post("/", async (req, res, next) => {
   console.log(req.body);
   const { userId, food, img, title, comment } = req.body;
 
+  console.log("최신화 sound", food.sound_url);
+  console.log("최신화 video", food.recipe_url);
   try {
     await HistoryCard.create({
       user_id: userId,
