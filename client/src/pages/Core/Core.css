@@ -15,7 +15,10 @@
   color: white;
   font-size: 15px;
   margin-bottom: 10% !important;
-  box-shadow: 3px 3px 3px grey;
+}
+
+.discover-btn {
+  border-radius: 1em !important;
 }
 
 .selected-img {

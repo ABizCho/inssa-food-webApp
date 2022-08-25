@@ -115,7 +115,7 @@ const Core = () => {
             </button>
             <button
               onClick={onClickToResult}
-              className="btn btn-danger btn-block"
+              className="discover-btn btn btn-danger btn-block"
               id="formsend"
             >
               <i className="func-btn fas fa-webcam" aria-hidden="true"></i>

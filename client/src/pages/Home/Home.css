@@ -48,10 +48,10 @@
 }
 
 .leftSide h1 {
-  font-size: 2.5rem;
-  font-weight: bold;
+  font-size: 2rem !important;
+  font-weight: bold !important;
   line-height: 70px;
-  letter-spacing: -3px;
+  letter-spacing: -1px;
 }
 
 .Home_section1 .leftSide span {

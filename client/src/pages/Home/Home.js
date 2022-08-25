@@ -26,8 +26,13 @@ const Home = () => {
           <h1 className="intro-text">
             Find out insights
             <br /> about the food
-            <br /> with your picture.
           </h1>
+          <img
+            className="intro-img"
+            src={bibimbap}
+            alt="비빔밥"
+            style={{ height: "200px", width: "330px" }}
+          />
           <span>
             Learn about food
             <br />
@@ -38,21 +43,18 @@ const Home = () => {
             <br />
             in this safe archive.
           </span>
-          <Button
-          className="start-btn"
-          onClick={onClickStart}
-          >
+          <Button className="start-btn" onClick={onClickStart}>
             Get Started
           </Button>
         </div>
-        <div className="rightSide" style={{ margin: "4.5rem" }}>
+        {/* <div className="rightSide" style={{ margin: "4.5rem" }}>
           <img
             className="intro-img"
             src={bibimbap}
             alt="비빔밥"
             style={{ height: "200px", width: "330px" }}
           />
-        </div>
+        </div> */}
       </section>
 
       <section className="Home_section2">
