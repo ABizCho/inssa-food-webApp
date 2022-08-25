@@ -7,6 +7,8 @@ import urlPort from "../../data/urlPort.json";
 import ReactAudioPlayer from "react-audio-player";
 import ReactPlayer from "react-player";
 
+import { Button } from "@mui/material";
+
 const Detail = () => {
   //// 유저 및 history 백엔드까지 완성 시 활성화
   const params = useParams();
@@ -15,9 +17,23 @@ const Detail = () => {
 
   const [detailData, setDetailData] = useState({});
 
+  const [historyInput, setHistoryInput] = useState({
+    title: "",
+    comment: "",
+  });
+
+  const [isOpen, setIsOpen] = useState(false);
+  const onClickRecipe = () => {
+    setIsOpen(!isOpen);
+  };
+
   const navigate = useNavigate();
 
   // const dispatch = useDispatch(); //action을 사용하기 위해 값을 보내주는 역할.
+
+  useEffect(() => {
+    console.log("HistoryINPUT : ", historyInput);
+  }, [historyInput]);
 
   useEffect(() => {
     findDetailData().then((res) => {
@@ -55,7 +71,6 @@ const Detail = () => {
 
   const onDeleteClick = (shortId) => {
     if (window.confirm("삭제 하시겠습니까?")) {
- 
       deleteHistory(shortId);
       navigate("/history/list");
     } else {
@@ -69,77 +84,85 @@ const Detail = () => {
   };
 
   return (
-    // 구현 백엔드작업 때 상세구현 요망
-    <div className="album">
-      <div className="container">
-        <div className="result-item desc">
-          <span className="desc-title">description</span>
-          <div className="desc-content">{detailData.description}</div>
-        </div>
-        <div className="result-item spicy">spicy: {detailData.spicy}</div>
-        <div className="result-item caution">caution: {detailData.caution}</div>
-        <div className="result-item name_Eng">
-          English Name: {detailData.name_Eng}
-        </div>
-        <div className="result-item order_learn_audio">
-          <ReactAudioPlayer src={detailData.sound_url} autoPlay controls />
-        </div>
-        <div className="result-item order_learn_text">
-          🗣️: {detailData.order_learn_text}
-        </div>
+    <div className="container1">
+      <div className="mainImage">
+        <img
+          src={detailData.user_inputImg}
+          alt="react"
+          style={{ width: 413, height: 340 }}
+        />
+      </div>
+
+      <div className="container2">
+        <h1>{detailData.name_Eng}</h1>
+      </div>
+
+      <div className="description_container">
+        <div className="desc-content">{detailData.description}</div>
+      </div>
+
+      <div className="caution_container">
+        <div className="cautiona_title">caution</div>
+        <div className="foodinfo_caution"> {detailData.caution}</div>
+      </div>
+
+      <div className="order_learn_audio">
+        <ReactAudioPlayer
+          className="audio_player"
+          src={detailData.sound_url}
+          autoPlay
+          controls
+        />
+      </div>
+      <div className="order_learn_text">🗣️: {detailData.order_learn_text}</div>
+
+      <div className="recipe_video" style={{ alignItems: "center" }}>
         <div>
           RECIPE
-          <ReactPlayer
-            url={detailData.recipie_url}
-            controls
-            width={300}
-            height={300}
-          />
+          <button onClick={onClickRecipe} className="recipe_button">
+            Click
+          </button>
         </div>
-        <div className="card mb-3">
-          <div className="card-img-top" style={{ textAlign: "center" }}>
-            <img
-              style={{ width: "100px", height: "100px" }}
-              src={detailData.user_inputImg}
-              alt="..."
+        {isOpen ? (
+          <>
+            <ReactPlayer
+              className="video-player"
+              url={detailData.recipie_url}
+              controls
+              width={413}
+              height={340}
             />
-          </div>
-          <div className="card-body">
-            <h5 className="card-title"></h5>
-            <p className="card-text"></p>
-            <p className="card-text">
-              <small className="text-muted"></small>
-            </p>
-          </div>
-        </div>
-        <div className="mb-3">
-          <label htmlFor="title" className="form-label">
-            Title
-          </label>
-          <div className="card">
-            <p className="card-body">{detailData.title}</p>
-          </div>
-        </div>
-        <div className="mb-3">
-          <label htmlFor="content" className="form-label">
-            내용
-          </label>
-          <div className="card">
-            <p className="card-body">{detailData.comment}</p>
-          </div>
-        </div>
-        <button
-          type="button"
-          onClick={() => {
-            window.history.back();
-          }}
-          className="btn btn-outline-danger"
-        >
-          뒤로가기
-        </button>
+          </>
+        ) : (
+          <></>
+        )}
+      </div>
 
-        <button onClick={onDeleteClick}>Delete</button>
-        <button onClick={onUpdateClick}>Update</button>
+      <div className="history-inputs">
+        <label htmlFor="history-title">Title</label>
+        <div>{detailData.title}</div>
+        <br />
+        <label htmlFor="history-comment">Comment</label>
+        <div>{detailData.comment}</div>
+      </div>
+
+      <div className="btn-container">
+        <Button
+          className="btn-item"
+          variant="contained"
+          onClick={onUpdateClick}
+        >
+          Update
+        </Button>
+
+        <Button
+          onClick={onDeleteClick}
+          className="btn-item retry"
+          variant="contained"
+          color="grey"
+        >
+          Delete
+        </Button>
       </div>
     </div>
   );
