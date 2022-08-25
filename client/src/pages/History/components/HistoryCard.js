@@ -64,32 +64,27 @@ const HistoryCard = (props) => {
     //     </Typography>
     //   </CardContent>
 
-    //   <Button color="primary" onClick={() => onClickDetail()}>
-    //     Detail
-    //   </Button>
-
     //   <CardActions></CardActions>
     // </Card>
 
-    <div className="resultInfo-container">
-      <div>
-        <div className="result">
-          <div className="result-container">
-            <div className="black-box"></div>
-            <img className="main_food_image" src={food_img} alt="foodImg" />
-          </div>
+    <div className="card-container">
+      <div className="result-container">
+        <div className="black-box"></div>
+        <img className="main_food_image" src={food_img} alt="foodImg" />
+      </div>
 
-          <div className="black-shadow">
-            <div className="text-part1">
-              <div className="result-item name">
-                <h1 className="korean_food_name">
-                  {nameEng} <br /> {name}
-                </h1>
-              </div>
-              <div className="result-item spicy"> Spicy: 🌶️ ✖️ {spicy}</div>
-            </div>
+      <div className="black-shadow">
+        <div className="text-part1">
+          <div className="result-item name">
+            <h1 className="korean_food_name">
+              {nameEng} <br /> {name}
+            </h1>
           </div>
+          <div className="result-item spicy"> Spicy: 🌶️ ✖️ {spicy}</div>
         </div>
+        <Button color="primary" onClick={() => onClickDetail()}>
+          Detail
+        </Button>
       </div>
     </div>
   );
