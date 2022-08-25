@@ -2,15 +2,13 @@ const { Router } = require("express");
 const { Food, User } = require("./../models");
 const { HistoryCard } = require("./../models");
 const asyncHandler = require("./../utils/async-handler");
-const { nanoid } = require("nanoid");
-// const shortId = require("../models/schemas/type/short-id");
 
 const router = Router();
 
 router.post("/", async (req, res, next) => {
   console.log(req.body);
   const { userId, food, img, title, comment } = req.body;
-  const nanoId = nanoId();
+
   try {
     await HistoryCard.create({
       user_id: userId,
