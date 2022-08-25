@@ -2,6 +2,7 @@ const { Router } = require("express");
 const { Food, User } = require("./../models");
 const { HistoryCard } = require("./../models");
 const asyncHandler = require("./../utils/async-handler");
+const shortId = require("../models/schemas/type/short-id");
 
 const router = Router();
 
@@ -12,6 +13,7 @@ router.post("/", async (req, res, next) => {
   try {
     await HistoryCard.create({
       user_id: userId,
+      shortId,
       food_id: food.id,
       user_inputImg: img,
       type: food.type,
@@ -78,10 +80,9 @@ router.post("/:shortId/update", async (req, res, next) => {
 
 router.get("/:shortId/find", async (req, res, next) => {
   let { shortId } = req.params;
-  console.log("shortId : ", shortId);
-  console.log("req.params : ", req.params);
+  console.log("shortId(req.params) : ", shortId);
   try {
-    let data = await HistoryCard.findOne({ history_card_id: shortId });
+    let data = await HistoryCard.findOne({ shortId: shortId });
     console.log("응답해준 데이터: ", data);
     res.json(data);
   } catch (e) {
