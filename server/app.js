@@ -18,8 +18,10 @@ const modelRouter = require("./routes/modelExp");
 const authMiddleware = require("./routes/auth");
 const app = express();
 
+const mongoUri = require("/root/env-inssaFood/mongoUri");
+
 // 1. DB 연결 및 연결관리
-mongoose.connect(`mongodb://0.0.0.0:27017/foodie`);
+mongoose.connect(mongoUri.mongoFoodieAdmin);
 
 mongoose.connection.on("connected", () => {
   console.log("[DB] CONNECT - success");
