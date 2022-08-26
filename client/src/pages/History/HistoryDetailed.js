@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { useCookies } from "react-cookie";
@@ -8,7 +8,7 @@ import ReactAudioPlayer from "react-audio-player";
 import ReactPlayer from "react-player";
 
 import { Button } from "@mui/material";
-import "./History.css";
+import "./HistoryDetailed.css";
 
 const Detail = () => {
   //// 유저 및 history 백엔드까지 완성 시 활성화
@@ -39,9 +39,6 @@ const Detail = () => {
   useEffect(() => {
     console.log("detail로 넘어온 params_shortId: ", params.id);
     findDetailData();
-    // .then((res) => {
-    //   setDetailData({ ...res.data, recipie_url: "" });
-    // });
   }, []);
 
   const findDetailData = async () => {
@@ -90,29 +87,33 @@ const Detail = () => {
   return (
     <div>
       {detailData ? (
-        <div className="container1">
-          <div className="mainImage">
-            <img
-              className="item-img"
-              src={detailData.user_inputImg}
-              alt="react"
-            />
+        <div>
+          <div className="container1">
+            <div className="mainImage">
+              <img
+                className="item-img"
+                src={detailData.user_inputImg}
+                alt="react"
+                style={{ width: "100%", height: "325px" }}
+              />
+            </div>
           </div>
 
-          <div className="container2">
+          <div className="container-contents">
             <div className="item-name">{detailData.name}</div>
             <h1 className="item-nameEng">{detailData.name_Eng}</h1>
-
             <div className="description_container">
               <div className="desc-content">{detailData.description}</div>
             </div>
 
+            <div className="shape-square" />
+
             <div className="caution_container">
-              <div className="cautiona_title">caution</div>
+              <div className="caution_title">caution</div>
               <div className="foodinfo_caution"> {detailData.caution}</div>
             </div>
 
-            <div className="order_learn_audio">
+            {/* <div className="order_learn_audio">
               <ReactAudioPlayer
                 className="audio_player"
                 src={`${urlPort.cloudServer}${urlPort.node}/${detailData.sound_url}`}
@@ -144,18 +145,20 @@ const Detail = () => {
               ) : (
                 <></>
               )}
+            </div> */}
+          </div>
 
-              <div className="history-inputs">
-                <label htmlFor="history-title">Title</label>
-                <div>{detailData.title}</div>
-                <br />
-                <label htmlFor="history-comment">Comment</label>
-                <div>{detailData.comment}</div>
-              </div>
+          <div className="userInput-container">
+            <div className="history-inputs">
+              <label htmlFor="history-title">Title</label>
+              <div>{detailData.title}</div>
+              <br />
+              <label htmlFor="history-comment">Comment</label>
+              <div>{detailData.comment}</div>
 
               <div className="btn-container">
                 <Button
-                  className="btn-item"
+                  className="btn-item update-btn"
                   variant="contained"
                   onClick={onUpdateClick}
                 >
@@ -164,9 +167,8 @@ const Detail = () => {
 
                 <Button
                   onClick={onDeleteClick}
-                  className="btn-item retry"
+                  className="btn-item delete-btn"
                   variant="contained"
-                  color="grey"
                 >
                   Delete
                 </Button>

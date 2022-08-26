@@ -33,7 +33,7 @@ const Header = () => {
 
   const logoSizeNum = 15;
   return (
-    <header className="p-3  text-bg-dark header-container">
+    <header className="p-3 header-container">
       <div className="logo-box">
         <img
           src={`${process.env.PUBLIC_URL}/InssaFood_logo2.png`}
@@ -99,24 +99,18 @@ const Header = () => {
       <div className="logBtn-box text-end">
         {cookies.userData === undefined ? (
           <div className="logTrue-box">
-            <button
-              onClick={onClickLogin}
-              className="logIn-btn log-btn btn btn-secondary "
-            >
+            <button onClick={onClickLogin} className="logIn-btn log-btn btn ">
               Login
             </button>
           </div>
         ) : (
           <div className="logFalse-box">
-            <button
-              className="signUp-btn log-btn btn btn-secondary"
-              onClick={onClickLogOut}
-            >
+            <button className="signUp-btn log-btn btn" onClick={onClickLogOut}>
               Log out
             </button>
             &nbsp;&nbsp;
             <button
-              className="logIn-btn log-btn btn btn-outline-secondary"
+              className="logIn-btn log-btn btn"
               onClick={() => navigate("/login/resetpassword")}
             >
               Reset pw

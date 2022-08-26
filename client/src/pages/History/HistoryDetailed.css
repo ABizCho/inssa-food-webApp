@@ -9,32 +9,37 @@
 }
 
 .container1 .mainImage {
-  margin-top: 10%;
 }
 
 .item-img {
-  width: 100%;
-  height: 100%;
+  width: 100% !important;
+  height: 300px !important;
 }
 
-.container2 {
-  margin-top: 20px;
+.container-contents {
+  margin-top: 40px;
   margin-left: 10px;
   margin-right: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .item-name {
-  color: orange;
+  color: #f4731f;
   font-weight: bold;
   font-size: 15px;
 }
 
 .item-nameEng {
   margin-top: 20px;
+  color: white !important;
+  background-color: #f4731f;
+  border-radius: 1.5em;
+  padding: 10px 30px 15px;
 }
 
-.container2 h1 {
-  margin-top: 25%;
+.container-contents h1 {
   text-align: center;
   font-size: 30px;
   font-weight: bold;
@@ -42,7 +47,8 @@
 }
 
 .description_container {
-  margin-top: 20%;
+  margin-top: 15%;
+  margin-bottom: 20%;
 }
 
 .description_container .desc-title {
@@ -50,17 +56,34 @@
 }
 
 .description_container .desc-content {
-  margin-top: 3%;
-  margin-left: 3%;
-  margin-right: 3%;
+  font-family: Lucida Console;
+  font-size: 16px;
+  margin-left: 5%;
+  margin-right: 5%;
+  text-align: left;
+}
+
+.shape-name {
+  height: 45px;
+  width: 100px;
+  background-color: #f4731f;
+  border-radius: 1.5em;
+}
+.shape-square {
+  width: 50px;
+  height: 5px;
+  background-color: grey;
+  border-radius: 1em;
 }
 
 .caution_container {
-  margin-top: 20%;
+  margin-top: 10%;
+  text-align: center;
+  margin-bottom: 10%;
 }
 
-.caution_container .cautiona_title {
-  font-size: 25px;
+.caution_container .caution_title {
+  font-size: 20px;
   font-weight: bold;
 }
 
@@ -144,11 +167,22 @@
   justify-content: center;
   display: flex;
   flex-direction: row;
+  margin-bottom: 80px;
 }
 
 .btn-item {
   height: 40px !important;
   margin: 5px !important;
+}
+
+.update-btn {
+  background-color: #f4731f !important;
+  color: white !important;
+}
+
+.delete-btn {
+  background-color: #f4731f !important;
+  color: white !important;
 }
 
 .logo-box {
@@ -173,4 +207,11 @@
 
 .history-inputs label {
   font-weight: bold;
+  margin-top: 30px;
+}
+
+.userInput-container {
+  background-color: orange;
+  margin-top: 60px;
+  color: white;
 }
