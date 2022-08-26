@@ -1,10 +1,11 @@
 .result-container {
-  border-radius: 1rem 1rem 0rem 0rem;
+  /* border-radius: 1rem 1rem 0rem 0rem; */
   width: 383.5px;
   height: 400px;
-  background-size: cover;
-  background-repeat: no-repeat;
   position: relative;
+  display: flex;
+  justify-content: center;
+  text-align: center;
 }
 
 .black-box {
@@ -15,11 +16,6 @@
   background: linear-gradient(rgba(0, 0, 0, 0), rgb(0, 0, 0, 1));
 }
 
-.main_food_image {
-  border-radius: 1rem 1rem 0rem 0rem;
-  width: 100%;
-  height: 100%;
-}
 
 .black-shadow {
   border-radius: 0rem 0rem 1rem 1rem;
@@ -28,18 +24,13 @@
   background: linear-gradient(rgba(0, 0, 0, 1), rgb(0, 0, 0, 1));
 }
 
-.result-item-img {
-  width: 100% !important;
-  /* height: 50% !important; */
-  align-items: center !important;
-  text-align: center;
-}
+
 .resultInfo-container {
   padding-top: 10%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-size: 800px;
+  /* background-size: 800px; */
   /* background-image: linear-gradient(
     rgba(0, 0, 0, 0.02),
     rgb(168, 168, 168, 0.9)
@@ -68,7 +59,7 @@ p.title {
   text-underline-offset: 7px;
 }
 
-.korean_food_name {
+/* .korean_food_name {
   padding-top: 5px;
   padding-left: 10%;
   text-align: left;
@@ -79,7 +70,7 @@ p.title {
   letter-spacing: 3px;
   word-spacing: 3px;
   line-height: 1.7;
-}
+} */
 
 .simple_list {
   text-align: center;
@@ -110,19 +101,28 @@ p.title {
 .foodinfo_caution {
   font-size: smaller;
 }
-.result-item.name_Eng {
+.korean_food_name {
   margin-bottom: 5%;
   font-weight: bold;
   text-align: center;
   font-size: larger;
+  color:rgba(0, 0, 0, 1);
+  text-decoration: solid black;
 }
 
-.result-item.order_learn_text {
+.order_learn_text {
   margin-top: 5%;
+  margin-bottom: 5%;
   text-align: center;
   font-size: 18px;
   font-family: sans-serif;
   font-weight: 600;
+}
+
+.order_learn_audio {
+  display: flex;
+  justify-content: center;
+  padding: 0 10px 0 10px;
 }
 
 .audio_player {
@@ -149,13 +149,8 @@ p.title {
   color: black;
   font-family: sans-serif;
 }
-.img-box {
-  display: flex;
-  align-items: center;
-  text-align: center !important;
-}
 
-.result-item.desc {
+.desc {
   margin-top: 30px;
   text-align: center;
 }
@@ -207,4 +202,21 @@ p.title {
 
 .history-inputs label {
   font-weight: bold;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.history-inputs {
+  margin : 1em 0 1em 0;
+  border-style: 2em;
+}
+
+label {
+  font-weight: bold;
+  text-align: center;
+  font-size: 25px;
+  margin-bottom: 10%;
 }

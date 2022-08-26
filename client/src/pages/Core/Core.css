@@ -6,6 +6,8 @@
   opacity: 0;
   width: 100% !important;
   height: 100% !important;
+  position: relative;
+  top: -1.5em;
 }
 .upload-btn {
   height: 30px !important;
@@ -33,7 +35,7 @@
 .content-container-row {
   margin-left: 5%;
   margin-right: 5%;
-  padding: 20px;
+  padding: 40px 20px 0 20px;
   padding-bottom: 0;
 }
 .top-container {

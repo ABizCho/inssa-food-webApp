@@ -92,7 +92,7 @@ const Core = () => {
               value="clicm02ddg1or9rjelucajj4p6"
             />
 
-            <p className="text-notice" align="center"></p>
+            {/* <p className="text-notice" align="center"></p> */}
             {sampleImg && (
               <img
                 className="selected-img"
