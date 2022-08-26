@@ -25,7 +25,7 @@ const HisotyUpdate = () => {
       updateData
     );
     alert("updated!");
-    navigate("/history/list");
+    window.history.back();
   };
 
   const prepareUpdate = async () => {
