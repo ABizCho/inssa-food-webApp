@@ -99,21 +99,24 @@ const History = () => {
         />
         {isSlide ? (
           <div className="grid-container">
-            {historyData?.map((item, index) => {
-              return (
-                <img
-                  key={index}
-                  width="125px"
-                  height="125px"
-                  className="grid-item scale"
-                  src={item?.user_inputImg}
-                  alt="React"
-                  onClick={() => {
-                    navigate(`${item.shortId}/detail`);
-                  }}
-                />
-              );
-            })}
+            <ul className="image-gallery">
+              {historyData?.map((item, index) => {
+                return (
+                  <li key={index}>
+                    <img
+                      // width="125px"
+                      // height="125px"
+                      className="grid-item scale"
+                      src={item?.user_inputImg}
+                      alt=""
+                      onClick={() => {
+                        navigate(`${item.shortId}/detail`);
+                      }}
+                    />
+                  </li>
+                );
+              })}
+            </ul>
           </div>
         ) : historyData === "undefined" ? (
           <></>

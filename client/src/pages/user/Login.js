@@ -59,7 +59,7 @@ const Login = () => {
   const [cookies, setCookie, removeCookie] = useCookies("userData");
 
   return (
-    <main>
+    <main className='log-container'>
       <section className="py-5 text-center container">
         <div className="row py-lg-5">
           <div className="col-lg-6 col-md-8 mx-auto">

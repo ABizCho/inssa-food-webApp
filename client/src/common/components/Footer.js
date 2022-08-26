@@ -1,33 +1,95 @@
+import "./Footer.css";
+import { Box } from "@mui/material";
+import HomeIcon from "@mui/icons-material/Home";
+import ReplyIcon from "@mui/icons-material/Reply";
+import SearchIcon from "@mui/icons-material/Search";
+import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
+import CollectionsIcon from "@mui/icons-material/Collections";
+
+import { useNavigate } from "react-router-dom";
 const Footer = () => {
+  const navigate = useNavigate();
   return (
-    <footer className="footer d-flex flex-wrap justify-content-between align-items-center py-3 border-top">
-      <div className="col-md-4 d-flex align-items-center">
-        <a
-          href="/"
-          className="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1"
-        >
-          <svg className="bi" width="30" height="24"></svg>
-        </a>
-        <span className="mb-3 mb-md-0 text-muted">© 2022 Company, Inc</span>
+    <footer>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          color: "white",
+        }}
+        onClick={() => {
+          window.history.back();
+        }}
+      >
+        <ReplyIcon color="action" />
+        back
+      </div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          color: "white",
+        }}
+        onClick={() => {
+          navigate("/");
+        }}
+      >
+        <HomeIcon />
+        home
       </div>
 
-      <ul className="nav col-md-4 justify-content-end list-unstyled d-flex">
-        <li className="ms-3">
-          <a className="text-muted" href="#">
-            <svg className="bi" width="24" height="24"></svg>
-          </a>
-        </li>
-        <li className="ms-3">
-          <a className="text-muted" href="#">
-            <svg className="bi" width="24" height="24"></svg>
-          </a>
-        </li>
-        <li className="ms-3">
-          <a className="text-muted" href="#">
-            <svg className="bi" width="24" height="24"></svg>
-          </a>
-        </li>
-      </ul>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          color: "white",
+        }}
+        onClick={() => {
+          navigate("/core");
+        }}
+      >
+        <SearchIcon />
+        search
+      </div>
+
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          color: "white",
+        }}
+        onClick={() => {
+          navigate("/history/list");
+        }}
+      >
+        <CollectionsIcon />
+        history
+      </div>
+
+      <div
+        onClick={() => {
+          navigate("about");
+        }}
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          color: "white",
+        }}
+      >
+        <PeopleAltIcon />
+        about
+      </div>
+
+      {/* <ul className="footer-ul">
+        <li className="footer-li">메뉴1</li>
+        <li className="footer-li">메뉴2</li>
+        <li className="footer-li">메뉴3</li>
+      </ul> */}
     </footer>
   );
 };
