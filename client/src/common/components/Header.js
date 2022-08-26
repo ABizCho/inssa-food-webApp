@@ -41,7 +41,7 @@ const Header = () => {
           style={{ height: 3 * logoSizeNum, width: 8 * logoSizeNum }}
         />
       </div>
-      <div className="nav-container">
+      {/* <div className="nav-container">
         <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
           <span
             href="/"
@@ -95,26 +95,35 @@ const Header = () => {
             </li>
           </ul>
         </div>
-      </div>
+      </div> */}
       <div className="logBtn-box text-end">
         {cookies.userData === undefined ? (
           <div className="logTrue-box">
-            <button onClick={onClickLogin} className="logIn-btn log-btn btn ">
+            <Button
+              className="logIn-btn log-btn btn"
+              variant="contained"
+              onClick={onClickLogin}
+            >
               Login
-            </button>
+            </Button>
           </div>
         ) : (
           <div className="logFalse-box">
-            <button className="signUp-btn log-btn btn" onClick={onClickLogOut}>
+            <Button
+              className="signUp-btn log-btn btn"
+              variant="contained"
+              onClick={onClickLogOut}
+            >
               Log out
-            </button>
+            </Button>
             &nbsp;&nbsp;
-            <button
-              className="logIn-btn log-btn btn"
+            <Button
+              variant="contained"
+              className="resetPw-btn log-btn btn"
               onClick={() => navigate("/login/resetpassword")}
             >
               Reset pw
-            </button>
+            </Button>
           </div>
         )}
       </div>
