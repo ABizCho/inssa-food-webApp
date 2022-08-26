@@ -89,7 +89,7 @@ const History = () => {
 
   return (
     <div className="history-container">
-      <h1 className="title">History Page</h1>
+      <h1 className="page-title">History Page</h1>
 
       <div className="history-box">
         <ToggleButtonSizes

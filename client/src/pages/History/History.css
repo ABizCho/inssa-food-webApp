@@ -10,7 +10,8 @@
   border-radius: 1em !important;
 }
 
-.title {
+.page-title {
+  margin-top: 40px !important;
   margin-bottom: 13% !important;
   text-align: center;
   font-family: "Fredoka One", cursive;
