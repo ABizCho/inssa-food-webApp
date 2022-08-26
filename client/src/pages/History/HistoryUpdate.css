@@ -6,6 +6,17 @@
   font-weight: 700;
 }
 
+.textField-title {
+  color: white !important;
+}
+
+.textField-comment {
+  color: white !important;
+}
+
+/*  */
+/*  */
+/*  */
 .container1 {
   display: flex;
   flex-direction: column;
@@ -215,12 +226,7 @@
 
 .history-inputs label {
   font-weight: bold;
-  font-size: 18px;
   margin-top: 30px;
-}
-
-.labels {
-  margin-bottom: 5px;
 }
 
 .userInput-container {
