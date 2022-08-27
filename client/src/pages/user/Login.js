@@ -136,6 +136,7 @@ const Login = () => {
         <SignInForm
           signInData={signInData}
           onChangeSignInData={onChangeSignInData}
+          setView={setView}
         />
       ) : (
         <></>
@@ -145,6 +146,7 @@ const Login = () => {
           signUpData={signUpData}
           onChangeSignUpData={onChangeSignUpData}
           setSignUpData={setSignUpData}
+          setView={setView}
         />
       ) : (
         <></>

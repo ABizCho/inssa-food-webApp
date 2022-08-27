@@ -1,7 +1,7 @@
 // import "./ResultInfo.css";
 import { useNavigate, useParams } from "react-router-dom";
 
-import { Button, useScrollTrigger } from "@mui/material";
+import { Button, TextField, useScrollTrigger } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import { useCookies } from "react-cookie";
 import React, { useEffect, useState } from "react";
@@ -110,26 +110,31 @@ const ResultInfo = () => {
               src={cookies.imgFile}
               alt="react"
               crossOrigin="anonymous"
-              referrerpolicy="unsafe-url"
+              referrerPolicy="unsafe-url"
               style={{ margin: "auto", width: "100%", height: "100%" }}
             />
           </div>
+          <div className="container-contents">
+          <div className="item-name">{foodInfo.name}</div>
             <div className="text-part1">
-                <h1 className="korean_food_name">{foodInfo.name_Eng}</h1>
+                <h1 className="item-nameEng">{foodInfo.name_Eng}</h1>
                 {/* <h1 className="food_Number">No. 3</h1> */}
               <div className="result-item spicy">
-                {" "}
                 Spicy: 🌶️ ✖️ {foodInfo.spicy}
               </div>
+            </div>
             </div>
 
           <div className="food_detail_back">
             <div className="simple_list">
               <div className="result-item caution">
-                caution <br />{" "}
+                caution <br />
                 <div className="foodinfo_caution"> {foodInfo.caution}</div>
               </div>
+            <div className="shape-square" />
             </div>
+
+            
             <div className="result-item order_learn_audio">
               <ReactAudioPlayer
                 className="audio_player"
@@ -170,44 +175,58 @@ const ResultInfo = () => {
           </div>
         </div>
       )}
-      <div className="input-container">
+      <div className="userInput-container">
+        <div className="userInput-title">
+         <h1>What did you think?</h1>
+          </div>
+          <div className="history-inputs">
         <h1>
           <label htmlFor="history-title">Title</label>
           </h1>
-            <input
-              name="history-title"
-              className="history-inputs"
-              onChange={(e) => {
-                setHistoryInput({ ...historyInput, title: e.target.value });
-              }}
-              type="text"
-            />
-          <h1>
+          <TextField
+            variant="filled"
+            multiline
+            color="warning"
+            className="textField-title"
+            name="history-title"
+            placeholder="Title"
+            autoFocus
+            onChange={(e) => {
+              setHistoryInput({ ...historyInput, title: e.target.value });
+            }}
+          />
+            </div>
+            <div className="history-inputs">
             <label htmlFor="history-comment">Comment</label>
-            </h1>
-              <textarea
-                name="history-comment"
-                className="history-inputs"
-                onChange={(e) => {
-                  setHistoryInput({ ...historyInput, comment: e.target.value });
-                }}
-                type="text"
-              />
-      </div>
+            <TextField
+            variant="filled"
+            multiline
+            color="warning"
+            className="textField-title"
+            name="history-comment"
+            placeholder="Title"
+            autoFocus
+            onChange={(e) => {
+              setHistoryInput({ ...historyInput, comment: e.target.value });
+            }}
+          />
+          </div>
       <div className="btn-container">
         <Button
           className="btn-item"
           variant="contained"
           endIcon={<SendIcon />}
           onClick={onClickSaveHistory}
-        >
+          >
           Save History
         </Button>
 
         <Button className="btn-item retry" variant="contained" color="grey">
           Retry
         </Button>
-      </div>
+        </div>
+        <br />
+          </div>
     </div>
   );
 };

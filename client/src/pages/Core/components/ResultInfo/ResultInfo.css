@@ -79,23 +79,30 @@ p.title {
   font-weight: 200;
   margin-bottom: 10%;
 }
+/* 
+.text-part1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+} */
 
-.result-item.spicy {
+.spicy {
   margin-bottom: 2%;
   padding-left: 10%;
   padding-top: 0%;
   font-weight: bold;
-  text-align: left;
+  text-align: center;
   font-size: 17px;
   color: rgb(236, 97, 97);
 }
+
 .result-item.caution {
   margin-bottom: 5%;
   font-weight: bold;
   font-size: 15px;
   color: orange;
   text-align: left;
-  padding-left: 8%;
 }
 
 .foodinfo_caution {
@@ -187,7 +194,7 @@ p.title {
 }
 
 .title {
-  margin-bottom: 6%;
+  margin: 6% 0 6% 0;
   text-align: center;
   font-family: "Fredoka One", cursive;
   color: black;
@@ -207,11 +214,21 @@ p.title {
 .input-container {
   display: flex;
   flex-direction: column;
+  background-color: orange;
+  margin-top: 60px;
+  color: white;
+}
+
+.userInput-title {
+  padding-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: 700;
 }
 
 .history-inputs {
   margin : 1em 0 1em 0;
-  border-style: 2em;
 }
 
 label {

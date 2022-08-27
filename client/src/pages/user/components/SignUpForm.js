@@ -5,9 +5,8 @@ import urlPort from "../../../data/urlPort.json";
 
 import { useNavigate } from "react-router-dom";
 
-const SignUpForm = ({ signUpData, onChangeSignUpData, setSignUpdata }) => {
+const SignUpForm = ({ signUpData, onChangeSignUpData, setSignUpdata, setView }) => {
   const emailRef = useRef();
-  const navigate = useNavigate();
 
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -51,7 +50,11 @@ const SignUpForm = ({ signUpData, onChangeSignUpData, setSignUpdata }) => {
       .then((res) => {
         console.log(res.data);
         alert(res.data.result);
-        navigate("/login");
+        setView({
+          signIn: true,
+          signUp: false,
+          nothing: false,
+        });
       })
       .catch((e) => {
         console.log(e);
