@@ -39,14 +39,15 @@ const History = () => {
       slidesToSlide: 3, // optional, default to 1.
     },
     tablet: {
-      breakpoint: { max: 1024, min: 374 },
+      breakpoint: { max: 1024, min: 600 },
       items: 2,
       slidesToSlide: 2, // optional, default to 1.
     },
     mobile: {
-      breakpoint: { max: 374, min: 0 },
+      breakpoint: { max: 600, min: 0 },
       items: 1,
       slidesToSlide: 1, // optional, default to 1.
+      paritialVisibilityGutter: 30,
     },
   };
 
@@ -62,18 +63,16 @@ const History = () => {
 
   const getHistoryData = () => {
     try {
+      const email = cookies.userData.email;
+
+      console.log("getHistoryData email 콘솔:", email);
+
       axios
-
-        .get(
-          urlPort.cloudServer + urlPort.node + "/histories",
-          cookies.userData.id,
-          {
-            headers: {
-              accessToken: cookies.userData.accessToken,
-            },
-          }
-        )
-
+        .get(`${urlPort.cloudServer}${urlPort.node}/histories/${email}/find`, {
+          headers: {
+            accessToken: cookies.userData.accessToken,
+          },
+        })
         .then((res) => {
           console.log(res);
           setHistoryData(res.data.histories);
@@ -90,7 +89,7 @@ const History = () => {
 
   return (
     <div className="history-container">
-      <h1 className="title">History Page</h1>
+      <h1 className="page-title">History Page</h1>
 
       <div className="history-box">
         <ToggleButtonSizes
@@ -100,18 +99,24 @@ const History = () => {
         />
         {isSlide ? (
           <div className="grid-container">
-            {historyData?.map((item, index) => {
-              return (
-                <img
-                  key={index}
-                  width="125px"
-                  height="125px"
-                  className="grid-item scale"
-                  src={item?.user_inputImg}
-                  alt="React"
-                />
-              );
-            })}
+            <ul className="image-gallery">
+              {historyData?.map((item, index) => {
+                return (
+                  <li key={index}>
+                    <img
+                      // width="125px"
+                      // height="125px"
+                      className="grid-item scale"
+                      src={item?.user_inputImg}
+                      alt=""
+                      onClick={() => {
+                        navigate(`${item.shortId}/detail`);
+                      }}
+                    />
+                  </li>
+                );
+              })}
+            </ul>
           </div>
         ) : historyData === "undefined" ? (
           <></>
@@ -128,12 +133,17 @@ const History = () => {
               return (
                 <HistoryCard
                   className="historyCard"
+                  shortId={item.shortId}
                   key={index}
                   id={item?.id}
-                  name={item?.name_Eng}
+                  name={item?.name}
+                  nameEng={item?.name_Eng}
                   food_img={item?.user_inputImg}
                   desc={item?.description}
                   colorIdx={index}
+                  soundUrl={item.sound_url}
+                  recipeUrl={item.recipe_url}
+                  spicy={item.spicy}
                 />
               );
             })}

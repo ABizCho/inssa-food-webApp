@@ -1,8 +1,20 @@
+.history-container {
+  margin-top: 100px !important;
+}
 /*  */
-img {
+.MuiToggleButtonGroup-root {
+  margin-left: 10px !important;
 }
 
-.title {
+.MuiBox-root {
+}
+
+.MuiButtonBase-root {
+  border-radius: 1em !important;
+}
+
+.page-title {
+  margin-top: 40px !important;
   margin-bottom: 13% !important;
   text-align: center;
   font-family: "Fredoka One", cursive;
@@ -13,9 +25,15 @@ img {
   align-items: center;
 }
 
-.historyCard {
-  /* margin-top: 20% !important; */
+.react-multi-carousel-list {
+  margin: 10px !important;
 }
+
+.react-multi-carousel-track {
+  padding: 2rem;
+  padding-top: 0px !important;
+}
+
 .card-item {
   /* margin-right: 10% !important; */
   border-radius: 10% !important;
@@ -30,30 +48,35 @@ img {
 }
 
 .history-box {
-  margin-top: 1em;
+  margin-top: 3em;
   margin-bottom: 1em;
 }
 
-.MuiBox-root {
-  display: block !important;
+/* GRID MODE */
+/* .grid-container {
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+
+  grid-template-rows: 1fr 1fr 1fr;
+} */
+
+.image-gallery {
+  margin-top: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  /* gap: 0px */
 }
 
-.grid-container {
-  /* grid-template-columns: 200px 200px 500px; */
-  grid-template-columns: 1fr 1fr 1fr;
-  /* grid-template-columns: repeat(3, 1fr) */
-  /* grid-template-columns: 200px 1fr */
-  /* grid-template-columns: 100px 200px auto */
-
-  /* grid-template-rows: 200px 200px 500px; */
-  grid-template-rows: 1fr 1fr 1fr;
-  /* grid-template-rows: repeat(3, 1fr) */
-  /* grid-template-rows: 200px 1fr */
-  /* grid-template-rows: 100px 200px auto */
+.image-gallery > li {
+  flex-basis: 100px;
+  list-style: none;
 }
 
 .grid-item {
-  object-fit: cover;
+  object-fit: cover !important;
+  width: 100% !important;
+  height: 100px !important;
+  border-radius: 1em;
 }
 
 /*  */

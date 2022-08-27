@@ -2,12 +2,24 @@
   box-sizing: border-box;
 }
 
+.start-btn {
+  background-color: #f08000 !important;
+  height: 50px !important;
+  font-size: 15px !important;
+  font-weight: 15px !important;
+  color: white !important;
+}
+
 .intro-text {
   font-size: 2.2rem !important;
   line-height: 50px !important;
 }
 
 .what-text {
+}
+
+.section2_eachItem {
+  box-shadow: 5px 5px 5px grey;
 }
 
 .intro-img {
@@ -35,10 +47,10 @@
 }
 
 .leftSide h1 {
-  font-size: 2.5rem;
-  font-weight: bold;
+  font-size: 2rem !important;
+  font-weight: bold !important;
   line-height: 70px;
-  letter-spacing: -3px;
+  letter-spacing: -1px;
 }
 
 .Home_section1 .leftSide span {

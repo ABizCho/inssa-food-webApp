@@ -1,10 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { useCookies } from "react-cookie";
 
-import dummyData from "./data/dummyData"; // 백엔드 활성화시 제거
 import urlPort from "../../data/urlPort.json";
+import ReactAudioPlayer from "react-audio-player";
+import ReactPlayer from "react-player";
+
+import { Button } from "@mui/material";
+import "./HistoryDetailed.css";
 
 const Detail = () => {
   //// 유저 및 history 백엔드까지 완성 시 활성화
@@ -14,95 +18,142 @@ const Detail = () => {
 
   const [detailData, setDetailData] = useState({});
 
+  const [historyInput, setHistoryInput] = useState({
+    title: "",
+    comment: "",
+  });
+
+  const [isOpen, setIsOpen] = useState(false);
+  const onClickRecipe = () => {
+    setIsOpen(!isOpen);
+  };
+
   const navigate = useNavigate();
 
+  // const dispatch = useDispatch(); //action을 사용하기 위해 값을 보내주는 역할.
+
   useEffect(() => {
-    findDetailData().then((res) => {
-      // console.log(res);
-      setDetailData(res.data);
-    });
+    console.log("HistoryINPUT : ", historyInput);
+  }, [historyInput]);
+
+  useEffect(() => {
+    console.log("detail로 넘어온 params_shortId: ", params.id);
+    findDetailData();
   }, []);
 
   const findDetailData = async () => {
-    // return await axios.get(urlPort.cloudServer + urlPort.node + `/histories/${params.id}/find`, {
-    //     headers: {
-    //         accessToken: cookies.userData.accessToken
-    //     }
-    // })
-    try {
-      axios
-        .get(
-          urlPort.cloudServer + urlPort.node + "/histories",
-          cookies.userData.id,
-          {
-            headers: {
-              accessToken: cookies.userData.accessToken,
-            },
-          }
-        )
-        .then((res) => {
-          console.log(res);
-          // setHistoryData(res.data.histories);
-        });
-    } catch (e) {
-      console.log(`[응답오류]: ${e}`);
-      navigate("/core");
+    return await axios
+      .get(
+        urlPort.cloudServer + urlPort.node + `/histories/${params.id}/findone`,
+        {
+          headers: {
+            accessToken: cookies.userData.accessToken,
+          },
+        }
+      )
+      .then((res) => {
+        console.log("findDetail Res:", res);
+        setDetailData(res.data);
+      });
+  };
+
+  useEffect(() => {
+    console.log("detailData 받아옴 : ", detailData);
+  }, [detailData]);
+
+  const deleteHistory = async () => {
+    const historyId = params.id;
+    return await axios.get(
+      `${urlPort.cloudServer + urlPort.node}/histories/${historyId}/delete`,
+      { headers: { accessToken: cookies.userData.accessToken } }
+    );
+  };
+
+  const onDeleteClick = (shortId) => {
+    if (window.confirm("삭제 하시겠습니까?")) {
+      deleteHistory(shortId).then(() => {
+        navigate("/history/list");
+      });
+    } else {
+      //아니오
     }
   };
 
+  const onUpdateClick = () => {
+    const historyId = params.id;
+    navigate(`/history/list/${historyId}/update`);
+  };
 
   return (
-    // 구현 백엔드작업 때 상세구현 요망
-    <div className="album">
-      <div className="container">
-        <div className="card mb-3">
-          <div className="card-img-top" style={{ textAlign: "center" }}>
-
-            <img
-              style={{ width: "100px", height: "100px" }}
-              src={dummyData.historyCard[0].food_img}
-              alt="..."
-            />
-
+    <div>
+      {detailData ? (
+        <div>
+          <div className="container1">
+            <div className="mainImage">
+              <img
+                className="item-img"
+                src={detailData.user_inputImg}
+                alt="react"
+                style={{ width: "100%", height: "325px" }}
+              />
+            </div>
           </div>
-          <div className="card-body">
-            <h5 className="card-title"></h5>
-            <p className="card-text"></p>
-            <p className="card-text">
 
-              <small className="text-muted">
-                {dummyData.historyCard[0].food_img}
-              </small>
+          <div className="container-contents">
+            <div className="item-name">{detailData.name}</div>
+            <h1 className="item-nameEng">{detailData.name_Eng}</h1>
+            <div className="description_container">
+              <div className="desc-content">{detailData.description}</div>
+            </div>
 
-            </p>
+            <div className="shape-square" />
+
+            <div className="caution_container">
+              <div className="caution_title">caution</div>
+              <div className="foodinfo_caution"> {detailData.caution}</div>
+            </div>
+          </div>
+
+          <div className="userInput-container">
+            <div className="userInput-title">
+              <h1>Review</h1>
+            </div>
+            <div className="history-inputs">
+              <label className="labels" htmlFor="history-title">
+                Title
+              </label>
+              <div>{detailData.title}</div>
+              <br />
+              <label className="labels" htmlFor="history-comment">
+                Comment
+              </label>
+              <div>{detailData.comment}</div>
+
+              <div className="btn-container">
+                <Button
+                  className="btn-item update-btn"
+                  variant="contained"
+                  onClick={onUpdateClick}
+                >
+                  Update
+                </Button>
+
+                <Button
+                  onClick={onDeleteClick}
+                  className="btn-item delete-btn"
+                  variant="contained"
+                >
+                  Delete
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
-        <div className="mb-3">
-          <label htmlFor="title" className="form-label">
-            이름
-          </label>
-          <div className="card">
-            <p className="card-body">{dummyData.historyCard[0].name}</p>
-          </div>
-        </div>
-        <div className="mb-3">
-          <label htmlFor="content" className="form-label">
-            내용
-          </label>
-          <div className="card">
-            <p className="card-body">{dummyData.historyCard[0].desc}</p>
-          </div>
-        </div>
-        <button
-          type="button"
-          onClick={() => {
-            window.history.back();
-          }}
-          className="btn btn-outline-danger"
-        >
-          뒤로가기
-        </button>
-      </div>
+      ) : (
+        <>
+          <h1> Wait</h1>
+        </>
+      )}
     </div>
   );
 };
