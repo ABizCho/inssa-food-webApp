@@ -10,8 +10,7 @@ const urlPort = require("../portUrl.json");
 
 router.get("/kakao", async (req, res, next) => {
   const REST_API_KEY = "25fbc98ddab2446ddeb681e7af004a9e";
-  const REDIRECT_URI =
-    urlPort.cloudServer + urlPort.client + "/oauth/kakao/callback";
+  const REDIRECT_URI = "http://115.85.182.215/oauth/kakao/callback";
 
   const KAKAO_CODE = req.query.code;
   // console.log(KAKAO_CODE);
