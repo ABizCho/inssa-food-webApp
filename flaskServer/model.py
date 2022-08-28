@@ -1,19 +1,8 @@
-
-import tensorflow as tf
-from tf.keras.applications.vgg19 import VGG19
-from tf.keras.preprocessing import image
-from tf.keras.applications.vgg19 import preprocess_input
-from tf.keras.models import Model
-import matplotlib.pyplot as plt
-# import numpy as np
-import pandas as pd
 import tensorflow 
 from tensorflow.keras.preprocessing import image
 from tensorflow.keras.applications.mobilenet import preprocess_input
 
 import numpy as np
-import requests
-
 
 model = tensorflow.keras.models.load_model('/root/inssa-food/flaskServer/best.h5')
 
