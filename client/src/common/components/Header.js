@@ -4,6 +4,10 @@ import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { Button } from "@mui/material";
+<<<<<<< HEAD
+
+=======
+>>>>>>> 37eab0ef3a1837b8a8c759d3109f5297153a6141
 
 const Header = () => {
   // 야매:라우팅 권한관리로 개선되어야할 로직---------------
@@ -114,6 +118,19 @@ const Header = () => {
               variant="contained"
               onClick={onClickLogOut}
             >
+<<<<<<< HEAD
+              LogOut
+            </button>
+            &nbsp;&nbsp;
+            <button
+            className="logIn-btn log-btn btn btn-secondary"
+            // startIcon={<googleLogo />}
+            variant="contained"
+            onClick={() => navigate('/login/resetpassword')}
+          >
+            Reset Password
+          </button>
+=======
               Log out
             </Button>
             &nbsp;&nbsp;
@@ -124,6 +141,7 @@ const Header = () => {
             >
               Reset pw
             </Button>
+>>>>>>> 37eab0ef3a1837b8a8c759d3109f5297153a6141
           </div>
         )}
       </div>

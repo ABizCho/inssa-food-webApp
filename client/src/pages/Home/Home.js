@@ -63,15 +63,27 @@ const Home = () => {
         <div className="section2_ImageGroup">
           <div className="section2_eachItem">
             <span>01. Take a Photo</span>
-            <img src={TakeAPhoto} alt="사진없음" style={{ height: "200px", width: "200px" }} />
+            <img
+              src={TakeAPhoto}
+              alt="사진없음"
+              style={{ height: "200px", width: "200px" }}
+            />
           </div>
           <div className="section2_eachItem">
             <span>02. Learn korean foods</span>
-            <img src={LearnFood} alt="사진없음" style={{ height: "200px", width: "200px" }} />
+            <img
+              src={LearnFood}
+              alt="사진없음"
+              style={{ height: "200px", width: "200px" }}
+            />
           </div>
           <div className="section2_eachItem">
             <span>03. Fill up on food history</span>
-            <img src={CollectFood} alt="사진없음" style={{ height: "200px", width: "200px" }} />
+            <img
+              src={CollectFood}
+              alt="사진없음"
+              style={{ height: "200px", width: "200px" }}
+            />
           </div>
         </div>
       </section>
