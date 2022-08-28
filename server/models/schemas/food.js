@@ -7,8 +7,8 @@ module.exports = new Schema({
   name_Eng: String,
   description: String,
   food_defaultImg: String,
-  spicy: { type: Number, required: false },
-  recipe_url: { type: Object, required: false },
-  caution: Array,
+  spicy: Number,
+  recipe_url: String,
+  caution: String,
   sound_url: String,
 });

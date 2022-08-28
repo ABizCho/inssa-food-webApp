@@ -4,7 +4,10 @@ import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { Button } from "@mui/material";
+<<<<<<< HEAD
 
+=======
+>>>>>>> 37eab0ef3a1837b8a8c759d3109f5297153a6141
 
 const Header = () => {
   // 야매:라우팅 권한관리로 개선되어야할 로직---------------
@@ -34,7 +37,7 @@ const Header = () => {
 
   const logoSizeNum = 15;
   return (
-    <header className="p-3  text-bg-dark header-container">
+    <header className="p-3 header-container">
       <div className="logo-box">
         <img
           src={`${process.env.PUBLIC_URL}/InssaFood_logo2.png`}
@@ -42,27 +45,27 @@ const Header = () => {
           style={{ height: 3 * logoSizeNum, width: 8 * logoSizeNum }}
         />
       </div>
-      <div className="nav-container">
+      {/* <div className="nav-container">
         <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-          <a
+          <span
             href="/"
             className="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none"
-          ></a>
+          ></span>
 
           <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
             <li>
-              <a
+              <span
                 onClick={() => {
                   navigate("/");
                 }}
                 className="nav-link px-2 text-white"
               >
                 Home
-              </a>
+              </span>
             </li>
 
             <li>
-              <a
+              <span
                 onClick={() => {
                   navigate("/core");
                 }}
@@ -70,10 +73,10 @@ const Header = () => {
                 className="nav-link px-2 text-white"
               >
                 Search
-              </a>
+              </span>
             </li>
             <li>
-              <a
+              <span
                 href=""
                 className="nav-link px-2 text-white"
                 onClick={() => {
@@ -81,32 +84,41 @@ const Header = () => {
                 }}
               >
                 History
-              </a>
+              </span>
             </li>
             <li>
-              <a href="" onClick={()=> {navigate('about')}} className="nav-link px-2 text-white">
+              <span
+                href=""
+                onClick={() => {
+                  navigate("about");
+                }}
+                className="nav-link px-2 text-white"
+              >
                 About
-              </a>
+              </span>
             </li>
           </ul>
         </div>
-      </div>
+      </div> */}
       <div className="logBtn-box text-end">
         {cookies.userData === undefined ? (
           <div className="logTrue-box">
-            <button
+            <Button
+              className="logIn-btn log-btn btn"
+              variant="contained"
               onClick={onClickLogin}
-              className="logIn-btn log-btn btn btn-secondary "
             >
               Login
-            </button>
+            </Button>
           </div>
         ) : (
           <div className="logFalse-box">
-            <button
-              className="signUp-btn log-btn btn btn-outline-secondary"
+            <Button
+              className="signUp-btn log-btn btn"
+              variant="contained"
               onClick={onClickLogOut}
             >
+<<<<<<< HEAD
               LogOut
             </button>
             &nbsp;&nbsp;
@@ -118,6 +130,18 @@ const Header = () => {
           >
             Reset Password
           </button>
+=======
+              Log out
+            </Button>
+            &nbsp;&nbsp;
+            <Button
+              variant="contained"
+              className="resetPw-btn log-btn btn"
+              onClick={() => navigate("/login/resetpassword")}
+            >
+              Reset pw
+            </Button>
+>>>>>>> 37eab0ef3a1837b8a8c759d3109f5297153a6141
           </div>
         )}
       </div>

@@ -18,8 +18,14 @@ const modelRouter = require("./routes/modelExp");
 const authMiddleware = require("./routes/auth");
 const app = express();
 
+const mongoUri = require("/root/env-inssaFood/mongoUri");
+
 // 1. DB 연결 및 연결관리
+<<<<<<< HEAD
 mongoose.connect(`mongodb://0.0.0.0:27017/foodie`);
+=======
+mongoose.connect(mongoUri.mongoFoodieAdmin);
+>>>>>>> 37eab0ef3a1837b8a8c759d3109f5297153a6141
 
 mongoose.connection.on("connected", () => {
   console.log("[DB] CONNECT - success");
@@ -33,8 +39,10 @@ mongoose.connection.on("error", (err) => {
 app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 // 3. 라우팅
+
 app.use("/user", userRouter);
 
 app.use("/auth", authRouter);
@@ -47,7 +55,7 @@ app.use("/histories", authMiddleware, historiesRouter);
 
 app.use("/api", imgRouter);
 
-app.use("/uploads", express.static("uploads"));
+app.use("/uploads", express.static("/root/inssa-food/server/uploads"));
 
 app.use("/modelExp", modelRouter);
 

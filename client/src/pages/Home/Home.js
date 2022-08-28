@@ -8,6 +8,8 @@ import CollectFood from "./CollectFood.png";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 
+import { Button } from "@mui/material";
+
 const Home = () => {
   const [cookies, setCookie, removeCookie] = useCookies(["userData"]);
 
@@ -24,7 +26,10 @@ const Home = () => {
           <h1 className="intro-text">
             Find out insights
             <br /> about the food
+<<<<<<< HEAD
             <br /> with your picture.
+=======
+>>>>>>> 37eab0ef3a1837b8a8c759d3109f5297153a6141
           </h1>
           <span>
             Learn about food
@@ -36,6 +41,7 @@ const Home = () => {
             <br />
             in this safe archive.
           </span>
+<<<<<<< HEAD
           <button
             onClick={onClickStart}
             className="css-1hw9j7s"
@@ -52,6 +58,14 @@ const Home = () => {
             alt="비빔밥"
             style={{ height: "200px", width: "330px" }}
           />
+=======
+          <Button className="start-btn" onClick={onClickStart}>
+            Get Started
+          </Button>
+        </div>
+        <div className="rightSide" style={{ margin: "4.5rem" }}>
+          <img className="intro-img" src={bibimbap} alt="비빔밥" style={{ height: "200px", width: "330px" }} />
+>>>>>>> 37eab0ef3a1837b8a8c759d3109f5297153a6141
         </div>
       </section>
 
@@ -61,6 +75,7 @@ const Home = () => {
           Inssa Food?
         </h1>
         <p>
+<<<<<<< HEAD
           Inssa food is an AI technology that tells you the name of Korean food{" "}
           <br />
           <br />
@@ -69,6 +84,13 @@ const Home = () => {
           <br />
           Even if you don't know Korean. You can also save your photos to a
           collection <br />
+=======
+          Inssa food is an AI technology that tells you the name of Korean food <br />
+          <br />
+          When take a photo Korean food on a mobile device. surpport how to order food easily at a restaurant <br />
+          <br />
+          Even if you don't know Korean. You can also save your photos to a collection <br />
+>>>>>>> 37eab0ef3a1837b8a8c759d3109f5297153a6141
           and share your food history with your friends and family.
         </p>
 

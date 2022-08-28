@@ -1,7 +1,7 @@
-import "./ResultInfo.css";
+// import "./ResultInfo.css";
 import { useNavigate, useParams } from "react-router-dom";
 
-import { Button, useScrollTrigger } from "@mui/material";
+import { Button, TextField, useScrollTrigger } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import { useCookies } from "react-cookie";
 import React, { useEffect, useState } from "react";
@@ -11,41 +11,58 @@ import urlPort from "./../../../../data/urlPort.json";
 
 import ReactAudioPlayer from "react-audio-player";
 import ReactPlayer from "react-player";
+import { style } from "@mui/system";
+
+const ShowDetail = () => {
+  const [isflip, setIsFlip] = useState(false);
+  const onClickScreen = () => {
+    setIsFlip(!isflip);
+  };
+};
 
 const ResultInfo = () => {
-  const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(false);
+  const onClickRecipe = () => {
+    setIsOpen(!isOpen);
+  };
 
+  const navigate = useNavigate();
   //params
   const params = useParams();
 
-  //state
-  const [foodInfo, setFoodInfo] = useState({});
+  const [foodInfo, setFoodInfo] = useState(null);
   const [historyInput, setHistoryInput] = useState({
     title: "",
     comment: "",
   });
 
-  //쿠키 사용 준비
-
   const [cookies, setCookie, removeCookie] = useCookies([
     "inputImage",
-    "foodInfo",
     "imgFile",
+    "foodInfo",
   ]);
 
+  // let foodInfo = null;
   useEffect(() => {
-    console.log("params.id : ", params.id);
-    console.log("imgFile:", cookies.imgFile.url);
-    // getImgFile().then((res))
+    console.log("resultInfo 첫렌더링");
     getFoodInfo().then((res) => {
-      // console.log(res);
-      setFoodInfo(res.data.food);
+      console.log("getFoodInfo res:", res);
+      console.log("cookies url:", cookies.imgFile);
+
+      // foodInfo = res.data
+      setFoodInfo(res.data);
     });
   }, []);
 
+  const getFoodInfo = async () => {
+    return await axios.get(
+      `${urlPort.cloudServer + urlPort.node}/foodInfo/${params.id}/find`
+    );
+  };
+
   useEffect(() => {
     setCookie("foodInfo", foodInfo);
-    console.log(foodInfo);
+    console.log("cookie에 있는 foodInfo : ", foodInfo);
   }, [foodInfo]);
 
   //HistoryInput 변하면 console 찍기
@@ -58,38 +75,31 @@ const ResultInfo = () => {
       ...historyInfoOne,
       title: historyInput.title,
       comment: historyInput.comment,
+      // email:
     };
 
     await postHistoryData(historyInfo);
     await navigate("/history/list");
   };
-  const postHistoryData = async (historyInfo) => {
 
+  const postHistoryData = async (historyInfo) => {
     return await axios.post(
       urlPort.cloudServer + urlPort.node + "/histories",
       historyInfo
     );
   };
 
-
   //유저 인풋(Title, Comment) 제외한 히스토리 정보 => onClickSaveHistory 실행시 인풋정보랑 합침!!!
   const historyInfoOne = {
-    img: urlPort.cloudServer + cookies.imgFile.url,
+    img: cookies.imgFile,
 
     food: cookies.foodInfo,
-    userId: cookies.userData.id,
-  };
-
-  const getFoodInfo = async () => {
-
-    return await axios.get(
-      `${urlPort.cloudServer + urlPort.node}/foodInfo/${params.id}/find`
-    );
-
+    userId: cookies.userData.email,
   };
 
   return (
     <div className="resultInfo-container">
+<<<<<<< HEAD
       <h1 className="title">Food Info</h1>
       <div className="result-container">
         <div className="item-container">
@@ -123,47 +133,136 @@ const ResultInfo = () => {
               controls
               width={300}
               height={300}
+=======
+      <h1 className="title">We will tell you What you ate</h1>
+      {foodInfo === null ? (
+        <></>
+      ) : (
+        <div className="result">
+          <div className="result-container">
+            <img
+              className="main_food_image_resultinfo"
+              src={cookies.imgFile}
+              alt="react"
+              crossOrigin="anonymous"
+              referrerPolicy="unsafe-url"
+              style={{ margin: "auto", width: "100%", height: "100%" }}
+>>>>>>> 37eab0ef3a1837b8a8c759d3109f5297153a6141
             />
           </div>
+          <div className="container-contents">
+          <div className="item-name">{foodInfo.name}</div>
+            <div className="text-part1">
+                <h1 className="item-nameEng">{foodInfo.name_Eng}</h1>
+                {/* <h1 className="food_Number">No. 3</h1> */}
+              <div className="result-item spicy">
+                Spicy: 🌶️ ✖️ {foodInfo.spicy}
+              </div>
+            </div>
+            </div>
 
-          <div className="result-item desc">
-            <span className="desc-title">description</span>
-            <div className="desc-content">{foodInfo.description}</div>
+          <div className="food_detail_back">
+            <div className="simple_list">
+              <div className="result-item caution">
+                caution <br />
+                <div className="foodinfo_caution"> {foodInfo.caution}</div>
+              </div>
+            <div className="shape-square" />
+            </div>
+
+            
+            <div className="result-item order_learn_audio">
+              <ReactAudioPlayer
+                className="audio_player"
+                src={"http://115.85.182.215:8000/" + foodInfo.sound_url}
+                autoPlay
+                controls
+              />
+            </div>
+            <div className="result-item order_learn_text">
+              🗣️: {foodInfo.order_learn_text}
+            </div>
+            <div className="result-item desc">
+              <span className="desc-title">Description</span>
+              <div className="desc-content">{foodInfo.description}</div>
+            </div>
+          </div>
+          <div className="recipe_video" style={{ alignItems: "center" }}>
+            <br />
+            <div>
+              RECIPE
+              <button onClick={onClickRecipe} className="recipe_button">
+                Click
+              </button>
+            </div>
+            {isOpen ? (
+              <>
+                <ReactPlayer
+                  className="video-player"
+                  url={foodInfo.recipe_url}
+                  controls
+                  width={340}
+                  height={340}
+                />
+              </>
+            ) : (
+              <></>
+            )}
           </div>
         </div>
-        <div className="history-inputs">
+      )}
+      <div className="userInput-container">
+        <div className="userInput-title">
+         <h1>What did you think?</h1>
+          </div>
+          <div className="history-inputs">
+        <h1>
           <label htmlFor="history-title">Title</label>
-          <input
+          </h1>
+          <TextField
+            variant="filled"
+            multiline
+            color="warning"
+            className="textField-title"
             name="history-title"
+            placeholder="Title"
+            autoFocus
             onChange={(e) => {
               setHistoryInput({ ...historyInput, title: e.target.value });
             }}
-            type="text"
           />
-          <label htmlFor="history-comment">Comment</label>
-          <textarea
+            </div>
+            <div className="history-inputs">
+            <label htmlFor="history-comment">Comment</label>
+            <TextField
+            variant="filled"
+            multiline
+            color="warning"
+            className="textField-title"
             name="history-comment"
+            placeholder="Title"
+            autoFocus
             onChange={(e) => {
               setHistoryInput({ ...historyInput, comment: e.target.value });
             }}
-            type="text"
           />
-        </div>
-      </div>
+          </div>
       <div className="btn-container">
         <Button
           className="btn-item"
           variant="contained"
           endIcon={<SendIcon />}
           onClick={onClickSaveHistory}
-        >
+          >
           Save History
         </Button>
 
         <Button className="btn-item retry" variant="contained" color="grey">
           Retry
         </Button>
-      </div>
+        </div>
+        <br />
+          </div>
     </div>
   );
 };

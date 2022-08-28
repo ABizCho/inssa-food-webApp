@@ -29,9 +29,41 @@
 .content-container-row {
   margin-left: 5%;
   margin-right: 5%;
-  padding: 20px;
+  padding: 40px 20px 0 20px;
   padding-bottom: 0;
+  margin-bottom: 100px !important;
 }
+
+.fileSelect-btn {
+  opacity: 0;
+  width: 100% !important;
+  height: 100% !important;
+  position: relative;
+  top: -1.5em;
+}
+.upload-btn {
+  height: 30px !important;
+  margin: 10% !important;
+  border-radius: 1rem !important;
+  background-color: #f08000 !important;
+  color: white;
+  font-size: 15px;
+  margin-bottom: 10% !important;
+}
+
+.discover-btn {
+  border-radius: 1em !important;
+}
+
+.selected-img {
+  border-radius: 1rem;
+  width: 100% !important;
+  height: 80% !important;
+}
+.text-notice {
+  margin-bottom: 10% !important;
+}
+
 .top-container {
   padding: 0;
   background-color: white;
@@ -50,6 +82,7 @@
   display: flex;
   flex-direction: column;
   border-radius: 1em;
+  box-shadow: 5px 5px 5px grey;
 }
 
 .demo-container {
