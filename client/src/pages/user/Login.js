@@ -59,7 +59,7 @@ const Login = () => {
   const [cookies, setCookie, removeCookie] = useCookies("userData");
 
   return (
-    <main className='log-container'>
+    <main className="log-container">
       <section className="py-5 text-center container">
         <div className="row py-lg-5">
           <div className="col-lg-6 col-md-8 mx-auto">
@@ -74,7 +74,7 @@ const Login = () => {
         {!cookies.userData ? (
           <p>
             <button
-              className="signIn-btn btn btn-outline-primary my-2 m-1"
+              className=" btn btn-secondary my-2 m-1"
               onClick={() => {
                 setView({
                   signIn: true,
@@ -86,7 +86,7 @@ const Login = () => {
               Log In
             </button>
             <button
-              className="btn btn-outline-secondary my-2 m-1"
+              className="btn btn-secondary my-2 m-1"
               onClick={() => {
                 setView({
                   signIn: false,
@@ -115,13 +115,9 @@ const Login = () => {
           >
             Sign in with Kakao
           </Button>
-          <Button
-            className="social-btn google"
-            variant="contained"
-          >
+          <Button className="social-btn google" variant="contained">
             Sign in with Google
           </Button>
-
         </div>
       </section>
       {view.signIn ? (

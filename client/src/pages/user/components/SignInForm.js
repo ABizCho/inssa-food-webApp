@@ -82,21 +82,20 @@ const SignInForm = ({ signInData, onChangeSignInData, setSignInData }) => {
           <div className="mb-3">
             <p className="text-danger">{errorMessage}</p>
           </div>
-          <Button
-            className="logIn-btn"
-            variant="contained"
+          <button
+            type="button"
             onClick={onClickLoginButton}
+            className="btn btn-dark signIn-btn"
           >
             Log In
-          </Button>
-
-          <Button
-            className="findPw-btn"
-            variant="contained"
+          </button>
+          <button
+            type="button"
             onClick={() => navigate("/login/findpassword")}
+            className="btn btn-white findPw-btn"
           >
             Find p/w
-          </Button>
+          </button>
         </form>
       </div>
     </div>

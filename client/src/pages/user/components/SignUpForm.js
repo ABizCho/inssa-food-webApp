@@ -141,7 +141,7 @@ const SignUpForm = ({
           <button
             type="button"
             onClick={onClickSignUpButton}
-            className="btn btn-dark"
+            className="btn btn-dark signUp-btn"
           >
             Sign Up
           </button>
