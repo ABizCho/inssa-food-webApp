@@ -1,0 +1,67 @@
+.profile_container {
+  user-select: none;
+  margin: 100px auto;
+  background: orange;
+  color: black;
+  border-radius: 8px 8px 5px 5px;
+  width: 350px;
+  text-align: center;
+  box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.75);
+}
+.cover-photo {
+  background: #f08000;
+  height: 160px;
+  width: 100%;
+  border-radius: 5px 5px 0 0;
+}
+.profile {
+  height: 140px;
+  width: 140px;
+  border-radius: 50%;
+  margin: 93px 0 0 -175px;
+  border: 1px solid #1f1a32;
+  padding: 7px;
+  background: #292343;
+}
+.profile-name {
+  font-size: 25px;
+  font-weight: bold;
+  margin: 27px 0 0 120px;
+}
+.about {
+  font-size: 20px;
+  margin-top: 35px;
+  line-height: 21px;
+}
+
+.msg-btn,
+.follow-btn {
+  background: orangered;
+  border: 1px solid orangered orangered;
+  padding: 10px 25px;
+  color: #231e39;
+  border-radius: 3px;
+  font-family: Montserrat, sans-serif;
+  cursor: pointer;
+  margin: 10px 0 40px 0;
+}
+.follow-btn {
+  margin-left: 10px;
+  background: transparent;
+  color: black;
+}
+.follow-btn:hover {
+  color: #231e39;
+  background: orangered;
+  transition: 0.5s;
+}
+.container i {
+  padding-left: 20px;
+  font-size: 20px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.container i:hover {
+  color: black;
+}

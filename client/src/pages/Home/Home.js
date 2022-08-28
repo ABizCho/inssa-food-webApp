@@ -42,12 +42,7 @@ const Home = () => {
           </Button>
         </div>
         <div className="rightSide" style={{ margin: "4.5rem" }}>
-          <img
-            className="intro-img"
-            src={bibimbap}
-            alt="비빔밥"
-            style={{ height: "200px", width: "330px" }}
-          />
+          <img className="intro-img" src={bibimbap} alt="비빔밥" style={{ height: "200px", width: "330px" }} />
         </div>
       </section>
 
@@ -57,41 +52,26 @@ const Home = () => {
           Inssa Food?
         </h1>
         <p>
-          Inssa food is an AI technology that tells you the name of Korean food{" "}
+          Inssa food is an AI technology that tells you the name of Korean food <br />
           <br />
+          When take a photo Korean food on a mobile device. surpport how to order food easily at a restaurant <br />
           <br />
-          When take a photo Korean food on a mobile device. surpport how to
-          order food easily at a restaurant <br />
-          <br />
-          Even if you don't know Korean. You can also save your photos to a
-          collection <br />
+          Even if you don't know Korean. You can also save your photos to a collection <br />
           and share your food history with your friends and family.
         </p>
 
         <div className="section2_ImageGroup">
           <div className="section2_eachItem">
             <span>01. Take a Photo</span>
-            <img
-              src={TakeAPhoto}
-              alt="사진없음"
-              style={{ height: "200px", width: "200px" }}
-            />
+            <img src={TakeAPhoto} alt="사진없음" style={{ height: "200px", width: "200px" }} />
           </div>
           <div className="section2_eachItem">
             <span>02. Learn korean foods</span>
-            <img
-              src={LearnFood}
-              alt="사진없음"
-              style={{ height: "200px", width: "200px" }}
-            />
+            <img src={LearnFood} alt="사진없음" style={{ height: "200px", width: "200px" }} />
           </div>
           <div className="section2_eachItem">
             <span>03. Fill up on food history</span>
-            <img
-              src={CollectFood}
-              alt="사진없음"
-              style={{ height: "200px", width: "200px" }}
-            />
+            <img src={CollectFood} alt="사진없음" style={{ height: "200px", width: "200px" }} />
           </div>
         </div>
       </section>
