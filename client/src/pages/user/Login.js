@@ -9,12 +9,14 @@ import { Button } from "@mui/material";
 import { KakaoLogo, googleLogo } from "./components/SocialLogo";
 import "./Login.css";
 
+import urlPort from "../../data/urlPort.json";
+
 const Login = () => {
   const navigate = useNavigate();
   // ------------------kakao Oauth-------------------
 
   const REST_API_KEY = "0abf97780f442400eccc7cd004baabab";
-  const REDIRECT_URI = "http://localhost:3000/oauth/kakao/callback";
+  const REDIRECT_URI = "http://115.85.182.215/oauth/kakao/callback";
 
   //1번
   const KAKAO_AUTH_URI = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
@@ -57,7 +59,7 @@ const Login = () => {
   const [cookies, setCookie, removeCookie] = useCookies("userData");
 
   return (
-    <main>
+    <main className='log-container'>
       <section className="py-5 text-center container">
         <div className="row py-lg-5">
           <div className="col-lg-6 col-md-8 mx-auto">
@@ -120,20 +122,13 @@ const Login = () => {
           >
             Sign in with Google
           </Button>
-          <Button
-            className="social-btn google"
-            // startIcon={<googleLogo />}
-            variant="contained"
-            onClick={() => navigate('/login/findpassword')}
-          >
-            Find Password
-          </Button>
         </div>
       </section>
       {view.signIn ? (
         <SignInForm
           signInData={signInData}
           onChangeSignInData={onChangeSignInData}
+          setView={setView}
         />
       ) : (
         <></>
@@ -143,6 +138,7 @@ const Login = () => {
           signUpData={signUpData}
           onChangeSignUpData={onChangeSignUpData}
           setSignUpData={setSignUpData}
+          setView={setView}
         />
       ) : (
         <></>
