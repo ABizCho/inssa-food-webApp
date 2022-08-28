@@ -99,6 +99,41 @@ const ResultInfo = () => {
 
   return (
     <div className="resultInfo-container">
+<<<<<<< HEAD
+      <h1 className="title">Food Info</h1>
+      <div className="result-container">
+        <div className="item-container">
+          <div className="result-item img-box">
+            <img
+              className="result-item img"
+              src={urlPort.cloudServer + cookies.imgFile.url}
+
+              alt="react"
+            />
+          </div>
+          <div className="result-item name">
+            <h1>{"name"}</h1>
+          </div>
+          <div className="result-item spicy">spicy: {foodInfo.spicy}</div>
+          <div className="result-item caution">caution: {foodInfo.caution}</div>
+          <div className="result-item name_Eng">
+            English Name: {foodInfo.name_Eng}
+          </div>
+          <div className="result-item order_learn_audio">
+            <ReactAudioPlayer src={foodInfo.sound_url} autoPlay controls />
+          </div>
+          <div className="result-item order_learn_text">
+            🗣️: {foodInfo.order_learn_text}
+          </div>
+          <div>
+            RECIPE
+            <ReactPlayer
+              className="video-player"
+              url={foodInfo.recipie_url}
+              controls
+              width={300}
+              height={300}
+=======
       <h1 className="title">We will tell you What you ate</h1>
       {foodInfo === null ? (
         <></>
@@ -112,6 +147,7 @@ const ResultInfo = () => {
               crossOrigin="anonymous"
               referrerPolicy="unsafe-url"
               style={{ margin: "auto", width: "100%", height: "100%" }}
+>>>>>>> 37eab0ef3a1837b8a8c759d3109f5297153a6141
             />
           </div>
           <div className="container-contents">

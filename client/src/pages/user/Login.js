@@ -15,8 +15,8 @@ const Login = () => {
   const navigate = useNavigate();
   // ------------------kakao Oauth-------------------
 
-  const REST_API_KEY = "0abf97780f442400eccc7cd004baabab";
-  const REDIRECT_URI = urlPort.cloudServer + "/oauth/kakao/callback";
+  const REST_API_KEY = "25fbc98ddab2446ddeb681e7af004a9e";
+  const REDIRECT_URI = "http://115.85.182.215/oauth/kakao/callback";
 
   //1번
   const KAKAO_AUTH_URI = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
