@@ -23,6 +23,14 @@
 .signIn-btn {
 }
 
+.logIn-btn {
+  background-color: black;
+}
 .log-container {
   margin-bottom: 100px !important;
+}
+
+.findPw-btn {
+  background-color: white !important;
+  color: #212529 !important;
 }

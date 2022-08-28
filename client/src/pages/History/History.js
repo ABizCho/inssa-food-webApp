@@ -98,6 +98,38 @@ const History = () => {
           onClickSlide={onClickSlide}
         />
         {isSlide ? (
+          historyData === "undefined" ? (
+            <></>
+          ) : (
+            <Carousel
+              swipeable={true}
+              draggable={true}
+              showDots={true}
+              responsive={responsive}
+              transitionDuration={500}
+            >
+              {historyData?.map((item, index) => {
+                console.log("map 실행:", item);
+                return (
+                  <HistoryCard
+                    className="historyCard"
+                    shortId={item.shortId}
+                    key={index}
+                    id={item?.id}
+                    name={item?.name}
+                    nameEng={item?.name_Eng}
+                    food_img={item?.user_inputImg}
+                    desc={item?.description}
+                    colorIdx={index}
+                    soundUrl={item.sound_url}
+                    recipeUrl={item.recipe_url}
+                    spicy={item.spicy}
+                  />
+                );
+              })}
+            </Carousel>
+          )
+        ) : (
           <div className="grid-container">
             <ul className="image-gallery">
               {historyData?.map((item, index) => {
@@ -118,36 +150,6 @@ const History = () => {
               })}
             </ul>
           </div>
-        ) : historyData === "undefined" ? (
-          <></>
-        ) : (
-          <Carousel
-            swipeable={true}
-            draggable={true}
-            showDots={true}
-            responsive={responsive}
-            transitionDuration={500}
-          >
-            {historyData?.map((item, index) => {
-              console.log("map 실행:", item);
-              return (
-                <HistoryCard
-                  className="historyCard"
-                  shortId={item.shortId}
-                  key={index}
-                  id={item?.id}
-                  name={item?.name}
-                  nameEng={item?.name_Eng}
-                  food_img={item?.user_inputImg}
-                  desc={item?.description}
-                  colorIdx={index}
-                  soundUrl={item.sound_url}
-                  recipeUrl={item.recipe_url}
-                  spicy={item.spicy}
-                />
-              );
-            })}
-          </Carousel>
         )}
       </div>
     </div>

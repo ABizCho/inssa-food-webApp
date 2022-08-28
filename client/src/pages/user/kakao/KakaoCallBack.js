@@ -6,8 +6,8 @@ import { useCookies } from "react-cookie";
 const KakaoCallBack = () => {
   //kakao에서 redirect 해준 code 가져오는 부분
   const navigate = useNavigate();
-  const [cookiesAuth, setCookieAuth, removeCookieAuth] = useCookies(["auth"]);
-  const [cookies, setCookie, removeCookie] = useCookies(["userData"]);
+
+  const [cookies, setCookie, removeCookie] = useCookies(["userData", "auth"]);
 
   const KAKAO_PARAMS = new URL(window.location.href).searchParams.get("code");
 
@@ -25,8 +25,8 @@ const KakaoCallBack = () => {
         } else {
           //false면 회원가입을 진행해야하는 상태
           console.log("회원가입을 해주세요.");
-          setCookie("", res.data, { path: "/" });
-          navigate("/oauth/l");
+          setCookie("auth", res.data, { path: "/" });
+          navigate("/oauth/kakao/signup ");
         }
       })
       .catch((e) => {

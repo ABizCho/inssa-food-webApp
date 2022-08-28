@@ -99,41 +99,6 @@ const ResultInfo = () => {
 
   return (
     <div className="resultInfo-container">
-<<<<<<< HEAD
-      <h1 className="title">Food Info</h1>
-      <div className="result-container">
-        <div className="item-container">
-          <div className="result-item img-box">
-            <img
-              className="result-item img"
-              src={urlPort.cloudServer + cookies.imgFile.url}
-
-              alt="react"
-            />
-          </div>
-          <div className="result-item name">
-            <h1>{"name"}</h1>
-          </div>
-          <div className="result-item spicy">spicy: {foodInfo.spicy}</div>
-          <div className="result-item caution">caution: {foodInfo.caution}</div>
-          <div className="result-item name_Eng">
-            English Name: {foodInfo.name_Eng}
-          </div>
-          <div className="result-item order_learn_audio">
-            <ReactAudioPlayer src={foodInfo.sound_url} autoPlay controls />
-          </div>
-          <div className="result-item order_learn_text">
-            🗣️: {foodInfo.order_learn_text}
-          </div>
-          <div>
-            RECIPE
-            <ReactPlayer
-              className="video-player"
-              url={foodInfo.recipie_url}
-              controls
-              width={300}
-              height={300}
-=======
       <h1 className="title">We will tell you What you ate</h1>
       {foodInfo === null ? (
         <></>
@@ -147,19 +112,18 @@ const ResultInfo = () => {
               crossOrigin="anonymous"
               referrerPolicy="unsafe-url"
               style={{ margin: "auto", width: "100%", height: "100%" }}
->>>>>>> 37eab0ef3a1837b8a8c759d3109f5297153a6141
             />
           </div>
           <div className="container-contents">
-          <div className="item-name">{foodInfo.name}</div>
+            <div className="item-name">{foodInfo.name}</div>
             <div className="text-part1">
-                <h1 className="item-nameEng">{foodInfo.name_Eng}</h1>
-                {/* <h1 className="food_Number">No. 3</h1> */}
+              <h1 className="item-nameEng">{foodInfo.name_Eng}</h1>
+              {/* <h1 className="food_Number">No. 3</h1> */}
               <div className="result-item spicy">
                 Spicy: 🌶️ ✖️ {foodInfo.spicy}
               </div>
             </div>
-            </div>
+          </div>
 
           <div className="food_detail_back">
             <div className="simple_list">
@@ -167,10 +131,9 @@ const ResultInfo = () => {
                 caution <br />
                 <div className="foodinfo_caution"> {foodInfo.caution}</div>
               </div>
-            <div className="shape-square" />
+              <div className="shape-square" />
             </div>
 
-            
             <div className="result-item order_learn_audio">
               <ReactAudioPlayer
                 className="audio_player"
@@ -213,11 +176,11 @@ const ResultInfo = () => {
       )}
       <div className="userInput-container">
         <div className="userInput-title">
-         <h1>What did you think?</h1>
-          </div>
-          <div className="history-inputs">
-        <h1>
-          <label htmlFor="history-title">Title</label>
+          <h1>What did you think?</h1>
+        </div>
+        <div className="history-inputs">
+          <h1>
+            <label htmlFor="history-title">Title</label>
           </h1>
           <TextField
             variant="filled"
@@ -231,10 +194,10 @@ const ResultInfo = () => {
               setHistoryInput({ ...historyInput, title: e.target.value });
             }}
           />
-            </div>
-            <div className="history-inputs">
-            <label htmlFor="history-comment">Comment</label>
-            <TextField
+        </div>
+        <div className="history-inputs">
+          <label htmlFor="history-comment">Comment</label>
+          <TextField
             variant="filled"
             multiline
             color="warning"
@@ -246,23 +209,23 @@ const ResultInfo = () => {
               setHistoryInput({ ...historyInput, comment: e.target.value });
             }}
           />
-          </div>
-      <div className="btn-container">
-        <Button
-          className="btn-item"
-          variant="contained"
-          endIcon={<SendIcon />}
-          onClick={onClickSaveHistory}
+        </div>
+        <div className="btn-container">
+          <Button
+            className="btn-item"
+            variant="contained"
+            endIcon={<SendIcon />}
+            onClick={onClickSaveHistory}
           >
-          Save History
-        </Button>
+            Save History
+          </Button>
 
-        <Button className="btn-item retry" variant="contained" color="grey">
-          Retry
-        </Button>
+          <Button className="btn-item retry" variant="contained" color="grey">
+            Retry
+          </Button>
         </div>
         <br />
-          </div>
+      </div>
     </div>
   );
 };

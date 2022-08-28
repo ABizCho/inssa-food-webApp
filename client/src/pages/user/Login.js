@@ -117,19 +117,11 @@ const Login = () => {
           </Button>
           <Button
             className="social-btn google"
-            // startIcon={<googleLogo />}
             variant="contained"
           >
             Sign in with Google
           </Button>
-          <Button
-            className="social-btn google"
-            // startIcon={<googleLogo />}
-            variant="contained"
-            onClick={() => navigate("/login/findpassword")}
-          >
-            Find Password
-          </Button>
+
         </div>
       </section>
       {view.signIn ? (

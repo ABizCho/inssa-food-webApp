@@ -5,7 +5,12 @@ import urlPort from "../../../data/urlPort.json";
 
 import { useNavigate } from "react-router-dom";
 
-const SignUpForm = ({ signUpData, onChangeSignUpData, setSignUpdata, setView }) => {
+const SignUpForm = ({
+  signUpData,
+  onChangeSignUpData,
+  setSignUpdata,
+  setView,
+}) => {
   const emailRef = useRef();
 
   const [errorMessage, setErrorMessage] = useState("");
@@ -74,6 +79,20 @@ const SignUpForm = ({ signUpData, onChangeSignUpData, setSignUpdata, setView }) 
       <div className="container">
         <form>
           <div className="mb-3">
+            <label htmlFor="name" className="form-label">
+              Name
+            </label>
+            <input
+              type="text"
+              value={signUpData.name}
+              onChange={onChangeSignUpData}
+              className="form-control"
+              name="name"
+              id="name"
+              autoFocus
+            />
+          </div>
+          <div className="mb-3">
             <label htmlFor="email" className="form-label">
               Email address
             </label>
@@ -114,19 +133,7 @@ const SignUpForm = ({ signUpData, onChangeSignUpData, setSignUpdata, setView }) 
               id="rePassword"
             />
           </div>
-          <div className="mb-3">
-            <label htmlFor="name" className="form-label">
-              Name
-            </label>
-            <input
-              type="text"
-              value={signUpData.name}
-              onChange={onChangeSignUpData}
-              className="form-control"
-              name="name"
-              id="name"
-            />
-          </div>
+
           <div className="mb-3">
             <p className="text-danger">{errorMessage}</p>
           </div>
@@ -134,7 +141,7 @@ const SignUpForm = ({ signUpData, onChangeSignUpData, setSignUpdata, setView }) 
           <button
             type="button"
             onClick={onClickSignUpButton}
-            className="btn btn-primary"
+            className="btn btn-dark"
           >
             Sign Up
           </button>

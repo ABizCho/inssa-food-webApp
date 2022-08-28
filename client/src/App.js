@@ -19,7 +19,6 @@ import ResultInfo from "./pages/Core/components/ResultInfo/ResultInfo";
 //social로그인
 import KakaoCallBack from "./pages/user/kakao/KakaoCallBack";
 import SocialSignUp from "./pages/user/components/SocialSignUp";
-import SignInForm from "./pages/user/components/SignInForm";
 
 //그냥 로그인
 import Login from "./pages/user/Login";
