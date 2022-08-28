@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 import tensorflow as tf
 from tf.keras.applications.vgg19 import VGG19
 from tf.keras.preprocessing import image
@@ -7,12 +7,10 @@ from tf.keras.models import Model
 import matplotlib.pyplot as plt
 # import numpy as np
 import pandas as pd
-=======
 import tensorflow 
 from tensorflow.keras.preprocessing import image
 from tensorflow.keras.applications.mobilenet import preprocess_input
 
->>>>>>> 37eab0ef3a1837b8a8c759d3109f5297153a6141
 import numpy as np
 import requests
 
@@ -43,11 +41,6 @@ def prep(imgUrl) :
 # 모델 불러오기
 def modelRun(imgUrl) :
     # imgRes = requests.get(f"http://115.85.182.215:8000{imgUrl}")
-<<<<<<< HEAD
-    
-    model = tf.keras.models.load_model('C:\\Users\\he125\\OneDrive\\바탕 화면\\Dev\\Git\\inssa-food-client\\flaskServer\\foodie_vgg19_1_9075.h5')
-=======
->>>>>>> 37eab0ef3a1837b8a8c759d3109f5297153a6141
 
     print(model.summary())
     
@@ -73,16 +66,6 @@ def modelRun(imgUrl) :
     # pd.reset_option('display.float_format')
     # img_path ='http://115.85.182.215:8000{imgUrl}'
 
-<<<<<<< HEAD
-    # img_path = 'C:\\Users\\he125\\OneDrive\\바탕 화면\\Dev\\Git\\inssa-food-client\\flaskServer\\tpk.jpg'
-    img_path ='http://115.85.182.215:8000{imgUrl}'
-    img = image.load_img(img_path, target_size=(224, 224))
-    x = image.img_to_array(img)
-    x = np.expand_dims(x, axis=0)
-    x = preprocess_input(x)
-    features = model.predict(x)
-    print(features) 
-=======
     
     
     # file = glob.glob(img_path)
@@ -92,7 +75,6 @@ def modelRun(imgUrl) :
     # result = classes[np.argmax(pred)]
     # ind = classes.index(result);
     # print("file: ", file, "result : ", result, "ind : ", ind)
->>>>>>> 37eab0ef3a1837b8a8c759d3109f5297153a6141
 
     
     # print(features) 
@@ -101,9 +83,3 @@ def modelRun(imgUrl) :
     # index = list(features[0]).index(tmp)
     # print(index)
     # plt.imshow(features[0,:,:,3]) # 4번째 피쳐맵(특징)을 그려보자. cf. 0부터 시작하기에 4번째임.
-<<<<<<< HEAD
-    return features[0]
-=======
-
->>>>>>> 37eab0ef3a1837b8a8c759d3109f5297153a6141
-
