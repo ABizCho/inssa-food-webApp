@@ -16,18 +16,7 @@ import axios from "axios";
 import "./HistoryCard.css";
 
 const HistoryCard = (props) => {
-  const {
-    id,
-    name,
-    nameEng,
-    food_img,
-    desc,
-    colorIdx,
-    shortId,
-    soundUrl,
-    recipeUrl,
-    spicy,
-  } = props;
+  const { id, name, nameEng, food_img, desc, colorIdx, shortId, soundUrl, recipeUrl, spicy } = props;
 
   const navigate = useNavigate();
 
@@ -82,12 +71,7 @@ const HistoryCard = (props) => {
           </div>
           <div className="result-item spicy">Spicy: 🌶️ ✖️ {spicy}</div>
 
-          <Button
-            className="detail-btn"
-            variant="contained"
-            color="secondary"
-            onClick={() => onClickDetail()}
-          >
+          <Button className="detail-btn" variant="contained" color="secondary" onClick={() => onClickDetail()}>
             Detail
           </Button>
         </div>

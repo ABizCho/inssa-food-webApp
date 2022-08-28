@@ -7,6 +7,7 @@ import History from "./pages/History/History";
 import Core from "./pages/Core/Core";
 import Detail from "./pages/History/HistoryDetailed";
 import HistoryUpdate from "./pages/History/HistoryUpdate";
+import About from "./pages/About/About";
 
 //테스트용 임시 라우팅입니다. 향후 제거합니다.
 import ResultInfo from "./pages/Core/components/ResultInfo/ResultInfo";
@@ -49,7 +50,7 @@ function App() {
           <Route path="kakao/callback" element={<KakaoCallBack />} />
           <Route path="kakao/signup" element={<SocialSignUp />} />
         </Route>
-        <Route path="about" element={""} />
+        <Route path="about" element={<About />} />
       </Routes>
 
       <Footer />
