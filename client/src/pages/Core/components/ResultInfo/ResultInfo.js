@@ -1,4 +1,4 @@
-// import "./ResultInfo.css";
+import "./ResultInfo.css";
 import { useNavigate, useParams } from "react-router-dom";
 
 import { Button, TextField, useScrollTrigger } from "@mui/material";
@@ -119,7 +119,7 @@ const ResultInfo = () => {
             <div className="text-part1">
               <h1 className="item-nameEng">{foodInfo.name_Eng}</h1>
               {/* <h1 className="food_Number">No. 3</h1> */}
-              <div className="result-item spicy">
+              <div className="result-spicy">
                 Spicy: 🌶️ ✖️ {foodInfo.spicy}
               </div>
             </div>
@@ -133,6 +133,10 @@ const ResultInfo = () => {
               </div>
               <div className="shape-square" />
             </div>
+            <div className="result-item desc">
+              <span className="desc-title">Description</span>
+              <div className="desc-content">{foodInfo.description}</div>
+            </div>
 
             <div className="result-item order_learn_audio">
               <ReactAudioPlayer
@@ -145,21 +149,14 @@ const ResultInfo = () => {
             <div className="result-item order_learn_text">
               🗣️: {foodInfo.order_learn_text}
             </div>
-            <div className="result-item desc">
-              <span className="desc-title">Description</span>
-              <div className="desc-content">{foodInfo.description}</div>
-            </div>
           </div>
           <div className="recipe_video" style={{ alignItems: "center" }}>
             <br />
-            <div>
-              RECIPE
-              <button onClick={onClickRecipe} className="recipe_button">
-                Click
-              </button>
-            </div>
+            <Button onClick={onClickRecipe} className="recipe_button">
+            Click to see RECIPE
+            </Button>
             {isOpen ? (
-              <>
+              <div style={{display: "flex", justifyContent: "center"}}>
                 <ReactPlayer
                   className="video-player"
                   url={foodInfo.recipe_url}
@@ -167,7 +164,7 @@ const ResultInfo = () => {
                   width={340}
                   height={340}
                 />
-              </>
+              </div>
             ) : (
               <></>
             )}
@@ -196,7 +193,7 @@ const ResultInfo = () => {
           />
         </div>
         <div className="history-inputs">
-          <label htmlFor="history-comment">Comment</label>
+          <h1><label htmlFor="history-comment">Comment</label></h1>
           <TextField
             variant="filled"
             multiline
