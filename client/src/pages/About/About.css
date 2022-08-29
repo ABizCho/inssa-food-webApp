@@ -36,8 +36,8 @@
 
 .msg-btn,
 .follow-btn {
-  background: orangered;
-  border: 1px solid orangered orangered;
+  background: white;
+  border: 1px solid white white;
   padding: 10px 25px;
   color: #231e39;
   border-radius: 3px;
@@ -52,7 +52,7 @@
 }
 .follow-btn:hover {
   color: #231e39;
-  background: orangered;
+  background: white;
   transition: 0.5s;
 }
 .container i {
