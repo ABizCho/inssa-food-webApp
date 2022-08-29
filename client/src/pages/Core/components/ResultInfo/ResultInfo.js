@@ -25,7 +25,7 @@ const ShowDetail = () => {
 
 const ResultInfo = () => {
   const [audio, setAudio] = useState("");
-  const [mediaMode, setMediaMode] = useState(false);
+  const [mediaMode, setMediaMode] = useState(true);
 
   const [isOpen, setIsOpen] = useState(false);
   const onClickRecipe = () => {
@@ -140,33 +140,39 @@ const ResultInfo = () => {
             <div className="mediaInfo-container">
               <div className="media-btn-box">
                 <Button
+                className="media-btn"
                   onClick={() => {
                     setMediaMode(true);
                   }}
                   variant="contained"
                 >
-                  How to order
+                  <LyricsRoundedIcon />
+                  order
                 </Button>
-                <LyricsRoundedIcon />
+
                 <Button
+                className="media-btn"
+                  color="secondary"
                   onClick={() => {
                     setMediaMode(false);
                   }}
                   variant="contained"
                 >
-                  How to cook
+                  <OutdoorGrillRoundedIcon />
+                  cook
                 </Button>
-                <OutdoorGrillRoundedIcon />
               </div>
 
               {mediaMode ? (
                 <div className="result-item order_learn_audio">
-                  <AudiotrackRoundedIcon />
                   <Button
+                    className="sound-btn"
                     onClick={() => {
                       audio.play();
                     }}
-                  ></Button>
+                  >
+                    <AudiotrackRoundedIcon color="white" />
+                  </Button>
 
                   <div className="sound-text">{foodInfo.order_learn_text}</div>
                 </div>

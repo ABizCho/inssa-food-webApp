@@ -117,7 +117,9 @@
 }
 
 .order_learn_audio {
-  margin-top: 20%;
+  margin-top: 10%;
+  display: flex;
+  flex-direction: column;
 }
 
 .order_learn_text {
@@ -240,6 +242,10 @@
 .mediaInfo-container {
   margin-top: 20%;
   margin-bottom: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 500px;
 }
 
 .caution_container {
@@ -248,5 +254,17 @@
 }
 
 .media-btn-box {
-  background-color: grey;
+  width: 230px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.sound-btn {
+  background-color: lemonchiffon !important;
+}
+
+.media-btn {
+  background-color: darkolivegreen !important;
 }
