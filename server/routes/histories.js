@@ -52,10 +52,10 @@ router.get("/:email/find", async (req, res, next) => {
 });
 
 router.get("/:shortid/delete", async (req, res, next) => {
-  const { historyId } = req.params;
+  const { shortid } = req.params;
   try {
-    console.log("[server] history delete 전", historyId);
-    await HistoryCard.deleteOne({ historyId });
+    console.log("[server] history delete 전", shortid);
+    await HistoryCard.deleteOne({ shortid });
     // .populate("author") //나중에 활성화
     console.log("[server] history delete");
 
