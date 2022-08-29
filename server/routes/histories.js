@@ -55,7 +55,7 @@ router.get("/:shortid/delete", async (req, res, next) => {
   const { shortid } = req.params;
   try {
     console.log("[server] history delete 전", shortid);
-    await HistoryCard.deleteOne({ shortid });
+    await HistoryCard.deleteOne({ shortId : shortid });
     // .populate("author") //나중에 활성화
     console.log("[server] history delete");
 
