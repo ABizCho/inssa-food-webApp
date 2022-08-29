@@ -105,6 +105,19 @@ const Login = () => {
           </div>
         )}
         <div className="socialSignIn-btnBox ">
+          <div
+            className="social-btn kakao"
+            onClick={() => {
+              window.location.replace(KAKAO_AUTH_URI);
+            }}
+          >
+            <img
+              src={
+                "115.85.185.215:8000/uploads/client_static/kakao/kakao_login_large_narrow.png"
+              }
+              alt="react"
+            />
+          </div>
           <Button
             className="social-btn kakao"
             // startIcon={<KakaoLogo />}
