@@ -63,6 +63,7 @@ const Detail = () => {
 
   const deleteHistory = async () => {
     const historyId = params.id;
+    console.log("historyID :", historyId)
     return await axios.get(
       `${urlPort.cloudServer + urlPort.node}/histories/${historyId}/delete`,
       { headers: { accessToken: cookies.userData.accessToken } }
