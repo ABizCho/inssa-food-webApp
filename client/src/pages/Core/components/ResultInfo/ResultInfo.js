@@ -1,4 +1,3 @@
-// import "./ResultInfo.css";
 import { useNavigate, useParams } from "react-router-dom";
 
 import { Button, TextField, useScrollTrigger } from "@mui/material";
@@ -8,10 +7,14 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 import urlPort from "./../../../../data/urlPort.json";
-
 import ReactAudioPlayer from "react-audio-player";
 import ReactPlayer from "react-player";
 import { style } from "@mui/system";
+import "./ResultInfo.css";
+
+import OutdoorGrillRoundedIcon from "@mui/icons-material/OutdoorGrillRounded";
+import LyricsRoundedIcon from "@mui/icons-material/LyricsRounded";
+import AudiotrackRoundedIcon from "@mui/icons-material/AudiotrackRounded";
 
 const ShowDetail = () => {
   const [isflip, setIsFlip] = useState(false);
@@ -21,6 +24,9 @@ const ShowDetail = () => {
 };
 
 const ResultInfo = () => {
+  const [audio, setAudio] = useState("");
+  const [mediaMode, setMediaMode] = useState(true);
+
   const [isOpen, setIsOpen] = useState(false);
   const onClickRecipe = () => {
     setIsOpen(!isOpen);
@@ -51,6 +57,7 @@ const ResultInfo = () => {
 
       // foodInfo = res.data
       setFoodInfo(res.data);
+      setAudio(new Audio(`http://115.85.182.215:8000/${res.data.sound_url}`));
     });
   }, []);
 
@@ -98,134 +105,150 @@ const ResultInfo = () => {
   };
 
   return (
-    <div className="resultInfo-container">
-      <h1 className="title">We will tell you What you ate</h1>
-      {foodInfo === null ? (
-        <></>
-      ) : (
-        <div className="result">
-          <div className="result-container">
-            <img
-              className="main_food_image_resultinfo"
-              src={cookies.imgFile}
-              alt="react"
-              crossOrigin="anonymous"
-              referrerPolicy="unsafe-url"
-              style={{ margin: "auto", width: "100%", height: "100%" }}
-            />
-          </div>
-          <div className="container-contents">
-            <div className="item-name">{foodInfo.name}</div>
-            <div className="text-part1">
-              <h1 className="item-nameEng">{foodInfo.name_Eng}</h1>
-              {/* <h1 className="food_Number">No. 3</h1> */}
-              <div className="result-item spicy">
-                Spicy: 🌶️ ✖️ {foodInfo.spicy}
-              </div>
-            </div>
-          </div>
-
-          <div className="food_detail_back">
-            <div className="simple_list">
-              <div className="result-item caution">
-                caution <br />
-                <div className="foodinfo_caution"> {foodInfo.caution}</div>
-              </div>
-              <div className="shape-square" />
-            </div>
-
-            <div className="result-item order_learn_audio">
-              <ReactAudioPlayer
-                className="audio_player"
-                src={"http://115.85.182.215:8000/" + foodInfo.sound_url}
-                autoPlay
-                controls
+    <div>
+      {foodInfo ? (
+        <div>
+          <div className="container1">
+            <div className="mainImage">
+              <img
+                className="item-img"
+                src={cookies.imgFile}
+                alt="react"
+                style={{ width: "100%", height: "325px" }}
               />
             </div>
-            <div className="result-item order_learn_text">
-              🗣️: {foodInfo.order_learn_text}
-            </div>
-            <div className="result-item desc">
-              <span className="desc-title">Description</span>
+          </div>
+
+          <div className="container-contents">
+            <div className="item-name">{foodInfo.name}</div>
+            <h1 className="item-nameEng">{foodInfo.name_Eng}</h1>
+            <div className="description_container">
               <div className="desc-content">{foodInfo.description}</div>
             </div>
-          </div>
-          <div className="recipe_video" style={{ alignItems: "center" }}>
-            <br />
-            <div>
-              RECIPE
-              <button onClick={onClickRecipe} className="recipe_button">
-                Click
-              </button>
-            </div>
-            {isOpen ? (
-              <>
-                <ReactPlayer
-                  className="video-player"
-                  url={foodInfo.recipe_url}
-                  controls
-                  width={340}
-                  height={340}
-                />
-              </>
-            ) : (
-              <></>
-            )}
-          </div>
-        </div>
-      )}
-      <div className="userInput-container">
-        <div className="userInput-title">
-          <h1>What did you think?</h1>
-        </div>
-        <div className="history-inputs">
-          <h1>
-            <label htmlFor="history-title">Title</label>
-          </h1>
-          <TextField
-            variant="filled"
-            multiline
-            color="warning"
-            className="textField-title"
-            name="history-title"
-            placeholder="Title"
-            autoFocus
-            onChange={(e) => {
-              setHistoryInput({ ...historyInput, title: e.target.value });
-            }}
-          />
-        </div>
-        <div className="history-inputs">
-          <label htmlFor="history-comment">Comment</label>
-          <TextField
-            variant="filled"
-            multiline
-            color="warning"
-            className="textField-title"
-            name="history-comment"
-            placeholder="Title"
-            autoFocus
-            onChange={(e) => {
-              setHistoryInput({ ...historyInput, comment: e.target.value });
-            }}
-          />
-        </div>
-        <div className="btn-container">
-          <Button
-            className="btn-item"
-            variant="contained"
-            endIcon={<SendIcon />}
-            onClick={onClickSaveHistory}
-          >
-            Save History
-          </Button>
 
-          <Button className="btn-item retry" variant="contained" color="grey">
-            Retry
-          </Button>
+            <div className="shape-square" />
+
+            <div className="caution_container">
+              <div className="caution_title">caution</div>
+              <div className="result-item spicy">
+                {"🌶️".repeat(foodInfo.spicy)}
+              </div>
+              <div className="foodinfo_caution"> {foodInfo.caution}</div>
+            </div>
+
+            <div className="shape-square" />
+            <div className="mediaInfo-container">
+              <div className="media-btn-box">
+                <Button
+                className="media-btn"
+                  onClick={() => {
+                    setMediaMode(true);
+                  }}
+                  variant="contained"
+                >
+                  <LyricsRoundedIcon />
+                  order
+                </Button>
+
+                <Button
+                className="media-btn"
+                  color="secondary"
+                  onClick={() => {
+                    setMediaMode(false);
+                  }}
+                  variant="contained"
+                >
+                  <OutdoorGrillRoundedIcon />
+                  cook
+                </Button>
+              </div>
+
+              {mediaMode ? (
+                <div className="result-item order_learn_audio">
+                  <Button
+                    className="sound-btn"
+                    onClick={() => {
+                      audio.play();
+                    }}
+                  >
+                    <AudiotrackRoundedIcon color="white" />
+                  </Button>
+
+                  <div className="sound-text">{foodInfo.order_learn_text}</div>
+                </div>
+              ) : (
+                <div>
+                  <ReactPlayer
+                    className="video-player"
+                    url={foodInfo.recipe_url}
+                    controls
+                    width={340}
+                    height={340}
+                  />
+                </div>
+              )}
+            </div>
+          </div>
+
+          <div className="userInput-container">
+            <div className="userInput-title">
+              <h1>Leave a comment</h1>
+            </div>
+            <div className="history-inputs">
+              <label className="labels" htmlFor="history-title">
+                Title
+              </label>
+              <TextField
+                variant="filled"
+                multiline
+                color="warning"
+                className="textField-title"
+                name="title"
+                onChange={(e) => {
+                  setHistoryInput({ ...historyInput, title: e.target.value });
+                }}
+              />
+              <br />
+              <label className="labels" htmlFor="history-comment">
+                Comment
+              </label>
+              <TextField
+                variant="filled"
+                multiline
+                color="warning"
+                rows={4}
+                className="textField-comment"
+                name="comment"
+                onChange={(e) => {
+                  setHistoryInput({ ...historyInput, comment: e.target.value });
+                }}
+              />
+
+              <div className="btn-container">
+                <Button
+                  className="btn-item update-btn"
+                  variant="contained"
+                  onClick={onClickSaveHistory}
+                >
+                  Save History
+                </Button>
+
+                <Button
+                  onClick={() => {
+                    window.history.back();
+                  }}
+                  className="btn-item delete-btn"
+                  variant="contained"
+                >
+                  Retry
+                </Button>
+              </div>
+            </div>
+          </div>
         </div>
-        <br />
-      </div>
+      ) : (
+        <></>
+      )}
     </div>
   );
 };

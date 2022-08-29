@@ -105,16 +105,21 @@ const Login = () => {
           </div>
         )}
         <div className="socialSignIn-btnBox ">
-          <Button
+          <div
             className="social-btn kakao"
-            // startIcon={<KakaoLogo />}
-            variant="contained"
             onClick={() => {
               window.location.replace(KAKAO_AUTH_URI);
             }}
           >
-            Sign in with Kakao
-          </Button>
+            <img
+              src={
+                "http://115.85.182.215:8000/uploads/client_static/kakao/kakao_login_medium_wide.png"
+              }
+              style={{ width: "100%", borderRadius: "1em" }}
+              alt="react"
+            />
+          </div>
+
           <Button className="social-btn google" variant="contained">
             Sign in with Google
           </Button>

@@ -1,153 +1,138 @@
-.result-container {
-<<<<<<< HEAD
-  padding: 10px !important;
-  border: 3px solid #d5d5d5;
-  border-radius: 2rem;
-  width: 90%;
-=======
-  /* border-radius: 1rem 1rem 0rem 0rem; */
-  width: 383.5px;
-  height: 400px;
-  position: relative;
-  display: flex;
-  justify-content: center;
+.result-item.spicy {
+  font-size: 20px;
   text-align: center;
 }
 
-.black-box {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  border-radius: 1rem 1rem 0 0;
-  background: linear-gradient(rgba(0, 0, 0, 0), rgb(0, 0, 0, 1));
-}
-
-
-.black-shadow {
-  border-radius: 0rem 0rem 1rem 1rem;
-  width: 24rem;
-  height: 12.4rem;
-  background: linear-gradient(rgba(0, 0, 0, 1), rgb(0, 0, 0, 1));
-}
-
-
-.resultInfo-container {
-  padding-top: 10%;
->>>>>>> 37eab0ef3a1837b8a8c759d3109f5297153a6141
+.userInput-title {
+  padding-top: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* background-size: 800px; */
-  /* background-image: linear-gradient(
-    rgba(0, 0, 0, 0.02),
-    rgb(168, 168, 168, 0.9)
-  ); */
+  font-weight: 700;
 }
 
-<<<<<<< HEAD
-.result-item-img {
+.textField-title {
+  color: white !important;
+}
+
+.textField-comment {
+  color: white !important;
+}
+
+/*  */
+/*  */
+/*  */
+.container1 {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  letter-spacing: 2px;
+  word-spacing: 2px;
+  line-height: 2;
+  /* background: linear-gradient(white, white, black 7%, white); */
+}
+
+.item-img {
   width: 100% !important;
-  /* height: 50% !important; */
-  align-items: center !important;
-}
-.resultInfo-container {
-=======
-p.title {
-  font-size: 40px;
-  margin-bottom: 25%;
-  text-align: center;
-  color: white;
-  text-shadow: 2px 2px 5px #000;
+  height: 300px !important;
 }
 
-.food_Number {
-  padding-top: 15px;
-  padding-left: 8%;
-  text-align: left;
-  font-size: 20px;
-  font-family: sans-serif;
+.container-contents {
+  margin-top: 40px;
+  margin-left: 10px;
+  margin-right: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.item-name {
+  color: #f4731f;
   font-weight: bold;
-  color: white;
-  text-decoration: underline;
-  text-decoration-color: yellow;
-  text-decoration-thickness: 5px;
-  text-underline-offset: 7px;
+  font-size: 15px;
 }
 
-/* .korean_food_name {
-  padding-top: 5px;
-  padding-left: 10%;
-  text-align: left;
+.item-nameEng {
+  margin-top: 20px;
+  color: white !important;
+  background-color: #f4731f;
+  border-radius: 1.5em;
+  padding: 10px 30px 15px;
+}
+
+.container-contents h1 {
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  color: black;
+}
+
+.description_container {
+  margin-top: 15%;
+  margin-bottom: 20%;
+}
+
+.description_container .desc-title {
   font-size: 25px;
-  font-family: sans-serif;
-  font-weight: bold;
-  color: white;
-  letter-spacing: 3px;
-  word-spacing: 3px;
-  line-height: 1.7;
-} */
+}
 
-.simple_list {
+.description_container .desc-content {
+  font-family: Lucida Console;
+  font-size: 16px;
+  margin-left: 5%;
+  margin-right: 5%;
+  text-align: left;
+}
+
+.shape-name {
+  height: 45px;
+  width: 100px;
+  background-color: #f4731f;
+  border-radius: 1.5em;
+}
+.shape-square {
+  width: 50px;
+  height: 5px;
+  background-color: grey;
+  border-radius: 1em;
+}
+
+.caution_container {
+  margin-top: 10%;
   text-align: center;
-  font-size: 18px;
-  font-family: sans-serif;
-  font-weight: 200;
   margin-bottom: 10%;
 }
-/* 
-.text-part1 {
->>>>>>> 37eab0ef3a1837b8a8c759d3109f5297153a6141
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-} */
 
-.spicy {
-  margin-bottom: 2%;
-  padding-left: 10%;
-  padding-top: 0%;
+.caution_container .caution_title {
+  font-size: 20px;
   font-weight: bold;
-  text-align: center;
-  font-size: 17px;
-  color: rgb(236, 97, 97);
 }
 
-.result-item.caution {
-  margin-bottom: 5%;
+.caution_container .foodinfo_caution {
+  margin-top: 3%;
+  font-size: 18px;
   font-weight: bold;
   font-size: 15px;
   color: orange;
-  text-align: left;
 }
-<<<<<<< HEAD
-=======
 
-.foodinfo_caution {
-  font-size: smaller;
-}
-.korean_food_name {
-  margin-bottom: 5%;
-  font-weight: bold;
-  text-align: center;
-  font-size: larger;
-  color:rgba(0, 0, 0, 1);
-  text-decoration: solid black;
+.order_learn_audio {
+  margin-top: 10%;
+  display: flex;
+  flex-direction: column;
 }
 
 .order_learn_text {
-  margin-top: 5%;
-  margin-bottom: 5%;
+  margin-top: 2%;
   text-align: center;
   font-size: 18px;
   font-family: sans-serif;
   font-weight: 600;
-}
-
-.order_learn_audio {
-  display: flex;
-  justify-content: center;
-  padding: 0 10px 0 10px;
+  color: black;
+  text-decoration: underline;
+  text-decoration-color: red;
+  text-decoration-thickness: 2.5px;
+  text-underline-offset: 10px;
 }
 
 .audio_player {
@@ -156,27 +141,32 @@ p.title {
   align-content: center;
 }
 .recipe_video {
+  margin-top: 20%;
   font-weight: bold;
   text-align: center;
   font-size: 25px;
   margin-bottom: 10%;
 }
->>>>>>> 37eab0ef3a1837b8a8c759d3109f5297153a6141
 
 .video-player {
-  margin-top: 10px;
+  margin-top: 7%;
 }
 
-.recipe_button {
-  margin-left: 10px;
-  padding: 5px;
+.recipe_video .recipe_button {
+  margin-top: 7%;
+  margin-left: 2%;
   border-radius: 10%;
   font-size: 10px;
   color: black;
   font-family: sans-serif;
 }
+.img-box {
+  display: flex;
+  align-items: center;
+  text-align: center !important;
+}
 
-.desc {
+.result-item.desc {
   margin-top: 30px;
   text-align: center;
 }
@@ -195,12 +185,12 @@ p.title {
   margin-bottom: 10%;
 }
 
-/*  */
 .btn-container {
-  margin-top: 10%;
-
+  margin-top: 15%;
+  justify-content: center;
   display: flex;
   flex-direction: row;
+  margin-bottom: 80px;
 }
 
 .btn-item {
@@ -208,12 +198,22 @@ p.title {
   margin: 5px !important;
 }
 
+.update-btn {
+  background-color: #f4731f !important;
+  color: white !important;
+}
+
+.delete-btn {
+  background-color: #f4731f !important;
+  color: white !important;
+}
+
 .logo-box {
   margin-bottom: 10px;
 }
 
 .title {
-  margin: 6% 0 6% 0;
+  margin-bottom: 6%;
   text-align: center;
   font-family: "Fredoka One", cursive;
   color: black;
@@ -221,43 +221,50 @@ p.title {
 
 .history-inputs {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
-  width: 100%;
+  margin-left: 10%;
+  width: 80%;
   margin-top: 1em;
 }
 
 .history-inputs label {
   font-weight: bold;
+  margin-top: 30px;
 }
 
-<<<<<<< HEAD
-.video-player {
-}
-=======
-.input-container {
-  display: flex;
-  flex-direction: column;
+.userInput-container {
   background-color: orange;
   margin-top: 60px;
   color: white;
 }
 
-.userInput-title {
-  padding-top: 30px;
+.mediaInfo-container {
+  margin-top: 20%;
+  margin-bottom: 20%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-weight: 700;
+  width: 500px;
 }
 
-.history-inputs {
-  margin : 1em 0 1em 0;
+.caution_container {
+  margin-top: 20%;
+  margin-bottom: 20%;
 }
 
-label {
-  font-weight: bold;
-  text-align: center;
-  font-size: 25px;
-  margin-bottom: 10%;
+.media-btn-box {
+  width: 230px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
 }
->>>>>>> 37eab0ef3a1837b8a8c759d3109f5297153a6141
+
+.sound-btn {
+  background-color: lemonchiffon !important;
+}
+
+.media-btn {
+  background-color: darkolivegreen !important;
+}
