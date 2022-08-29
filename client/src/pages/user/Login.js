@@ -113,7 +113,7 @@ const Login = () => {
           >
             <img
               src={
-                "115.85.185.215:8000/uploads/client_static/kakao/kakao_login_large_narrow.png"
+                "http://115.85.182.215:8000/uploads/client_static/kakao/kakao_login_medium_wide.png"
               }
               alt="react"
             />

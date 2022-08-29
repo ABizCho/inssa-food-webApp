@@ -43,9 +43,7 @@ const Core = () => {
         setImageUrl(res.data.url);
         console.log("axios1-onChange Axios imageUrl state:", imageUrl);
       });
-
   };
-
 
   useEffect(() => {
     console.log("setFormChange 변경 on onchange:", formChange);
@@ -121,21 +119,27 @@ const Core = () => {
               <div>
                 <img
                   className="demo-img"
-                  src={`${process.env.PUBLIC_URL}/demo_assets/img/TakeAPhoto.png`}
+                  src={
+                    "http://115.85.182.215:8000/uploads/client_static/home/TakeAPhoto.png"
+                  }
                   alt="react"
                 />
               </div>
               <div>
                 <img
                   className="demo-img"
-                  src={`${process.env.PUBLIC_URL}/demo_assets/img/CollectFood.png`}
+                  src={
+                    "http://115.85.182.215:8000/uploads/client_static/home/LearnFood.png"
+                  }
                   alt="react"
                 />
               </div>
               <div>
                 <img
                   className="demo-img"
-                  src={`${process.env.PUBLIC_URL}/demo_assets/img/LearnFood.png`}
+                  src={
+                    "http://115.85.182.215:8000/uploads/client_static/home/CollectFood.png"
+                  }
                   alt="react"
                 />
               </div>

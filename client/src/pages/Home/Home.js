@@ -1,9 +1,9 @@
 import React from "react";
 import "./Home.css";
-import bibimbap from "./bibimbap.jpg";
-import LearnFood from "./LearnFood.png";
-import TakeAPhoto from "./TakeAPhoto.png";
-import CollectFood from "./CollectFood.png";
+// import bibimbap from "./bibimbap.jpg";
+// import LearnFood from "./LearnFood.png";
+// import TakeAPhoto from "./TakeAPhoto.png";
+// import CollectFood from "./CollectFood.png";
 
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
@@ -44,7 +44,9 @@ const Home = () => {
         <div className="rightSide" style={{ margin: "4.5rem" }}>
           <img
             className="intro-img"
-            src={bibimbap}
+            src={
+              "http://115.85.182.215:8000/uploads/client_static/home/bibimbap.jpg"
+            }
             alt="비빔밥"
             style={{ height: "200px", width: "330px" }}
           />
@@ -72,7 +74,9 @@ const Home = () => {
           <div className="section2_eachItem">
             <span>01. Take a Photo</span>
             <img
-              src={TakeAPhoto}
+              src={
+                "http://115.85.182.215:8000/uploads/client_static/home/TakeAPhoto.png"
+              }
               alt="사진없음"
               style={{ height: "200px", width: "200px" }}
             />
@@ -80,7 +84,9 @@ const Home = () => {
           <div className="section2_eachItem">
             <span>02. Learn korean foods</span>
             <img
-              src={LearnFood}
+              src={
+                "http://115.85.182.215:8000/uploads/client_static/home/LearnFood.png"
+              }
               alt="사진없음"
               style={{ height: "200px", width: "200px" }}
             />
@@ -88,7 +94,9 @@ const Home = () => {
           <div className="section2_eachItem">
             <span>03. Fill up on food history</span>
             <img
-              src={CollectFood}
+              src={
+                "http://115.85.182.215:8000/uploads/client_static/home/CollectFood.png"
+              }
               alt="사진없음"
               style={{ height: "200px", width: "200px" }}
             />
