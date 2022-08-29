@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 import { useCookies } from "react-cookie";
+import { Button } from "@mui/material";
 
 const SignInForm = ({ signInData, onChangeSignInData, setSignInData }) => {
   const [cookies, setCookie, removeCookie] = useCookies(["userData"]);
@@ -40,7 +41,10 @@ const SignInForm = ({ signInData, onChangeSignInData, setSignInData }) => {
   };
 
   const sendSignInData = async () => {
-    return await axios.post(urlPort.cloudServer + urlPort.node + "/user/login", signInData);
+    return await axios.post(
+      urlPort.cloudServer + urlPort.node + "/user/login",
+      signInData
+    );
   };
 
   return (
@@ -59,6 +63,7 @@ const SignInForm = ({ signInData, onChangeSignInData, setSignInData }) => {
               name="email"
               id="email"
               aria-describedby="emailHelp"
+              autoFocus
             />
           </div>
           <div className="mb-3">
@@ -80,9 +85,16 @@ const SignInForm = ({ signInData, onChangeSignInData, setSignInData }) => {
           <button
             type="button"
             onClick={onClickLoginButton}
-            className="btn btn-primary"
+            className="btn btn-dark signIn-btn"
           >
             Log In
+          </button>
+          <button
+            type="button"
+            onClick={() => navigate("/login/findpassword")}
+            className="btn btn-white findPw-btn"
+          >
+            Find p/w
           </button>
         </form>
       </div>

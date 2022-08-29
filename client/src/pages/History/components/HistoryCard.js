@@ -69,7 +69,7 @@ const HistoryCard = (props) => {
               {nameEng} <br /> {name}
             </h1>
           </div>
-          <div className="result-item spicy">Spicy: 🌶️ ✖️ {spicy}</div>
+          {/* <div className="result-item spicy">Spicy: 🌶️ ✖️ {spicy}</div> */}
 
           <Button className="detail-btn" variant="contained" color="secondary" onClick={() => onClickDetail()}>
             Detail

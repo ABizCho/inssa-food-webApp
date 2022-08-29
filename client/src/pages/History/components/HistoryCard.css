@@ -5,10 +5,11 @@
   padding-left: 8% !important;
 }
 .detail-btn {
-  margin-top: 20px !important;
+  margin-top: 15px !important;
   height: 30px !important;
   border-radius: 1em !important;
   font-size: 12px !important;
+  background-color: coral !important;
 }
 .result-container {
   border-radius: 1rem 1rem 0rem 0rem;
@@ -20,7 +21,7 @@
 }
 
 .black-box {
-  width: 80%;
+  width: 75%;
   height: 100%;
   position: absolute;
   border-radius: 1rem 1rem 0 0;
@@ -29,14 +30,15 @@
 
 .black-shadow {
   border-radius: 0rem 0rem 1rem 1rem;
-  width: 80%;
+  width: 75%;
   height: 12.4rem;
   background: linear-gradient(rgba(0, 0, 0, 1), rgb(0, 0, 0, 1));
+  box-shadow: 0px 15px 25px;
 }
 
 .main_food_image {
   border-radius: 1rem 1rem 0rem 0rem;
-  width: 80%;
+  width: 75%;
   height: 225px;
 }
 
@@ -69,7 +71,7 @@ p.title {
 } */
 
 .korean_food_name {
-  padding-top: 5px;
+  padding-top: 25px;
   text-align: left;
   font-size: 25px;
   font-family: sans-serif;

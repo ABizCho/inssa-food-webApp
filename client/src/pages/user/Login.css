@@ -21,8 +21,21 @@
 }
 
 .signIn-btn {
+  background-color: orange !important;
+  border-color: orange !important;
+  margin-right: 10px !important;
+}
+.signUp-btn {
+  background-color: orange !important;
+  border-color: orange !important;
 }
 
 .log-container {
   margin-bottom: 100px !important;
+}
+
+.findPw-btn {
+  background-color: rgb(255, 228, 179) !important;
+  color: white !important;
+  box-shadow: 3px 3px 3px;
 }

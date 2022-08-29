@@ -9,9 +9,8 @@ const restApiKey = require("./../secure_data/restApi");
 const urlPort = require("../portUrl.json");
 
 router.get("/kakao", async (req, res, next) => {
-  const REST_API_KEY = "cf28dbb409df1bda73557662b941eda0";
-  const REDIRECT_URI =
-    portUrl.cloudServer + portUrl.client + "/oauth/kakao/callback";
+  const REST_API_KEY = "25fbc98ddab2446ddeb681e7af004a9e";
+  const REDIRECT_URI = "http://115.85.182.215/oauth/kakao/callback";
 
   const KAKAO_CODE = req.query.code;
   // console.log(KAKAO_CODE);
@@ -21,7 +20,7 @@ router.get("/kakao", async (req, res, next) => {
     console.log("4번");
     await axios
       .post(
-        `http://kauth.kakao.com/oauth/token?grant_type=authorization_code&client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&code=${KAKAO_CODE}`,
+        `https://kauth.kakao.com/oauth/token?grant_type=authorization_code&client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&code=${KAKAO_CODE}`,
         {
           headers: {
             "Content-type": "application/x-www-form-urlencoded;charset=utf-8",
@@ -41,6 +40,7 @@ router.get("/kakao", async (req, res, next) => {
         });
       });
   } catch (e) {
+    console.log(e);
     next(e);
   }
 });

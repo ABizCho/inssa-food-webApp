@@ -115,15 +115,15 @@ const ResultInfo = () => {
             />
           </div>
           <div className="container-contents">
-          <div className="item-name">{foodInfo.name}</div>
+            <div className="item-name">{foodInfo.name}</div>
             <div className="text-part1">
-                <h1 className="item-nameEng">{foodInfo.name_Eng}</h1>
-                {/* <h1 className="food_Number">No. 3</h1> */}
+              <h1 className="item-nameEng">{foodInfo.name_Eng}</h1>
+              {/* <h1 className="food_Number">No. 3</h1> */}
               <div className="result-item spicy">
                 Spicy: 🌶️ ✖️ {foodInfo.spicy}
               </div>
             </div>
-            </div>
+          </div>
 
           <div className="food_detail_back">
             <div className="simple_list">
@@ -131,10 +131,9 @@ const ResultInfo = () => {
                 caution <br />
                 <div className="foodinfo_caution"> {foodInfo.caution}</div>
               </div>
-            <div className="shape-square" />
+              <div className="shape-square" />
             </div>
 
-            
             <div className="result-item order_learn_audio">
               <ReactAudioPlayer
                 className="audio_player"
@@ -177,11 +176,11 @@ const ResultInfo = () => {
       )}
       <div className="userInput-container">
         <div className="userInput-title">
-         <h1>What did you think?</h1>
-          </div>
-          <div className="history-inputs">
-        <h1>
-          <label htmlFor="history-title">Title</label>
+          <h1>What did you think?</h1>
+        </div>
+        <div className="history-inputs">
+          <h1>
+            <label htmlFor="history-title">Title</label>
           </h1>
           <TextField
             variant="filled"
@@ -195,10 +194,10 @@ const ResultInfo = () => {
               setHistoryInput({ ...historyInput, title: e.target.value });
             }}
           />
-            </div>
-            <div className="history-inputs">
-            <label htmlFor="history-comment">Comment</label>
-            <TextField
+        </div>
+        <div className="history-inputs">
+          <label htmlFor="history-comment">Comment</label>
+          <TextField
             variant="filled"
             multiline
             color="warning"
@@ -210,23 +209,23 @@ const ResultInfo = () => {
               setHistoryInput({ ...historyInput, comment: e.target.value });
             }}
           />
-          </div>
-      <div className="btn-container">
-        <Button
-          className="btn-item"
-          variant="contained"
-          endIcon={<SendIcon />}
-          onClick={onClickSaveHistory}
+        </div>
+        <div className="btn-container">
+          <Button
+            className="btn-item"
+            variant="contained"
+            endIcon={<SendIcon />}
+            onClick={onClickSaveHistory}
           >
-          Save History
-        </Button>
+            Save History
+          </Button>
 
-        <Button className="btn-item retry" variant="contained" color="grey">
-          Retry
-        </Button>
+          <Button className="btn-item retry" variant="contained" color="grey">
+            Retry
+          </Button>
         </div>
         <br />
-          </div>
+      </div>
     </div>
   );
 };

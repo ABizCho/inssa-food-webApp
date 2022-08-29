@@ -9,7 +9,6 @@ router.get("/uploads/:imgUrl", async (req, res, next) => {
   const { imgUrl } = req.params;
   console.log("server test:", imgUrl);
 
-
   let modelResult;
 
   try {
@@ -19,8 +18,8 @@ router.get("/uploads/:imgUrl", async (req, res, next) => {
       modelResult = res.data;
     });
     // await axios.get(FLASK_SERVER + `/modelCall`).then((res) => {
-      // });
-      res.json(modelResult);
+    // });
+    res.json(modelResult);
   } catch (e) {
     console.log(e);
 

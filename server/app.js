@@ -21,6 +21,8 @@ const app = express();
 const mongoUri = require("/root/env-inssaFood/mongoUri");
 
 // 1. DB 연결 및 연결관리
+
+
 mongoose.connect(mongoUri.mongoFoodieAdmin);
 
 mongoose.connection.on("connected", () => {

@@ -15,8 +15,8 @@ const Login = () => {
   const navigate = useNavigate();
   // ------------------kakao Oauth-------------------
 
-  const REST_API_KEY = "0abf97780f442400eccc7cd004baabab";
-  const REDIRECT_URI = urlPort.cloudServer + "/oauth/kakao/callback";
+  const REST_API_KEY = "25fbc98ddab2446ddeb681e7af004a9e";
+  const REDIRECT_URI = "http://115.85.182.215/oauth/kakao/callback";
 
   //1번
   const KAKAO_AUTH_URI = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
@@ -59,7 +59,7 @@ const Login = () => {
   const [cookies, setCookie, removeCookie] = useCookies("userData");
 
   return (
-    <main className='log-container'>
+    <main className="log-container">
       <section className="py-5 text-center container">
         <div className="row py-lg-5">
           <div className="col-lg-6 col-md-8 mx-auto">
@@ -74,7 +74,7 @@ const Login = () => {
         {!cookies.userData ? (
           <p>
             <button
-              className="signIn-btn btn btn-outline-primary my-2 m-1"
+              className=" btn btn-secondary my-2 m-1"
               onClick={() => {
                 setView({
                   signIn: true,
@@ -86,7 +86,7 @@ const Login = () => {
               Log In
             </button>
             <button
-              className="btn btn-outline-secondary my-2 m-1"
+              className="btn btn-secondary my-2 m-1"
               onClick={() => {
                 setView({
                   signIn: false,
@@ -115,20 +115,8 @@ const Login = () => {
           >
             Sign in with Kakao
           </Button>
-          <Button
-            className="social-btn google"
-            // startIcon={<googleLogo />}
-            variant="contained"
-          >
+          <Button className="social-btn google" variant="contained">
             Sign in with Google
-          </Button>
-          <Button
-            className="social-btn google"
-            // startIcon={<googleLogo />}
-            variant="contained"
-            onClick={() => navigate("/login/findpassword")}
-          >
-            Find Password
           </Button>
         </div>
       </section>

@@ -3,8 +3,12 @@ import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import urlPort from "../../../data/urlPort.json";
 import { useCookies } from "react-cookie";
+import "./SocialSignUp.css";
+import { useNavigate } from "react-router-dom";
 
 const SocialSignUp = () => {
+  const navigate = useNavigate();
+
   const [cookiesAuth, setCookieAuth, removeCookieAuth] = useCookies(["auth"]);
 
   const emailRef = useRef();
@@ -31,7 +35,6 @@ const SocialSignUp = () => {
     setSignUpdata({
       ...signUpData,
       email: cookiesAuth.auth.kakao_account.email,
-      name: cookiesAuth.auth.kakao_account.profile.nickname,
     });
   }, []);
 
@@ -75,7 +78,8 @@ const SocialSignUp = () => {
       .then((res) => {
         console.log(res.data);
         alert(res.data.result);
-        window.location.reload();
+
+        navigate("/login");
       })
       .catch((e) => {
         console.log(e);
@@ -92,12 +96,13 @@ const SocialSignUp = () => {
 
   return (
     <main>
-      <section className="py-5 text-center container">
+      <section className="py-2 text-center container">
+        <div className="social-title">social sign up</div>
         <div className="row py-lg-5">
           <div className="col-lg-6 col-md-8 mx-auto"></div>
         </div>
       </section>
-      <div className="album">
+      <div className="sec2-container album">
         <div className="container">
           <form>
             <div className="mb-3">
@@ -116,6 +121,23 @@ const SocialSignUp = () => {
                 aria-describedby="emailHelp"
               />
             </div>
+
+            <div className="mb-3">
+              <label htmlFor="name" className="form-label">
+                Nickname
+              </label>
+              <input
+                type="text"
+                value={signUpData.name}
+                onChange={onChangeSignUpData}
+                className="form-control"
+                name="name"
+                id="name"
+                placeholder="Please type your nickname"
+                autoFocus
+              />
+            </div>
+
             <div className="mb-3">
               <label htmlFor="password" className="form-label">
                 Password
@@ -127,6 +149,7 @@ const SocialSignUp = () => {
                 className="form-control"
                 name="password"
                 id="password"
+                placeholder="Please type your password"
               />
             </div>
             <div className="mb-3">
@@ -140,31 +163,19 @@ const SocialSignUp = () => {
                 className="form-control"
                 name="rePassword"
                 id="rePassword"
+                placeholder="Type your password again"
               />
             </div>
-            <div className="mb-3">
-              <label htmlFor="name" className="form-label">
-                Name
-              </label>
-              <input
-                type="text"
-                disabled
-                value={signUpData.name}
-                onChange={onChangeSignUpData}
-                className="form-control"
-                name="name"
-                id="name"
-              />
-            </div>
+
             <div className="mb-3">
               <p className="text-danger">{errorMessage}</p>
             </div>
             <button
               type="button"
               onClick={onClickSignUpButton}
-              className="btn btn-primary"
+              className="social-submit-btn btn btn-dark"
             >
-              회원가입
+              Sign Up
             </button>
           </form>
         </div>
