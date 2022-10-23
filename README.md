@@ -4,8 +4,12 @@ inSSA-Food 프로젝트 co-work를 진행하는 레포입니다.
 <br><br>
 
 ---
+## Core기능 시연
+<br><br>
 
-<br>
+<img width=50% src="./Animation.gif">
+
+<br><br><br>
 
 ## Co-Work Space
 ---
