@@ -7,7 +7,7 @@ inSSA-Food 프로젝트 co-work를 진행하는 레포입니다.
 ## Core기능 시연
 <br><br>
 
-<img width=50% src="./Animation.gif">
+<img width=35% src="./Animation.gif">
 
 <br><br><br>
 
