@@ -5,7 +5,7 @@ inSSA-Food 프로젝트 co-work를 진행하는 레포입니다.
 
 ## Inssa Food 소개
 ![image](https://user-images.githubusercontent.com/65459616/197715740-1e57d20e-5d26-4660-ab93-d3ab557bb230.png)
-![image](https://user-images.githubusercontent.com/65459616/197715763-db6e961e-f35d-4821-b864-0113a7f5672f.png)
+![image](https://user-images.githubusercontent.com/65459616/197717136-b7ef2cfc-ab56-4682-bcf5-034c85fb760d.png)
 ![image](https://user-images.githubusercontent.com/65459616/197715715-0241a65a-df40-4a55-9162-22f7ba158582.png)
 ![image](https://user-images.githubusercontent.com/65459616/197715813-67b7b252-9018-480f-aac8-9ffbe7b95797.png)
 ![image](https://user-images.githubusercontent.com/65459616/197715830-fbf02eec-1180-4566-8d8f-889b78b79e60.png)
